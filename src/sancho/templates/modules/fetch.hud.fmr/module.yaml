@@ -1,0 +1,50 @@
+id: fetch.hud.fmr
+version: 1.2.0
+type: fetch
+catalog_tier: large
+entrypoint: main.py:run
+description: "Path-driven HUD client for Fair Market Rents + Section 8 Income Limits.\n\
+  Two families (`/fmr/...` and `/il/...`) with list and data variants. Use\ninline\
+  \ URL params (e.g. `?year=2024`) \u2014 most params live in the path.\nRequires\
+  \ HUD_API_TOKEN.\n\ncatalog.json enumerates all 56 states/territories, 639 metro\
+  \ areas, and\n4,700+ counties.\n"
+managed_paths:
+- module.yaml
+- main.py
+- api.py
+- transform.py
+- schema.sample.json
+- catalog.json
+- catalog.meta.json
+- catalog_blueprint.py
+- discovery.py
+input_schema:
+  type: object
+  required:
+  - url
+  properties:
+    url:
+      type: string
+      description: 'Full HUD API URL. `/fmr/listMetroAreas`, `/fmr/listCounties/{STATE}`,
+
+        `/fmr/data/{ENTITY_ID}?year=YYYY`, `/il/statedata/{STATE}?year=YYYY`.
+
+        '
+      examples:
+      - https://www.huduser.gov/hudapi/public/fmr/listMetroAreas
+      - https://www.huduser.gov/hudapi/public/fmr/listCounties/CA
+      - https://www.huduser.gov/hudapi/public/fmr/data/METRO47900M47900?year=2024
+      - https://www.huduser.gov/hudapi/public/il/statedata/CA?year=2024
+    query:
+      type: object
+      description: 'Optional query params. Most filtering happens in the URL path
+
+        itself. Auth: HUD_API_TOKEN as Bearer header.
+
+        '
+output_schema:
+  type: object
+  required:
+  - dataset_ref
+  - url
+  - retrieved_at

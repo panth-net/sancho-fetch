@@ -1,0 +1,911 @@
+{
+  "provider": "fetch.socrata.sf_building_permits",
+  "schema_version": "1.0",
+  "generated_at": "2026-04-14T18:16:22.206012+00:00",
+  "domain": "data.sfgov.org",
+  "families": [
+    {
+      "id": "socrata.resource",
+      "base_aliases": [
+        "v1"
+      ],
+      "base_url": "https://data.sfgov.org",
+      "path_templates": [
+        "/resource/{datasetId}.json",
+        "/resource/{datasetId}.csv"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "query_params": {
+        "$select": {
+          "type": "string",
+          "description": "Projection of columns"
+        },
+        "$where": {
+          "type": "string",
+          "description": "SoQL filter expression"
+        },
+        "$order": {
+          "type": "string",
+          "description": "Sort expression"
+        },
+        "$group": {
+          "type": "string",
+          "description": "Group-by expression"
+        },
+        "$having": {
+          "type": "string",
+          "description": "Filter on grouped rows"
+        },
+        "$limit": {
+          "type": "int",
+          "description": "Results per page (max 50000)"
+        },
+        "$offset": {
+          "type": "int",
+          "description": "Pagination offset"
+        },
+        "$q": {
+          "type": "string",
+          "description": "Full-text search"
+        },
+        "$$app_token": {
+          "type": "string",
+          "description": "Application token (rate-limit)"
+        }
+      },
+      "response_mode": "json",
+      "envelope_key": "",
+      "description": "SODA v2.1 query surface for any dataset on data.sfgov.org.",
+      "source_refs": [
+        "https://data.sfgov.org/",
+        "https://dev.socrata.com/docs/"
+      ]
+    }
+  ],
+  "assets": [
+    {
+      "id": "sfnk-6tdn",
+      "name": "Green_Roofs",
+      "description": "his layer is the data feeding into the San Francisco Green Roofs web map. This map and further information about green roofs in San Francisco can be found at the Planning Department's Green Roofs website: http://www.sf-planning.org/index.aspx?page=3839. If you know of any other green roofs in San Francisco please contact Andrew Perry (Andrew.Perry@sfgov.org) and he will add it to the map.",
+      "asset_type": "dataset",
+      "is_dataset": true,
+      "is_live_dataset": true,
+      "attribution": "City and County of San Francisco Planning Department",
+      "data_updated_at": "2016-08-04T18:46:25.000Z",
+      "updated_at": "2024-04-10T19:12:57.000Z",
+      "download_count": 1912,
+      "page_views": {
+        "page_views_last_week": 4,
+        "page_views_last_month": 37,
+        "page_views_total": 2085,
+        "page_views_last_week_log": 2.321928094887362,
+        "page_views_last_month_log": 5.247927513443585,
+        "page_views_total_log": 11.026523442519766
+      },
+      "domain_category": "Housing and Buildings",
+      "categories": [],
+      "domain_tags": [
+        "gis",
+        "green",
+        "roofs",
+        "shapefile"
+      ],
+      "columns": [
+        {
+          "position": 0,
+          "name": "ConstrType",
+          "field_name": "constr_type",
+          "datatype": "Text",
+          "description": ""
+        },
+        {
+          "position": 1,
+          "name": "Seating",
+          "field_name": "seating",
+          "datatype": "Text",
+          "description": ""
+        },
+        {
+          "position": 2,
+          "name": "Cost_sf",
+          "field_name": "cost_sf",
+          "datatype": "Number",
+          "description": ""
+        },
+        {
+          "position": 3,
+          "name": "SolarElect",
+          "field_name": "solar_elect",
+          "datatype": "Text",
+          "description": ""
+        },
+        {
+          "position": 4,
+          "name": "OBJECTID",
+          "field_name": "objectid",
+          "datatype": "Number",
+          "description": ""
+        },
+        {
+          "position": 5,
+          "name": "OtherParty",
+          "field_name": "other_party",
+          "datatype": "Text",
+          "description": ""
+        },
+        {
+          "position": 6,
+          "name": "Building_U",
+          "field_name": "building_u",
+          "datatype": "Text",
+          "description": ""
+        },
+        {
+          "position": 7,
+          "name": "ADDRESS",
+          "field_name": "address",
+          "datatype": "Text",
+          "description": ""
+        },
+        {
+          "position": 8,
+          "name": "Building_N",
+          "field_name": "building_n",
+          "datatype": "Text",
+          "description": ""
+        },
+        {
+          "position": 9,
+          "name": "Size_sf",
+          "field_name": "size_sf",
+          "datatype": "Number",
+          "description": ""
+        },
+        {
+          "position": 10,
+          "name": "Installati",
+          "field_name": "installati",
+          "datatype": "Text",
+          "description": ""
+        },
+        {
+          "position": 11,
+          "name": "SolarHotWa",
+          "field_name": "solar_hot_wa",
+          "datatype": "Text",
+          "description": ""
+        },
+        {
+          "position": 12,
+          "name": "YearBuilt",
+          "field_name": "year_built",
+          "datatype": "Number",
+          "description": ""
+        },
+        {
+          "position": 13,
+          "name": "Public_Acc",
+          "field_name": "public_acc",
+          "datatype": "Text",
+          "description": ""
+        },
+        {
+          "position": 14,
+          "name": "Complete",
+          "field_name": "complete",
+          "datatype": "Text",
+          "description": ""
+        },
+        {
+          "position": 15,
+          "name": "the_geom",
+          "field_name": "the_geom",
+          "datatype": "Point",
+          "description": ""
+        },
+        {
+          "position": 16,
+          "name": "EdibleGard",
+          "field_name": "edible_gard",
+          "datatype": "Text",
+          "description": ""
+        },
+        {
+          "position": 17,
+          "name": "RainHarves",
+          "field_name": "rain_harves",
+          "datatype": "Text",
+          "description": ""
+        },
+        {
+          "position": 18,
+          "name": "Design",
+          "field_name": "design",
+          "datatype": "Text",
+          "description": ""
+        },
+        {
+          "position": 19,
+          "name": "Cost",
+          "field_name": "cost",
+          "datatype": "Number",
+          "description": ""
+        },
+        {
+          "position": 20,
+          "name": "HabitatCre",
+          "field_name": "habitat_cre",
+          "datatype": "Text",
+          "description": ""
+        }
+      ],
+      "permalink": "https://data.sfgov.org/d/sfnk-6tdn",
+      "link": "https://data.sfgov.org/Housing-and-Buildings/Green_Roofs/sfnk-6tdn"
+    },
+    {
+      "id": "667d-aah6",
+      "name": "Invest in Neighborhood Areas",
+      "description": "The City of San Francisco owes much of its global appeal to the unique character of its neighborhood commercial districts. OEWD\u2019s Neighborhood Economic Development Division is responsible for the ongoing support and improvement of the City\u2019s many neighborhood commercial districts. The overall goals of the division are to create cleaner, safer and more vibrant neighborhoods in order to increase the quality of life for the City\u2019s residents and workers; and to create economic opportunities for residents of the City\u2019s low- and moderate-income neighborhoods. The Invest in Neighborhoods Initiative, one of the 17 points of Mayor Lee\u2019s plan for jobs and economic opportunity, provides focused, customized assistance to meet the specific needs of San Francisco\u2019s neighborhood commercial corridors.",
+      "asset_type": "dataset",
+      "is_dataset": true,
+      "is_live_dataset": true,
+      "attribution": "None",
+      "data_updated_at": "2016-06-29T17:05:53.000Z",
+      "updated_at": "2024-04-10T19:13:01.000Z",
+      "download_count": 2249,
+      "page_views": {
+        "page_views_last_week": 13,
+        "page_views_last_month": 73,
+        "page_views_total": 1387,
+        "page_views_last_week_log": 3.8073549220576037,
+        "page_views_last_month_log": 6.209453365628951,
+        "page_views_total_log": 10.438791852578262
+      },
+      "domain_category": "Economy and Community",
+      "categories": [],
+      "domain_tags": [],
+      "columns": [
+        {
+          "position": 0,
+          "name": "Name",
+          "field_name": "name",
+          "datatype": "Text",
+          "description": ""
+        },
+        {
+          "position": 1,
+          "name": "the_geom",
+          "field_name": "the_geom",
+          "datatype": "MultiPolygon",
+          "description": ""
+        },
+        {
+          "position": 2,
+          "name": "OBJECTID",
+          "field_name": "objectid",
+          "datatype": "Number",
+          "description": ""
+        },
+        {
+          "position": 3,
+          "name": "Email",
+          "field_name": "email",
+          "datatype": "Text",
+          "description": ""
+        },
+        {
+          "position": 4,
+          "name": "IIN",
+          "field_name": "iin",
+          "datatype": "Text",
+          "description": ""
+        },
+        {
+          "position": 5,
+          "name": "Boundary",
+          "field_name": "boundary",
+          "datatype": "Text",
+          "description": ""
+        },
+        {
+          "position": 6,
+          "name": "Neighborhd",
+          "field_name": "neighborhd",
+          "datatype": "Text",
+          "description": ""
+        },
+        {
+          "position": 7,
+          "name": "Corridor",
+          "field_name": "corridor",
+          "datatype": "Text",
+          "description": ""
+        },
+        {
+          "position": 8,
+          "name": "Shape_Area",
+          "field_name": "shape_area",
+          "datatype": "Number",
+          "description": ""
+        },
+        {
+          "position": 9,
+          "name": "Tel",
+          "field_name": "tel",
+          "datatype": "Text",
+          "description": ""
+        },
+        {
+          "position": 10,
+          "name": "Shape_Leng",
+          "field_name": "shape_leng",
+          "datatype": "Number",
+          "description": ""
+        }
+      ],
+      "permalink": "https://data.sfgov.org/d/667d-aah6",
+      "link": "https://data.sfgov.org/Economy-and-Community/Invest-in-Neighborhood-Areas/667d-aah6"
+    },
+    {
+      "id": "3nje-yn2u",
+      "name": "RPD Parks",
+      "description": "Park Lands layer developed by the San Francisco Recreation and Parks Department. Note the wide extent of the map is because RPD manages Camp Mather to the West.",
+      "asset_type": "dataset",
+      "is_dataset": true,
+      "is_live_dataset": true,
+      "attribution": "None",
+      "data_updated_at": "2016-07-13T01:31:04.000Z",
+      "updated_at": "2024-04-10T19:12:58.000Z",
+      "download_count": 1198,
+      "page_views": {
+        "page_views_last_week": 17,
+        "page_views_last_month": 46,
+        "page_views_total": 920,
+        "page_views_last_week_log": 4.169925001442312,
+        "page_views_last_month_log": 5.554588851677638,
+        "page_views_total_log": 9.847057346091336
+      },
+      "domain_category": "Culture and Recreation",
+      "categories": [],
+      "domain_tags": [],
+      "columns": [
+        {
+          "position": 0,
+          "name": "sqft",
+          "field_name": "sqft",
+          "datatype": "Number",
+          "description": ""
+        },
+        {
+          "position": 1,
+          "name": "x",
+          "field_name": "x",
+          "datatype": "Number",
+          "description": ""
+        },
+        {
+          "position": 2,
+          "name": "gis_fd_pk",
+          "field_name": "gis_fd_pk",
+          "datatype": "Number",
+          "description": ""
+        },
+        {
+          "position": 3,
+          "name": "y",
+          "field_name": "y",
+          "datatype": "Number",
+          "description": ""
+        },
+        {
+          "position": 4,
+          "name": "map_park_n",
+          "field_name": "map_park_n",
+          "datatype": "Text",
+          "description": ""
+        },
+        {
+          "position": 5,
+          "name": "the_geom",
+          "field_name": "the_geom",
+          "datatype": "MultiPolygon",
+          "description": ""
+        },
+        {
+          "position": 6,
+          "name": "perimeter",
+          "field_name": "perimeter",
+          "datatype": "Number",
+          "description": ""
+        },
+        {
+          "position": 7,
+          "name": "acres",
+          "field_name": "acres",
+          "datatype": "Number",
+          "description": ""
+        }
+      ],
+      "permalink": "https://data.sfgov.org/d/3nje-yn2u",
+      "link": "https://data.sfgov.org/Culture-and-Recreation/RPD-Parks/3nje-yn2u"
+    },
+    {
+      "id": "bt7b-fdtx",
+      "name": "Elect_StAsmbly_Dists",
+      "description": "A historical map of the California State Assembly Districts based on the 2011 boundaries.",
+      "asset_type": "dataset",
+      "is_dataset": true,
+      "is_live_dataset": true,
+      "attribution": "City & County of San Francisco",
+      "data_updated_at": "2013-09-17T16:09:24.000Z",
+      "updated_at": "2024-04-10T19:13:00.000Z",
+      "download_count": 2321,
+      "page_views": {
+        "page_views_last_week": 5,
+        "page_views_last_month": 20,
+        "page_views_total": 292,
+        "page_views_last_week_log": 2.584962500721156,
+        "page_views_last_month_log": 4.392317422778761,
+        "page_views_total_log": 8.194756854422248
+      },
+      "domain_category": "Geographic Locations and Boundaries",
+      "categories": [],
+      "domain_tags": [],
+      "columns": [
+        {
+          "position": 0,
+          "name": "the_geom",
+          "field_name": "the_geom",
+          "datatype": "MultiPolygon",
+          "description": ""
+        },
+        {
+          "position": 1,
+          "name": "caassmd",
+          "field_name": "caassmd",
+          "datatype": "Text",
+          "description": ""
+        }
+      ],
+      "permalink": "https://data.sfgov.org/d/bt7b-fdtx",
+      "link": "https://data.sfgov.org/Geographic-Locations-and-Boundaries/Elect_StAsmbly_Dists/bt7b-fdtx"
+    },
+    {
+      "id": "hft9-aih3",
+      "name": "Map of Fire Inspections",
+      "description": "Filterable on Inspection type and date performed",
+      "asset_type": "map",
+      "is_dataset": false,
+      "is_live_dataset": false,
+      "attribution": "None",
+      "data_updated_at": "2026-04-14T09:21:56.000Z",
+      "updated_at": "2026-04-14T09:21:56.000Z",
+      "download_count": 0,
+      "page_views": {
+        "page_views_last_week": 14,
+        "page_views_last_month": 14,
+        "page_views_total": 14,
+        "page_views_last_week_log": 3.9068905956085187,
+        "page_views_last_month_log": 3.9068905956085187,
+        "page_views_total_log": 3.9068905956085187
+      },
+      "domain_category": "Housing and Buildings",
+      "categories": [],
+      "domain_tags": [],
+      "columns": [],
+      "permalink": "https://data.sfgov.org/d/hft9-aih3",
+      "link": "https://data.sfgov.org/Housing-and-Buildings/Map-of-Fire-Inspections/hft9-aih3"
+    }
+  ],
+  "datasets": [
+    {
+      "id": "sfnk-6tdn",
+      "name": "Green_Roofs",
+      "description": "his layer is the data feeding into the San Francisco Green Roofs web map. This map and further information about green roofs in San Francisco can be found at the Planning Department's Green Roofs website: http://www.sf-planning.org/index.aspx?page=3839. If you know of any other green roofs in San Francisco please contact Andrew Perry (Andrew.Perry@sfgov.org) and he will add it to the map.",
+      "asset_type": "dataset",
+      "is_dataset": true,
+      "is_live_dataset": true,
+      "attribution": "City and County of San Francisco Planning Department",
+      "data_updated_at": "2016-08-04T18:46:25.000Z",
+      "updated_at": "2024-04-10T19:12:57.000Z",
+      "download_count": 1912,
+      "page_views": {
+        "page_views_last_week": 4,
+        "page_views_last_month": 37,
+        "page_views_total": 2085,
+        "page_views_last_week_log": 2.321928094887362,
+        "page_views_last_month_log": 5.247927513443585,
+        "page_views_total_log": 11.026523442519766
+      },
+      "domain_category": "Housing and Buildings",
+      "categories": [],
+      "domain_tags": [
+        "gis",
+        "green",
+        "roofs",
+        "shapefile"
+      ],
+      "columns": [
+        {
+          "position": 0,
+          "name": "ConstrType",
+          "field_name": "constr_type",
+          "datatype": "Text",
+          "description": ""
+        },
+        {
+          "position": 1,
+          "name": "Seating",
+          "field_name": "seating",
+          "datatype": "Text",
+          "description": ""
+        },
+        {
+          "position": 2,
+          "name": "Cost_sf",
+          "field_name": "cost_sf",
+          "datatype": "Number",
+          "description": ""
+        },
+        {
+          "position": 3,
+          "name": "SolarElect",
+          "field_name": "solar_elect",
+          "datatype": "Text",
+          "description": ""
+        },
+        {
+          "position": 4,
+          "name": "OBJECTID",
+          "field_name": "objectid",
+          "datatype": "Number",
+          "description": ""
+        },
+        {
+          "position": 5,
+          "name": "OtherParty",
+          "field_name": "other_party",
+          "datatype": "Text",
+          "description": ""
+        },
+        {
+          "position": 6,
+          "name": "Building_U",
+          "field_name": "building_u",
+          "datatype": "Text",
+          "description": ""
+        },
+        {
+          "position": 7,
+          "name": "ADDRESS",
+          "field_name": "address",
+          "datatype": "Text",
+          "description": ""
+        },
+        {
+          "position": 8,
+          "name": "Building_N",
+          "field_name": "building_n",
+          "datatype": "Text",
+          "description": ""
+        },
+        {
+          "position": 9,
+          "name": "Size_sf",
+          "field_name": "size_sf",
+          "datatype": "Number",
+          "description": ""
+        },
+        {
+          "position": 10,
+          "name": "Installati",
+          "field_name": "installati",
+          "datatype": "Text",
+          "description": ""
+        },
+        {
+          "position": 11,
+          "name": "SolarHotWa",
+          "field_name": "solar_hot_wa",
+          "datatype": "Text",
+          "description": ""
+        },
+        {
+          "position": 12,
+          "name": "YearBuilt",
+          "field_name": "year_built",
+          "datatype": "Number",
+          "description": ""
+        },
+        {
+          "position": 13,
+          "name": "Public_Acc",
+          "field_name": "public_acc",
+          "datatype": "Text",
+          "description": ""
+        },
+        {
+          "position": 14,
+          "name": "Complete",
+          "field_name": "complete",
+          "datatype": "Text",
+          "description": ""
+        },
+        {
+          "position": 15,
+          "name": "the_geom",
+          "field_name": "the_geom",
+          "datatype": "Point",
+          "description": ""
+        },
+        {
+          "position": 16,
+          "name": "EdibleGard",
+          "field_name": "edible_gard",
+          "datatype": "Text",
+          "description": ""
+        },
+        {
+          "position": 17,
+          "name": "RainHarves",
+          "field_name": "rain_harves",
+          "datatype": "Text",
+          "description": ""
+        },
+        {
+          "position": 18,
+          "name": "Design",
+          "field_name": "design",
+          "datatype": "Text",
+          "description": ""
+        },
+        {
+          "position": 19,
+          "name": "Cost",
+          "field_name": "cost",
+          "datatype": "Number",
+          "description": ""
+        },
+        {
+          "position": 20,
+          "name": "HabitatCre",
+          "field_name": "habitat_cre",
+          "datatype": "Text",
+          "description": ""
+        }
+      ],
+      "permalink": "https://data.sfgov.org/d/sfnk-6tdn",
+      "link": "https://data.sfgov.org/Housing-and-Buildings/Green_Roofs/sfnk-6tdn"
+    },
+    {
+      "id": "667d-aah6",
+      "name": "Invest in Neighborhood Areas",
+      "description": "The City of San Francisco owes much of its global appeal to the unique character of its neighborhood commercial districts. OEWD\u2019s Neighborhood Economic Development Division is responsible for the ongoing support and improvement of the City\u2019s many neighborhood commercial districts. The overall goals of the division are to create cleaner, safer and more vibrant neighborhoods in order to increase the quality of life for the City\u2019s residents and workers; and to create economic opportunities for residents of the City\u2019s low- and moderate-income neighborhoods. The Invest in Neighborhoods Initiative, one of the 17 points of Mayor Lee\u2019s plan for jobs and economic opportunity, provides focused, customized assistance to meet the specific needs of San Francisco\u2019s neighborhood commercial corridors.",
+      "asset_type": "dataset",
+      "is_dataset": true,
+      "is_live_dataset": true,
+      "attribution": "None",
+      "data_updated_at": "2016-06-29T17:05:53.000Z",
+      "updated_at": "2024-04-10T19:13:01.000Z",
+      "download_count": 2249,
+      "page_views": {
+        "page_views_last_week": 13,
+        "page_views_last_month": 73,
+        "page_views_total": 1387,
+        "page_views_last_week_log": 3.8073549220576037,
+        "page_views_last_month_log": 6.209453365628951,
+        "page_views_total_log": 10.438791852578262
+      },
+      "domain_category": "Economy and Community",
+      "categories": [],
+      "domain_tags": [],
+      "columns": [
+        {
+          "position": 0,
+          "name": "Name",
+          "field_name": "name",
+          "datatype": "Text",
+          "description": ""
+        },
+        {
+          "position": 1,
+          "name": "the_geom",
+          "field_name": "the_geom",
+          "datatype": "MultiPolygon",
+          "description": ""
+        },
+        {
+          "position": 2,
+          "name": "OBJECTID",
+          "field_name": "objectid",
+          "datatype": "Number",
+          "description": ""
+        },
+        {
+          "position": 3,
+          "name": "Email",
+          "field_name": "email",
+          "datatype": "Text",
+          "description": ""
+        },
+        {
+          "position": 4,
+          "name": "IIN",
+          "field_name": "iin",
+          "datatype": "Text",
+          "description": ""
+        },
+        {
+          "position": 5,
+          "name": "Boundary",
+          "field_name": "boundary",
+          "datatype": "Text",
+          "description": ""
+        },
+        {
+          "position": 6,
+          "name": "Neighborhd",
+          "field_name": "neighborhd",
+          "datatype": "Text",
+          "description": ""
+        },
+        {
+          "position": 7,
+          "name": "Corridor",
+          "field_name": "corridor",
+          "datatype": "Text",
+          "description": ""
+        },
+        {
+          "position": 8,
+          "name": "Shape_Area",
+          "field_name": "shape_area",
+          "datatype": "Number",
+          "description": ""
+        },
+        {
+          "position": 9,
+          "name": "Tel",
+          "field_name": "tel",
+          "datatype": "Text",
+          "description": ""
+        },
+        {
+          "position": 10,
+          "name": "Shape_Leng",
+          "field_name": "shape_leng",
+          "datatype": "Number",
+          "description": ""
+        }
+      ],
+      "permalink": "https://data.sfgov.org/d/667d-aah6",
+      "link": "https://data.sfgov.org/Economy-and-Community/Invest-in-Neighborhood-Areas/667d-aah6"
+    },
+    {
+      "id": "3nje-yn2u",
+      "name": "RPD Parks",
+      "description": "Park Lands layer developed by the San Francisco Recreation and Parks Department. Note the wide extent of the map is because RPD manages Camp Mather to the West.",
+      "asset_type": "dataset",
+      "is_dataset": true,
+      "is_live_dataset": true,
+      "attribution": "None",
+      "data_updated_at": "2016-07-13T01:31:04.000Z",
+      "updated_at": "2024-04-10T19:12:58.000Z",
+      "download_count": 1198,
+      "page_views": {
+        "page_views_last_week": 17,
+        "page_views_last_month": 46,
+        "page_views_total": 920,
+        "page_views_last_week_log": 4.169925001442312,
+        "page_views_last_month_log": 5.554588851677638,
+        "page_views_total_log": 9.847057346091336
+      },
+      "domain_category": "Culture and Recreation",
+      "categories": [],
+      "domain_tags": [],
+      "columns": [
+        {
+          "position": 0,
+          "name": "sqft",
+          "field_name": "sqft",
+          "datatype": "Number",
+          "description": ""
+        },
+        {
+          "position": 1,
+          "name": "x",
+          "field_name": "x",
+          "datatype": "Number",
+          "description": ""
+        },
+        {
+          "position": 2,
+          "name": "gis_fd_pk",
+          "field_name": "gis_fd_pk",
+          "datatype": "Number",
+          "description": ""
+        },
+        {
+          "position": 3,
+          "name": "y",
+          "field_name": "y",
+          "datatype": "Number",
+          "description": ""
+        },
+        {
+          "position": 4,
+          "name": "map_park_n",
+          "field_name": "map_park_n",
+          "datatype": "Text",
+          "description": ""
+        },
+        {
+          "position": 5,
+          "name": "the_geom",
+          "field_name": "the_geom",
+          "datatype": "MultiPolygon",
+          "description": ""
+        },
+        {
+          "position": 6,
+          "name": "perimeter",
+          "field_name": "perimeter",
+          "datatype": "Number",
+          "description": ""
+        },
+        {
+          "position": 7,
+          "name": "acres",
+          "field_name": "acres",
+          "datatype": "Number",
+          "description": ""
+        }
+      ],
+      "permalink": "https://data.sfgov.org/d/3nje-yn2u",
+      "link": "https://data.sfgov.org/Culture-and-Recreation/RPD-Parks/3nje-yn2u"
+    },
+    {
+      "id": "bt7b-fdtx",
+      "name": "Elect_StAsmbly_Dists",
+      "description": "A historical map of the California State Assembly Districts based on the 2011 boundaries.",
+      "asset_type": "dataset",
+      "is_dataset": true,
+      "is_live_dataset": true,
+      "attribution": "City & County of San Francisco",
+      "data_updated_at": "2013-09-17T16:09:24.000Z",
+      "updated_at": "2024-04-10T19:13:00.000Z",
+      "download_count": 2321,
+      "page_views": {
+        "page_views_last_week": 5,
+        "page_views_last_month": 20,
+        "page_views_total": 292,
+        "page_views_last_week_log": 2.584962500721156,
+        "page_views_last_month_log": 4.392317422778761,
+        "page_views_total_log": 8.194756854422248
+      },
+      "domain_category": "Geographic Locations and Boundaries",
+      "categories": [],
+      "domain_tags": [],
+      "columns": [
+        {
+          "position": 0,
+          "name": "the_geom",
+          "field_name": "the_geom",
+          "datatype": "MultiPolygon",
+          "description": ""
+        },
+        {
+          "position": 1,
+          "name": "caassmd",
+          "field_name": "caassmd",
+          "datatype": "Text",
+          "description": ""
+        }
+      ],
+      "permalink": "https://data.sfgov.org/d/bt7b-fdtx",
+      "link": "https://data.sfgov.org/Geographic-Locations-and-Boundaries/Elect_StAsmbly_Dists/bt7b-fdtx"
+    }
+  ]
+}

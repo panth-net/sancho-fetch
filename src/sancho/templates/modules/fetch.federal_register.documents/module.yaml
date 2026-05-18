@@ -1,0 +1,57 @@
+id: fetch.federal_register.documents
+version: 1.2.0
+type: fetch
+catalog_tier: large
+entrypoint: main.py:run
+description: "Path-driven Federal Register API client. Fetch rules, proposed rules,\n\
+  notices, and presidential documents with full-text search, agency\nfilters, and\
+  \ date-window queries. Use `conditions[*]` query parameters\nfor all filtering.\n\
+  \ncatalog.json enumerates 470+ agencies and every facet (topic, type,\nsubtype,\
+  \ section, agency). Queries cap at 10,000 results \u2014 window by\npublication_date\
+  \ for full-corpus crawls.\n"
+managed_paths:
+- module.yaml
+- main.py
+- api.py
+- transform.py
+- schema.sample.json
+- catalog.json
+- catalog.meta.json
+- catalog_blueprint.py
+- discovery.py
+input_schema:
+  type: object
+  properties:
+    endpoint:
+      type: string
+      description: 'Federal Register endpoint URL. Default `/documents.json` for search;
+
+        `/agencies.json` for agency list; `/documents/{number}.json` for one
+
+        doc.
+
+        '
+      examples:
+      - https://www.federalregister.gov/api/v1/documents.json
+      - https://www.federalregister.gov/api/v1/agencies.json
+    params:
+      type: object
+      description: 'Query parameters. Filters use `conditions[*]`:
+
+        `conditions[term]` (full-text), `conditions[type][]`
+
+        (RULE/PRORULE/NOTICE/PRESDOCU), `conditions[agencies][]`,
+
+        `conditions[topics][]`, `conditions[publication_date][gte/lte]`.
+
+        Pagination: `per_page` (1-1000), `page`. Sort: `order`
+
+        (newest/relevance).
+
+        '
+output_schema:
+  type: object
+  required:
+  - dataset_ref
+  - endpoint
+  - retrieved_at

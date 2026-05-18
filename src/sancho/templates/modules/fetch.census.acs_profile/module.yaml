@@ -1,0 +1,105 @@
+id: fetch.census.acs_profile
+version: 1.2.0
+type: fetch
+catalog_tier: large
+entrypoint: main.py:run
+description: "Fetch ACS5 profile data from the US Census Bureau. catalog.json enumerates\n\
+  1,775 Census datasets via the DCAT-US /data.json manifest \u2014 ACS 1/5-year,\n\
+  Decennial, Economic Census, PEP, and more \u2014 with API URLs and variable\ndictionaries.\n\
+  \nRequired input:\n  geography      - Census `for=` value, e.g. \"state:51\", \"\
+  county:059\",\n                   \"place:81072\", \"tract:*\", \"zip code tabulation\
+  \ area:22102\".\nOptional input:\n  in_geography   - Census `in=` parent qualifier.\
+  \ REQUIRED whenever\n                   `geography` is a sub-state level (place,\
+  \ county, tract,\n                   block group, ZCTA). Example: in_geography=\"\
+  state:51\"\n                   when geography=\"place:81072\".\n               \
+  \    Without it, the Census API returns HTTP 400 / empty.\n  year           - Default\
+  \ \"2021\". Available years run from 2009 onward.\n  variables      - List of ACS\
+  \ variable codes. Default [\"NAME\", \"DP05_0001E\"]\n                   (DP05_0001E\
+  \ = total population).\n\nLooking up codes:\n  State FIPS:  https://www.census.gov/library/reference/code-lists/ansi.html\n\
+  \  Place FIPS (cities, towns, CDPs): list with\n    `for=place:*&in=state:NN` and\
+  \ grep the result for the place name.\n  County FIPS: same pattern with `for=county:*&in=state:NN`.\n\
+  \nExamples:\n  - State:    {geography: \"state:51\"}                      (Virginia)\n\
+  \  - County:   {geography: \"county:059\", in_geography: \"state:51\"}\n       \
+  \                                                    (Fairfax Co, VA)\n  - Place:\
+  \    {geography: \"place:81072\", in_geography: \"state:51\"}\n                \
+  \                                           (Vienna town, VA)\n  - All places in\
+  \ VA: {geography: \"place:*\", in_geography: \"state:51\"}\n"
+managed_paths:
+- module.yaml
+- main.py
+- api.py
+- transform.py
+- schema.sample.json
+- catalog.json
+- catalog.meta.json
+- catalog_blueprint.py
+- discovery.py
+input_schema:
+  type: object
+  required:
+  - geography
+  properties:
+    geography:
+      type: string
+      description: 'Census `for=` value identifying the geography. Format `<level>:<code>`
+
+        or `<level>:*` for all of a level. Levels include state, county, place,
+
+        tract, block group, zip code tabulation area.
+
+        '
+      examples:
+      - state:51
+      - state:06
+      - place:81072
+      - county:059
+      - tract:*
+    in_geography:
+      type: string
+      description: 'Census `in=` parent qualifier. REQUIRED for sub-state geographies
+
+        (place, county, tract, block group, ZCTA). Without it the Census API
+
+        returns HTTP 400 or 204. Usually `state:NN` for places/counties; for
+
+        tracts/block groups append `county:CCC`.
+
+        '
+      examples:
+      - state:51
+      - state:06
+      - state:51 county:059
+    year:
+      type: string
+      description: ACS5 vintage year. Defaults to "2021".
+      default: '2021'
+      examples:
+      - '2021'
+      - '2022'
+      - '2019'
+    variables:
+      type: array
+      items:
+        type: string
+      description: 'List of ACS variable codes to fetch. Defaults to ["NAME", "DP05_0001E"]
+
+        (label + total population). ACS5 Profile codes follow DP05_NNNNE.
+
+        '
+      default:
+      - NAME
+      - DP05_0001E
+  allOf:
+  - if:
+      properties:
+        geography:
+          pattern: '^(place|county|tract|block group|zip code tabulation area):'
+    then:
+      required:
+      - in_geography
+output_schema:
+  type: object
+  required:
+  - dataset_ref
+  - rows
+  - retrieved_at

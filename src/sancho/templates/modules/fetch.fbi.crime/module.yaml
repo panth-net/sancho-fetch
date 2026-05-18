@@ -1,0 +1,53 @@
+id: fetch.fbi.crime
+version: 1.1.0
+type: fetch
+catalog_tier: small
+entrypoint: main.py:run
+description: 'Path-driven FBI Crime Data Explorer client. Path patterns include
+
+  `/arrest/{state|national}/{state-abbr|all}/{offense}`,
+
+  `/summarized/{level}/{geo}/{offense-slug}`, and `/agencies`.
+
+
+  Note: offense slugs are hyphenated (violent-crime, property-crime, etc.).
+
+  Auth via DATA_GOV_API_KEY required.
+
+  '
+managed_paths:
+- module.yaml
+- main.py
+- api.py
+- transform.py
+- schema.sample.json
+input_schema:
+  type: object
+  properties:
+    endpoint:
+      type: string
+      description: 'FBI CDE endpoint. Common patterns: `/arrest/state/{ABBR}/all`,
+
+        `/summarized/state/{ABBR}/{offense-slug}`, `/agencies`. Offense
+
+        slugs are hyphenated (violent-crime, etc.).
+
+        '
+      examples:
+      - https://api.usa.gov/crime/fbi/cde/arrest/state/CA/all
+      - https://api.usa.gov/crime/fbi/cde/summarized/state/NY/violent-crime
+    params:
+      type: object
+      description: 'Query parameters. `from`/`to` (MM-YYYY for arrest endpoints,
+
+        YYYY for estimates). `type` for arrest: counts or rates. API key
+
+        auto-injected.
+
+        '
+output_schema:
+  type: object
+  required:
+  - dataset_ref
+  - endpoint
+  - retrieved_at

@@ -1,0 +1,40 @@
+id: fetch.socrata.sf_building_permits
+version: 1.2.0
+type: fetch
+catalog_tier: large
+entrypoint: main.py:run
+description: 'Path-driven SF Socrata client. Default dataset is Building Permits
+
+  (i98e-djp9). Wrapper accepts any data.sfgov.org Socrata URL with
+
+  standard SoQL.
+
+  '
+managed_paths:
+- module.yaml
+- main.py
+- api.py
+- transform.py
+- schema.sample.json
+- catalog.json
+- catalog.meta.json
+- catalog_blueprint.py
+- discovery.py
+input_schema:
+  type: object
+  properties:
+    endpoint:
+      type: string
+      description: data.sfgov.org Socrata URL.
+      examples:
+      - https://data.sfgov.org/resource/i98e-djp9.json
+      - https://data.sfgov.org/resource/wr8u-xric.json
+    params:
+      type: object
+      description: SoQL params ($limit/$where/$select/$group/$order/$q).
+output_schema:
+  type: object
+  required:
+  - dataset_ref
+  - endpoint
+  - retrieved_at

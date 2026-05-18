@@ -1,0 +1,146 @@
+{
+  "provider": "fetch.bea.nipa_table",
+  "schema_version": "1.0",
+  "generated_at": "2026-04-15T17:15:08.683551+00:00",
+  "stats": {
+    "family_count": 4,
+    "dataset_count": 13,
+    "datasets_count": 13,
+    "total_parameter_count": 56,
+    "datasets_with_parameters": 13
+  },
+  "discovery": {
+    "mode": "live_required",
+    "sources": [
+      {
+        "id": "GetDataSetList:",
+        "url": "https://apps.bea.gov/api/data",
+        "status": "ok",
+        "http_status": 200,
+        "count": 1,
+        "error": "",
+        "fetched_at": "2026-04-15T17:14:57.473506+00:00"
+      },
+      {
+        "id": "GetParameterList:NIPA",
+        "url": "https://apps.bea.gov/api/data",
+        "status": "ok",
+        "http_status": 200,
+        "count": 1,
+        "error": "",
+        "fetched_at": "2026-04-15T17:14:58.220735+00:00"
+      },
+      {
+        "id": "GetParameterList:NIUnderlyingDetail",
+        "url": "https://apps.bea.gov/api/data",
+        "status": "ok",
+        "http_status": 200,
+        "count": 1,
+        "error": "",
+        "fetched_at": "2026-04-15T17:14:59.072816+00:00"
+      },
+      {
+        "id": "GetParameterList:MNE",
+        "url": "https://apps.bea.gov/api/data",
+        "status": "ok",
+        "http_status": 200,
+        "count": 1,
+        "error": "",
+        "fetched_at": "2026-04-15T17:14:59.887635+00:00"
+      },
+      {
+        "id": "GetParameterList:FixedAssets",
+        "url": "https://apps.bea.gov/api/data",
+        "status": "ok",
+        "http_status": 200,
+        "count": 1,
+        "error": "",
+        "fetched_at": "2026-04-15T17:15:00.770285+00:00"
+      },
+      {
+        "id": "GetParameterList:ITA",
+        "url": "https://apps.bea.gov/api/data",
+        "status": "ok",
+        "http_status": 200,
+        "count": 1,
+        "error": "",
+        "fetched_at": "2026-04-15T17:15:01.578863+00:00"
+      },
+      {
+        "id": "GetParameterList:IIP",
+        "url": "https://apps.bea.gov/api/data",
+        "status": "ok",
+        "http_status": 200,
+        "count": 1,
+        "error": "",
+        "fetched_at": "2026-04-15T17:15:02.415320+00:00"
+      },
+      {
+        "id": "GetParameterList:InputOutput",
+        "url": "https://apps.bea.gov/api/data",
+        "status": "ok",
+        "http_status": 200,
+        "count": 1,
+        "error": "",
+        "fetched_at": "2026-04-15T17:15:03.437317+00:00"
+      },
+      {
+        "id": "GetParameterList:IntlServTrade",
+        "url": "https://apps.bea.gov/api/data",
+        "status": "ok",
+        "http_status": 200,
+        "count": 1,
+        "error": "",
+        "fetched_at": "2026-04-15T17:15:04.225259+00:00"
+      },
+      {
+        "id": "GetParameterList:IntlServSTA",
+        "url": "https://apps.bea.gov/api/data",
+        "status": "ok",
+        "http_status": 200,
+        "count": 1,
+        "error": "",
+        "fetched_at": "2026-04-15T17:15:05.064405+00:00"
+      },
+      {
+        "id": "GetParameterList:GDPbyIndustry",
+        "url": "https://apps.bea.gov/api/data",
+        "status": "ok",
+        "http_status": 200,
+        "count": 1,
+        "error": "",
+        "fetched_at": "2026-04-15T17:15:06.096671+00:00"
+      },
+      {
+        "id": "GetParameterList:Regional",
+        "url": "https://apps.bea.gov/api/data",
+        "status": "ok",
+        "http_status": 200,
+        "count": 1,
+        "error": "",
+        "fetched_at": "2026-04-15T17:15:06.919282+00:00"
+      },
+      {
+        "id": "GetParameterList:UnderlyingGDPbyIndustry",
+        "url": "https://apps.bea.gov/api/data",
+        "status": "ok",
+        "http_status": 200,
+        "count": 1,
+        "error": "",
+        "fetched_at": "2026-04-15T17:15:07.724604+00:00"
+      },
+      {
+        "id": "GetParameterList:APIDatasetMetaData",
+        "url": "https://apps.bea.gov/api/data",
+        "status": "ok",
+        "http_status": 200,
+        "count": 1,
+        "error": "",
+        "fetched_at": "2026-04-15T17:15:08.682034+00:00"
+      }
+    ],
+    "docs": [
+      "https://apps.bea.gov/API/signup/"
+    ]
+  }
+}

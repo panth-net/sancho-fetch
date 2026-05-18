@@ -1,0 +1,63 @@
+id: fetch.clinical_trials.studies
+version: 1.2.0
+type: fetch
+catalog_tier: large
+entrypoint: main.py:run
+description: 'Path-driven ClinicalTrials.gov v2 client. Search studies via
+
+  `/api/v2/studies` with rich filters (`query.cond`, `query.term`,
+
+  `query.locn`, `filter.geo`, `filter.overallStatus`, etc.), or fetch a
+
+  single trial by NCT ID via `/api/v2/studies/{NCT_ID}`.
+
+
+  See catalog.json for the full field schema (454 fields) and enum values
+
+  (41 types / 210 values).
+
+  '
+managed_paths:
+- module.yaml
+- main.py
+- api.py
+- transform.py
+- schema.sample.json
+- catalog.json
+- catalog.meta.json
+- catalog_blueprint.py
+- discovery.py
+input_schema:
+  type: object
+  properties:
+    endpoint:
+      type: string
+      description: 'Full ClinicalTrials.gov v2 endpoint URL. `/api/v2/studies` for
+        search
+
+        (returns array), `/api/v2/studies/{NCT_ID}` for single trial.
+
+        '
+      examples:
+      - https://clinicaltrials.gov/api/v2/studies
+      - https://clinicaltrials.gov/api/v2/studies/NCT04308668
+      - https://clinicaltrials.gov/api/v2/studies/metadata
+    params:
+      type: object
+      description: 'Query parameters. Search: `query.cond`, `query.term`, `query.locn`,
+
+        `query.intr`, `query.lead`, `query.id`. Status: `filter.overallStatus`.
+
+        Geo: `filter.geo` (e.g. `distance(34,-118,200mi)`). Pagination:
+
+        `pageSize` (1-1000), `pageToken`. Output: `fields`, `format`,
+
+        `sort`, `countTotal`.
+
+        '
+output_schema:
+  type: object
+  required:
+  - dataset_ref
+  - endpoint
+  - retrieved_at

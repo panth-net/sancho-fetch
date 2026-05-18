@@ -1,0 +1,62 @@
+# Repomix outputs
+repomix-output.*
+data-blocks-collector.md
+
+# VCS and local tooling state
+.git/
+.claude/
+.agents/
+.codex/
+.vscode/
+.idea/
+*.code-workspace
+
+# Secrets and local env
+.env
+.env.*
+!.env.example
+
+# Python caches and build artifacts
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+htmlcov/
+build/
+dist/
+*.egg-info/
+.venv/
+venv/
+
+# Node/package artifacts
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Generated or bulky dataset catalogs
+**/catalog.json
+**/catalog.meta.json
+**/.catalog-cache/
+
+# Generated data, exports, and workspace state
+fetched-data/
+**/fetched-data/
+sancho-fetched-data/
+analysis-data/
+**/analysis-data/
+outputs/
+**/outputs/
+logs/
+**/logs/
+update-backups/
+**/update-backups/
+sancho-workspace/.env
+sancho-workspace/mcp/
+sancho-export.zip

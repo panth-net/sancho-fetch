@@ -1,0 +1,43 @@
+id: fetch.planetary_computer
+version: 1.1.0
+type: fetch
+catalog_tier: large
+entrypoint: main.py:run
+description: 'Search Microsoft Planetary Computer via STAC. catalog.json enumerates
+  all
+
+  135 STAC collections (Sentinel, Landsat, HLS, Copernicus DEM, etc.) with
+
+  their spatial/temporal extents and asset keys.
+
+  '
+managed_paths:
+- module.yaml
+- main.py
+- api.py
+- transform.py
+- schema.sample.json
+- catalog.json
+- catalog.meta.json
+- catalog_blueprint.py
+- discovery.py
+input_schema:
+  type: object
+  properties:
+    mode:
+      type: string
+      description: list | search.
+      default: list
+    collection:
+      type: string
+      description: STAC collection ID (e.g. sentinel-2-l2a).
+    limit:
+      type: integer
+      description: Max items.
+      default: 1000
+output_schema:
+  type: object
+  required:
+  - dataset_ref
+  - rows
+  - retrieved_at

@@ -1,0 +1,26 @@
+id: fetch.sdg_index
+version: 1.0.0
+type: fetch
+catalog_tier: small
+entrypoint: main.py:run
+description: Fetch Sustainable Development Report (SDG Index) scores from the published
+  XLSX dataset.
+managed_paths:
+- module.yaml
+- main.py
+- api.py
+- transform.py
+- schema.sample.json
+input_schema:
+  type: object
+  properties:
+    year:
+      type: integer
+    country:
+      type: string
+output_schema:
+  type: object
+  required:
+  - dataset_ref
+  - source_url
+  - retrieved_at

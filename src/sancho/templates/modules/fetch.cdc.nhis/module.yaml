@@ -1,0 +1,68 @@
+id: fetch.cdc.nhis
+version: 1.0.0
+type: fetch
+catalog_tier: small
+entrypoint: main.py:run
+description: 'CDC National Health Interview Survey (NHIS) public-use file downloader.
+
+  No key required. Downloads CSV-in-ZIP files from
+
+  ftp.cdc.gov/pub/Health_Statistics/NCHS/Datasets/NHIS/{year}/, extracts
+
+  the CSV inside, and returns the first N rows.
+
+
+  File kinds (per year): adult, child, adultinc (adult interview imputed),
+
+  childinc (child interview imputed), paradata (interview metadata),
+
+  final_pair_weight.
+
+
+  Default: 2023 adult file (~30K respondent rows, ~600 columns covering
+
+  health status, conditions, access to care, immunization, etc.).
+
+  '
+managed_paths:
+- module.yaml
+- main.py
+- api.py
+- transform.py
+- schema.sample.json
+input_schema:
+  type: object
+  properties:
+    year:
+      type: integer
+      description: NHIS data year (2019+ recommended).
+      default: 2023
+      examples:
+      - 2023
+      - 2022
+      - 2021
+    file_kind:
+      type: string
+      description: 'File kind. "adult" (default), "child", "adultinc", "childinc",
+
+        "paradata", "final_pair_weight".
+
+        '
+      default: adult
+      examples:
+      - adult
+      - child
+      - adultinc
+    limit:
+      type: integer
+      description: Max rows to extract (default 1000).
+      default: 1000
+      examples:
+      - 1000
+      - 100
+output_schema:
+  type: object
+  required:
+  - dataset_ref
+  - rows
+  - retrieved_at

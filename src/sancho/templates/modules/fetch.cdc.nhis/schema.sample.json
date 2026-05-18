@@ -1,0 +1,22 @@
+{
+  "provider": "fetch.cdc.nhis",
+  "generated_at": "2026-05-06T00:00:00+00:00",
+  "columns": [
+    {"name": "dataset_ref", "type": "string", "sample": "usgov_cdc_nhis"},
+    {"name": "source_url", "type": "string", "sample": "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Datasets/NHIS/2023/adult23csv.zip"},
+    {"name": "params", "type": "dict", "sample": {"year": 2023, "file_kind": "adult", "limit": 1000}},
+    {"name": "rows", "type": "list", "sample": []},
+    {"name": "row_count", "type": "int", "sample": 1000},
+    {"name": "raw", "type": "dict", "sample": {}},
+    {"name": "retrieved_at", "type": "string", "sample": "2026-05-06T00:00:00+00:00"}
+  ],
+  "sample_row": {
+    "dataset_ref": "usgov_cdc_nhis",
+    "source_url": "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Datasets/NHIS/2023/adult23csv.zip",
+    "params": {"year": 2023, "file_kind": "adult", "limit": 1000},
+    "rows": [],
+    "row_count": 1000,
+    "raw": {},
+    "retrieved_at": "2026-05-06T00:00:00+00:00"
+  }
+}

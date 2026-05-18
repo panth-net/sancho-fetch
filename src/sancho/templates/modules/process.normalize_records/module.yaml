@@ -1,0 +1,16 @@
+id: process.normalize_records
+version: 1.0.0
+type: process
+entrypoint: main.py:run
+description: Flatten row dictionaries to a consistent snake_case key format.
+managed_paths:
+- module.yaml
+- main.py
+input_schema:
+  type: object
+  required:
+  - records
+output_schema:
+  type: object
+  required:
+  - records

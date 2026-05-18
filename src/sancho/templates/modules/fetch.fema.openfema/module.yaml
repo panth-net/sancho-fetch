@@ -1,0 +1,58 @@
+id: fetch.fema.openfema
+version: 1.2.0
+type: fetch
+catalog_tier: large
+entrypoint: main.py:run
+description: 'Path-driven OpenFEMA client. Fetch records from any of 47 OpenFEMA
+
+  datasets (1,200+ fields total). Most-used: DisasterDeclarationsSummaries.
+
+  Uses OData query syntax for filtering: `$filter`, `$orderby`, `$top`,
+
+  `$skip`, `$select`, `$count`.
+
+
+  catalog.json enumerates the full dataset + field schema.
+
+  '
+managed_paths:
+- module.yaml
+- main.py
+- api.py
+- transform.py
+- schema.sample.json
+- catalog.json
+- catalog.meta.json
+- catalog_blueprint.py
+- discovery.py
+input_schema:
+  type: object
+  properties:
+    endpoint:
+      type: string
+      description: 'OpenFEMA dataset endpoint. Each dataset has its own URL and version
+
+        (v1 or v2). Common: DisasterDeclarationsSummaries v2,
+
+        FemaWebDisasterSummaries v1.
+
+        '
+      examples:
+      - https://www.fema.gov/api/open/v2/DisasterDeclarationsSummaries
+      - https://www.fema.gov/api/open/v1/FemaWebDisasterSummaries
+      - https://www.fema.gov/api/open/v1/OpenFemaDataSets
+    params:
+      type: object
+      description: 'OData query parameters. `$filter` (e.g. `state eq ''CA''`),
+
+        `$orderby` (e.g. `declarationDate desc`), `$top`, `$skip`,
+
+        `$select`, `$count`. Field names are dataset-specific.
+
+        '
+output_schema:
+  type: object
+  required:
+  - dataset_ref
+  - endpoint
+  - retrieved_at

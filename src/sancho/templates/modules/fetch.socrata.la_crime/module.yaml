@@ -1,0 +1,40 @@
+id: fetch.socrata.la_crime
+version: 1.2.0
+type: fetch
+catalog_tier: large
+entrypoint: main.py:run
+description: 'Path-driven LA Socrata client. Default dataset is LAPD Crime Data
+
+  (2nrs-mtv8). Wrapper accepts any data.lacity.org Socrata URL with
+
+  standard SoQL.
+
+  '
+managed_paths:
+- module.yaml
+- main.py
+- api.py
+- transform.py
+- schema.sample.json
+- catalog.json
+- catalog.meta.json
+- catalog_blueprint.py
+- discovery.py
+input_schema:
+  type: object
+  properties:
+    endpoint:
+      type: string
+      description: data.lacity.org Socrata URL.
+      examples:
+      - https://data.lacity.org/resource/2nrs-mtv8.json
+      - https://data.lacity.org/resource/d5tf-ez2w.json
+    params:
+      type: object
+      description: SoQL params ($limit/$where/$select/$group/$order/$q).
+output_schema:
+  type: object
+  required:
+  - dataset_ref
+  - endpoint
+  - retrieved_at

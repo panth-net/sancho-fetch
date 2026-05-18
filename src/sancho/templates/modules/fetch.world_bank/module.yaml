@@ -1,0 +1,82 @@
+id: fetch.world_bank
+version: 1.1.0
+type: fetch
+catalog_tier: large
+entrypoint: run.py:run
+description: 'Path-driven World Bank API client. Supports the data API (indicators
+  by
+
+  country/region/source) and companion search APIs for projects and DDH
+
+  datasets. Use `;` to separate multiple countries/indicators in a single
+
+  call, or `all` for everything.
+
+
+  catalog.json enumerates 10 families across both APIs.
+
+  '
+managed_paths:
+- module.yaml
+- run.py
+- discovery.py
+- catalog_blueprint.py
+- catalog.json
+- catalog.meta.json
+- client.py
+input_schema:
+  type: object
+  required:
+  - path
+  properties:
+    path:
+      type: string
+      description: 'World Bank API path. `/country/{ISO3}/indicator/{INDICATOR}` for
+
+        time-series, `/indicator`/`/sources`/`/topic` for catalog browsing,
+
+        `/projects` for project search.
+
+        '
+      examples:
+      - /country/USA/indicator/SP.POP.TOTL
+      - /country/USA;CHN;DEU/indicator/NY.GDP.MKTP.CD
+      - /indicator
+      - /projects
+    method:
+      type: string
+      description: HTTP method (World Bank API is GET-only).
+      default: GET
+    base:
+      type: string
+      description: 'Catalog base alias: "v2" (data API), "search_v2" (project search),
+
+        "ddh" (DDH catalog).
+
+        '
+      default: v2
+      examples:
+      - v2
+      - search_v2
+    params:
+      type: object
+      description: 'Query parameters. `format` (must be "json" for our usage), `per_page`
+
+        (1-32500), `page`, `date` (year or "YYYY:YYYY"), `source` (DB ID,
+
+        e.g. 2 for WDI), `mrv` (most recent N), `frequency` (Y/Q/M). For
+
+        projects search: `os`, `rows`, `countryshortname`.
+
+        '
+    body:
+      type: object
+      description: Body payload (rare).
+output_schema:
+  type: object
+  required:
+  - provider
+  - dataset_ref
+  - family_id
+  - path
+  - retrieved_at

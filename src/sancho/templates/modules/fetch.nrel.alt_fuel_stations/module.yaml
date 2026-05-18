@@ -1,0 +1,59 @@
+id: fetch.nrel.alt_fuel_stations
+version: 1.2.0
+type: fetch
+catalog_tier: large
+entrypoint: main.py:run
+description: 'Path-driven NREL Alternative Fuel Stations client. Two endpoints:
+
+  `/v1.json` for filtered lists; `/v1/nearest.json` for lat/lon radius
+
+  search. Filter by `fuel_type` (ELEC/HY/E85/CNG/LNG/LPG/BD), `state`,
+
+  `country`, `access`, `status`, EV network. Note: NREL retired the old
+
+  `location=zipcode` parameter in Feb 2025; use `latitude`+`longitude` now.
+
+
+  catalog.json enumerates 100,000+ stations + the 74-field schema + 8 fuel
+
+  codes. Requires DATA_GOV_API_KEY.
+
+  '
+managed_paths:
+- module.yaml
+- main.py
+- api.py
+- transform.py
+- schema.sample.json
+- catalog.json
+- catalog.meta.json
+- catalog_blueprint.py
+- discovery.py
+input_schema:
+  type: object
+  properties:
+    endpoint:
+      type: string
+      description: 'NREL endpoint URL. `/v1.json` (filtered list) or `/v1/nearest.json`
+
+        (lat/lon radius search).
+
+        '
+      examples:
+      - https://developer.nrel.gov/api/alt-fuel-stations/v1.json
+      - https://developer.nrel.gov/api/alt-fuel-stations/v1/nearest.json
+    params:
+      type: object
+      description: 'Query parameters. `fuel_type` (ELEC/HY/E85/CNG/LNG/LPG/BD), `state`,
+
+        `country`, `access`, `status`, `ev_network`. Geo for /nearest.json:
+
+        `latitude`+`longitude`+`radius`. Output: `limit`, `offset`.
+
+        '
+output_schema:
+  type: object
+  required:
+  - dataset_ref
+  - endpoint
+  - retrieved_at

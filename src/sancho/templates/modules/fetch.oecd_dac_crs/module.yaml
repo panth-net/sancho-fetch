@@ -1,0 +1,33 @@
+id: fetch.oecd_dac_crs
+version: 1.1.0
+type: fetch
+catalog_tier: large
+entrypoint: main.py:run
+description: 'Fetch OECD DAC Creditor Reporting System (CRS) via SDMX. catalog.json
+
+  enumerates 12 dataflows across the DCD-FSD agencies (CRS disbursements,
+
+  CPA aid projections, DAC members, etc.).
+
+  '
+managed_paths:
+- module.yaml
+- main.py
+- api.py
+- transform.py
+- schema.sample.json
+- catalog.json
+- catalog.meta.json
+- catalog_blueprint.py
+- discovery.py
+input_schema:
+  type: object
+  properties:
+    dataflow:
+      type: string
+output_schema:
+  type: object
+  required:
+  - dataset_ref
+  - source_url
+  - retrieved_at

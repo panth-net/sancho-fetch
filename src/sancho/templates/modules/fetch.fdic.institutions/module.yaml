@@ -1,0 +1,58 @@
+id: fetch.fdic.institutions
+version: 1.2.0
+type: fetch
+catalog_tier: large
+entrypoint: main.py:run
+description: 'Path-driven FDIC BankFind client. Three families: `/institutions` (bank
+
+  profiles), `/locations` (branch addresses), `/financials` (quarterly call
+
+  reports). Use `filters` for Lucene-style queries, `fields` to select
+
+  columns, `sort_by`/`sort_order` for ranking.
+
+
+  catalog.json enumerates 294 queryable fields with types inferred from
+
+  live samples per family.
+
+  '
+managed_paths:
+- module.yaml
+- main.py
+- api.py
+- transform.py
+- schema.sample.json
+- catalog.json
+- catalog.meta.json
+- catalog_blueprint.py
+- discovery.py
+input_schema:
+  type: object
+  properties:
+    endpoint:
+      type: string
+      description: 'Full FDIC BankFind endpoint URL. Three families: institutions,
+
+        locations, financials.
+
+        '
+      examples:
+      - https://banks.data.fdic.gov/api/institutions
+      - https://banks.data.fdic.gov/api/locations
+      - https://banks.data.fdic.gov/api/financials
+    params:
+      type: object
+      description: 'Query parameters. `filters` (Lucene-style, e.g. `STNAME:"California"`),
+
+        `fields` (comma-separated columns), `limit` (1-10000), `offset`,
+
+        `sort_by`, `sort_order` (ASC/DESC). Rate limit: 2 req/sec.
+
+        '
+output_schema:
+  type: object
+  required:
+  - dataset_ref
+  - endpoint
+  - retrieved_at

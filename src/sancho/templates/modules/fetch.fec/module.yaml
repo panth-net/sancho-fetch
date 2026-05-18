@@ -1,0 +1,85 @@
+id: fetch.fec
+version: 1.2.0
+type: fetch
+catalog_tier: large
+entrypoint: run.py:run
+api_key_env: DATA_GOV_API_KEY
+api_key_docs:
+  DATA_GOV_API_KEY: https://api.data.gov/signup/
+description: 'Path-driven FEC OpenFEC client. catalog.json is generated from
+  the official OpenFEC Swagger and covers every current `/v1` JSON GET endpoint.
+  Super PAC workflows include committee lookup (`committee_type=O`), Schedule A
+  donor receipts, Schedule B disbursements, Schedule E independent expenditures,
+  filings, reports, communication costs, and electioneering. Default requests
+  fetch one page and return pagination metadata so large pulls can be bounded or
+  explicitly confirmed. Auth via DATA_GOV_API_KEY.
+
+  '
+managed_paths:
+- module.yaml
+- run.py
+- pagination.py
+- discovery.py
+- catalog_blueprint.py
+- catalog.json
+- catalog.meta.json
+- client.py
+input_schema:
+  type: object
+  required:
+  - path
+  properties:
+    path:
+      type: string
+      description: 'FEC API path. Common: `/candidates/search/`, `/committees/`,
+
+        `/schedules/schedule_a/`, `/schedules/schedule_e/`, `/filings/`,
+
+        `/committee/{committee_id}/reports/`.
+
+        '
+      examples:
+      - /candidates/search/
+      - /committees/
+      - /schedules/schedule_a/
+      - /schedules/schedule_b/
+      - /schedules/schedule_e/
+      - /filings/
+    method:
+      type: string
+      description: HTTP method (GET-only).
+      default: GET
+    base:
+      type: string
+      description: Catalog base alias. Only "v1" today.
+      default: v1
+      examples:
+      - v1
+    params:
+      type: object
+      description: 'Query parameters from the OpenFEC endpoint catalog. Common
+        Super PAC filters: `committee_type=O`, `committee_id`, `candidate_id`,
+        `two_year_transaction_period`, `cycle`, `per_page`, `page`, and `sort`
+        (prefix `-` for descending).
+
+        '
+    pagination:
+      type: object
+      description: 'Optional pagination controls. Default is one page only.
+        Use `{mode: "pages", max_pages: N}` or `{mode: "pages", max_records: N}`
+        for bounded pulls. FEC accepts up to 100 rows per page; the module uses
+        `per_page=100` automatically unless `params.per_page` is supplied. Use
+        `page_size` or `maximize_per_page: false` to override that behavior.
+        Use `{mode: "all", confirmed: true}` only after reviewing the first-page
+        estimate.'
+    body:
+      type: object
+      description: Body payload (rare).
+output_schema:
+  type: object
+  required:
+  - provider
+  - dataset_ref
+  - family_id
+  - path
+  - retrieved_at

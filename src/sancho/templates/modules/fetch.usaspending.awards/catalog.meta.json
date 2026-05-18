@@ -1,0 +1,97 @@
+{
+  "provider": "fetch.usaspending.awards",
+  "schema_version": "1.0",
+  "generated_at": "2026-04-14T18:25:58.293021+00:00",
+  "stats": {
+    "family_count": 4,
+    "reference_count": 6,
+    "references_count": 6,
+    "toptier_agencies_count": 111,
+    "award_types_keys": 6,
+    "glossary_count": 151,
+    "def_codes_count": 48,
+    "filter_tree_psc_count": 3,
+    "filter_tree_tas_count": 91,
+    "successful_references": 6
+  },
+  "discovery": {
+    "mode": "live_required",
+    "sources": [
+      {
+        "id": "meta.toptier_agencies",
+        "url": "https://api.usaspending.gov/api/v2/references/toptier_agencies/",
+        "status": "ok",
+        "http_status": 200,
+        "count": 111,
+        "error": "",
+        "fetched_at": "2026-04-14T18:25:49.664005+00:00"
+      },
+      {
+        "id": "meta.award_types",
+        "url": "https://api.usaspending.gov/api/v2/references/award_types/",
+        "status": "ok",
+        "http_status": 200,
+        "count": 6,
+        "error": "",
+        "fetched_at": "2026-04-14T18:25:50.482813+00:00"
+      },
+      {
+        "id": "meta.glossary",
+        "url": "https://api.usaspending.gov/api/v2/references/glossary/?limit=500",
+        "status": "ok",
+        "http_status": 200,
+        "count": 151,
+        "error": "",
+        "fetched_at": "2026-04-14T18:25:51.487018+00:00"
+      },
+      {
+        "id": "meta.def_codes",
+        "url": "https://api.usaspending.gov/api/v2/references/def_codes/",
+        "status": "ok",
+        "http_status": 200,
+        "count": 48,
+        "error": "",
+        "fetched_at": "2026-04-14T18:25:52.294129+00:00"
+      },
+      {
+        "id": "meta.cfda_totals",
+        "url": "https://api.usaspending.gov/api/v2/references/cfda/totals/",
+        "status": "error",
+        "http_status": 204,
+        "count": 0,
+        "error": "Expecting value: line 1 column 1 (char 0)",
+        "fetched_at": "2026-04-14T18:25:55.505401+00:00"
+      },
+      {
+        "id": "meta.filter_tree_psc",
+        "url": "https://api.usaspending.gov/api/v2/references/filter_tree/psc/",
+        "status": "ok",
+        "http_status": 200,
+        "count": 3,
+        "error": "",
+        "fetched_at": "2026-04-14T18:25:56.471618+00:00"
+      },
+      {
+        "id": "meta.filter_tree_naics",
+        "url": "https://api.usaspending.gov/api/v2/references/filter_tree/naics/",
+        "status": "error",
+        "http_status": 404,
+        "count": 0,
+        "error": "404 Client Error: Not Found for url: https://api.usaspending.gov/api/v2/references/filter_tree/naics/",
+        "fetched_at": "2026-04-14T18:25:57.388786+00:00"
+      },
+      {
+        "id": "meta.filter_tree_tas",
+        "url": "https://api.usaspending.gov/api/v2/references/filter_tree/tas/",
+        "status": "ok",
+        "http_status": 200,
+        "count": 91,
+        "error": "",
+        "fetched_at": "2026-04-14T18:25:58.291019+00:00"
+      }
+    ],
+    "docs": [
+      "https://api.usaspending.gov/"
+    ]
+  }
+}

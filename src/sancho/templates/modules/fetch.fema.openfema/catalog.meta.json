@@ -1,0 +1,40 @@
+{
+  "provider": "fetch.fema.openfema",
+  "schema_version": "1.0",
+  "generated_at": "2026-04-14T17:18:53.058891+00:00",
+  "stats": {
+    "family_count": 3,
+    "dataset_count": 47,
+    "datasets_count": 47,
+    "field_count": 1296,
+    "fields_count": 1296,
+    "total_record_count": 118584734
+  },
+  "discovery": {
+    "mode": "live_required",
+    "sources": [
+      {
+        "id": "/v1/OpenFemaDataSets",
+        "url": "https://www.fema.gov/api/open/v1/OpenFemaDataSets",
+        "status": "ok",
+        "http_status": 200,
+        "count": 47,
+        "error": "",
+        "fetched_at": "2026-04-14T17:18:50.419094+00:00"
+      },
+      {
+        "id": "/v1/OpenFemaDataSetFields",
+        "url": "https://www.fema.gov/api/open/v1/OpenFemaDataSetFields",
+        "status": "ok",
+        "http_status": 200,
+        "count": 1296,
+        "error": "",
+        "fetched_at": "2026-04-14T17:18:53.054880+00:00"
+      }
+    ],
+    "docs": [
+      "https://www.fema.gov/about/openfema/api",
+      "https://www.fema.gov/about/openfema/developer-resources"
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+id: fetch.atus
+version: 1.0.0
+type: fetch
+catalog_tier: small
+entrypoint: main.py:run
+description: Fetch American Time Use Survey (ATUS) multi-year microdata file listings
+  and metadata from BLS.
+managed_paths:
+- module.yaml
+- main.py
+- api.py
+- transform.py
+- schema.sample.json
+input_schema:
+  type: object
+  properties:
+    year:
+      type: integer
+      description: Optional single calendar year to fetch. Defaults to the recent
+        2019-2023 window.
+    series_ids:
+      type: array
+      items:
+        type: string
+      description: Optional BLS ATUS series IDs to fetch. Defaults to representative
+        Table A-1 activity series.
+output_schema:
+  type: object
+  required:
+  - dataset_ref
+  - source_url
+  - retrieved_at

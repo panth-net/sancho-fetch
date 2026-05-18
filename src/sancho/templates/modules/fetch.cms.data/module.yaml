@@ -1,0 +1,60 @@
+id: fetch.cms.data
+version: 1.2.0
+type: fetch
+catalog_tier: large
+entrypoint: main.py:run
+description: 'Path-driven CMS data portal client. Browse 154 datasets via DCAT or
+
+  metastore endpoints, query specific datastore distributions, full-text
+
+  search, all from one wrapper.
+
+
+  catalog.json enumerates all datasets exposed via /data.json (5,800+
+
+  distributions).
+
+  '
+managed_paths:
+- module.yaml
+- main.py
+- api.py
+- transform.py
+- schema.sample.json
+- catalog.json
+- catalog.meta.json
+- catalog_blueprint.py
+- discovery.py
+input_schema:
+  type: object
+  properties:
+    endpoint:
+      type: string
+      description: 'CMS data endpoint. `/metastore/schemas/dataset/items` (list),
+
+        `/data.json` (DCAT), `/datastore/query/{ID}/0` (dataset rows),
+
+        `/search` (full-text search).
+
+        '
+      examples:
+      - https://data.cms.gov/provider-data/api/1/metastore/schemas/dataset/items
+      - https://data.cms.gov/data.json
+      - https://data.cms.gov/provider-data/api/1/datastore/query/4pq5-n9py/0
+      - https://data.cms.gov/provider-data/api/1/search
+    params:
+      type: object
+      description: 'Query parameters. For search: `fulltext`, `theme`, `keyword`.
+        For
+
+        datastore query: `limit`, `offset`, `conditions[*]` filters. For
+
+        metastore items: `limit`, `offset`, `show-reference-ids`.
+
+        '
+output_schema:
+  type: object
+  required:
+  - dataset_ref
+  - endpoint
+  - retrieved_at

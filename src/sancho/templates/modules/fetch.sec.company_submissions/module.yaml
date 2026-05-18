@@ -1,0 +1,45 @@
+id: fetch.sec.company_submissions
+version: 1.2.0
+type: fetch
+catalog_tier: large
+entrypoint: main.py:run
+description: "Path-driven SEC EDGAR/data.sec.gov client. Four API surfaces:\n- `/submissions/CIK{10}.json`\
+  \ \u2014 company filing index\n- `/api/xbrl/companyfacts/CIK{10}.json` \u2014 all\
+  \ XBRL facts\n- `/api/xbrl/companyconcept/CIK{10}/us-gaap/{Concept}.json` \u2014\
+  \ single time-series\n- `/api/xbrl/frames/us-gaap/{Concept}/USD/{Period}.json` \u2014\
+  \ cross-company snapshot\n\ncatalog.json contains a 10,000+ ticker \u2192 CIK index.\
+  \ SEC requires a\ncontact email in the User-Agent header (SEC_CONTACT_EMAIL env\
+  \ var).\n"
+managed_paths:
+- module.yaml
+- main.py
+- api.py
+- transform.py
+- schema.sample.json
+- catalog.json
+- catalog.meta.json
+- catalog_blueprint.py
+- discovery.py
+input_schema:
+  type: object
+  properties:
+    endpoint:
+      type: string
+      description: 'SEC EDGAR endpoint URL. CIK must be zero-padded to 10 digits.
+
+        '
+      examples:
+      - https://data.sec.gov/submissions/CIK0000320193.json
+      - https://data.sec.gov/api/xbrl/companyfacts/CIK0000320193.json
+      - https://data.sec.gov/api/xbrl/companyconcept/CIK0000320193/us-gaap/Revenues.json
+      - https://data.sec.gov/api/xbrl/frames/us-gaap/Revenues/USD/CY2023Q1I.json
+    params:
+      type: object
+      description: "Query parameters (rare \u2014 SEC uses path variables). Auth via\n\
+        SEC_CONTACT_EMAIL injected as User-Agent header.\n"
+output_schema:
+  type: object
+  required:
+  - dataset_ref
+  - endpoint
+  - retrieved_at

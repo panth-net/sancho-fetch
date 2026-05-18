@@ -1,0 +1,38 @@
+id: fetch.oecd_sdmx
+version: 1.1.0
+type: fetch
+catalog_tier: large
+entrypoint: main.py:run
+description: 'Fetch any OECD statistical dataset via SDMX. catalog.json enumerates
+  all
+
+  1,480 dataflows across 50 agencies (ECO, SDD, ELS, ENV, STD, etc.) with
+
+  structure references so callers can discover any dataset without leaving
+
+  the catalog.
+
+  '
+managed_paths:
+- module.yaml
+- main.py
+- api.py
+- transform.py
+- schema.sample.json
+- catalog.json
+- catalog.meta.json
+- catalog_blueprint.py
+- discovery.py
+input_schema:
+  type: object
+  properties:
+    dataset:
+      type: string
+    country:
+      type: string
+output_schema:
+  type: object
+  required:
+  - dataset_ref
+  - source_url
+  - retrieved_at

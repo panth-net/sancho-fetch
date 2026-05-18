@@ -1,0 +1,48 @@
+id: fetch.nih.usrds
+version: 1.0.0
+type: fetch
+catalog_tier: small
+entrypoint: main.py:run
+description: 'USRDS public report/download helper. Detailed data may require request/DUA
+  and is not fetched.
+
+  This module intentionally returns public links/access instructions, not
+
+  restricted files or credentialed data.
+
+  '
+managed_paths:
+- module.yaml
+- main.py
+- schema.sample.json
+input_schema:
+  type: object
+  properties:
+    endpoint:
+      type: string
+      description: Override official source/access page.
+      default: https://usrds-adr.niddk.nih.gov/2025
+    params:
+      type: object
+      description: Query parameters for source page.
+    mode:
+      type: string
+      enum:
+      - html_links
+      description: Access-helper modules only extract public official links.
+      default: html_links
+    search:
+      type: string
+      description: Optional link filter.
+      default: download
+    limit:
+      type: integer
+      description: Maximum links to return.
+      default: 25
+output_schema:
+  type: object
+  required:
+  - dataset_ref
+  - endpoint
+  - rows
+  - retrieved_at

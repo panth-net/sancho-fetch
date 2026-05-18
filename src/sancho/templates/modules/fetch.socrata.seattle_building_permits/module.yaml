@@ -1,0 +1,40 @@
+id: fetch.socrata.seattle_building_permits
+version: 1.2.0
+type: fetch
+catalog_tier: large
+entrypoint: main.py:run
+description: 'Path-driven Seattle Socrata client. Default dataset is Building Permits
+
+  (76t5-zqzr). Wrapper accepts any data.seattle.gov Socrata URL with
+
+  standard SoQL.
+
+  '
+managed_paths:
+- module.yaml
+- main.py
+- api.py
+- transform.py
+- schema.sample.json
+- catalog.json
+- catalog.meta.json
+- catalog_blueprint.py
+- discovery.py
+input_schema:
+  type: object
+  properties:
+    endpoint:
+      type: string
+      description: data.seattle.gov Socrata URL.
+      examples:
+      - https://data.seattle.gov/resource/76t5-zqzr.json
+      - https://data.seattle.gov/resource/4xy5-26gy.json
+    params:
+      type: object
+      description: SoQL params ($limit/$where/$select/$group/$order/$q).
+output_schema:
+  type: object
+  required:
+  - dataset_ref
+  - endpoint
+  - retrieved_at

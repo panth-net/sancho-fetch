@@ -1,0 +1,52 @@
+﻿__pycache__/
+.pytest_cache/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+
+# Secrets — never commit
+.env
+.env.*
+!.env.example
+
+# Personal IDE config
+*.code-workspace
+.vscode/
+.idea/
+.claude/
+.agents/
+.codex/
+
+# Local Sancho Fetch workspace — generated/managed paths only.
+# custom/, playbooks/, AI_INSTRUCTIONS.md, and DATASET_CATALOG.md
+# are intentionally NOT ignored so users can share their personal work.
+/sancho-workspace/fetched-data/
+/sancho-workspace/analysis-data/
+/sancho-workspace/outputs/
+/sancho-workspace/logs/
+/sancho-workspace/update-backups/
+/sancho-workspace/source/
+/sancho-workspace/sancho.yaml
+/sancho-workspace/modules.yaml
+/sancho-workspace/modules.lock.yaml
+/sancho-export.zip
+
+# Project bundles dropped into other working folders
+**/sancho-fetched-data/
+
+# Build artifacts
+/dist/
+/build/
+*.egg-info/
+
+# Generated audit/report artifacts
+/data-blocks-collector.md
+/health_data_sources.xlsx
+/sancho_health_data_ingestion_audit.xlsx
+/sancho_readiness_and_health_sources_report.md
+/remaining_tasks.md
+/project-docs/audits/
+
+# Repomix local packaging
+/repomix-output.*

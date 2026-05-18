@@ -1,0 +1,52 @@
+id: fetch.fda.drug_events
+version: 1.2.0
+type: fetch
+catalog_tier: large
+entrypoint: main.py:run
+description: "Path-driven openFDA client. The wrapper supports every openFDA endpoint\n\
+  (28 total across drug/food/device/animal/tobacco/transparency) \u2014 supply\nthe\
+  \ full URL plus a free-form `params` dict.\n\nUse Lucene-style `search` filters\
+  \ (e.g. `classification:\"Class I\"`,\n`receivedate:[20240101 TO 20240131]`), `count`\
+  \ for facet aggregation,\n`limit`/`skip` for pagination. Optional auth via `DATA_GOV_API_KEY`.\n\
+  \ncatalog.json enumerates every category and endpoint with download URLs\nand total\
+  \ record counts.\n"
+managed_paths:
+- module.yaml
+- main.py
+- api.py
+- transform.py
+- schema.sample.json
+- catalog.json
+- catalog.meta.json
+- catalog_blueprint.py
+- discovery.py
+input_schema:
+  type: object
+  properties:
+    endpoint:
+      type: string
+      description: 'Full openFDA endpoint URL. The wrapper supports any of the 28
+
+        endpoints, not just drug events.
+
+        '
+      examples:
+      - https://api.fda.gov/drug/event.json
+      - https://api.fda.gov/drug/enforcement.json
+      - https://api.fda.gov/food/enforcement.json
+      - https://api.fda.gov/drug/label.json
+    params:
+      type: object
+      description: 'openFDA query parameters. Common: `search` (Lucene filter), `count`
+
+        (facet field), `limit` (1-1000), `skip`, `sort`. Optional
+
+        `DATA_GOV_API_KEY` auto-injected as `api_key`.
+
+        '
+output_schema:
+  type: object
+  required:
+  - dataset_ref
+  - endpoint
+  - retrieved_at

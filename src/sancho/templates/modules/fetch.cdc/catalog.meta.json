@@ -1,0 +1,37 @@
+{
+  "provider": "fetch.cdc",
+  "schema_version": "1.0",
+  "generated_at": "2026-04-14T17:10:42.977124+00:00",
+  "stats": {
+    "family_count": 14,
+    "catalog_sample_count": 1488,
+    "leading_death_sample_count": 10
+  },
+  "discovery": {
+    "mode": "live_required",
+    "sources": [
+      {
+        "id": "portal.datasets.list",
+        "url": "https://data.cdc.gov/api/views",
+        "status": "ok",
+        "http_status": 200,
+        "count": 1488,
+        "fetched_at": "2026-04-14T17:10:42.327420+00:00"
+      },
+      {
+        "id": "resource.leading_death",
+        "url": "https://data.cdc.gov/resource/bi63-dtpu.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 10,
+        "fetched_at": "2026-04-14T17:10:42.977124+00:00"
+      }
+    ],
+    "docs": [
+      "https://data.cdc.gov",
+      "https://dev.socrata.com/docs/endpoints",
+      "https://dev.socrata.com/docs/queries/",
+      "https://dev.socrata.com/docs/app-tokens"
+    ]
+  }
+}

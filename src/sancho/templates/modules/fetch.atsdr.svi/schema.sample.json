@@ -1,0 +1,22 @@
+{
+  "provider": "fetch.atsdr.svi",
+  "generated_at": "2026-05-06T00:00:00+00:00",
+  "columns": [
+    {"name": "dataset_ref", "type": "string", "sample": "usgov_atsdr_svi"},
+    {"name": "source_url", "type": "string", "sample": "https://svi.cdc.gov/Documents/Data/2022/csv/States/SVI_2022_US.csv"},
+    {"name": "params", "type": "dict", "sample": {"year": 2022, "state": "CA", "limit": 1000}},
+    {"name": "rows", "type": "list", "sample": []},
+    {"name": "row_count", "type": "int", "sample": 1000},
+    {"name": "raw", "type": "dict", "sample": {}},
+    {"name": "retrieved_at", "type": "string", "sample": "2026-05-06T00:00:00+00:00"}
+  ],
+  "sample_row": {
+    "dataset_ref": "usgov_atsdr_svi",
+    "source_url": "https://svi.cdc.gov/Documents/Data/2022/csv/States/SVI_2022_US.csv",
+    "params": {"year": 2022, "state": "CA", "limit": 1000},
+    "rows": [],
+    "row_count": 1000,
+    "raw": {},
+    "retrieved_at": "2026-05-06T00:00:00+00:00"
+  }
+}

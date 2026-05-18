@@ -1,0 +1,70 @@
+id: fetch.noaa.cdo
+version: 1.2.0
+type: fetch
+catalog_tier: large
+entrypoint: main.py:run
+description: 'Path-driven NOAA Climate Data Online (CDO) v2 client. Use catalog
+
+  endpoints (`/datasets`, `/stations`, `/locations`, `/datatypes`, etc.)
+
+  to discover IDs, then fetch observations from `/data` with `datasetid` +
+
+  station/location + datatype + date range.
+
+
+  catalog.json enumerates all 11 datasets, 42 data categories, 1,566 data
+
+  types, and 12 location categories. Requires NOAA_API_TOKEN (5 req/sec,
+
+  10000 req/day).
+
+  '
+managed_paths:
+- module.yaml
+- main.py
+- api.py
+- transform.py
+- schema.sample.json
+- catalog.json
+- catalog.meta.json
+- catalog_blueprint.py
+- discovery.py
+input_schema:
+  type: object
+  properties:
+    endpoint:
+      type: string
+      description: 'NOAA CDO v2 endpoint URL. `/data` for observations (requires
+
+        datasetid + station/location + datatype + date range);
+
+        `/datasets`/`/stations`/`/locations`/`/datatypes` for catalog
+
+        browsing.
+
+        '
+      examples:
+      - https://www.ncei.noaa.gov/cdo-web/api/v2/data
+      - https://www.ncei.noaa.gov/cdo-web/api/v2/datasets
+      - https://www.ncei.noaa.gov/cdo-web/api/v2/stations
+    params:
+      type: object
+      description: 'Query parameters. For /data: `datasetid` (GHCND, GSOM, etc.),
+
+        `stationid` or `locationid` (FIPS:25, CITY:US250003, ZIP:02101),
+
+        `datatypeid` (PRCP, TMAX, TMIN, TAVG, SNOW, etc.),
+
+        `startdate`/`enddate` (YYYY-MM-DD, max 1-year span), `units`
+
+        (standard/metric), `limit` (1-1000), `offset`, `sortfield`,
+
+        `sortorder`. NOAA_API_TOKEN auto-injected as `token` HTTP header.
+
+        '
+output_schema:
+  type: object
+  required:
+  - dataset_ref
+  - endpoint
+  - retrieved_at

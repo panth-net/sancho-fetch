@@ -1,0 +1,30 @@
+{
+  "provider": "fetch.nrel.alt_fuel_stations",
+  "schema_version": "1.0",
+  "generated_at": "2026-04-15T22:12:00.278155+00:00",
+  "stats": {
+    "family_count": 3,
+    "fuel_type_count": 8,
+    "fuel_types_count": 8,
+    "field_count": 74,
+    "fields_count": 74,
+    "total_stations": 100468
+  },
+  "discovery": {
+    "mode": "live_required",
+    "sources": [
+      {
+        "id": "stations.sample",
+        "url": "https://developer.nrel.gov/api/alt-fuel-stations/v1.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 100468,
+        "error": "",
+        "fetched_at": "2026-04-15T22:12:00.277161+00:00"
+      }
+    ],
+    "docs": [
+      "https://developer.nrel.gov/docs/transportation/alt-fuel-stations-v1/"
+    ]
+  }
+}

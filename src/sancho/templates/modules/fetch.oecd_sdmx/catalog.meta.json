@@ -1,0 +1,29 @@
+{
+  "provider": "fetch.oecd_sdmx",
+  "schema_version": "1.0",
+  "generated_at": "2026-04-15T17:19:49.172251+00:00",
+  "stats": {
+    "family_count": 1,
+    "dataflow_count": 1480,
+    "dataflows_count": 1480,
+    "agency_count": 50,
+    "agencies_count": 50
+  },
+  "discovery": {
+    "mode": "live_required",
+    "sources": [
+      {
+        "id": "dataflow",
+        "url": "https://sdmx.oecd.org/public/rest/dataflow/all/all/latest",
+        "status": "ok",
+        "http_status": 200,
+        "count": 1480,
+        "error": "",
+        "fetched_at": "2026-04-15T17:19:49.163670+00:00"
+      }
+    ],
+    "docs": [
+      "https://data-explorer.oecd.org/"
+    ]
+  }
+}

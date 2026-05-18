@@ -1,0 +1,58 @@
+id: fetch.nhtsa.recalls
+version: 1.2.0
+type: fetch
+catalog_tier: large
+entrypoint: main.py:run
+description: 'Path-driven NHTSA client. Two host APIs:
+
+  - api.nhtsa.gov: recalls, complaints, investigations
+
+  - vpic.nhtsa.dot.gov: VIN decode, makes/models catalog
+
+
+  Common queries: `/recalls/recallsByVehicle?make=&model=&modelYear=`,
+
+  `/complaints/complaintsByVehicle?...`, `/api/vehicles/decodevin/{VIN}`.
+
+
+  catalog.json enumerates 12,000+ vPIC makes and the 144 vPIC variables.
+
+  '
+managed_paths:
+- module.yaml
+- main.py
+- api.py
+- transform.py
+- schema.sample.json
+- catalog.json
+- catalog.meta.json
+- catalog_blueprint.py
+- discovery.py
+input_schema:
+  type: object
+  properties:
+    endpoint:
+      type: string
+      description: 'NHTSA endpoint URL on either api.nhtsa.gov or vpic.nhtsa.dot.gov.
+
+        '
+      examples:
+      - https://api.nhtsa.gov/recalls/recallsByVehicle
+      - https://api.nhtsa.gov/complaints/complaintsByVehicle
+      - https://api.nhtsa.gov/products/vehicle/makes
+      - https://vpic.nhtsa.dot.gov/api/vehicles/decodevin/{VIN}
+    params:
+      type: object
+      description: 'Query parameters. For recalls/complaints: `make`, `model`,
+
+        `modelYear`. For makes catalog: `issueType` (r/c/i), `modelYear`.
+
+        For VIN decode: `format=json`, `modelyear`.
+
+        '
+output_schema:
+  type: object
+  required:
+  - dataset_ref
+  - endpoint
+  - retrieved_at

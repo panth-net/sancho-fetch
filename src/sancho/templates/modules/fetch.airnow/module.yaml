@@ -1,0 +1,48 @@
+id: fetch.airnow
+version: 1.1.0
+type: fetch
+catalog_tier: small
+entrypoint: main.py:run
+description: "Path-driven EPA AirNow client. Fetch real-time AQI by ZIP code or lat/lon,\n\
+  historical observations, and forecasts. Endpoints:\n- `/aq/observation/zipCode/current/`\
+  \ \u2014 current AQI by ZIP\n- `/aq/observation/latLong/current/` \u2014 current\
+  \ AQI by lat/lon\n- `/aq/observation/zipCode/historical/` \u2014 historical observation\n\
+  - `/aq/forecast/zipCode/` and `/aq/forecast/latLong/` \u2014 forecasts\n\nNote:\
+  \ historical date format is YYYY-MM-DDT00-0000 (dash before 0000,\nnot colon). Auth\
+  \ via AIRNOW_API_KEY required.\n"
+managed_paths:
+- module.yaml
+- main.py
+- api.py
+- transform.py
+- schema.sample.json
+input_schema:
+  type: object
+  properties:
+    endpoint:
+      type: string
+      description: 'AirNow endpoint URL. Default `/aq/observation/zipCode/current/`.
+
+        '
+      examples:
+      - https://www.airnowapi.org/aq/observation/zipCode/current/
+      - https://www.airnowapi.org/aq/observation/latLong/current/
+      - https://www.airnowapi.org/aq/observation/zipCode/historical/
+      - https://www.airnowapi.org/aq/forecast/zipCode/
+    params:
+      type: object
+      description: 'Query parameters. Geo: `zipCode` OR `latitude`+`longitude`.
+
+        `distance` (miles, default 25). For historical: `date` in
+
+        YYYY-MM-DDT00-0000 format. `format=application/json`. Auth:
+
+        AIRNOW_API_KEY auto-injected as `API_KEY`.
+
+        '
+output_schema:
+  type: object
+  required:
+  - dataset_ref
+  - endpoint
+  - retrieved_at

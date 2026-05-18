@@ -1,0 +1,43 @@
+id: fetch.naep.adhoc_data
+version: 1.1.0
+type: fetch
+catalog_tier: small
+entrypoint: main.py:run
+description: 'Path-driven NAEP (Nations Report Card) ad-hoc data client. Filter by
+
+  subject (math/reading/science/civics), grade (4/8/12), subscale,
+
+  variable, jurisdiction (NP/state codes), statistic type, year(s).
+
+  '
+managed_paths:
+- module.yaml
+- main.py
+- api.py
+- transform.py
+- schema.sample.json
+input_schema:
+  type: object
+  properties:
+    endpoint:
+      type: string
+      description: NAEP ad-hoc endpoint URL.
+      examples:
+      - https://www.nationsreportcard.gov/Dataservice/GetAdhocData.aspx
+    params:
+      type: object
+      description: 'Query parameters. `type=data`, `subject`, `grade` (4/8/12),
+
+        `subscale`, `variable`, `jurisdiction` (NP/state codes,
+
+        comma-separated for multi), `stattype` (MN:MN/RPP),
+
+        `Year` (single or comma-separated).
+
+        '
+output_schema:
+  type: object
+  required:
+  - dataset_ref
+  - endpoint
+  - retrieved_at

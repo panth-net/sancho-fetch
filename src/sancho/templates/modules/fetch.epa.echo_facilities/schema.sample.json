@@ -1,0 +1,44 @@
+{
+  "provider": "fetch.epa.echo_facilities",
+  "generated_at": "2026-03-30T18:59:54.810750+00:00",
+  "columns": [
+    {
+      "name": "dataset_ref",
+      "type": "string",
+      "sample": "usgov_epa"
+    },
+    {
+      "name": "endpoint",
+      "type": "string",
+      "sample": "https://echodata.epa.gov/echo/echo_rest_services.get_facilities"
+    },
+    {
+      "name": "params",
+      "type": "dict",
+      "sample": {}
+    },
+    {
+      "name": "rows",
+      "type": "list",
+      "sample": []
+    },
+    {
+      "name": "raw",
+      "type": "list",
+      "sample": []
+    },
+    {
+      "name": "retrieved_at",
+      "type": "string",
+      "sample": "2026-03-30T18:59:54.810750+00:00"
+    }
+  ],
+  "sample_row": {
+    "dataset_ref": "usgov_epa",
+    "endpoint": "https://echodata.epa.gov/echo/echo_rest_services.get_facilities",
+    "params": {},
+    "rows": [],
+    "raw": [],
+    "retrieved_at": "2026-03-30T18:59:54.810750+00:00"
+  }
+}

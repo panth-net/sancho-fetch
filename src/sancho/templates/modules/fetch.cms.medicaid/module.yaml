@@ -1,0 +1,51 @@
+id: fetch.cms.medicaid
+version: 1.0.0
+type: fetch
+catalog_tier: small
+entrypoint: main.py:run
+description: 'Path-driven Data.Medicaid.gov DKAN API client. Public, no key required.
+
+  Same DKAN endpoint family as data.cms.gov (metastore + datastore). Browse
+
+  the catalog at /api/1/metastore/schemas/dataset/items, query a dataset''s
+
+  rows at /api/1/datastore/query/{uuid}/0, search at /api/1/search.
+
+  '
+managed_paths:
+- module.yaml
+- main.py
+- api.py
+- transform.py
+- schema.sample.json
+input_schema:
+  type: object
+  properties:
+    endpoint:
+      type: string
+      description: 'Data.Medicaid.gov endpoint. /api/1/metastore/schemas/dataset/items
+
+        (list datasets), /data.json (DCAT manifest), /api/1/datastore/query/{uuid}/0
+
+        (dataset rows), /api/1/search (full-text search).
+
+        '
+      examples:
+      - https://data.medicaid.gov/api/1/metastore/schemas/dataset/items
+      - https://data.medicaid.gov/data.json
+      - https://data.medicaid.gov/api/1/datastore/query/ae4d5347-5137-5f6c-b66c-3420fa0316d8/0
+      - https://data.medicaid.gov/api/1/search
+    params:
+      type: object
+      description: 'Query parameters. For /search: fulltext, theme. For /datastore/query:
+        limit,
+
+        offset, conditions[*]. For /metastore items: limit, offset.
+
+        '
+output_schema:
+  type: object
+  required:
+  - dataset_ref
+  - endpoint
+  - retrieved_at

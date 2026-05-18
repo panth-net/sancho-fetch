@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: sancho-mcp
+    runtime: docker
+    plan: free
+    dockerfilePath: ./hosting/Dockerfile
+    healthCheckPath: /health
+    envVars:
+      - key: CENSUS_API_KEY
+        sync: false
+      - key: BLS_API_KEY
+        sync: false
+      - key: SANCHO_MAX_RESPONSE_BYTES
+        value: "2000000"
+      - key: SANCHO_MAX_REQUEST_BYTES
+        value: "100000"
+      - key: SANCHO_IP_RPM
+        value: "20"
+      - key: PORT
+        value: "10000"

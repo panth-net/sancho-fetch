@@ -1,0 +1,61 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sancho-fetch"
+version = "0.1.1"
+description = "Sancho Fetch local-first CLI"
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.11"
+dependencies = [
+  "PyYAML>=6.0.1",
+  "requests>=2.32.0",
+  "packaging>=24.0"
+]
+
+[project.scripts]
+sancho = "sancho.cli:main"
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0.0"]
+analysis = [
+  "polars>=1.0.0",
+  "duckdb>=1.0.0",
+  "pyarrow>=16.0.0"
+]
+all = [
+  "polars>=1.0.0",
+  "duckdb>=1.0.0",
+  "pyarrow>=16.0.0"
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+sancho = [
+    "templates/**/*.py",
+    "templates/**/*.yaml",
+    "templates/**/*.json",
+    "templates/**/*.md",
+    "templates/**/.env.example",
+]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
+pythonpath = ["src", "."]
+markers = [
+  "live: real API integration checks requiring network access and optional API keys",
+  "shape: code structure, readability, and file-size contract tests",
+  "runtime: HttpClient, caching, retries, and data-store behavior tests",
+  "mcp: MCP server, policy, tooling, and hosted behavior tests",
+  "e2e: end-to-end flows covering CLI, MCP quick mode, and product-critical paths",
+  "release_gate: doc-vs-code consistency and placeholder token checks",
+  "slow: tests that download large files (>50MB) — exclude with -m 'not slow'",
+]

@@ -1,0 +1,45 @@
+{
+  "provider": "fetch.fec",
+  "schema_version": "1.0",
+  "generated_at": "2026-05-12T04:12:24.765739+00:00",
+  "stats": {
+    "family_count": 100,
+    "swagger_path_count": 100,
+    "super_pac_workflow_count": 5,
+    "candidates_sample_count": 0
+  },
+  "discovery": {
+    "mode": "live_required",
+    "sources": [
+      {
+        "id": "docs.swagger",
+        "url": "https://api.open.fec.gov/swagger/",
+        "status": "ok",
+        "http_status": 200,
+        "count": 100,
+        "fetched_at": "2026-05-12T04:12:23.531823+00:00"
+      },
+      {
+        "id": "docs.developers",
+        "url": "https://api.open.fec.gov/developers/",
+        "status": "ok",
+        "http_status": 200,
+        "count": 1,
+        "fetched_at": "2026-05-12T04:12:24.744496+00:00"
+      },
+      {
+        "id": "v1.candidates.search",
+        "url": "https://api.open.fec.gov/v1/candidates/search/",
+        "status": "skipped",
+        "http_status": 0,
+        "count": 0,
+        "fetched_at": "2026-05-12T04:12:24.744496+00:00",
+        "error": "missing DATA_GOV_API_KEY"
+      }
+    ],
+    "docs": [
+      "https://api.open.fec.gov/developers/",
+      "https://api.open.fec.gov/swagger/"
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+id: fetch.iati
+version: 1.1.0
+type: fetch
+catalog_tier: large
+entrypoint: main.py:run
+description: "Fetch from IATI (International Aid Transparency Initiative). catalog.json\n\
+  inlines all 69 IATI Standard codelists (Sector, Country, AidType, Currency,\netc.)\
+  \ with every entry \u2014 5,174 reference values in total \u2014 so callers can\n\
+  resolve any IATI code offline.\n"
+managed_paths:
+- module.yaml
+- main.py
+- api.py
+- transform.py
+- schema.sample.json
+- catalog.json
+- catalog.meta.json
+- catalog_blueprint.py
+- discovery.py
+input_schema:
+  type: object
+  properties:
+    reporting_org:
+      type: string
+    limit:
+      type: integer
+output_schema:
+  type: object
+  required:
+  - dataset_ref
+  - source_url
+  - retrieved_at

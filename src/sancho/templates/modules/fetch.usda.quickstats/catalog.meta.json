@@ -1,0 +1,192 @@
+{
+  "provider": "fetch.usda.quickstats",
+  "schema_version": "1.0",
+  "generated_at": "2026-04-15T17:16:21.962452+00:00",
+  "stats": {
+    "family_count": 3,
+    "parameter_count": 19,
+    "parameters_count": 19,
+    "total_value_count": 69186,
+    "total_values_count": 69186,
+    "successful_params": 19
+  },
+  "discovery": {
+    "mode": "live_required",
+    "sources": [
+      {
+        "id": "param.source_desc",
+        "url": "https://quickstats.nass.usda.gov/api/get_param_values/",
+        "status": "ok",
+        "http_status": 200,
+        "count": 2,
+        "error": "",
+        "fetched_at": "2026-04-15T17:15:46.054992+00:00"
+      },
+      {
+        "id": "param.sector_desc",
+        "url": "https://quickstats.nass.usda.gov/api/get_param_values/",
+        "status": "ok",
+        "http_status": 200,
+        "count": 5,
+        "error": "",
+        "fetched_at": "2026-04-15T17:15:49.128060+00:00"
+      },
+      {
+        "id": "param.group_desc",
+        "url": "https://quickstats.nass.usda.gov/api/get_param_values/",
+        "status": "ok",
+        "http_status": 200,
+        "count": 20,
+        "error": "",
+        "fetched_at": "2026-04-15T17:15:50.594508+00:00"
+      },
+      {
+        "id": "param.commodity_desc",
+        "url": "https://quickstats.nass.usda.gov/api/get_param_values/",
+        "status": "ok",
+        "http_status": 200,
+        "count": 467,
+        "error": "",
+        "fetched_at": "2026-04-15T17:15:52.236405+00:00"
+      },
+      {
+        "id": "param.class_desc",
+        "url": "https://quickstats.nass.usda.gov/api/get_param_values/",
+        "status": "ok",
+        "http_status": 200,
+        "count": 2733,
+        "error": "",
+        "fetched_at": "2026-04-15T17:15:53.784981+00:00"
+      },
+      {
+        "id": "param.prodn_practice_desc",
+        "url": "https://quickstats.nass.usda.gov/api/get_param_values/",
+        "status": "ok",
+        "http_status": 200,
+        "count": 868,
+        "error": "",
+        "fetched_at": "2026-04-15T17:15:55.298842+00:00"
+      },
+      {
+        "id": "param.util_practice_desc",
+        "url": "https://quickstats.nass.usda.gov/api/get_param_values/",
+        "status": "ok",
+        "http_status": 200,
+        "count": 343,
+        "error": "",
+        "fetched_at": "2026-04-15T17:15:56.720337+00:00"
+      },
+      {
+        "id": "param.statisticcat_desc",
+        "url": "https://quickstats.nass.usda.gov/api/get_param_values/",
+        "status": "ok",
+        "http_status": 200,
+        "count": 280,
+        "error": "",
+        "fetched_at": "2026-04-15T17:15:57.372741+00:00"
+      },
+      {
+        "id": "param.unit_desc",
+        "url": "https://quickstats.nass.usda.gov/api/get_param_values/",
+        "status": "ok",
+        "http_status": 200,
+        "count": 373,
+        "error": "",
+        "fetched_at": "2026-04-15T17:16:01.127942+00:00"
+      },
+      {
+        "id": "param.short_desc",
+        "url": "https://quickstats.nass.usda.gov/api/get_param_values/",
+        "status": "ok",
+        "http_status": 200,
+        "count": 36064,
+        "error": "",
+        "fetched_at": "2026-04-15T17:16:04.754907+00:00"
+      },
+      {
+        "id": "param.domain_desc",
+        "url": "https://quickstats.nass.usda.gov/api/get_param_values/",
+        "status": "ok",
+        "http_status": 200,
+        "count": 616,
+        "error": "",
+        "fetched_at": "2026-04-15T17:16:07.204747+00:00"
+      },
+      {
+        "id": "param.domaincat_desc",
+        "url": "https://quickstats.nass.usda.gov/api/get_param_values/",
+        "status": "ok",
+        "http_status": 200,
+        "count": 26717,
+        "error": "",
+        "fetched_at": "2026-04-15T17:16:11.202694+00:00"
+      },
+      {
+        "id": "param.agg_level_desc",
+        "url": "https://quickstats.nass.usda.gov/api/get_param_values/",
+        "status": "ok",
+        "http_status": 200,
+        "count": 11,
+        "error": "",
+        "fetched_at": "2026-04-15T17:16:12.392762+00:00"
+      },
+      {
+        "id": "param.state_alpha",
+        "url": "https://quickstats.nass.usda.gov/api/get_param_values/",
+        "status": "ok",
+        "http_status": 200,
+        "count": 59,
+        "error": "",
+        "fetched_at": "2026-04-15T17:16:14.658149+00:00"
+      },
+      {
+        "id": "param.state_name",
+        "url": "https://quickstats.nass.usda.gov/api/get_param_values/",
+        "status": "ok",
+        "http_status": 200,
+        "count": 58,
+        "error": "",
+        "fetched_at": "2026-04-15T17:16:17.570550+00:00"
+      },
+      {
+        "id": "param.region_desc",
+        "url": "https://quickstats.nass.usda.gov/api/get_param_values/",
+        "status": "ok",
+        "http_status": 200,
+        "count": 397,
+        "error": "",
+        "fetched_at": "2026-04-15T17:16:18.915442+00:00"
+      },
+      {
+        "id": "param.freq_desc",
+        "url": "https://quickstats.nass.usda.gov/api/get_param_values/",
+        "status": "ok",
+        "http_status": 200,
+        "count": 5,
+        "error": "",
+        "fetched_at": "2026-04-15T17:16:19.855814+00:00"
+      },
+      {
+        "id": "param.reference_period_desc",
+        "url": "https://quickstats.nass.usda.gov/api/get_param_values/",
+        "status": "ok",
+        "http_status": 200,
+        "count": 159,
+        "error": "",
+        "fetched_at": "2026-04-15T17:16:20.999850+00:00"
+      },
+      {
+        "id": "param.country_name",
+        "url": "https://quickstats.nass.usda.gov/api/get_param_values/",
+        "status": "ok",
+        "http_status": 200,
+        "count": 9,
+        "error": "",
+        "fetched_at": "2026-04-15T17:16:21.959947+00:00"
+      }
+    ],
+    "docs": [
+      "https://quickstats.nass.usda.gov/api"
+    ]
+  }
+}

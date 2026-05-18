@@ -1,0 +1,52 @@
+id: fetch.dol.osha_inspections
+version: 1.2.0
+type: fetch
+catalog_tier: small
+entrypoint: main.py:run
+description: 'Path-driven DOL Open Data Portal client. v4 datasets at
+
+  /v4/get/{agency}/{api_url}/{format}. Format must be json or csv.
+
+  Auth: DOL_API_KEY required (sent as X-API-KEY query param).
+
+  Browse the catalog at /v4/datasets (no key required).
+
+  '
+managed_paths:
+- module.yaml
+- main.py
+- api.py
+- transform.py
+- schema.sample.json
+input_schema:
+  type: object
+  properties:
+    endpoint:
+      type: string
+      description: 'DOL API endpoint URL. Data endpoints require a `/json` or `/csv`
+
+        format suffix on the agency/table path. Use /v4/datasets for the
+
+        catalog listing.
+
+        '
+      examples:
+      - https://apiprod.dol.gov/v4/get/OSHA/inspection/json
+      - https://apiprod.dol.gov/v4/get/OSHA/violation/json
+      - https://apiprod.dol.gov/v4/get/MSHA/accident/json
+      - https://apiprod.dol.gov/v4/datasets
+    params:
+      type: object
+      description: 'Query parameters. Common: limit (max 10000), offset, fields,
+
+        sort, sort_by, filter_object. Auth via DOL_API_KEY (sent
+
+        automatically as X-API-KEY).
+
+        '
+output_schema:
+  type: object
+  required:
+  - dataset_ref
+  - endpoint
+  - retrieved_at

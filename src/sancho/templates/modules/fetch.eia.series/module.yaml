@@ -1,0 +1,56 @@
+id: fetch.eia.series
+version: 1.2.0
+type: fetch
+catalog_tier: large
+entrypoint: main.py:run
+description: "Path-driven EIA API v2 client. Supply a full `endpoint` URL and a free-form\n\
+  `params` dict for facets, frequency, date range, and pagination. Use\n`seriesid/{LEGACY_ID}`\
+  \ for v1-style series IDs (e.g. PET.RWTC.D) or\n`{route}/data/` for v2 routes with\
+  \ facets.\n\ncatalog.json walks the full /v2 route tree (256 routes, 229 leaf datasets,\n\
+  385 data columns) \u2014 coal, electricity, natural-gas, petroleum,\ninternational,\
+  \ nuclear, renewable, steo, etc. \u2014 with per-route facets and\nfrequencies.\
+  \ Requires EIA_API_KEY.\n"
+managed_paths:
+- module.yaml
+- main.py
+- api.py
+- transform.py
+- schema.sample.json
+- catalog.json
+- catalog.meta.json
+- catalog_blueprint.py
+- discovery.py
+input_schema:
+  type: object
+  properties:
+    endpoint:
+      type: string
+      description: 'Full EIA API URL. Use `seriesid/{LEGACY_ID}` for v1-style series
+        IDs
+
+        (e.g. PET.RWTC.D for daily WTI crude price) or `{route}/data/` for
+
+        v2 routes with facets.
+
+        '
+      examples:
+      - https://api.eia.gov/v2/seriesid/PET.RWTC.D
+      - https://api.eia.gov/v2/electricity/electric-power-operational-data/data/
+      - https://api.eia.gov/v2/natural-gas/prod/sum/data/
+    params:
+      type: object
+      description: 'Query parameters dict. Common keys: `frequency` (annual/monthly/daily),
+
+        `data[]` for column selection, `facets[FACET][]` for filters,
+
+        `start`/`end` for date range, `sort[0][column]`+`sort[0][direction]`,
+
+        `offset`/`length` for pagination.
+
+        '
+output_schema:
+  type: object
+  required:
+  - dataset_ref
+  - endpoint
+  - retrieved_at

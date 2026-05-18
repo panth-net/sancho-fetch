@@ -1,0 +1,22 @@
+{
+  "provider": "fetch.undp_hdr",
+  "generated_at": "2026-04-09T00:00:00+00:00",
+  "columns": [
+    {"name": "dataset_ref", "type": "string", "sample": "intl_undp_hdr"},
+    {"name": "source_url", "type": "string", "sample": "https://hdr.undp.org/sites/default/files/2024_HDR/HDR24_Composite_indices_complete_time_series.csv"},
+    {"name": "params", "type": "dict", "sample": {}},
+    {"name": "rows", "type": "list", "sample": [{"country_iso3": "NOR", "indicator": "hdi", "year": 2023, "value": 0.966}]},
+    {"name": "row_count", "type": "int", "sample": 1},
+    {"name": "raw", "type": "dict", "sample": {}},
+    {"name": "retrieved_at", "type": "string", "sample": "2026-04-09T00:00:00+00:00"}
+  ],
+  "sample_row": {
+    "dataset_ref": "intl_undp_hdr",
+    "source_url": "https://hdr.undp.org/sites/default/files/2024_HDR/HDR24_Composite_indices_complete_time_series.csv",
+    "params": {},
+    "rows": [{"country_iso3": "NOR", "indicator": "hdi", "year": 2023, "value": 0.966}],
+    "row_count": 1,
+    "raw": {},
+    "retrieved_at": "2026-04-09T00:00:00+00:00"
+  }
+}

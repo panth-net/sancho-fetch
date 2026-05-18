@@ -1,0 +1,545 @@
+{
+  "provider": "fetch.hud.fmr",
+  "schema_version": "1.0",
+  "generated_at": "2026-04-15T13:58:04.778093+00:00",
+  "stats": {
+    "family_count": 5,
+    "state_count": 56,
+    "states_count": 56,
+    "metro_area_count": 639,
+    "metro_areas_count": 639,
+    "county_count": 4764,
+    "counties_count": 4764,
+    "counties_states_covered": 56
+  },
+  "discovery": {
+    "mode": "live_required",
+    "sources": [
+      {
+        "id": "/fmr/listStates",
+        "url": "https://www.huduser.gov/hudapi/public/fmr/listStates",
+        "status": "ok",
+        "http_status": 200,
+        "count": 56,
+        "error": "",
+        "fetched_at": "2026-04-15T13:57:00.997396+00:00"
+      },
+      {
+        "id": "/fmr/listMetroAreas",
+        "url": "https://www.huduser.gov/hudapi/public/fmr/listMetroAreas",
+        "status": "ok",
+        "http_status": 200,
+        "count": 639,
+        "error": "",
+        "fetched_at": "2026-04-15T13:57:02.021927+00:00"
+      },
+      {
+        "id": "counties.AL",
+        "url": "https://www.huduser.gov/hudapi/public/fmr/listCounties/AL",
+        "status": "ok",
+        "http_status": 200,
+        "count": 67,
+        "error": "",
+        "fetched_at": "2026-04-15T13:57:03.152525+00:00"
+      },
+      {
+        "id": "counties.AK",
+        "url": "https://www.huduser.gov/hudapi/public/fmr/listCounties/AK",
+        "status": "ok",
+        "http_status": 200,
+        "count": 30,
+        "error": "",
+        "fetched_at": "2026-04-15T13:57:03.991355+00:00"
+      },
+      {
+        "id": "counties.AS",
+        "url": "https://www.huduser.gov/hudapi/public/fmr/listCounties/AS",
+        "status": "ok",
+        "http_status": 200,
+        "count": 1,
+        "error": "",
+        "fetched_at": "2026-04-15T13:57:04.859412+00:00"
+      },
+      {
+        "id": "counties.AZ",
+        "url": "https://www.huduser.gov/hudapi/public/fmr/listCounties/AZ",
+        "status": "ok",
+        "http_status": 200,
+        "count": 15,
+        "error": "",
+        "fetched_at": "2026-04-15T13:57:05.787326+00:00"
+      },
+      {
+        "id": "counties.AR",
+        "url": "https://www.huduser.gov/hudapi/public/fmr/listCounties/AR",
+        "status": "ok",
+        "http_status": 200,
+        "count": 75,
+        "error": "",
+        "fetched_at": "2026-04-15T13:57:06.539651+00:00"
+      },
+      {
+        "id": "counties.CA",
+        "url": "https://www.huduser.gov/hudapi/public/fmr/listCounties/CA",
+        "status": "ok",
+        "http_status": 200,
+        "count": 58,
+        "error": "",
+        "fetched_at": "2026-04-15T13:57:07.556019+00:00"
+      },
+      {
+        "id": "counties.CO",
+        "url": "https://www.huduser.gov/hudapi/public/fmr/listCounties/CO",
+        "status": "ok",
+        "http_status": 200,
+        "count": 64,
+        "error": "",
+        "fetched_at": "2026-04-15T13:57:08.553528+00:00"
+      },
+      {
+        "id": "counties.CT",
+        "url": "https://www.huduser.gov/hudapi/public/fmr/listCounties/CT",
+        "status": "ok",
+        "http_status": 200,
+        "count": 169,
+        "error": "",
+        "fetched_at": "2026-04-15T13:57:09.571412+00:00"
+      },
+      {
+        "id": "counties.DE",
+        "url": "https://www.huduser.gov/hudapi/public/fmr/listCounties/DE",
+        "status": "ok",
+        "http_status": 200,
+        "count": 3,
+        "error": "",
+        "fetched_at": "2026-04-15T13:57:10.586918+00:00"
+      },
+      {
+        "id": "counties.DC",
+        "url": "https://www.huduser.gov/hudapi/public/fmr/listCounties/DC",
+        "status": "ok",
+        "http_status": 200,
+        "count": 1,
+        "error": "",
+        "fetched_at": "2026-04-15T13:57:11.845868+00:00"
+      },
+      {
+        "id": "counties.FL",
+        "url": "https://www.huduser.gov/hudapi/public/fmr/listCounties/FL",
+        "status": "ok",
+        "http_status": 200,
+        "count": 67,
+        "error": "",
+        "fetched_at": "2026-04-15T13:57:12.835960+00:00"
+      },
+      {
+        "id": "counties.GA",
+        "url": "https://www.huduser.gov/hudapi/public/fmr/listCounties/GA",
+        "status": "ok",
+        "http_status": 200,
+        "count": 159,
+        "error": "",
+        "fetched_at": "2026-04-15T13:57:13.825742+00:00"
+      },
+      {
+        "id": "counties.GU",
+        "url": "https://www.huduser.gov/hudapi/public/fmr/listCounties/GU",
+        "status": "ok",
+        "http_status": 200,
+        "count": 1,
+        "error": "",
+        "fetched_at": "2026-04-15T13:57:14.793570+00:00"
+      },
+      {
+        "id": "counties.HI",
+        "url": "https://www.huduser.gov/hudapi/public/fmr/listCounties/HI",
+        "status": "ok",
+        "http_status": 200,
+        "count": 5,
+        "error": "",
+        "fetched_at": "2026-04-15T13:57:15.852153+00:00"
+      },
+      {
+        "id": "counties.ID",
+        "url": "https://www.huduser.gov/hudapi/public/fmr/listCounties/ID",
+        "status": "ok",
+        "http_status": 200,
+        "count": 44,
+        "error": "",
+        "fetched_at": "2026-04-15T13:57:17.182027+00:00"
+      },
+      {
+        "id": "counties.IL",
+        "url": "https://www.huduser.gov/hudapi/public/fmr/listCounties/IL",
+        "status": "ok",
+        "http_status": 200,
+        "count": 102,
+        "error": "",
+        "fetched_at": "2026-04-15T13:57:18.302428+00:00"
+      },
+      {
+        "id": "counties.IN",
+        "url": "https://www.huduser.gov/hudapi/public/fmr/listCounties/IN",
+        "status": "ok",
+        "http_status": 200,
+        "count": 92,
+        "error": "",
+        "fetched_at": "2026-04-15T13:57:19.299214+00:00"
+      },
+      {
+        "id": "counties.IA",
+        "url": "https://www.huduser.gov/hudapi/public/fmr/listCounties/IA",
+        "status": "ok",
+        "http_status": 200,
+        "count": 99,
+        "error": "",
+        "fetched_at": "2026-04-15T13:57:20.347567+00:00"
+      },
+      {
+        "id": "counties.KS",
+        "url": "https://www.huduser.gov/hudapi/public/fmr/listCounties/KS",
+        "status": "ok",
+        "http_status": 200,
+        "count": 105,
+        "error": "",
+        "fetched_at": "2026-04-15T13:57:21.593775+00:00"
+      },
+      {
+        "id": "counties.KY",
+        "url": "https://www.huduser.gov/hudapi/public/fmr/listCounties/KY",
+        "status": "ok",
+        "http_status": 200,
+        "count": 120,
+        "error": "",
+        "fetched_at": "2026-04-15T13:57:22.725005+00:00"
+      },
+      {
+        "id": "counties.LA",
+        "url": "https://www.huduser.gov/hudapi/public/fmr/listCounties/LA",
+        "status": "ok",
+        "http_status": 200,
+        "count": 64,
+        "error": "",
+        "fetched_at": "2026-04-15T13:57:23.765532+00:00"
+      },
+      {
+        "id": "counties.ME",
+        "url": "https://www.huduser.gov/hudapi/public/fmr/listCounties/ME",
+        "status": "ok",
+        "http_status": 200,
+        "count": 530,
+        "error": "",
+        "fetched_at": "2026-04-15T13:57:24.884880+00:00"
+      },
+      {
+        "id": "counties.MD",
+        "url": "https://www.huduser.gov/hudapi/public/fmr/listCounties/MD",
+        "status": "ok",
+        "http_status": 200,
+        "count": 24,
+        "error": "",
+        "fetched_at": "2026-04-15T13:57:25.893051+00:00"
+      },
+      {
+        "id": "counties.MA",
+        "url": "https://www.huduser.gov/hudapi/public/fmr/listCounties/MA",
+        "status": "ok",
+        "http_status": 200,
+        "count": 351,
+        "error": "",
+        "fetched_at": "2026-04-15T13:57:27.322419+00:00"
+      },
+      {
+        "id": "counties.MI",
+        "url": "https://www.huduser.gov/hudapi/public/fmr/listCounties/MI",
+        "status": "ok",
+        "http_status": 200,
+        "count": 83,
+        "error": "",
+        "fetched_at": "2026-04-15T13:57:28.276798+00:00"
+      },
+      {
+        "id": "counties.MN",
+        "url": "https://www.huduser.gov/hudapi/public/fmr/listCounties/MN",
+        "status": "ok",
+        "http_status": 200,
+        "count": 87,
+        "error": "",
+        "fetched_at": "2026-04-15T13:57:29.210199+00:00"
+      },
+      {
+        "id": "counties.MS",
+        "url": "https://www.huduser.gov/hudapi/public/fmr/listCounties/MS",
+        "status": "ok",
+        "http_status": 200,
+        "count": 82,
+        "error": "",
+        "fetched_at": "2026-04-15T13:57:30.201257+00:00"
+      },
+      {
+        "id": "counties.MO",
+        "url": "https://www.huduser.gov/hudapi/public/fmr/listCounties/MO",
+        "status": "ok",
+        "http_status": 200,
+        "count": 116,
+        "error": "",
+        "fetched_at": "2026-04-15T13:57:31.529329+00:00"
+      },
+      {
+        "id": "counties.MT",
+        "url": "https://www.huduser.gov/hudapi/public/fmr/listCounties/MT",
+        "status": "ok",
+        "http_status": 200,
+        "count": 56,
+        "error": "",
+        "fetched_at": "2026-04-15T13:57:32.533666+00:00"
+      },
+      {
+        "id": "counties.NE",
+        "url": "https://www.huduser.gov/hudapi/public/fmr/listCounties/NE",
+        "status": "ok",
+        "http_status": 200,
+        "count": 93,
+        "error": "",
+        "fetched_at": "2026-04-15T13:57:33.560948+00:00"
+      },
+      {
+        "id": "counties.NV",
+        "url": "https://www.huduser.gov/hudapi/public/fmr/listCounties/NV",
+        "status": "ok",
+        "http_status": 200,
+        "count": 17,
+        "error": "",
+        "fetched_at": "2026-04-15T13:57:34.532449+00:00"
+      },
+      {
+        "id": "counties.NH",
+        "url": "https://www.huduser.gov/hudapi/public/fmr/listCounties/NH",
+        "status": "ok",
+        "http_status": 200,
+        "count": 259,
+        "error": "",
+        "fetched_at": "2026-04-15T13:57:35.611075+00:00"
+      },
+      {
+        "id": "counties.NJ",
+        "url": "https://www.huduser.gov/hudapi/public/fmr/listCounties/NJ",
+        "status": "ok",
+        "http_status": 200,
+        "count": 21,
+        "error": "",
+        "fetched_at": "2026-04-15T13:57:36.841171+00:00"
+      },
+      {
+        "id": "counties.NM",
+        "url": "https://www.huduser.gov/hudapi/public/fmr/listCounties/NM",
+        "status": "ok",
+        "http_status": 200,
+        "count": 33,
+        "error": "",
+        "fetched_at": "2026-04-15T13:57:37.907049+00:00"
+      },
+      {
+        "id": "counties.NY",
+        "url": "https://www.huduser.gov/hudapi/public/fmr/listCounties/NY",
+        "status": "ok",
+        "http_status": 200,
+        "count": 62,
+        "error": "",
+        "fetched_at": "2026-04-15T13:57:39.138911+00:00"
+      },
+      {
+        "id": "counties.NC",
+        "url": "https://www.huduser.gov/hudapi/public/fmr/listCounties/NC",
+        "status": "ok",
+        "http_status": 200,
+        "count": 100,
+        "error": "",
+        "fetched_at": "2026-04-15T13:57:40.902148+00:00"
+      },
+      {
+        "id": "counties.ND",
+        "url": "https://www.huduser.gov/hudapi/public/fmr/listCounties/ND",
+        "status": "ok",
+        "http_status": 200,
+        "count": 53,
+        "error": "",
+        "fetched_at": "2026-04-15T13:57:41.869897+00:00"
+      },
+      {
+        "id": "counties.MP",
+        "url": "https://www.huduser.gov/hudapi/public/fmr/listCounties/MP",
+        "status": "ok",
+        "http_status": 200,
+        "count": 1,
+        "error": "",
+        "fetched_at": "2026-04-15T13:57:42.787934+00:00"
+      },
+      {
+        "id": "counties.OH",
+        "url": "https://www.huduser.gov/hudapi/public/fmr/listCounties/OH",
+        "status": "ok",
+        "http_status": 200,
+        "count": 88,
+        "error": "",
+        "fetched_at": "2026-04-15T13:57:43.776451+00:00"
+      },
+      {
+        "id": "counties.OK",
+        "url": "https://www.huduser.gov/hudapi/public/fmr/listCounties/OK",
+        "status": "ok",
+        "http_status": 200,
+        "count": 77,
+        "error": "",
+        "fetched_at": "2026-04-15T13:57:44.739140+00:00"
+      },
+      {
+        "id": "counties.OR",
+        "url": "https://www.huduser.gov/hudapi/public/fmr/listCounties/OR",
+        "status": "ok",
+        "http_status": 200,
+        "count": 36,
+        "error": "",
+        "fetched_at": "2026-04-15T13:57:46.184747+00:00"
+      },
+      {
+        "id": "counties.PA",
+        "url": "https://www.huduser.gov/hudapi/public/fmr/listCounties/PA",
+        "status": "ok",
+        "http_status": 200,
+        "count": 67,
+        "error": "",
+        "fetched_at": "2026-04-15T13:57:47.124611+00:00"
+      },
+      {
+        "id": "counties.PR",
+        "url": "https://www.huduser.gov/hudapi/public/fmr/listCounties/PR",
+        "status": "ok",
+        "http_status": 200,
+        "count": 78,
+        "error": "",
+        "fetched_at": "2026-04-15T13:57:48.265809+00:00"
+      },
+      {
+        "id": "counties.RI",
+        "url": "https://www.huduser.gov/hudapi/public/fmr/listCounties/RI",
+        "status": "ok",
+        "http_status": 200,
+        "count": 39,
+        "error": "",
+        "fetched_at": "2026-04-15T13:57:49.930967+00:00"
+      },
+      {
+        "id": "counties.SC",
+        "url": "https://www.huduser.gov/hudapi/public/fmr/listCounties/SC",
+        "status": "ok",
+        "http_status": 200,
+        "count": 46,
+        "error": "",
+        "fetched_at": "2026-04-15T13:57:51.038472+00:00"
+      },
+      {
+        "id": "counties.SD",
+        "url": "https://www.huduser.gov/hudapi/public/fmr/listCounties/SD",
+        "status": "ok",
+        "http_status": 200,
+        "count": 66,
+        "error": "",
+        "fetched_at": "2026-04-15T13:57:52.126953+00:00"
+      },
+      {
+        "id": "counties.TN",
+        "url": "https://www.huduser.gov/hudapi/public/fmr/listCounties/TN",
+        "status": "ok",
+        "http_status": 200,
+        "count": 95,
+        "error": "",
+        "fetched_at": "2026-04-15T13:57:53.174386+00:00"
+      },
+      {
+        "id": "counties.TX",
+        "url": "https://www.huduser.gov/hudapi/public/fmr/listCounties/TX",
+        "status": "ok",
+        "http_status": 200,
+        "count": 254,
+        "error": "",
+        "fetched_at": "2026-04-15T13:57:54.657700+00:00"
+      },
+      {
+        "id": "counties.UT",
+        "url": "https://www.huduser.gov/hudapi/public/fmr/listCounties/UT",
+        "status": "ok",
+        "http_status": 200,
+        "count": 29,
+        "error": "",
+        "fetched_at": "2026-04-15T13:57:55.695874+00:00"
+      },
+      {
+        "id": "counties.VT",
+        "url": "https://www.huduser.gov/hudapi/public/fmr/listCounties/VT",
+        "status": "ok",
+        "http_status": 200,
+        "count": 255,
+        "error": "",
+        "fetched_at": "2026-04-15T13:57:56.665710+00:00"
+      },
+      {
+        "id": "counties.VI",
+        "url": "https://www.huduser.gov/hudapi/public/fmr/listCounties/VI",
+        "status": "ok",
+        "http_status": 200,
+        "count": 3,
+        "error": "",
+        "fetched_at": "2026-04-15T13:57:57.693603+00:00"
+      },
+      {
+        "id": "counties.VA",
+        "url": "https://www.huduser.gov/hudapi/public/fmr/listCounties/VA",
+        "status": "ok",
+        "http_status": 200,
+        "count": 133,
+        "error": "",
+        "fetched_at": "2026-04-15T13:57:59.707598+00:00"
+      },
+      {
+        "id": "counties.WA",
+        "url": "https://www.huduser.gov/hudapi/public/fmr/listCounties/WA",
+        "status": "ok",
+        "http_status": 200,
+        "count": 39,
+        "error": "",
+        "fetched_at": "2026-04-15T13:58:00.805984+00:00"
+      },
+      {
+        "id": "counties.WV",
+        "url": "https://www.huduser.gov/hudapi/public/fmr/listCounties/WV",
+        "status": "ok",
+        "http_status": 200,
+        "count": 55,
+        "error": "",
+        "fetched_at": "2026-04-15T13:58:01.897252+00:00"
+      },
+      {
+        "id": "counties.WI",
+        "url": "https://www.huduser.gov/hudapi/public/fmr/listCounties/WI",
+        "status": "ok",
+        "http_status": 200,
+        "count": 72,
+        "error": "",
+        "fetched_at": "2026-04-15T13:58:03.112945+00:00"
+      },
+      {
+        "id": "counties.WY",
+        "url": "https://www.huduser.gov/hudapi/public/fmr/listCounties/WY",
+        "status": "ok",
+        "http_status": 200,
+        "count": 23,
+        "error": "",
+        "fetched_at": "2026-04-15T13:58:04.766291+00:00"
+      }
+    ],
+    "docs": [
+      "https://www.huduser.gov/portal/dataset/fmr-api.html"
+    ]
+  }
+}

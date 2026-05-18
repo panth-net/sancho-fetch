@@ -1,0 +1,36 @@
+id: fetch.socrata.chicago_crimes
+version: 1.2.0
+type: fetch
+catalog_tier: large
+entrypoint: main.py:run
+description: "Path-driven Chicago Socrata client. Default dataset is the Crimes\n\
+  resource (ijzp-q8t2). Wrapper accepts any data.cityofchicago.org\nSocrata URL \u2014\
+  \ uses standard SoQL ($limit/$where/$select/$group/$order).\n"
+managed_paths:
+- module.yaml
+- main.py
+- api.py
+- transform.py
+- schema.sample.json
+- catalog.json
+- catalog.meta.json
+- catalog_blueprint.py
+- discovery.py
+input_schema:
+  type: object
+  properties:
+    endpoint:
+      type: string
+      description: data.cityofchicago.org Socrata URL.
+      examples:
+      - https://data.cityofchicago.org/resource/ijzp-q8t2.json
+      - https://data.cityofchicago.org/resource/x2n5-8w5q.json
+    params:
+      type: object
+      description: SoQL params ($limit/$where/$select/$group/$order/$q).
+output_schema:
+  type: object
+  required:
+  - dataset_ref
+  - endpoint
+  - retrieved_at

@@ -1,0 +1,47 @@
+id: fetch.doj.press_releases
+version: 1.2.0
+type: fetch
+catalog_tier: large
+entrypoint: main.py:run
+description: 'Path-driven DOJ news API client. Two content types:
+
+  `/api/v1/press_releases.json` and `/api/v1/blog_entries.json`. Filter by
+
+  full-text `q`, `component` (e.g. opa, crm), `topic`, sort by `-date`.
+
+
+  catalog.json enumerates content types with 268,000+ total records.
+
+  '
+managed_paths:
+- module.yaml
+- main.py
+- api.py
+- transform.py
+- schema.sample.json
+- catalog.json
+- catalog.meta.json
+- catalog_blueprint.py
+- discovery.py
+input_schema:
+  type: object
+  properties:
+    endpoint:
+      type: string
+      description: DOJ API endpoint URL.
+      examples:
+      - https://www.justice.gov/api/v1/press_releases.json
+      - https://www.justice.gov/api/v1/blog_entries.json
+    params:
+      type: object
+      description: 'Query parameters. `pagesize` (1-50), `pagenumber`, `sort`
+
+        (e.g. `-date`), `q` (full-text), `component` (slug), `topic`.
+
+        '
+output_schema:
+  type: object
+  required:
+  - dataset_ref
+  - endpoint
+  - retrieved_at

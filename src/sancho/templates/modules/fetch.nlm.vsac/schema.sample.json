@@ -1,0 +1,20 @@
+{
+  "provider": "fetch.nlm.vsac",
+  "generated_at": "2026-05-06T00:00:00+00:00",
+  "columns": [
+    {
+      "name": "title",
+      "type": "string",
+      "sample": "Official access link"
+    },
+    {
+      "name": "url",
+      "type": "string",
+      "sample": "https://vsac.nlm.nih.gov/"
+    }
+  ],
+  "sample_row": {
+    "title": "Official access link",
+    "url": "https://vsac.nlm.nih.gov/"
+  }
+}

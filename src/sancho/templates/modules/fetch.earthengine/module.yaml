@@ -1,0 +1,40 @@
+id: fetch.earthengine
+version: 1.0.0
+type: fetch
+catalog_tier: small
+entrypoint: main.py:run
+description: Extract raster statistics or vector features from Google Earth Engine
+  datasets within an AOI.
+managed_paths:
+- module.yaml
+- main.py
+- api.py
+- transform.py
+- schema.sample.json
+input_schema:
+  type: object
+  required:
+  - dataset_id
+  - bbox
+  properties:
+    dataset_id:
+      type: string
+      description: Earth Engine asset ID.
+      examples:
+      - MODIS/006/MOD13A2
+      - LANDSAT/LC08/C02/T1_L2
+    bbox:
+      type: array
+      description: Bounding box [min_lon, min_lat, max_lon, max_lat].
+    date_start:
+      type: string
+      description: Start date YYYY-MM-DD.
+    date_end:
+      type: string
+      description: End date YYYY-MM-DD.
+output_schema:
+  type: object
+  required:
+  - dataset_ref
+  - rows
+  - retrieved_at

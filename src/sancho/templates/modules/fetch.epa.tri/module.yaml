@@ -1,0 +1,57 @@
+id: fetch.epa.tri
+version: 1.0.0
+type: fetch
+catalog_tier: small
+entrypoint: main.py:run
+description: 'Path-driven EPA Toxics Release Inventory (TRI) Envirofacts client. Public,
+
+  no key required. URL grammar:
+
+  https://data.epa.gov/efservice/{table}/{column1}/{value1}/{column2}/{value2}/{...}/Rows/{start}:{end}/JSON
+
+  Useful tables: tri_facility (filterable by state_abbr, county_name,
+
+  city_name, zip_code), tri_form_r (annual release reports filterable by
+
+  reporting_year, state_abbr), tri_chem_info (chemical metadata).
+
+  '
+managed_paths:
+- module.yaml
+- main.py
+- api.py
+- transform.py
+- schema.sample.json
+input_schema:
+  type: object
+  properties:
+    endpoint:
+      type: string
+      description: 'EPA Envirofacts TRI endpoint URL. Pattern:
+
+        /efservice/{table}/{filter_col}/{filter_val}/Rows/{start}:{end}/JSON
+
+        Common tables: tri_facility, tri_form_r, tri_chem_info.
+
+        Use the Rows/start:end suffix to paginate (max 100K rows per call).
+
+        '
+      examples:
+      - https://data.epa.gov/efservice/tri_facility/state_abbr/CA/Rows/0:25/JSON
+      - https://data.epa.gov/efservice/tri_form_r/state_abbr/CA/reporting_year/2022/Rows/0:25/JSON
+      - https://data.epa.gov/efservice/tri_chem_info/cas/7439-92-1/JSON
+    params:
+      type: object
+      description: 'Optional URL query parameters. Most filtering is encoded in the
+
+        endpoint path itself (Envirofacts uses path segments, not query
+
+        params).
+
+        '
+output_schema:
+  type: object
+  required:
+  - dataset_ref
+  - endpoint
+  - retrieved_at

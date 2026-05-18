@@ -1,0 +1,69 @@
+{
+  "provider": "fetch.noaa.cdo",
+  "schema_version": "1.0",
+  "generated_at": "2026-04-14T19:46:12.312711+00:00",
+  "stats": {
+    "family_count": 7,
+    "dataset_count": 11,
+    "datasets_count": 11,
+    "data_category_count": 42,
+    "data_categories_count": 42,
+    "data_type_count": 1566,
+    "data_types_count": 1566,
+    "location_category_count": 12,
+    "location_categories_count": 12
+  },
+  "discovery": {
+    "mode": "live_required",
+    "sources": [
+      {
+        "id": "/datasets.offset.1",
+        "url": "https://www.ncei.noaa.gov/cdo-web/api/v2/datasets?offset=1",
+        "status": "ok",
+        "http_status": 200,
+        "count": 11,
+        "error": "",
+        "fetched_at": "2026-04-14T19:46:06.727576+00:00"
+      },
+      {
+        "id": "/datacategories.offset.1",
+        "url": "https://www.ncei.noaa.gov/cdo-web/api/v2/datacategories?offset=1",
+        "status": "ok",
+        "http_status": 200,
+        "count": 42,
+        "error": "",
+        "fetched_at": "2026-04-14T19:46:08.428804+00:00"
+      },
+      {
+        "id": "/datatypes.offset.1",
+        "url": "https://www.ncei.noaa.gov/cdo-web/api/v2/datatypes?offset=1",
+        "status": "ok",
+        "http_status": 200,
+        "count": 1000,
+        "error": "",
+        "fetched_at": "2026-04-14T19:46:09.765224+00:00"
+      },
+      {
+        "id": "/datatypes.offset.1001",
+        "url": "https://www.ncei.noaa.gov/cdo-web/api/v2/datatypes?offset=1001",
+        "status": "ok",
+        "http_status": 200,
+        "count": 566,
+        "error": "",
+        "fetched_at": "2026-04-14T19:46:10.961580+00:00"
+      },
+      {
+        "id": "/locationcategories.offset.1",
+        "url": "https://www.ncei.noaa.gov/cdo-web/api/v2/locationcategories?offset=1",
+        "status": "ok",
+        "http_status": 200,
+        "count": 12,
+        "error": "",
+        "fetched_at": "2026-04-14T19:46:12.310711+00:00"
+      }
+    ],
+    "docs": [
+      "https://www.ncdc.noaa.gov/cdo-web/webservices/v2"
+    ]
+  }
+}

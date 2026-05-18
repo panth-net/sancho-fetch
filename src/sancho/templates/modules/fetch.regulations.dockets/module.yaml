@@ -1,0 +1,54 @@
+id: fetch.regulations.dockets
+version: 1.1.0
+type: fetch
+catalog_tier: small
+entrypoint: main.py:run
+description: 'Path-driven Regulations.gov v4 client. Three collections: dockets,
+
+  documents, comments. Use `filter[*]` query params for searching by agency,
+
+  date, term, etc.
+
+
+  Note: date filters require the format "YYYY-MM-DD HH:mm:ss" (not just
+
+  "YYYY-MM-DD"). Auth: DATA_GOV_API_KEY required.
+
+  '
+managed_paths:
+- module.yaml
+- main.py
+- api.py
+- transform.py
+- schema.sample.json
+input_schema:
+  type: object
+  properties:
+    endpoint:
+      type: string
+      description: 'Regulations.gov v4 endpoint. `/dockets`, `/documents`, `/comments`.
+
+        '
+      examples:
+      - https://api.regulations.gov/v4/dockets
+      - https://api.regulations.gov/v4/documents
+      - https://api.regulations.gov/v4/comments
+    params:
+      type: object
+      description: 'Query parameters using `filter[*]` keys: `filter[searchTerm]`,
+
+        `filter[agencyId]`, `filter[docketId]`,
+
+        `filter[lastModifiedDate][ge]`/`[le]` (format "YYYY-MM-DD HH:mm:ss"),
+
+        `filter[postedDate][ge]`/`[le]`. Pagination: `page[size]` (1-250),
+
+        `page[number]`. Sort: `sort=postedDate` or `-postedDate`.
+
+        '
+output_schema:
+  type: object
+  required:
+  - dataset_ref
+  - endpoint
+  - retrieved_at

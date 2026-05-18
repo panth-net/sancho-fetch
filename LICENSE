@@ -1,0 +1,198 @@
+# Sancho Fetch Fair Community License 1.0
+
+Copyright (c) 2026 Pantheon Network
+
+Contact: contact@pantheonnetwork.co
+
+Sancho Fetch is public-source software under a fair-use community license. You can read it, use it, modify it, and build with it. If Sancho Fetch materially helps fetch or prepare data you share, cite it. Commercial use is free below the community threshold. Larger organizations, white-labeling, hosted resale, and products whose value derives primarily from Sancho Fetch require a paid license.
+
+This plain-English statement is provided for clarity. The full license below controls.
+
+## 1. License Grant
+
+Subject to this license, Pantheon Network grants you a worldwide, non-exclusive, no-charge license to use, copy, run, modify, and distribute Sancho Fetch, and to create works using Sancho Fetch.
+
+This license does not grant trademark rights, logo rights, brand rights, domain name rights, or the right to imply endorsement by Pantheon Network.
+
+## 2. Definitions
+
+“Sancho Fetch” means the software, source code, documentation, modules, examples, templates, scripts, configuration files, generated provenance files, and related materials distributed with this license.
+
+“Licensor” means Pantheon Network.
+
+“You” means the individual or entity using Sancho Fetch.
+
+“Output” means a dataset, report, dashboard, file, database, API, visualization, model input, export, or other work created, fetched, prepared, or materially assisted by Sancho Fetch.
+
+“Material” or “Materially” means Sancho Fetch was used in whole or in part to fetch, prepare, transform, document, package, or generate substantive data included in an Output.
+
+“Community Threshold” means the free-use threshold described in Section 7.
+
+“Commercial License” means a separate written agreement with Pantheon Network granting rights beyond this license.
+
+## 3. Attribution
+
+When Sancho Fetch materially helps create an Output that you publish, share, sell, distribute, or provide to another person or organization, you must cite Sancho Fetch in a reasonable location.
+
+A simple citation is sufficient:
+
+> Source: U.S. Census Bureau, fetched via Sancho Fetch.
+
+If the upstream data source is different, replace “U.S. Census Bureau” with the correct source.
+
+You may use other citation formats as long as they clearly identify Sancho Fetch as the tool used to fetch or prepare the data.
+
+You may not remove Sancho Fetch attribution from source files, notices, documentation, generated metadata, generated provenance files, or Outputs where attribution is required.
+
+## 4. Notices
+
+If you distribute Sancho Fetch or a modified version of Sancho Fetch, you must include this license and preserve copyright notices and required notices.
+
+If you modify Sancho Fetch and distribute the modified version, you must make clear that you modified it.
+
+You may not imply that Pantheon Network endorses your modified version.
+
+## 5. No White-Label Resale
+
+You may not white-label Sancho Fetch or offer Sancho Fetch, or a substantially similar version of Sancho Fetch, as a standalone product, hosted service, SDK, platform, or client deliverable without a Commercial License.
+
+This includes rebranding, renaming, repackaging, hosting under another brand, or selling access to functionality whose value derives primarily from Sancho Fetch itself.
+
+You may use Sancho Fetch inside a larger product, service, report, dashboard, analysis, workflow, or data product that adds meaningful independent value, provided that required attribution is preserved and the use otherwise complies with this license.
+
+You may not remove Sancho Fetch attribution in order to make Sancho Fetch, Sancho-generated work, or Sancho-derived functionality appear to be entirely your own.
+
+Minor changes to names, commands, interfaces, configuration, packaging, styling, wrappers, folder structure, or implementation details do not avoid this section.
+
+## 6. Commercial Use
+
+You may use Sancho Fetch commercially if your use complies with this license.
+
+You may charge for your own work, including analysis, consulting, implementation, cleaning, transformation, visualization, hosting, reporting, and products or services that add meaningful value beyond Sancho Fetch itself.
+
+You need a Commercial License if:
+
+1. your organization is at or above the Community Threshold;
+2. you want to white-label Sancho Fetch;
+3. you want to sell Sancho Fetch, or a substantially similar derivative, as a product or service;
+4. you want to offer hosted access to functionality whose value derives primarily from Sancho Fetch;
+5. you want to remove, suppress, or materially alter required Sancho Fetch attribution;
+6. you want to embed Sancho Fetch as core infrastructure in a proprietary commercial platform in a way that hides Sancho Fetch; or
+7. your use is not otherwise permitted by this license.
+
+Commercial licensing inquiries may be sent to:
+
+contact@pantheonnetwork.co
+
+## 7. Community Threshold
+
+Unless Pantheon Network provides different written terms, use without a Commercial License is limited to individuals and organizations with less than USD $2,000,000 in annual gross revenue or operating budget in the prior fiscal year.
+
+Organizations at or above USD $2,000,000 need a Commercial License.
+
+Affiliated entities, parent companies, subsidiaries, and commonly controlled entities are counted together for this threshold.
+
+Pantheon Network may update the Community Threshold for future versions of this license.
+
+## 8. Public Data and Third-Party Terms
+
+This license does not claim ownership over public-domain data, government data, third-party data, or upstream datasets fetched through Sancho Fetch.
+
+Upstream data remains governed by its own source, license, terms, and applicable law.
+
+You are responsible for complying with upstream data terms.
+
+If an upstream source requires attribution, you must preserve that attribution in addition to citing Sancho Fetch where required.
+
+If an upstream source prohibits a use, Sancho Fetch does not authorize that use.
+
+## 9. Prohibited Uses
+
+You may not use Sancho Fetch or Sancho Fetch Outputs for:
+
+1. targeted enforcement actions that identify, locate, rank, detain, remove, penalize, or restrict individuals primarily on the basis of immigration status, nationality, ethnicity, religion, or another sensitive personal attribute;
+2. unlawful discrimination, discriminatory profiling, eligibility scoring, exclusion, or surveillance based on protected-class status or a proxy for protected-class status;
+3. mass surveillance, unlawful tracking, social scoring, or automated decision systems that create a material risk of denying rights, benefits, services, housing, employment, education, healthcare, due process, or equal protection;
+4. law-enforcement, intelligence, or security uses that are unlawful, lack required legal authority, or are reasonably likely to violate civil rights, privacy rights, human rights, or due-process protections;
+5. studies, tools, datasets, reports, or claims designed to materially support unlawful discrimination, targeted harassment, coercive displacement, or deprivation of legally protected rights; or
+6. unlawful, deceptive, fraudulent, threatening, or harassing conduct.
+
+This section does not prohibit good-faith research, journalism, auditing, public-interest analysis, safety analysis, civil-rights analysis, public health work, or accountability work.
+
+Commercial Licenses do not authorize the prohibited uses described in this section unless Pantheon Network expressly states otherwise in a signed written agreement. Pantheon Network has no obligation to grant any such exception.
+
+## 10. Circumvention
+
+You may not use another person, contractor, client, affiliate, subsidiary, parent company, shell entity, technical wrapper, or indirect workflow to do anything this license prohibits.
+
+You may not knowingly help another person or organization violate this license.
+
+## 11. Contributions
+
+Unless you have a separate written agreement with Pantheon Network, any contribution you intentionally submit to Sancho Fetch may be used, modified, distributed, sublicensed, or relicensed by Pantheon Network.
+
+You represent that you have the right to submit your contribution.
+
+Submitting a contribution does not give you ownership of Sancho Fetch as a whole.
+
+## 12. Patent License
+
+Subject to this license, Pantheon Network grants you a worldwide, non-exclusive, no-charge patent license to use Sancho Fetch, but only for uses permitted by this license and only for patent claims Pantheon Network can license.
+
+If you make a written claim that Sancho Fetch infringes or contributes to infringement of any patent, your patent license under this license ends immediately.
+
+## 13. Termination
+
+Your rights under this license terminate automatically if you violate the license.
+
+For a first-time violation that can be cured, your rights may be reinstated if you stop the violation, correct it where reasonably possible, and come into compliance within 30 days after receiving written notice from Pantheon Network.
+
+Pantheon Network is not required to reinstate rights for prohibited uses, intentional removal of attribution, intentional white-label resale, intentional evasion, or bad-faith conduct.
+
+After termination, you must stop using Sancho Fetch and stop distributing noncompliant copies or Outputs to the extent legally and practically possible.
+
+Sections concerning attribution, prohibited uses, circumvention, contributions, patent claims, termination, warranty, liability, endorsement, governing law, and severability survive termination where legally permitted.
+
+## 14. No Warranty
+
+Sancho Fetch is provided “as is” and “as available,” without warranties or conditions of any kind.
+
+Pantheon Network disclaims all warranties, including warranties of merchantability, fitness for a particular purpose, title, non-infringement, accuracy, availability, security, and compliance with law.
+
+You are responsible for verifying data sources, outputs, assumptions, transformations, and downstream uses.
+
+Sancho Fetch may fetch incomplete, outdated, incorrect, biased, unavailable, restricted, or otherwise problematic data. You are responsible for review and validation.
+
+## 15. Limitation of Liability
+
+To the maximum extent permitted by law, Pantheon Network will not be liable for any damages arising from or related to Sancho Fetch, this license, Outputs, data fetched through Sancho Fetch, or downstream use of Sancho Fetch.
+
+This limitation applies under all legal theories, including contract, tort, negligence, strict liability, statute, and otherwise.
+
+## 16. No Endorsement
+
+Use of Sancho Fetch does not mean Pantheon Network endorses your work, organization, client, data, analysis, conclusions, product, platform, or use case.
+
+You may not imply endorsement without written permission.
+
+## 17. Governing Law
+
+This license is governed by the laws of the District of Columbia, without regard to conflict-of-law rules.
+
+Any dispute arising from or related to this license must be brought in a court located in the District of Columbia, unless applicable law requires otherwise.
+
+## 18. Severability
+
+If any part of this license is held unenforceable, invalid, or illegal, the remaining parts remain in effect to the maximum extent permitted by law.
+
+If a court narrows any part of this license, that part should be interpreted as narrowly as necessary to make it enforceable while preserving its purpose.
+
+## 19. Required Notice
+
+Required Notice: Sancho Fetch is public-source software licensed under the Sancho Fetch Fair Community License 1.0 by Pantheon Network.
+
+If Sancho Fetch materially helps fetch or prepare data that you publish, share, sell, distribute, or provide to others, cite it as “fetched via Sancho Fetch.”
+
+Commercial use is free below the Community Threshold. Organizations at or above the Community Threshold, white-labeling, hosted resale, and products whose value derives primarily from Sancho Fetch require a Commercial License.
+
+Commercial licensing contact: contact@pantheonnetwork.co

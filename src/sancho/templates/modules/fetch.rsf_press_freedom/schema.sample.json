@@ -1,0 +1,22 @@
+{
+  "provider": "fetch.rsf_press_freedom",
+  "generated_at": "2026-04-09T00:00:00+00:00",
+  "columns": [
+    {"name": "dataset_ref", "type": "string", "sample": "intl_rsf_press_freedom"},
+    {"name": "source_url", "type": "string", "sample": "https://rsf.org/sites/default/files/import_classement/2024.csv"},
+    {"name": "params", "type": "dict", "sample": {}},
+    {"name": "rows", "type": "list", "sample": [{"country_iso3": "NOR", "rank": "1", "score": "95.18"}]},
+    {"name": "row_count", "type": "int", "sample": 1},
+    {"name": "raw", "type": "dict", "sample": {}},
+    {"name": "retrieved_at", "type": "string", "sample": "2026-04-09T00:00:00+00:00"}
+  ],
+  "sample_row": {
+    "dataset_ref": "intl_rsf_press_freedom",
+    "source_url": "https://rsf.org/sites/default/files/import_classement/2024.csv",
+    "params": {},
+    "rows": [{"country_iso3": "NOR", "rank": "1", "score": "95.18"}],
+    "row_count": 1,
+    "raw": {},
+    "retrieved_at": "2026-04-09T00:00:00+00:00"
+  }
+}

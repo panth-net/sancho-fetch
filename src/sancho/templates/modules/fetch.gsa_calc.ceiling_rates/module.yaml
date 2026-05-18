@@ -1,0 +1,41 @@
+id: fetch.gsa_calc.ceiling_rates
+version: 1.1.0
+type: fetch
+catalog_tier: small
+entrypoint: main.py:run
+description: 'Path-driven GSA CALC+ ceiling rates client. Returns Elasticsearch-style
+
+  hits which the wrapper unwraps to flat rows. Auth via DATA_GOV_API_KEY.
+
+  '
+managed_paths:
+- module.yaml
+- main.py
+- api.py
+- transform.py
+- schema.sample.json
+input_schema:
+  type: object
+  properties:
+    endpoint:
+      type: string
+      description: 'GSA CALC+ ceiling rates endpoint URL. Default v3.
+
+        '
+      examples:
+      - https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/
+    params:
+      type: object
+      description: 'Query parameters. ES-fielded filters (labor_category, schedule,
+
+        min_education, business_size, etc.). DATA_GOV_API_KEY
+
+        auto-injected as `api_key`.
+
+        '
+output_schema:
+  type: object
+  required:
+  - dataset_ref
+  - endpoint
+  - retrieved_at

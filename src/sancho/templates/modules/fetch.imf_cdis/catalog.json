@@ -1,0 +1,978 @@
+{
+  "provider": "fetch.imf_cdis",
+  "schema_version": "1.0",
+  "generated_at": "2026-04-15T17:16:25.491856+00:00",
+  "families": [
+    {
+      "id": "sdmx.dataflow",
+      "base_aliases": [
+        "v1"
+      ],
+      "base_url": "https://sdmxcentral.imf.org/ws/public/sdmxapi/rest",
+      "path_templates": [
+        "/dataflow/all/all",
+        "/dataflow/{agency}/{id}/{version}",
+        "/data/{agency},{dataflow},{version}/{key}",
+        "/datastructure/{agency}/{id}/{version}",
+        "/codelist/{agency}/{id}/{version}"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "query_params": {
+        "startPeriod": {
+          "type": "string",
+          "description": "Start period"
+        },
+        "endPeriod": {
+          "type": "string",
+          "description": "End period"
+        },
+        "dimensionAtObservation": {
+          "type": "string",
+          "examples": [
+            "TIME_PERIOD",
+            "AllDimensions"
+          ]
+        },
+        "detail": {
+          "type": "string",
+          "examples": [
+            "full",
+            "dataonly",
+            "serieskeysonly",
+            "nodata"
+          ]
+        },
+        "format": {
+          "type": "string",
+          "examples": [
+            "jsondata",
+            "structurespecific",
+            "generic"
+          ]
+        }
+      },
+      "response_mode": "json",
+      "envelope_key": "data.dataflows",
+      "description": "SDMX-REST dataflow catalog for fetch.imf_cdis. See catalog.json.dataflows[].",
+      "source_refs": [
+        "https://data.imf.org/CDIS"
+      ]
+    }
+  ],
+  "dataflows": [
+    {
+      "id": "01R",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "Exchange Rates and International Reserves (01R) for Collection",
+      "description": "Exchange Rates and International Reserves (01R) for Collection",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "1DI",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "Coordinated Direct Investment Survey (CDIS) for Collection",
+      "description": "Coordinated Direct Investment Survey (CDIS) for Collection",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "1PI",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "Coordinated Portfolio Investment Survey (CPIS) for Collection",
+      "description": "Coordinated Portfolio Investment Survey (CPIS) for Collection",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "1SR",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "M&B: Central Bank (1SR) for Collection",
+      "description": "M&B: Central Bank (1SR) for Collection",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "2SR",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "M&B: Other Depository Corporations (2SR) for Collection",
+      "description": "M&B: Other Depository Corporations (2SR) for Collection",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "4SR",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "M&B: Other Financial Corporations (4SR) for Collection",
+      "description": "M&B: Other Financial Corporations (4SR) for Collection",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "5SR",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "M&B: Monetary Aggregates (5SR) for Collection",
+      "description": "M&B: Monetary Aggregates (5SR) for Collection",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "60R",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "RES: Prices, Production, Labor and Trade (60R) for Collection",
+      "description": "RES: Prices, Production, Labor and Trade (60R) for Collection",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "6SR",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "M&B: Interest Rates and Share Prices (6SR) for Collection",
+      "description": "M&B: Interest Rates and Share Prices (6SR) for Collection",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "90R",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "RES: National Accounts (90R) for Collection",
+      "description": "RES: National Accounts (90R) for Collection",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "BCG",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "Budgetary Central Government Operations",
+      "description": "Government Finance Operations Statement Central Government",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "BCGO_ALT_FISCAL",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "Budgetary Central Government Operations",
+      "description": "Government Finance Budgetary Central Government Operations  FISCAL",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ALT_FISCAL_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "BOP5_COLLECTION",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "Balance of Payments (BPM5) for Collection",
+      "description": "Balance of Payments (BPM5) for Collection",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "BOP6",
+      "agencyID": "IMF",
+      "version": "1.1",
+      "name": "Balance of Payments (BPM6) for Collection",
+      "description": "Balance of Payments (BPM6) for Collection",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "BOP_BPM5",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "Balance of Payments -- BPM5",
+      "description": "",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "BOP_BPM6",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "Balance of Payments -- BPM6",
+      "description": "",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "BOP_GBPM6",
+      "agencyID": "IMF",
+      "version": "2.0",
+      "name": "Balance of Payments _Global use_BOP_BPM6",
+      "description": "",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:BOP(2.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "BPM6_BOP_Q",
+      "agencyID": "IMF",
+      "version": "1.5",
+      "name": "Balance of Payments --BPM6--Global DSD",
+      "description": "",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:BOP(1.5)",
+      "annotations_count": 0
+    },
+    {
+      "id": "BPM6_RA_M",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "Template on International Reserves and Foreign Currency Liquidity--Global DSD",
+      "description": "",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:BOP(1.2)",
+      "annotations_count": 0
+    },
+    {
+      "id": "CBS",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "Central Bank Survey",
+      "description": "Central Bank Survey",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "CBS_NSTD",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "Central Bank Survey_Non-Standard",
+      "description": "Non-Standard_ISO Codes",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "CGD",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "Central Government debt (CGD)",
+      "description": "Government Finance Central Government debt",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "CGD_ALT_FISCAL",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "Central Government debt (CGD) FISCAL",
+      "description": "Government Finance Central Government debt FISCAL",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ALT_FISCAL_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "CGD_GNA",
+      "agencyID": "IMF",
+      "version": "1.5",
+      "name": "Central Government Debt (CGD) - Global Use NA_SEC DSD V1.5",
+      "description": "",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=ESTAT:NA_SEC(1.5)",
+      "annotations_count": 0
+    },
+    {
+      "id": "CGD_NSTD",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "Central Government Debt_Non-Standard",
+      "description": "Non-Standard_ISO Codes",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "CGO",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "Central Government Operations (CGO)",
+      "description": "Government Finance Operations Statement Central Government",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "CGO_ALT_FISCAL",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "Central Government operations (CGO) FISCAL",
+      "description": "Government Finance Central Government operations FISCAL",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ALT_FISCAL_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "CGO_GNA",
+      "agencyID": "IMF",
+      "version": "1.4",
+      "name": "Central Government operations (CGO) - Global Use NA_SEC DSD V1.4",
+      "description": "",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=ESTAT:NA_SEC(1.1)",
+      "annotations_count": 0
+    },
+    {
+      "id": "CGO_NSTD",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "Central government operations_Non-Standard",
+      "description": "Non-Standard_ISO Codes",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "COF",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "COFER: Currency Composition of Foreign Exchange Reserves",
+      "description": "COFER: Currency Composition of Foreign Exchange Reserves",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "CPI",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "Consumer Price Index",
+      "description": "",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "CPIH",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "Consumer Price Index Harmonized (CPIH) for collection",
+      "description": "",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "DCS",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "Depository Corporations Survey",
+      "description": "Depository Corporations Survey",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "DCS_NSTD",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "Depository Corporations Survey_Non-Standard",
+      "description": "Non-Standard_ISO Codes",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "DOTS",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "Direction of Trade Statistics (DOTS) for Collection",
+      "description": "Direction of Trade Statistics (DOTS) for Collection",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "DSE",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "Debt Securities",
+      "description": "Debt Securities",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "DSE_GBPM6",
+      "agencyID": "IMF",
+      "version": "2.0",
+      "name": "Debt Securities - Global Use BPM6 DSD",
+      "description": "",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:BOP(2.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "DSE_GNA",
+      "agencyID": "IMF",
+      "version": "1.12",
+      "name": "Debt Securities - Global Use NA_SEC DSD V1.12",
+      "description": "",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=ESTAT:NA_SEC(1.12)",
+      "annotations_count": 0
+    },
+    {
+      "id": "ECC",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "Climate Change",
+      "description": "",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "EMP",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "Employment",
+      "description": "",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "EXD",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "External debt",
+      "description": "External debt",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "EXD_BPM6",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "External Debt (EXD_BPM6)",
+      "description": "",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "EXD_GBPM6",
+      "agencyID": "IMF",
+      "version": "2.0",
+      "name": "External Debt (EXD)- Global Use BOP_BPM6",
+      "description": "",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:BOP(2.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "EXR",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "Exchange rates",
+      "description": "Exchange rates",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "FAS_COLLECTION",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "Financial Access Survey (FAS) for Collection",
+      "description": "Financial Access Survey (FAS) for Collection",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "FLI",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "Forward looking Indicators",
+      "description": "Forward looking Indicators",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "FS1",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "FSI: Institution of Deposit Takers and OFCs (FS1) for Collection",
+      "description": "FSI: Institution of Deposit Takers and OFCs (FS1) for Collection",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "FS2",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "FSI: Sectoral Financial Statements (FS2) for Collection",
+      "description": "FSI: Sectoral Financial Statements (FS2) for Collection",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "FSD",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "FSI: Data Report Form (FSD) for Collection",
+      "description": "FSI: Data Report Form (FSD) for Collection",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "FSD_NSTD",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "FSI: Data Report Form_Non-Standard",
+      "description": "Non-Standard_ISO Codes",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "FSI",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "Financial Soundness Indicators",
+      "description": "",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "FXI",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "Foreign Exchange Intervention",
+      "description": "",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "GFB",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "GFS: Budgetary Central Govt: Operational Statement, Cash Statement, Balance Sheet (GFB) for Collection",
+      "description": "Budgetary Central Govt: Operational Statement, Cash Statement, Balance Sheet (GFB) for Collection",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "GFC",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "GFS: Consolidated Central Govt: Operational Statement, Cash Statement, Balance Sheet (GFC) for Collection",
+      "description": "Consolidated Central Govt: Operational Statement, Cash Statement, Balance Sheet (GFC) for Collection",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "GFG",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "GFS: Consolidated General Govt: Operational Statement, Cash Statement, Balance Sheet (GFG) for Collection",
+      "description": "GFS: Consolidated General Govt: Operational Statement, Cash Statement, Balance Sheet (GFG) for Collection",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "GGD",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "General Government gross debt (GGD)",
+      "description": "Government Finance General Government gross debt",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "GGD_ALT_FISCAL",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "General Government debt (GGD) FISCAL",
+      "description": "Government Finance General Government debt FISCAL",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ALT_FISCAL_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "GGD_GNA",
+      "agencyID": "IMF",
+      "version": "1.7",
+      "name": "General Government debt - Global Use NA_SEC DSD V1.7",
+      "description": "",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=ESTAT:NA_SEC(1.7)",
+      "annotations_count": 0
+    },
+    {
+      "id": "GGO",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "General Government Operations (GGO)",
+      "description": "Government Finance Operations Statement General Government",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "GGO_ALT_FISCAL",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "General Government operations (GGO) FISCAL",
+      "description": "Government Finance General Government operations FISCAL",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ALT_FISCAL_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "GGO_GNA",
+      "agencyID": "IMF",
+      "version": "1.5",
+      "name": "General Government operations (GGO) - Global Use NA_SEC DSD V1.5",
+      "description": "",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=ESTAT:NA_SEC(1.5)",
+      "annotations_count": 0
+    },
+    {
+      "id": "GYQ",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "GFS: Yearkbook Questionnaire (GYQ) for Collection",
+      "description": "GFS: Yearkbook Questionnaire (GYQ) for Collection",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "IIP5_COLLECTION",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "International Investment Position (BPM5) for Collection",
+      "description": "International Investment Position (BPM5) for Collection",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "IIP6",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "International Investment Position (BPM6) for Collection",
+      "description": "International Investment Position (BPM6) for Collection",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "IIP_BPM5",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "International Investment Position -- BPM5",
+      "description": "",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "IIP_BPM6",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "International Investment Position -- BPM6",
+      "description": "",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "IIP_GBPM6",
+      "agencyID": "IMF",
+      "version": "2.0",
+      "name": "International Investment Position (IIP) - Global Use BOP_BPM6",
+      "description": "",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:BOP(2.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "ILV1",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "Official reserve assets",
+      "description": "Official reserve assets",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "ILV1_GBPM6",
+      "agencyID": "IMF",
+      "version": "2.0",
+      "name": "Official Reserve Assets (ILV1)-Global Use BOP_BPM6",
+      "description": "",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:BOP(2.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "ILV2",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "Template on International Reserves and Foreign Currency Liquidity",
+      "description": "Template on International Reserves and Foreign Currency Liquidity",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "ILV2_GBPM6",
+      "agencyID": "IMF",
+      "version": "2.0",
+      "name": "Reserves Template (ILV2)-Global Use BPM6",
+      "description": "",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:BOP(2.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "IND",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "Index of Industrial Production",
+      "description": "Index of Industrial Production",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "IND_NSTD",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "Index of Industrial Production_Non-Standard",
+      "description": "Non-Standard_ISO Codes",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "INF",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "Instrument Composition of Transactions in Foreign Exchange Reserves (INFER) for Collection",
+      "description": "Instrument Composition of Transactions in Foreign Exchange Reserves (INFER) for Collection",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "INR",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "Interest rates",
+      "description": "Interest rates",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "INR_NSTD",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "Interest rates_Non-Standard",
+      "description": "Non-Standard_ISO Codes",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "LMI",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "Labor Market Indicators",
+      "description": "",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "LMI_NSTD",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "Labor Market Indicators_Non-Standard",
+      "description": "Non-Standard_ISO Codes",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "MET",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "Merchandise trade",
+      "description": "Merchandise trade",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "MET_NSTD",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "Merchandise Trade_Non-Standard",
+      "description": "Non-Standard_ISO Codes",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "MSG",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "Monetary and Financial Statistics Aggregates",
+      "description": "",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "NAG",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "National Accounts",
+      "description": "",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "NAG_08",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "National Accounts -- 08'",
+      "description": "",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "NAG_93",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "National Accounts -- 93'",
+      "description": "",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "NAG_GNA",
+      "agencyID": "IMF",
+      "version": "1.11",
+      "name": "National Accounts 2008 (NAG08) - Global Use NA_MAIN v1.11",
+      "description": "",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=ESTAT:NA_MAIN(1.11)",
+      "annotations_count": 0
+    },
+    {
+      "id": "NAG_NSTD",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "National Accounts - GDP_Non-Standard",
+      "description": "Non-Standard_ISO Codes",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "NASEC_T0720_Q",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "Sectoral Balance Sheets",
+      "description": "",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=ESTAT:NA_SEC(1.16)",
+      "annotations_count": 0
+    },
+    {
+      "id": "OFS",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "Other Financial Corporations (OFC) survey",
+      "description": "Other Financial Corporations (OFC) survey",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "OFS_GNA",
+      "agencyID": "IMF",
+      "version": "1.5",
+      "name": "Other Financial Corporations (OFC) - Global Use NA_SEC v1.5",
+      "description": "",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=ESTAT:NA_SEC(1.5)",
+      "annotations_count": 0
+    },
+    {
+      "id": "POP",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "Population",
+      "description": "Population",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "PPI",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "Producer Price Index",
+      "description": "",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "RTD",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "Reserves Template for Collection",
+      "description": "Reserves Template for Collection",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "SBS",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "Accumulation Accounts (Sectoral Balance Sheets)",
+      "description": "Accumulation Accounts (Sectoral Balance Sheets)",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "SBS_GNA",
+      "agencyID": "IMF",
+      "version": "1.12",
+      "name": "Sectoral Balance Sheets (SBS) - Global Use NA_SEC v1.12",
+      "description": "Sectoral Balance Sheets (SBS) - Global Use NA_SEC v1.12",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=ESTAT:NA_SEC(1.12)",
+      "annotations_count": 0
+    },
+    {
+      "id": "SOC",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "Socio-Demographic",
+      "description": "",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "SPI",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "Stock Market: Share Price Index",
+      "description": "",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "UEM",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "Unemployment",
+      "description": "",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "WOE",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "Wages and Earnings",
+      "description": "",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "YGG",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "Gender",
+      "description": "",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    },
+    {
+      "id": "ZZZNL_TEST",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "ZZZ_TEST_ECOFIN",
+      "description": "Netherlands Test Provision Agreement EcoFin DSD",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:BOP(1.1)",
+      "annotations_count": 0
+    },
+    {
+      "id": "ZZZ_TEST_ECOFIN",
+      "agencyID": "IMF",
+      "version": "1.0",
+      "name": "Test Dataflow EcoFin DSD",
+      "description": "",
+      "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:ECOFIN_DSD(1.0)",
+      "annotations_count": 0
+    }
+  ],
+  "agencies": {
+    "IMF": 101
+  }
+}

@@ -1,0 +1,59 @@
+id: fetch.congress.bills
+version: 1.2.0
+type: fetch
+catalog_tier: large
+entrypoint: main.py:run
+description: 'Path-driven Congress.gov v3 client. Despite the name "bills," covers
+
+  every resource: bill, amendment, member, committee, nomination, treaty,
+
+  hearing, CRS report, etc. The wrapper auto-injects `format=json` (API
+
+  defaults to XML).
+
+
+  catalog.json enumerates 18 top-level resources with per-resource counts.
+
+  Requires CONGRESS_API_KEY.
+
+  '
+managed_paths:
+- module.yaml
+- main.py
+- api.py
+- transform.py
+- schema.sample.json
+- catalog.json
+- catalog.meta.json
+- catalog_blueprint.py
+- discovery.py
+input_schema:
+  type: object
+  properties:
+    endpoint:
+      type: string
+      description: 'Congress.gov v3 endpoint. `/bill`, `/bill/{congress}/{type}`,
+
+        `/member`, `/committee`, etc.
+
+        '
+      examples:
+      - https://api.congress.gov/v3/bill
+      - https://api.congress.gov/v3/bill/118/hr
+      - https://api.congress.gov/v3/member
+      - https://api.congress.gov/v3/committee
+    params:
+      type: object
+      description: 'Query parameters. `format=json` is auto-set. `limit` (1-250),
+
+        `offset`, `fromDateTime`/`toDateTime` (ISO 8601 with Z), `sort`
+
+        ("updateDate desc"). For /member: `currentMember`, `chamber`.
+
+        '
+output_schema:
+  type: object
+  required:
+  - dataset_ref
+  - endpoint
+  - retrieved_at

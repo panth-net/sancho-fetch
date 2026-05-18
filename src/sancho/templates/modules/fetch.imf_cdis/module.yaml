@@ -1,0 +1,31 @@
+id: fetch.imf_cdis
+version: 1.1.0
+type: fetch
+catalog_tier: large
+entrypoint: main.py:run
+description: "Fetch IMF statistical data via SDMX Central. catalog.json enumerates\
+  \ 101\nIMF dataflows \u2014 CDIS, IFS, BOP, GFS, Consumer Prices, Fiscal Monitor,\
+  \ etc.\n\u2014 across all IMF-agency datasets.\n"
+managed_paths:
+- module.yaml
+- main.py
+- api.py
+- transform.py
+- schema.sample.json
+- catalog.json
+- catalog.meta.json
+- catalog_blueprint.py
+- discovery.py
+input_schema:
+  type: object
+  properties:
+    period:
+      type: string
+    country:
+      type: string
+output_schema:
+  type: object
+  required:
+  - dataset_ref
+  - source_url
+  - retrieved_at

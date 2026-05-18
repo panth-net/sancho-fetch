@@ -1,0 +1,318 @@
+{
+  "provider": "fetch.epa.aqs_annual",
+  "schema_version": "1.0",
+  "generated_at": "2026-04-15T22:11:58.519875+00:00",
+  "stats": {
+    "family_count": 13,
+    "list_count": 5,
+    "lists_count": 5,
+    "total_list_entry_count": 2240,
+    "parameter_class_count": 27,
+    "total_parameter_count": 2906
+  },
+  "discovery": {
+    "mode": "live_required",
+    "sources": [
+      {
+        "id": "list/states",
+        "url": "https://aqs.epa.gov/data/api/list/states",
+        "status": "ok",
+        "http_status": 200,
+        "count": 56,
+        "error": "",
+        "fetched_at": "2026-04-15T22:11:26.565172+00:00"
+      },
+      {
+        "id": "list/cbsas",
+        "url": "https://aqs.epa.gov/data/api/list/cbsas",
+        "status": "ok",
+        "http_status": 200,
+        "count": 1006,
+        "error": "",
+        "fetched_at": "2026-04-15T22:11:29.525310+00:00"
+      },
+      {
+        "id": "list/classes",
+        "url": "https://aqs.epa.gov/data/api/list/classes",
+        "status": "ok",
+        "http_status": 200,
+        "count": 27,
+        "error": "",
+        "fetched_at": "2026-04-15T22:11:30.425011+00:00"
+      },
+      {
+        "id": "list/pqaos",
+        "url": "https://aqs.epa.gov/data/api/list/pqaos",
+        "status": "ok",
+        "http_status": 200,
+        "count": 771,
+        "error": "",
+        "fetched_at": "2026-04-15T22:11:31.567824+00:00"
+      },
+      {
+        "id": "list/mas",
+        "url": "https://aqs.epa.gov/data/api/list/mas",
+        "status": "ok",
+        "http_status": 200,
+        "count": 380,
+        "error": "",
+        "fetched_at": "2026-04-15T22:11:32.342877+00:00"
+      },
+      {
+        "id": "list/durations",
+        "url": "https://aqs.epa.gov/data/api/list/durations",
+        "status": "error",
+        "http_status": 422,
+        "count": 0,
+        "error": "422 Client Error: Unprocessable Entity for url: https://aqs.epa.gov/data/api/list/durations?email=tgoetemann%40gmail.com&key=greygazelle58",
+        "fetched_at": "2026-04-15T22:11:33.032172+00:00"
+      },
+      {
+        "id": "parametersByClass.AIRNOW MAPS",
+        "url": "https://aqs.epa.gov/data/api/list/parametersByClass",
+        "status": "ok",
+        "http_status": 200,
+        "count": 3,
+        "error": "",
+        "fetched_at": "2026-04-15T22:11:34.807456+00:00"
+      },
+      {
+        "id": "parametersByClass.ALL",
+        "url": "https://aqs.epa.gov/data/api/list/parametersByClass",
+        "status": "ok",
+        "http_status": 200,
+        "count": 1377,
+        "error": "",
+        "fetched_at": "2026-04-15T22:11:35.558207+00:00"
+      },
+      {
+        "id": "parametersByClass.AQI POLLUTANTS",
+        "url": "https://aqs.epa.gov/data/api/list/parametersByClass",
+        "status": "ok",
+        "http_status": 200,
+        "count": 7,
+        "error": "",
+        "fetched_at": "2026-04-15T22:11:36.277217+00:00"
+      },
+      {
+        "id": "parametersByClass.CORE_HAPS",
+        "url": "https://aqs.epa.gov/data/api/list/parametersByClass",
+        "status": "ok",
+        "http_status": 200,
+        "count": 42,
+        "error": "",
+        "fetched_at": "2026-04-15T22:11:38.029068+00:00"
+      },
+      {
+        "id": "parametersByClass.CRITERIA",
+        "url": "https://aqs.epa.gov/data/api/list/parametersByClass",
+        "status": "ok",
+        "http_status": 200,
+        "count": 8,
+        "error": "",
+        "fetched_at": "2026-04-15T22:11:38.762043+00:00"
+      },
+      {
+        "id": "parametersByClass.CSN DART",
+        "url": "https://aqs.epa.gov/data/api/list/parametersByClass",
+        "status": "ok",
+        "http_status": 200,
+        "count": 41,
+        "error": "",
+        "fetched_at": "2026-04-15T22:11:39.424528+00:00"
+      },
+      {
+        "id": "parametersByClass.FORECAST",
+        "url": "https://aqs.epa.gov/data/api/list/parametersByClass",
+        "status": "ok",
+        "http_status": 200,
+        "count": 33,
+        "error": "",
+        "fetched_at": "2026-04-15T22:11:40.146197+00:00"
+      },
+      {
+        "id": "parametersByClass.HAPS",
+        "url": "https://aqs.epa.gov/data/api/list/parametersByClass",
+        "status": "ok",
+        "http_status": 200,
+        "count": 408,
+        "error": "",
+        "fetched_at": "2026-04-15T22:11:41.018331+00:00"
+      },
+      {
+        "id": "parametersByClass.IMPROVE CARBON",
+        "url": "https://aqs.epa.gov/data/api/list/parametersByClass",
+        "status": "ok",
+        "http_status": 200,
+        "count": 12,
+        "error": "",
+        "fetched_at": "2026-04-15T22:11:41.713938+00:00"
+      },
+      {
+        "id": "parametersByClass.IMPROVE_SPECIATION",
+        "url": "https://aqs.epa.gov/data/api/list/parametersByClass",
+        "status": "ok",
+        "http_status": 200,
+        "count": 56,
+        "error": "",
+        "fetched_at": "2026-04-15T22:11:42.466262+00:00"
+      },
+      {
+        "id": "parametersByClass.MET",
+        "url": "https://aqs.epa.gov/data/api/list/parametersByClass",
+        "status": "ok",
+        "http_status": 200,
+        "count": 37,
+        "error": "",
+        "fetched_at": "2026-04-15T22:11:43.128717+00:00"
+      },
+      {
+        "id": "parametersByClass.NATTS CORE HAPS",
+        "url": "https://aqs.epa.gov/data/api/list/parametersByClass",
+        "status": "ok",
+        "http_status": 200,
+        "count": 28,
+        "error": "",
+        "fetched_at": "2026-04-15T22:11:43.830463+00:00"
+      },
+      {
+        "id": "parametersByClass.NATTS REQUIRED",
+        "url": "https://aqs.epa.gov/data/api/list/parametersByClass",
+        "status": "ok",
+        "http_status": 200,
+        "count": 30,
+        "error": "",
+        "fetched_at": "2026-04-15T22:11:47.506107+00:00"
+      },
+      {
+        "id": "parametersByClass.PAMS",
+        "url": "https://aqs.epa.gov/data/api/list/parametersByClass",
+        "status": "ok",
+        "http_status": 200,
+        "count": 77,
+        "error": "",
+        "fetched_at": "2026-04-15T22:11:48.191089+00:00"
+      },
+      {
+        "id": "parametersByClass.PAMS_VOC",
+        "url": "https://aqs.epa.gov/data/api/list/parametersByClass",
+        "status": "ok",
+        "http_status": 200,
+        "count": 59,
+        "error": "",
+        "fetched_at": "2026-04-15T22:11:48.934978+00:00"
+      },
+      {
+        "id": "parametersByClass.PM COARSE",
+        "url": "https://aqs.epa.gov/data/api/list/parametersByClass",
+        "status": "ok",
+        "http_status": 200,
+        "count": 2,
+        "error": "",
+        "fetched_at": "2026-04-15T22:11:49.610604+00:00"
+      },
+      {
+        "id": "parametersByClass.PM10 SPECIATION",
+        "url": "https://aqs.epa.gov/data/api/list/parametersByClass",
+        "status": "ok",
+        "http_status": 200,
+        "count": 124,
+        "error": "",
+        "fetched_at": "2026-04-15T22:11:50.282954+00:00"
+      },
+      {
+        "id": "parametersByClass.PM2.5 CONT NONREF",
+        "url": "https://aqs.epa.gov/data/api/list/parametersByClass",
+        "status": "ok",
+        "http_status": 200,
+        "count": 4,
+        "error": "",
+        "fetched_at": "2026-04-15T22:11:51.003603+00:00"
+      },
+      {
+        "id": "parametersByClass.PM2.5 MASS/QA",
+        "url": "https://aqs.epa.gov/data/api/list/parametersByClass",
+        "status": "ok",
+        "http_status": 200,
+        "count": 10,
+        "error": "",
+        "fetched_at": "2026-04-15T22:11:51.682275+00:00"
+      },
+      {
+        "id": "parametersByClass.SCHOOL AIR TOXICS",
+        "url": "https://aqs.epa.gov/data/api/list/parametersByClass",
+        "status": "ok",
+        "http_status": 200,
+        "count": 126,
+        "error": "",
+        "fetched_at": "2026-04-15T22:11:52.623401+00:00"
+      },
+      {
+        "id": "parametersByClass.SPECIATION",
+        "url": "https://aqs.epa.gov/data/api/list/parametersByClass",
+        "status": "ok",
+        "http_status": 200,
+        "count": 119,
+        "error": "",
+        "fetched_at": "2026-04-15T22:11:53.321841+00:00"
+      },
+      {
+        "id": "parametersByClass.SPECIATION CARBON",
+        "url": "https://aqs.epa.gov/data/api/list/parametersByClass",
+        "status": "ok",
+        "http_status": 200,
+        "count": 41,
+        "error": "",
+        "fetched_at": "2026-04-15T22:11:53.977579+00:00"
+      },
+      {
+        "id": "parametersByClass.SPECIATION CATION/ANION",
+        "url": "https://aqs.epa.gov/data/api/list/parametersByClass",
+        "status": "ok",
+        "http_status": 200,
+        "count": 8,
+        "error": "",
+        "fetched_at": "2026-04-15T22:11:54.669041+00:00"
+      },
+      {
+        "id": "parametersByClass.SPECIATION METALS",
+        "url": "https://aqs.epa.gov/data/api/list/parametersByClass",
+        "status": "ok",
+        "http_status": 200,
+        "count": 50,
+        "error": "",
+        "fetched_at": "2026-04-15T22:11:55.336022+00:00"
+      },
+      {
+        "id": "parametersByClass.UATMP CARBONYL",
+        "url": "https://aqs.epa.gov/data/api/list/parametersByClass",
+        "status": "ok",
+        "http_status": 200,
+        "count": 20,
+        "error": "",
+        "fetched_at": "2026-04-15T22:11:56.074345+00:00"
+      },
+      {
+        "id": "parametersByClass.UATMP VOC",
+        "url": "https://aqs.epa.gov/data/api/list/parametersByClass",
+        "status": "ok",
+        "http_status": 200,
+        "count": 63,
+        "error": "",
+        "fetched_at": "2026-04-15T22:11:57.829677+00:00"
+      },
+      {
+        "id": "parametersByClass.VOC",
+        "url": "https://aqs.epa.gov/data/api/list/parametersByClass",
+        "status": "ok",
+        "http_status": 200,
+        "count": 121,
+        "error": "",
+        "fetched_at": "2026-04-15T22:11:58.518877+00:00"
+      }
+    ],
+    "docs": [
+      "https://aqs.epa.gov/aqsweb/documents/data_api.html"
+    ]
+  }
+}

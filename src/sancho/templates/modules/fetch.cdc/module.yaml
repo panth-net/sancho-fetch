@@ -1,0 +1,88 @@
+id: fetch.cdc
+version: 1.1.0
+type: fetch
+catalog_tier: large
+entrypoint: run.py:run
+description: 'Path-driven CDC Socrata client. Supply a `path` (Socrata resource ID
+  like
+
+  `/bi63-dtpu.json` or the portal view list `/api/views`) and the wrapper
+
+  routes through catalog.json family specs. Use `params` for SoQL queries
+
+  (`$limit`, `$where`, `$order`, etc.).
+
+
+  catalog.json enumerates 14 high-traffic CDC datasets (leading death,
+
+  life expectancy, mortality rates, PLACES county/city, COVID, weekly
+
+  deaths, etc.) plus a generic dataset_id template. Optional auth:
+
+  SODA_API_KEY_ID.
+
+  '
+managed_paths:
+- module.yaml
+- run.py
+- discovery.py
+- catalog_blueprint.py
+- catalog.json
+- catalog.meta.json
+- client.py
+input_schema:
+  type: object
+  required:
+  - path
+  properties:
+    path:
+      type: string
+      description: 'Socrata resource path. Use `/{dataset_id}.json` for a specific
+
+        resource, or `/api/views` for the portal view list. The catalog
+
+        documents 14 named datasets by family ID.
+
+        '
+      examples:
+      - /bi63-dtpu.json
+      - /w9j2-ggv5.json
+      - /swc5-untb.json
+      - /api/views
+    method:
+      type: string
+      description: HTTP method. Defaults to GET (only supported method).
+      default: GET
+      examples:
+      - GET
+    base:
+      type: string
+      description: 'Catalog base alias. "resource" for `/{id}.json` style, "portal"
+        for
+
+        the API-views endpoint.
+
+        '
+      examples:
+      - resource
+      - portal
+    params:
+      type: object
+      description: 'SoQL query parameters. Common: `$limit`, `$offset`, `$where`,
+
+        `$select`, `$order`, `$group`, `$q`. Filter by column with
+
+        `column=value`. See dev.socrata.com/docs/queries.
+
+        '
+    body:
+      type: object
+      description: Body payload (rare; Socrata is GET-driven).
+output_schema:
+  type: object
+  required:
+  - provider
+  - dataset_ref
+  - family_id
+  - path
+  - retrieved_at

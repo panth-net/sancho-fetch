@@ -1,0 +1,84 @@
+id: fetch.census.htops
+version: 1.0.0
+type: fetch
+catalog_tier: small
+entrypoint: main.py:run
+description: "Census Household Pulse Survey (HPS) timeseries client. Public, requires\n\
+  CENSUS_API_KEY. Endpoint: /data/timeseries/hps. The Pulse Survey reports\nweekly\
+  \ household experiences with food security, mental health, child\ncare, housing,\
+  \ employment, etc. Variables follow the suffix pattern:\n`{TOPIC}_TOTAL` (count),\
+  \ `{TOPIC}_RATE` (percentage), `{TOPIC}_UNIV`\n(universe size).\n\nNote: many variables\
+  \ are non-null only for specific weeks. The wrapper\nalways returns the WEEK column\
+  \ so the client can identify which weeks\ncarry data.\n\nRequired input:\n  variables\
+  \  - List of HPS variable codes (e.g. [\"EXPENSE_TOTAL\"]).\n  time       - Year\
+  \ as a 4-digit string (e.g. \"2023\") or range\n               (\"from 2022 to 2024\"\
+  ).\n\nOptional input:\n  geography  - \"us:1\" (default), \"state:51\", \"state:*\"\
+  .\n  week       - Specific data collection week (e.g. \"67\"). If omitted,\n   \
+  \            every week in the selected `time` is returned.\n"
+managed_paths:
+- module.yaml
+- main.py
+- api.py
+- transform.py
+- schema.sample.json
+input_schema:
+  type: object
+  required:
+  - variables
+  - time
+  properties:
+    variables:
+      type: array
+      items:
+        type: string
+      description: 'List of HPS variable codes. WEEK is auto-prepended.
+
+        '
+      examples:
+      - - EXPENSE_TOTAL
+      - - UNITS_TOTAL
+        - FOODASSIS_RATE
+    time:
+      type: string
+      description: 'Year as a 4-digit string ("2023") or a range
+
+        ("from 2022 to 2024"). Single weeks are not directly supported via
+
+        `time`; use the `week` parameter for that.
+
+        '
+      examples:
+      - '2023'
+      - '2022'
+      - from 2022 to 2024
+    geography:
+      type: string
+      description: 'Census `for=` value. Defaults to "us:1". Pulse Survey supports
+        us
+
+        and state levels; sub-state geographies are not in the
+
+        publicly-released microdata.
+
+        '
+      default: us:1
+      examples:
+      - us:1
+      - state:51
+      - state:*
+    week:
+      type: integer
+      description: 'Optional specific Pulse Survey collection week (a counter within
+        the
+
+        program, e.g. 67). If supplied, results are filtered to that week.
+
+        '
+      examples:
+      - 67
+output_schema:
+  type: object
+  required:
+  - dataset_ref
+  - rows
+  - retrieved_at

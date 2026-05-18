@@ -1,0 +1,97 @@
+id: fetch.census.decennial
+version: 1.0.0
+type: fetch
+catalog_tier: small
+entrypoint: main.py:run
+description: "Fetch population counts from the US Census Bureau Decennial Census API.\n\
+  Default dataset is the 2020 Demographic and Housing Characteristics File\n(DHC),\
+  \ which provides detailed population, housing, race/ethnicity, and\nhousehold composition\
+  \ counts. Other datasets: 2020 PL94-171 redistricting\ndata (`pl`), 2010 SF1 (`sf1`).\n\
+  \nRequired input:\n  geography      - Census `for=` value, e.g. \"state:51\", \"\
+  place:81072\".\n\nOptional input:\n  in_geography   - Census `in=` parent qualifier.\
+  \ REQUIRED whenever\n                   geography is sub-state (place, county, tract,\
+  \ etc.).\n  year           - Census year. Default \"2020\".\n  dataset        -\
+  \ Dataset key under /data/{year}/dec/. Default \"dhc\".\n                   Options:\
+  \ \"dhc\" (detailed), \"pl\" (redistricting), \"sf1\".\n  variables      - List\
+  \ of variable codes. Default [\"NAME\", \"P1_001N\"]\n                   (label\
+  \ + total population for 2020 DHC).\n                   2010 SF1 uses different\
+  \ codes (P0010001 for total).\n\nExamples:\n  - State of VA total pop 2020: {geography:\
+  \ \"state:51\"}\n  - Vienna town VA pop 2020:   {geography: \"place:81072\",\n \
+  \                               in_geography: \"state:51\"}  \u2192 returns 16,473\n"
+managed_paths:
+- module.yaml
+- main.py
+- api.py
+- transform.py
+- schema.sample.json
+input_schema:
+  type: object
+  required:
+  - geography
+  properties:
+    geography:
+      type: string
+      description: 'Census `for=` value (e.g. "state:51", "place:81072", "county:*").
+
+        '
+      examples:
+      - state:51
+      - state:06
+      - place:81072
+      - county:*
+    in_geography:
+      type: string
+      description: 'Census `in=` parent qualifier. REQUIRED whenever geography starts
+
+        with place/county/tract/block group/zip code tabulation area.
+
+        '
+      examples:
+      - state:51
+      - state:06
+    year:
+      type: string
+      description: Census year. Default "2020".
+      default: '2020'
+      examples:
+      - '2020'
+      - '2010'
+    dataset:
+      type: string
+      description: 'Dataset key. "dhc" (2020 Demographic + Housing Characteristics),
+
+        "pl" (2020 PL94-171 redistricting), "sf1" (2010 Summary File 1).
+
+        '
+      default: dhc
+      examples:
+      - dhc
+      - pl
+      - sf1
+    variables:
+      type: array
+      items:
+        type: string
+      description: 'Variable codes. Default ["NAME", "P1_001N"] (total population
+        in
+
+        the 2020 DHC dataset). 2010 SF1 uses P0010001 instead.
+
+        '
+      default:
+      - NAME
+      - P1_001N
+  allOf:
+  - if:
+      properties:
+        geography:
+          pattern: '^(place|county|tract|block group|zip code tabulation area):'
+    then:
+      required:
+      - in_geography
+output_schema:
+  type: object
+  required:
+  - dataset_ref
+  - rows
+  - retrieved_at

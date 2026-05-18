@@ -1,0 +1,44 @@
+id: fetch.wvs
+version: 1.1.0
+type: fetch
+catalog_tier: small
+entrypoint: main.py:run
+description: World Values Survey data. WVS data is licensed and not retrievable via
+  API. Manually download a CSV (.csv / .csv.zip) or SPSS (.sav / .sav.zip) file from
+  worldvaluessurvey.org and pass its local path via file_path. Country and wave filters
+  operate on the loaded rows.
+managed_paths:
+- module.yaml
+- main.py
+- api.py
+- transform.py
+- schema.sample.json
+input_schema:
+  type: object
+  properties:
+    file_path:
+      type: string
+      description: Path to a locally downloaded WVS data file. Accepts .csv, .sav,
+        or a .zip containing one of those.
+      examples:
+      - fetched-data/WVS_Cross-National_Wave_7_csv_v6_0.zip
+      - fetched-data/WVS_Cross-National_Wave_7_v6.sav
+    country:
+      type: string
+      description: ISO-3 country alpha code filter applied to B_COUNTRY_ALPHA / C_COW_ALPHA
+        / S003ALPHA.
+      examples:
+      - USA
+      - DEU
+      - JPN
+    wave:
+      type: integer
+      description: WVS wave number (1-7). Filters loaded rows where A_WAVE matches.
+      examples:
+      - 7
+output_schema:
+  type: object
+  required:
+  - dataset_ref
+  - source_url
+  - retrieved_at

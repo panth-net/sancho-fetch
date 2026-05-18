@@ -1,0 +1,44 @@
+{
+  "provider": "fetch.socrata.chicago_crimes",
+  "schema_version": "1.0",
+  "generated_at": "2026-04-14T18:16:18.841685+00:00",
+  "stats": {
+    "family_count": 1,
+    "asset_count": 2000,
+    "assets_count": 2000,
+    "dataset_count": 908,
+    "datasets_count": 908,
+    "live_dataset_count": 908,
+    "live_datasets_count": 908,
+    "column_count": 21794,
+    "columns_count": 21794,
+    "tag_count": 389,
+    "tags_count": 389
+  },
+  "discovery": {
+    "mode": "live_required",
+    "sources": [
+      {
+        "id": "catalog.page.1",
+        "url": "https://api.us.socrata.com/api/catalog/v1?domains=data.cityofchicago.org&offset=0",
+        "status": "ok",
+        "http_status": 200,
+        "count": 1000,
+        "error": "",
+        "fetched_at": "2026-04-14T18:16:17.404915+00:00"
+      },
+      {
+        "id": "catalog.page.2",
+        "url": "https://api.us.socrata.com/api/catalog/v1?domains=data.cityofchicago.org&offset=1000",
+        "status": "ok",
+        "http_status": 200,
+        "count": 1000,
+        "error": "",
+        "fetched_at": "2026-04-14T18:16:18.802299+00:00"
+      }
+    ],
+    "docs": [
+      "https://dev.socrata.com/foundry/data.cityofchicago.org"
+    ]
+  }
+}

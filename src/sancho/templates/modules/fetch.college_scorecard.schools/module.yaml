@@ -1,0 +1,55 @@
+id: fetch.college_scorecard.schools
+version: 1.2.0
+type: fetch
+catalog_tier: large
+entrypoint: main.py:run
+description: 'Path-driven College Scorecard client. Filter institutions by any of
+  3,492
+
+  field paths (school.*, latest.*, YYYY.*), geo proximity (_zip+_distance),
+
+  sort, paginate.
+
+
+  catalog.json enumerates 6,322 institutions and the full nested field tree.
+
+  Requires DATA_GOV_API_KEY.
+
+  '
+managed_paths:
+- module.yaml
+- main.py
+- api.py
+- transform.py
+- schema.sample.json
+- catalog.json
+- catalog.meta.json
+- catalog_blueprint.py
+- discovery.py
+input_schema:
+  type: object
+  properties:
+    endpoint:
+      type: string
+      description: College Scorecard endpoint URL.
+      examples:
+      - https://api.data.gov/ed/collegescorecard/v1/schools.json
+    params:
+      type: object
+      description: 'Query parameters. Filter by field path (e.g. `school.state=CA`,
+
+        `school.degrees_awarded.predominant=3`). Geo: `_zip`+`_distance`
+
+        (must include unit, e.g. "10mi"). Output: `fields` (CSV of paths),
+
+        `per_page` (1-100), `page`, `sort` (e.g.
+
+        `latest.student.size:desc`).
+
+        '
+output_schema:
+  type: object
+  required:
+  - dataset_ref
+  - endpoint
+  - retrieved_at

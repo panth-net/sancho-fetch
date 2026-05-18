@@ -1,0 +1,35 @@
+{
+  "provider": "fetch.cms.data",
+  "schema_version": "1.0",
+  "generated_at": "2026-04-14T19:00:10.306377+00:00",
+  "stats": {
+    "family_count": 1,
+    "dataset_count": 154,
+    "datasets_count": 154,
+    "distribution_count": 5833,
+    "distributions_count": 5833,
+    "keyword_count": 47,
+    "keywords_count": 47,
+    "theme_count": 3,
+    "themes_count": 3,
+    "publisher_count": 1,
+    "publishers_count": 1
+  },
+  "discovery": {
+    "mode": "live_required",
+    "sources": [
+      {
+        "id": "/data.json",
+        "url": "https://data.cms.gov/data.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 154,
+        "error": "",
+        "fetched_at": "2026-04-14T19:00:10.298773+00:00"
+      }
+    ],
+    "docs": [
+      "https://data.cms.gov/provider-data/?api"
+    ]
+  }
+}

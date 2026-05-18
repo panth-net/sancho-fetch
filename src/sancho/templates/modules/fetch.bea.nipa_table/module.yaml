@@ -1,0 +1,76 @@
+id: fetch.bea.nipa_table
+version: 1.2.0
+type: fetch
+catalog_tier: large
+entrypoint: main.py:run
+description: 'Fetch BEA NIPA tables (National Income and Product Accounts). The wrapper
+
+  hardcodes `datasetname=NIPA` and exposes the three meaningful query
+
+  knobs (TableName, Year, Frequency) as typed parameters.
+
+
+  catalog.json enumerates BEA''s 13 datasets plus every parameter (56 total)
+
+  with required/optional flags for reference. Requires BEA_API_KEY.
+
+  '
+managed_paths:
+- module.yaml
+- main.py
+- api.py
+- transform.py
+- schema.sample.json
+- catalog.json
+- catalog.meta.json
+- catalog_blueprint.py
+- discovery.py
+input_schema:
+  type: object
+  required:
+  - table_name
+  properties:
+    table_name:
+      type: string
+      description: 'NIPA table identifier. Common tables: "T10101" (GDP, current dollars),
+
+        "T10106" (real GDP, chained dollars), "T20100" (personal income),
+
+        "T70100" (saving & investment). See NIPADataItems.TXT for the full
+
+        table list.
+
+        '
+      examples:
+      - T10101
+      - T10106
+      - T20100
+    year:
+      type: string
+      description: 'Year(s) to fetch. Single year, comma-separated list, or "X" for
+        all.
+
+        '
+      default: '2024'
+      examples:
+      - '2024'
+      - 2020,2021,2022,2023,2024
+      - X
+    frequency:
+      type: string
+      description: 'Frequency code. "A" (annual, default), "Q" (quarterly), or "M".
+
+        Comma-separated list allowed.
+
+        '
+      default: A
+      examples:
+      - A
+      - Q
+      - A,Q
+output_schema:
+  type: object
+  required:
+  - dataset_ref
+  - table_name
+  - retrieved_at

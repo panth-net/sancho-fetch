@@ -1,0 +1,70 @@
+id: fetch.dc_open_data
+version: 1.0.0
+type: fetch
+catalog_tier: small
+entrypoint: main.py:run
+description: 'Washington DC Open Data public ArcGIS layer helper.
+
+  Defaults to the public 311 service requests layer from Open Data DC. The
+
+  endpoint can be overridden with any compatible DC ArcGIS FeatureServer query
+
+  URL from opendata.dc.gov.
+
+  '
+managed_paths:
+- module.yaml
+- main.py
+- schema.sample.json
+input_schema:
+  type: object
+  properties:
+    endpoint:
+      type: string
+      description: Override the official DC ArcGIS FeatureServer query endpoint.
+      default: https://maps2.dcgis.dc.gov/dcgis/rest/services/DCGIS_DATA/ServiceRequests/FeatureServer/13/query
+    params:
+      type: object
+      description: ArcGIS query parameters. Use where/outFields/orderByFields to target the DC layer you need.
+    page_size:
+      type: integer
+      description: Rows per ArcGIS page. Defaults to the layer maxRecordCount, currently 1000.
+      default: 1000
+    max_records:
+      type: integer
+      description: Optional user-requested/testing cap on total rows fetched. Omit to page through all matching records.
+      default: null
+    pagination:
+      type: object
+      description: 'Optional pagination controls: mode all, pages, or single; max_pages for bounded tests.'
+    mode:
+      type: string
+      enum:
+      - json
+      - html_links
+      description: Fetch JSON rows or extract public links from an official page.
+      default: json
+    search:
+      type: string
+      description: Optional link filter used when mode is html_links.
+      default: null
+    limit:
+      type: integer
+      description: Back-compatible alias for user-requested/testing max_records.
+      default: null
+sources:
+- label: Open Data DC catalog
+  url: https://opendata.dc.gov/search
+- label: DC 311 service requests layer
+  url: https://maps2.dcgis.dc.gov/dcgis/rest/services/DCGIS_DATA/ServiceRequests/FeatureServer/13
+- label: ArcGIS FeatureServer query docs
+  url: https://developers.arcgis.com/rest/services-reference/enterprise/query-feature-service-layer/
+output_schema:
+  type: object
+  required:
+  - dataset_ref
+  - endpoint
+  - rows
+  - pagination
+  - shape
+  - retrieved_at

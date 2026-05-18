@@ -1,0 +1,85 @@
+id: fetch.socrata.dataset
+version: 1.1.0
+type: fetch
+catalog_tier: small
+entrypoint: main.py:run
+description: "Generic Socrata SoQL client. Works against any Socrata domain (data.cdc.gov,\n\
+  data.cityofnewyork.us, data.sfgov.org, etc.) \u2014 supply `domain` + `dataset_id`\n\
+  (the 4x4 like `kzjm-xkqj`) and a SoQL filter via `where`/`limit` and the\n`params`\
+  \ pass-through dict for the rest.\n\nOptional Socrata Open Data App auth via SODA_API_KEY_ID/SECRET\
+  \ for higher\nrate limits.\n"
+managed_paths:
+- module.yaml
+- main.py
+- api.py
+- transform.py
+- schema.sample.json
+input_schema:
+  type: object
+  required:
+  - domain
+  - dataset_id
+  properties:
+    domain:
+      type: string
+      description: 'Socrata host (without scheme). Common: data.cdc.gov,
+
+        data.cityofnewyork.us, data.cityofchicago.org, data.sfgov.org,
+
+        data.seattle.gov, data.lacity.org, data.ny.gov.
+
+        '
+      examples:
+      - data.cdc.gov
+      - data.cityofnewyork.us
+      - data.sfgov.org
+    dataset_id:
+      type: string
+      description: 'Socrata dataset ID (the 4-letter-4-letter form like "kzjm-xkqj").
+
+        Found in the dataset''s URL on the open-data portal.
+
+        '
+      examples:
+      - kzjm-xkqj
+      - erm2-nwe9
+      - wrvz-psew
+    limit:
+      type: integer
+      description: $limit (1-50000). Default 50000.
+      default: 500
+      examples:
+      - 100
+      - 1000
+    where:
+      type: string
+      description: 'SoQL `$where` clause for filtering. Use SQL-like syntax: `column=''value''`,
+
+        `column>5`, `date_col between ''2024-01-01'' and ''2024-12-31''`,
+
+        and combine with AND/OR.
+
+        '
+      examples:
+      - year=2024
+      - borough='Manhattan'
+      - incident_date between '2024-01-01' and '2024-06-30'
+    params:
+      type: object
+      description: 'Extra SoQL params merged into the query. Common: `$select` (column
+
+        list / aggregations like "category, count(*)"), `$order` (e.g.
+
+        "incident_date DESC"), `$group` (group-by column), `$offset`
+
+        (pagination), `$q` (full-text search), `$having` (post-group filter).
+
+        '
+output_schema:
+  type: object
+  required:
+  - dataset_ref
+  - domain
+  - dataset_id
+  - rows
+  - retrieved_at

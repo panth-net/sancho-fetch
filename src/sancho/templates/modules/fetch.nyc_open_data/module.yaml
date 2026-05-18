@@ -1,0 +1,74 @@
+id: fetch.nyc_open_data
+version: 1.1.0
+type: fetch
+catalog_tier: large
+entrypoint: run.py:run
+description: 'Path-driven NYC Open Data client. 7 catalog families covering Socrata
+
+  v2/v3 row queries, view metadata, and cross-domain discovery. Use `path`
+
+  + appropriate `base` alias to route through the right family.
+
+  '
+managed_paths:
+- module.yaml
+- run.py
+- discovery.py
+- catalog_blueprint.py
+- catalog.json
+- catalog.meta.json
+- client.py
+- runtime_helpers.py
+input_schema:
+  type: object
+  required:
+  - path
+  properties:
+    path:
+      type: string
+      description: 'NYC Open Data path. `/resource/{dataset_id}.json` for SoQL queries,
+
+        `/api/views.json` for view list, `/api/catalog/v1` for cross-domain
+
+        discovery.
+
+        '
+      examples:
+      - /resource/erm2-nwe9.json
+      - /resource/h9gi-nx95.json
+      - /api/views.json
+      - /api/catalog/v1
+    method:
+      type: string
+      description: HTTP method.
+      default: GET
+    base:
+      type: string
+      description: 'Catalog base alias. "nyc_v2" (default), "nyc" (metadata),
+
+        "catalog_v1" (Socrata discovery).
+
+        '
+      default: nyc_v2
+      examples:
+      - nyc_v2
+      - nyc
+      - catalog_v1
+    params:
+      type: object
+      description: 'SoQL params ($limit/$where/$select/$group/$order/$q) for /resource,
+
+        regular query params for catalog/views.
+
+        '
+    body:
+      type: object
+      description: Body payload (rare).
+output_schema:
+  type: object
+  required:
+  - provider
+  - dataset_ref
+  - family_id
+  - path
+  - retrieved_at

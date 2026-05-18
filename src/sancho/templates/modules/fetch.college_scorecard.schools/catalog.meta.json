@@ -1,0 +1,28 @@
+{
+  "provider": "fetch.college_scorecard.schools",
+  "schema_version": "1.0",
+  "generated_at": "2026-04-15T22:05:55.639031+00:00",
+  "stats": {
+    "family_count": 1,
+    "total_schools": 6322,
+    "field_path_count": 3492,
+    "field_paths_count": 3492
+  },
+  "discovery": {
+    "mode": "live_required",
+    "sources": [
+      {
+        "id": "schools.sample",
+        "url": "https://api.data.gov/ed/collegescorecard/v1/schools",
+        "status": "ok",
+        "http_status": 200,
+        "count": 6322,
+        "error": "",
+        "fetched_at": "2026-04-15T22:05:55.635029+00:00"
+      }
+    ],
+    "docs": [
+      "https://collegescorecard.ed.gov/data/api-documentation"
+    ]
+  }
+}

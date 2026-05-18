@@ -1,0 +1,53 @@
+id: fetch.open_payments.datasets
+version: 1.2.0
+type: fetch
+catalog_tier: large
+entrypoint: main.py:run
+description: 'Path-driven CMS Open Payments client. Browse 74 datasets via DCAT or
+
+  metastore endpoints, query specific dataset rows, or full-text search.
+
+
+  catalog.json enumerates all datasets with distribution download URLs.
+
+  '
+managed_paths:
+- module.yaml
+- main.py
+- api.py
+- transform.py
+- schema.sample.json
+- catalog.json
+- catalog.meta.json
+- catalog_blueprint.py
+- discovery.py
+input_schema:
+  type: object
+  properties:
+    endpoint:
+      type: string
+      description: 'CMS Open Payments endpoint. `/metastore/schemas/dataset/items`,
+
+        `/data.json` (DCAT), `/datastore/query/{ID}/0`, `/search`.
+
+        '
+      examples:
+      - https://openpaymentsdata.cms.gov/api/1/metastore/schemas/dataset/items
+      - https://openpaymentsdata.cms.gov/data.json
+      - https://openpaymentsdata.cms.gov/api/1/datastore/query/7b82fb48-2bec-45f0-b40e-aed5f1d1eba0/0
+      - https://openpaymentsdata.cms.gov/api/1/search
+    params:
+      type: object
+      description: 'Query parameters. For datastore query: `limit`, `offset`,
+
+        `conditions[*]`. For search: `fulltext`. For metastore items:
+
+        `limit`, `offset`.
+
+        '
+output_schema:
+  type: object
+  required:
+  - dataset_ref
+  - endpoint
+  - retrieved_at

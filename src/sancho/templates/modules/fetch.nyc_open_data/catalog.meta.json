@@ -1,0 +1,78 @@
+{
+  "provider": "fetch.nyc_open_data",
+  "schema_version": "1.0",
+  "generated_at": "2026-04-22T16:42:00.954291+00:00",
+  "stats": {
+    "family_count": 7,
+    "asset_count": 3012,
+    "dataset_count": 2394,
+    "live_dataset_count": 2394,
+    "non_dataset_asset_count": 618,
+    "column_count": 56950,
+    "assets_count": 3012,
+    "asset_ids_count": 3012,
+    "datasets_count": 2394,
+    "non_dataset_assets_count": 618,
+    "live_dataset_ids_count": 2394,
+    "categories_count": 11,
+    "tags_count": 3868,
+    "column_datatypes_count": 13
+  },
+  "discovery": {
+    "mode": "live_required",
+    "sources": [
+      {
+        "id": "catalog.page.1",
+        "url": "https://api.us.socrata.com/api/catalog/v1",
+        "status": "ok",
+        "http_status": 200,
+        "count": 1000,
+        "fetched_at": "2026-04-22T16:41:28.650231+00:00",
+        "offset": 0,
+        "limit": 1000,
+        "total_results": 3012
+      },
+      {
+        "id": "catalog.page.2",
+        "url": "https://api.us.socrata.com/api/catalog/v1",
+        "status": "ok",
+        "http_status": 200,
+        "count": 1000,
+        "fetched_at": "2026-04-22T16:41:40.701122+00:00",
+        "offset": 1000,
+        "limit": 1000,
+        "total_results": 3012
+      },
+      {
+        "id": "catalog.page.3",
+        "url": "https://api.us.socrata.com/api/catalog/v1",
+        "status": "ok",
+        "http_status": 200,
+        "count": 1000,
+        "fetched_at": "2026-04-22T16:41:52.324983+00:00",
+        "offset": 2000,
+        "limit": 1000,
+        "total_results": 3012
+      },
+      {
+        "id": "catalog.page.4",
+        "url": "https://api.us.socrata.com/api/catalog/v1",
+        "status": "ok",
+        "http_status": 200,
+        "count": 12,
+        "fetched_at": "2026-04-22T16:42:00.672226+00:00",
+        "offset": 3000,
+        "limit": 1000,
+        "total_results": 3012
+      }
+    ],
+    "docs": [
+      "https://data.cityofnewyork.us",
+      "https://api.us.socrata.com/api/catalog/v1",
+      "https://dev.socrata.com/docs/endpoints",
+      "https://dev.socrata.com/docs/queries/",
+      "https://dev.socrata.com/docs/queries/query",
+      "https://dev.socrata.com/docs/app-tokens"
+    ]
+  }
+}

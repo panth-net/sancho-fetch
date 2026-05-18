@@ -1,0 +1,58 @@
+id: fetch.epa.echo_facilities
+version: 1.2.0
+type: fetch
+catalog_tier: large
+entrypoint: main.py:run
+description: 'Path-driven EPA ECHO REST client. 6 sub-service families: cwa (Clean
+
+  Water Act), air (Clean Air Act), rcra (hazardous waste), sdw (Safe
+
+  Drinking Water), case (enforcement), eff (effluent), dfr (detailed
+
+  facility report). Note: get_facility_info returns cluster summaries; for
+
+  individual facility rows use get_facilities + get_qid (not currently
+
+  auto-paginated by the wrapper).
+
+  '
+managed_paths:
+- module.yaml
+- main.py
+- api.py
+- transform.py
+- schema.sample.json
+- catalog.json
+- catalog.meta.json
+- catalog_blueprint.py
+- discovery.py
+input_schema:
+  type: object
+  properties:
+    endpoint:
+      type: string
+      description: 'EPA ECHO REST endpoint. cwa/air/rcra/sdw/case/eff/dfr family
+
+        prefixes; .get_facility_info / .get_facilities / .get_systems
+
+        / .get_qid suffixes.
+
+        '
+      examples:
+      - https://echodata.epa.gov/echo/cwa_rest_services.get_facility_info
+      - https://echodata.epa.gov/echo/air_rest_services.get_facility_info
+      - https://echodata.epa.gov/echo/rcra_rest_services.get_facility_info
+      - https://echodata.epa.gov/echo/sdw_rest_services.get_systems
+    params:
+      type: object
+      description: 'Query parameters. `output=JSON`, `p_st`, `p_county`, `p_zip`,
+
+        bbox params, `p_fname`/`p_co`, `responseset`. Per-family.
+
+        '
+output_schema:
+  type: object
+  required:
+  - dataset_ref
+  - endpoint
+  - retrieved_at

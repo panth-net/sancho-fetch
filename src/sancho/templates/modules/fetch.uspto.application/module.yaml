@@ -1,0 +1,53 @@
+id: fetch.uspto.application
+version: 1.2.0
+type: fetch
+catalog_tier: small
+entrypoint: main.py:run
+description: 'Path-driven USPTO Open Data Portal client (https://api.uspto.gov). Covers
+
+  patent applications + all sub-resources (meta-data, continuity,
+
+  assignment, attorney, adjustment, transactions, documents), PTAB
+
+  trials/appeals/interferences, petition decisions, status codes, and
+
+  bulk dataset products. Auth via USPTO_API_KEY (X-API-KEY header).
+
+  '
+managed_paths:
+- module.yaml
+- main.py
+- api.py
+- transform.py
+- schema.sample.json
+- catalog.json
+input_schema:
+  type: object
+  properties:
+    endpoint:
+      type: string
+      description: 'USPTO ODP URL. `/api/v1/patent/applications/{appNum}/*` family,
+
+        PTAB, dataset products, etc.
+
+        '
+      examples:
+      - https://api.uspto.gov/api/v1/patent/applications/17908782
+      - https://api.uspto.gov/api/v1/patent/applications/17908782/meta-data
+      - https://api.uspto.gov/api/v1/patent/applications/17908782/continuity
+    method:
+      type: string
+      enum:
+      - GET
+      - POST
+      default: GET
+    params:
+      type: object
+    body:
+      type: object
+output_schema:
+  type: object
+  required:
+  - dataset_ref
+  - endpoint
+  - retrieved_at

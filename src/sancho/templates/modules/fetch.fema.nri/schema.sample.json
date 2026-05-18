@@ -1,0 +1,20 @@
+{
+  "provider": "fetch.fema.nri",
+  "generated_at": "2026-05-06T00:00:00+00:00",
+  "columns": [
+    {
+      "name": "title",
+      "type": "string",
+      "sample": "Official public record or link"
+    },
+    {
+      "name": "url",
+      "type": "string",
+      "sample": "https://services.arcgis.com/XG15cJAlne2vxtgt/arcgis/rest/services/National_Risk_Index_Census_Tracts/FeatureServer/0/query"
+    }
+  ],
+  "sample_row": {
+    "title": "Official public record or link",
+    "url": "https://services.arcgis.com/XG15cJAlne2vxtgt/arcgis/rest/services/National_Risk_Index_Census_Tracts/FeatureServer/0/query"
+  }
+}

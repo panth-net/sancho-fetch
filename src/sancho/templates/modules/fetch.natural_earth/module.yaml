@@ -1,0 +1,32 @@
+id: fetch.natural_earth
+version: 1.0.0
+type: fetch
+catalog_tier: small
+entrypoint: main.py:run
+description: Download Natural Earth admin boundaries (countries, states/provinces)
+  as GeoJSON.
+managed_paths:
+- module.yaml
+- main.py
+- api.py
+- transform.py
+- schema.sample.json
+input_schema:
+  type: object
+  properties:
+    level:
+      type: string
+      description: 'Admin level: adm0 (countries), adm1 (states/provinces).'
+      default: adm0
+    country:
+      type: string
+      description: ISO3 country filter.
+    name:
+      type: string
+      description: Country/region name filter.
+output_schema:
+  type: object
+  required:
+  - dataset_ref
+  - rows
+  - retrieved_at

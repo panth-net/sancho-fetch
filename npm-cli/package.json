@@ -1,0 +1,29 @@
+﻿{
+  "name": "@sancho/cli",
+  "version": "0.1.1",
+  "description": "npx launcher for the Python-native Sancho Fetch CLI",
+  "type": "module",
+  "bin": {
+    "sancho": "bin/sancho.js",
+    "sancho-mcp-quick": "bin/sancho-mcp-quick.js"
+  },
+  "files": [
+    "bin/",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node -e \"const fs=require('fs'); let s=fs.readFileSync('package.json','utf8'); if (s.charCodeAt(0)===0xFEFF) s=s.slice(1); const p=JSON.parse(s); if (p.bin.sancho !== 'bin/sancho.js' || p.bin['sancho-mcp-quick'] !== 'bin/sancho-mcp-quick.js') process.exit(1);\""
+  },
+  "keywords": [
+    "sancho",
+    "data",
+    "mcp",
+    "claude",
+    "codex"
+  ],
+  "license": "SEE LICENSE IN LICENSE",
+  "engines": {
+    "node": ">=18"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "provider": "fetch.clinical_trials.studies",
+  "generated_at": "2026-03-30T18:59:54.810750+00:00",
+  "columns": [
+    {
+      "name": "dataset_ref",
+      "type": "string",
+      "sample": "usgov_clinical_trials"
+    },
+    {
+      "name": "endpoint",
+      "type": "string",
+      "sample": "https://clinicaltrials.gov/api/v2/studies"
+    },
+    {
+      "name": "params",
+      "type": "dict",
+      "sample": {}
+    },
+    {
+      "name": "rows",
+      "type": "list",
+      "sample": []
+    },
+    {
+      "name": "raw",
+      "type": "list",
+      "sample": []
+    },
+    {
+      "name": "retrieved_at",
+      "type": "string",
+      "sample": "2026-03-30T18:59:54.810750+00:00"
+    }
+  ],
+  "sample_row": {
+    "dataset_ref": "usgov_clinical_trials",
+    "endpoint": "https://clinicaltrials.gov/api/v2/studies",
+    "params": {},
+    "rows": [],
+    "raw": [],
+    "retrieved_at": "2026-03-30T18:59:54.810750+00:00"
+  }
+}

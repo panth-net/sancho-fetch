@@ -1,0 +1,44 @@
+id: fetch.cfpb.complaints
+version: 1.2.0
+type: fetch
+catalog_tier: large
+entrypoint: main.py:run
+description: "Path-driven CFPB Consumer Complaint Database client (14.5M+ complaints).\n\
+  Filter by product, state, company (exact name match required), date,\nfull-text.\
+  \ Use `has_narrative=true` to filter to complaints with\nconsumer-written narratives.\n\
+  \ncatalog.json enumerates all 12 Elasticsearch aggregation facets with\ntheir full\
+  \ bucket values (products, issues, states, companies, etc. \u2014\n6,800+ bucket\
+  \ values total) plus the 19-field _source schema.\n"
+managed_paths:
+- module.yaml
+- main.py
+- api.py
+- transform.py
+- schema.sample.json
+- catalog.json
+- catalog.meta.json
+- catalog_blueprint.py
+- discovery.py
+input_schema:
+  type: object
+  properties:
+    endpoint:
+      type: string
+      description: 'CFPB CCDB endpoint URL. Default: search API.
+
+        '
+      examples:
+      - https://www.consumerfinance.gov/data-research/consumer-complaints/search/api/v1/
+    params:
+      type: object
+      description: "Elasticsearch query params. Filters: `product`, `sub_product`,\n\
+        `issue`, `state`, `zip_code`, `company` (exact, all-caps \u2014\nconsult the\
+        \ bucket list), `has_narrative` (true/false).\nDate: `date_received_min`/`max`\
+        \ (YYYY-MM-DD). Search:\n`search_term`. Pagination: `size` (1-1000), `from`.\
+        \ Sort: `sort`\n(created_date_desc/_asc, relevance_desc/_asc).\n"
+output_schema:
+  type: object
+  required:
+  - dataset_ref
+  - endpoint
+  - retrieved_at

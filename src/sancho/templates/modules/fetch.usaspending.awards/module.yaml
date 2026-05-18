@@ -1,0 +1,60 @@
+id: fetch.usaspending.awards
+version: 1.2.0
+type: fetch
+catalog_tier: large
+entrypoint: main.py:run
+description: 'Path-driven USAspending v2 client. Mixed-method API: POST `/search/*`
+
+  endpoints take JSON body filters via `params`; GET `/references/*` and
+
+  `/awards/{id}/` take query params. The wrapper auto-detects POST vs GET
+
+  by URL pattern.
+
+
+  catalog.json contains the full /references/* catalog: toptier agencies,
+
+  glossary, award types, DEF codes, CFDA totals, NAICS/PSC/TAS filter trees.
+
+  '
+managed_paths:
+- module.yaml
+- main.py
+- api.py
+- transform.py
+- schema.sample.json
+- catalog.json
+- catalog.meta.json
+- catalog_blueprint.py
+- discovery.py
+input_schema:
+  type: object
+  properties:
+    endpoint:
+      type: string
+      description: 'Full USAspending v2 endpoint URL. The wrapper auto-detects POST
+
+        (search) vs GET (references, awards by ID).
+
+        '
+      examples:
+      - https://api.usaspending.gov/api/v2/search/spending_by_award/
+      - https://api.usaspending.gov/api/v2/references/toptier_agencies/
+      - https://api.usaspending.gov/api/v2/recipient/duns/
+    params:
+      type: object
+      description: 'For POST search: JSON body with `filters` (time_period,
+
+        award_type_codes, place_of_performance_locations, recipient_search_text,
+
+        agencies, naics_codes, etc.), `fields`, `sort`, `order`, `limit`,
+
+        `page`. For GET refs: query params (`limit`, `sort`, etc.).
+
+        '
+output_schema:
+  type: object
+  required:
+  - dataset_ref
+  - endpoint
+  - retrieved_at

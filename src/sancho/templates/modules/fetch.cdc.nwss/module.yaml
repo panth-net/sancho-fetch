@@ -1,0 +1,50 @@
+id: fetch.cdc.nwss
+version: 1.0.0
+type: fetch
+catalog_tier: small
+entrypoint: main.py:run
+description: 'CDC NWSS public wastewater surveillance Socrata data client.
+
+  Public/no-special-access surface only. If a provider also offers restricted
+
+  microdata or account-gated files, this module intentionally exposes only the
+
+  public aggregate, catalog, report, or download-link surface.
+
+  '
+managed_paths:
+- module.yaml
+- main.py
+- schema.sample.json
+input_schema:
+  type: object
+  properties:
+    endpoint:
+      type: string
+      description: Override the official default endpoint or source page.
+      default: https://data.cdc.gov/resource/g653-rqe2.json
+    params:
+      type: object
+      description: Query parameters for API endpoints or source pages.
+    mode:
+      type: string
+      enum:
+      - json
+      - html_links
+      description: Fetch JSON rows or extract public links from an official page.
+      default: json
+    search:
+      type: string
+      description: Optional link filter used when mode is html_links.
+      default: null
+    limit:
+      type: integer
+      description: Maximum rows or links to return.
+      default: 25
+output_schema:
+  type: object
+  required:
+  - dataset_ref
+  - endpoint
+  - rows
+  - retrieved_at

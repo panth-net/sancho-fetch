@@ -1,0 +1,2352 @@
+{
+  "provider": "fetch.eia.series",
+  "schema_version": "1.0",
+  "generated_at": "2026-04-15T22:11:25.778782+00:00",
+  "stats": {
+    "family_count": 3,
+    "route_count": 256,
+    "routes_count": 256,
+    "leaf_route_count": 229,
+    "leaf_routes_count": 229,
+    "total_data_column_count": 385
+  },
+  "discovery": {
+    "mode": "live_required",
+    "sources": [
+      {
+        "id": "route.root",
+        "url": "https://api.eia.gov/v2/",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:05:56.892170+00:00"
+      },
+      {
+        "id": "route.coal",
+        "url": "https://api.eia.gov/v2/coal",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:05:58.090370+00:00"
+      },
+      {
+        "id": "route.coal/shipments",
+        "url": "https://api.eia.gov/v2/coal/shipments",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:05:59.194239+00:00"
+      },
+      {
+        "id": "route.coal/shipments/mine-state-aggregates",
+        "url": "https://api.eia.gov/v2/coal/shipments/mine-state-aggregates",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:06:00.433887+00:00"
+      },
+      {
+        "id": "route.coal/shipments/receipts",
+        "url": "https://api.eia.gov/v2/coal/shipments/receipts",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:06:02.378722+00:00"
+      },
+      {
+        "id": "route.coal/shipments/mine-aggregates",
+        "url": "https://api.eia.gov/v2/coal/shipments/mine-aggregates",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:06:03.684072+00:00"
+      },
+      {
+        "id": "route.coal/shipments/plant-state-aggregates",
+        "url": "https://api.eia.gov/v2/coal/shipments/plant-state-aggregates",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:06:04.787179+00:00"
+      },
+      {
+        "id": "route.coal/shipments/plant-aggregates",
+        "url": "https://api.eia.gov/v2/coal/shipments/plant-aggregates",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:06:06.314161+00:00"
+      },
+      {
+        "id": "route.coal/shipments/by-mine-by-plant",
+        "url": "https://api.eia.gov/v2/coal/shipments/by-mine-by-plant",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:06:07.977777+00:00"
+      },
+      {
+        "id": "route.coal/consumption-and-quality",
+        "url": "https://api.eia.gov/v2/coal/consumption-and-quality",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:06:09.182099+00:00"
+      },
+      {
+        "id": "route.coal/aggregate-production",
+        "url": "https://api.eia.gov/v2/coal/aggregate-production",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:06:10.314565+00:00"
+      },
+      {
+        "id": "route.coal/exports-imports-quantity-price",
+        "url": "https://api.eia.gov/v2/coal/exports-imports-quantity-price",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:06:11.558404+00:00"
+      },
+      {
+        "id": "route.coal/market-sales-price",
+        "url": "https://api.eia.gov/v2/coal/market-sales-price",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:06:12.684026+00:00"
+      },
+      {
+        "id": "route.coal/mine-production",
+        "url": "https://api.eia.gov/v2/coal/mine-production",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:06:14.130130+00:00"
+      },
+      {
+        "id": "route.coal/price-by-rank",
+        "url": "https://api.eia.gov/v2/coal/price-by-rank",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:06:15.400235+00:00"
+      },
+      {
+        "id": "route.coal/reserves-capacity",
+        "url": "https://api.eia.gov/v2/coal/reserves-capacity",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:06:16.491178+00:00"
+      },
+      {
+        "id": "route.crude-oil-imports",
+        "url": "https://api.eia.gov/v2/crude-oil-imports",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:06:17.910319+00:00"
+      },
+      {
+        "id": "route.electricity",
+        "url": "https://api.eia.gov/v2/electricity",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:06:19.006341+00:00"
+      },
+      {
+        "id": "route.electricity/retail-sales",
+        "url": "https://api.eia.gov/v2/electricity/retail-sales",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:06:21.051969+00:00"
+      },
+      {
+        "id": "route.electricity/electric-power-operational-data",
+        "url": "https://api.eia.gov/v2/electricity/electric-power-operational-data",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:06:23.136731+00:00"
+      },
+      {
+        "id": "route.electricity/rto",
+        "url": "https://api.eia.gov/v2/electricity/rto",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:06:24.236171+00:00"
+      },
+      {
+        "id": "route.electricity/rto/region-data",
+        "url": "https://api.eia.gov/v2/electricity/rto/region-data",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:06:25.512100+00:00"
+      },
+      {
+        "id": "route.electricity/rto/fuel-type-data",
+        "url": "https://api.eia.gov/v2/electricity/rto/fuel-type-data",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:06:26.810485+00:00"
+      },
+      {
+        "id": "route.electricity/rto/region-sub-ba-data",
+        "url": "https://api.eia.gov/v2/electricity/rto/region-sub-ba-data",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:06:28.032287+00:00"
+      },
+      {
+        "id": "route.electricity/rto/interchange-data",
+        "url": "https://api.eia.gov/v2/electricity/rto/interchange-data",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:06:29.335646+00:00"
+      },
+      {
+        "id": "route.electricity/rto/daily-region-data",
+        "url": "https://api.eia.gov/v2/electricity/rto/daily-region-data",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:06:30.830514+00:00"
+      },
+      {
+        "id": "route.electricity/rto/daily-region-sub-ba-data",
+        "url": "https://api.eia.gov/v2/electricity/rto/daily-region-sub-ba-data",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:06:32.083838+00:00"
+      },
+      {
+        "id": "route.electricity/rto/daily-fuel-type-data",
+        "url": "https://api.eia.gov/v2/electricity/rto/daily-fuel-type-data",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:06:33.536854+00:00"
+      },
+      {
+        "id": "route.electricity/rto/daily-interchange-data",
+        "url": "https://api.eia.gov/v2/electricity/rto/daily-interchange-data",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:06:34.819155+00:00"
+      },
+      {
+        "id": "route.electricity/state-electricity-profiles",
+        "url": "https://api.eia.gov/v2/electricity/state-electricity-profiles",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:06:35.903291+00:00"
+      },
+      {
+        "id": "route.electricity/state-electricity-profiles/emissions-by-state-by-fuel",
+        "url": "https://api.eia.gov/v2/electricity/state-electricity-profiles/emissions-by-state-by-fuel",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:06:37.080412+00:00"
+      },
+      {
+        "id": "route.electricity/state-electricity-profiles/source-disposition",
+        "url": "https://api.eia.gov/v2/electricity/state-electricity-profiles/source-disposition",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:06:38.235019+00:00"
+      },
+      {
+        "id": "route.electricity/state-electricity-profiles/capability",
+        "url": "https://api.eia.gov/v2/electricity/state-electricity-profiles/capability",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:06:39.354003+00:00"
+      },
+      {
+        "id": "route.electricity/state-electricity-profiles/energy-efficiency",
+        "url": "https://api.eia.gov/v2/electricity/state-electricity-profiles/energy-efficiency",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:06:40.504184+00:00"
+      },
+      {
+        "id": "route.electricity/state-electricity-profiles/net-metering",
+        "url": "https://api.eia.gov/v2/electricity/state-electricity-profiles/net-metering",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:06:41.772009+00:00"
+      },
+      {
+        "id": "route.electricity/state-electricity-profiles/meters",
+        "url": "https://api.eia.gov/v2/electricity/state-electricity-profiles/meters",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:06:42.802072+00:00"
+      },
+      {
+        "id": "route.electricity/state-electricity-profiles/summary",
+        "url": "https://api.eia.gov/v2/electricity/state-electricity-profiles/summary",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:06:43.859211+00:00"
+      },
+      {
+        "id": "route.electricity/operating-generator-capacity",
+        "url": "https://api.eia.gov/v2/electricity/operating-generator-capacity",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:06:46.169421+00:00"
+      },
+      {
+        "id": "route.electricity/facility-fuel",
+        "url": "https://api.eia.gov/v2/electricity/facility-fuel",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:06:47.328351+00:00"
+      },
+      {
+        "id": "route.international",
+        "url": "https://api.eia.gov/v2/international",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:06:48.789583+00:00"
+      },
+      {
+        "id": "route.natural-gas",
+        "url": "https://api.eia.gov/v2/natural-gas",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:06:50.065295+00:00"
+      },
+      {
+        "id": "route.natural-gas/sum",
+        "url": "https://api.eia.gov/v2/natural-gas/sum",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:06:51.269153+00:00"
+      },
+      {
+        "id": "route.natural-gas/sum/snd",
+        "url": "https://api.eia.gov/v2/natural-gas/sum/snd",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:06:52.454598+00:00"
+      },
+      {
+        "id": "route.natural-gas/sum/lsum",
+        "url": "https://api.eia.gov/v2/natural-gas/sum/lsum",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:06:54.158911+00:00"
+      },
+      {
+        "id": "route.natural-gas/sum/sndm",
+        "url": "https://api.eia.gov/v2/natural-gas/sum/sndm",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:06:55.320384+00:00"
+      },
+      {
+        "id": "route.natural-gas/pri",
+        "url": "https://api.eia.gov/v2/natural-gas/pri",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:06:56.417815+00:00"
+      },
+      {
+        "id": "route.natural-gas/pri/sum",
+        "url": "https://api.eia.gov/v2/natural-gas/pri/sum",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:06:57.833588+00:00"
+      },
+      {
+        "id": "route.natural-gas/pri/fut",
+        "url": "https://api.eia.gov/v2/natural-gas/pri/fut",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:06:59.138580+00:00"
+      },
+      {
+        "id": "route.natural-gas/pri/rescom",
+        "url": "https://api.eia.gov/v2/natural-gas/pri/rescom",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:07:00.279951+00:00"
+      },
+      {
+        "id": "route.natural-gas/enr",
+        "url": "https://api.eia.gov/v2/natural-gas/enr",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:07:01.509636+00:00"
+      },
+      {
+        "id": "route.natural-gas/enr/sum",
+        "url": "https://api.eia.gov/v2/natural-gas/enr/sum",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:07:02.685544+00:00"
+      },
+      {
+        "id": "route.natural-gas/enr/cplc",
+        "url": "https://api.eia.gov/v2/natural-gas/enr/cplc",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:07:03.832381+00:00"
+      },
+      {
+        "id": "route.natural-gas/enr/dry",
+        "url": "https://api.eia.gov/v2/natural-gas/enr/dry",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:07:05.130229+00:00"
+      },
+      {
+        "id": "route.natural-gas/enr/wals",
+        "url": "https://api.eia.gov/v2/natural-gas/enr/wals",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:07:06.400782+00:00"
+      },
+      {
+        "id": "route.natural-gas/enr/nang",
+        "url": "https://api.eia.gov/v2/natural-gas/enr/nang",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:07:07.743996+00:00"
+      },
+      {
+        "id": "route.natural-gas/enr/adng",
+        "url": "https://api.eia.gov/v2/natural-gas/enr/adng",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:07:08.904230+00:00"
+      },
+      {
+        "id": "route.natural-gas/enr/ngl",
+        "url": "https://api.eia.gov/v2/natural-gas/enr/ngl",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:07:10.133323+00:00"
+      },
+      {
+        "id": "route.natural-gas/enr/ngpl",
+        "url": "https://api.eia.gov/v2/natural-gas/enr/ngpl",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:07:11.540057+00:00"
+      },
+      {
+        "id": "route.natural-gas/enr/lc",
+        "url": "https://api.eia.gov/v2/natural-gas/enr/lc",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:07:12.718252+00:00"
+      },
+      {
+        "id": "route.natural-gas/enr/coalbed",
+        "url": "https://api.eia.gov/v2/natural-gas/enr/coalbed",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:07:13.865080+00:00"
+      },
+      {
+        "id": "route.natural-gas/enr/shalegas",
+        "url": "https://api.eia.gov/v2/natural-gas/enr/shalegas",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:07:14.952140+00:00"
+      },
+      {
+        "id": "route.natural-gas/enr/deep",
+        "url": "https://api.eia.gov/v2/natural-gas/enr/deep",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:07:16.083298+00:00"
+      },
+      {
+        "id": "route.natural-gas/enr/nprod",
+        "url": "https://api.eia.gov/v2/natural-gas/enr/nprod",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:07:17.320358+00:00"
+      },
+      {
+        "id": "route.natural-gas/enr/drill",
+        "url": "https://api.eia.gov/v2/natural-gas/enr/drill",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:07:18.575119+00:00"
+      },
+      {
+        "id": "route.natural-gas/enr/wellend",
+        "url": "https://api.eia.gov/v2/natural-gas/enr/wellend",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:07:19.720310+00:00"
+      },
+      {
+        "id": "route.natural-gas/enr/seis",
+        "url": "https://api.eia.gov/v2/natural-gas/enr/seis",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:07:20.817683+00:00"
+      },
+      {
+        "id": "route.natural-gas/enr/wellfoot",
+        "url": "https://api.eia.gov/v2/natural-gas/enr/wellfoot",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:07:21.990258+00:00"
+      },
+      {
+        "id": "route.natural-gas/enr/welldep",
+        "url": "https://api.eia.gov/v2/natural-gas/enr/welldep",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:07:23.245984+00:00"
+      },
+      {
+        "id": "route.natural-gas/enr/wellcost",
+        "url": "https://api.eia.gov/v2/natural-gas/enr/wellcost",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:07:24.363852+00:00"
+      },
+      {
+        "id": "route.natural-gas/prod",
+        "url": "https://api.eia.gov/v2/natural-gas/prod",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:07:25.487109+00:00"
+      },
+      {
+        "id": "route.natural-gas/prod/oilwells",
+        "url": "https://api.eia.gov/v2/natural-gas/prod/oilwells",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:07:26.636305+00:00"
+      },
+      {
+        "id": "route.natural-gas/prod/sum",
+        "url": "https://api.eia.gov/v2/natural-gas/prod/sum",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:07:27.898918+00:00"
+      },
+      {
+        "id": "route.natural-gas/prod/whv",
+        "url": "https://api.eia.gov/v2/natural-gas/prod/whv",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:07:29.186875+00:00"
+      },
+      {
+        "id": "route.natural-gas/prod/off",
+        "url": "https://api.eia.gov/v2/natural-gas/prod/off",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:07:30.294878+00:00"
+      },
+      {
+        "id": "route.natural-gas/prod/deep",
+        "url": "https://api.eia.gov/v2/natural-gas/prod/deep",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:07:31.461924+00:00"
+      },
+      {
+        "id": "route.natural-gas/prod/ngpl",
+        "url": "https://api.eia.gov/v2/natural-gas/prod/ngpl",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:07:32.580281+00:00"
+      },
+      {
+        "id": "route.natural-gas/prod/lc",
+        "url": "https://api.eia.gov/v2/natural-gas/prod/lc",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:07:33.660135+00:00"
+      },
+      {
+        "id": "route.natural-gas/prod/coalbed",
+        "url": "https://api.eia.gov/v2/natural-gas/prod/coalbed",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:07:34.797841+00:00"
+      },
+      {
+        "id": "route.natural-gas/prod/shalegas",
+        "url": "https://api.eia.gov/v2/natural-gas/prod/shalegas",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:07:36.033947+00:00"
+      },
+      {
+        "id": "route.natural-gas/prod/ss",
+        "url": "https://api.eia.gov/v2/natural-gas/prod/ss",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:07:37.151900+00:00"
+      },
+      {
+        "id": "route.natural-gas/prod/wells",
+        "url": "https://api.eia.gov/v2/natural-gas/prod/wells",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:07:38.322019+00:00"
+      },
+      {
+        "id": "route.natural-gas/prod/pp",
+        "url": "https://api.eia.gov/v2/natural-gas/prod/pp",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:07:39.413576+00:00"
+      },
+      {
+        "id": "route.natural-gas/move",
+        "url": "https://api.eia.gov/v2/natural-gas/move",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:07:40.497217+00:00"
+      },
+      {
+        "id": "route.natural-gas/move/impc",
+        "url": "https://api.eia.gov/v2/natural-gas/move/impc",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:07:41.639790+00:00"
+      },
+      {
+        "id": "route.natural-gas/move/expc",
+        "url": "https://api.eia.gov/v2/natural-gas/move/expc",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:07:42.782791+00:00"
+      },
+      {
+        "id": "route.natural-gas/move/state",
+        "url": "https://api.eia.gov/v2/natural-gas/move/state",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:07:44.052751+00:00"
+      },
+      {
+        "id": "route.natural-gas/move/poe1",
+        "url": "https://api.eia.gov/v2/natural-gas/move/poe1",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:07:45.302179+00:00"
+      },
+      {
+        "id": "route.natural-gas/move/poe2",
+        "url": "https://api.eia.gov/v2/natural-gas/move/poe2",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:07:46.469691+00:00"
+      },
+      {
+        "id": "route.natural-gas/move/ist",
+        "url": "https://api.eia.gov/v2/natural-gas/move/ist",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:07:47.642360+00:00"
+      },
+      {
+        "id": "route.natural-gas/stor",
+        "url": "https://api.eia.gov/v2/natural-gas/stor",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:07:48.716819+00:00"
+      },
+      {
+        "id": "route.natural-gas/stor/wkly",
+        "url": "https://api.eia.gov/v2/natural-gas/stor/wkly",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:07:49.883330+00:00"
+      },
+      {
+        "id": "route.natural-gas/stor/sum",
+        "url": "https://api.eia.gov/v2/natural-gas/stor/sum",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:07:51.089834+00:00"
+      },
+      {
+        "id": "route.natural-gas/stor/type",
+        "url": "https://api.eia.gov/v2/natural-gas/stor/type",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:07:52.441096+00:00"
+      },
+      {
+        "id": "route.natural-gas/stor/lng",
+        "url": "https://api.eia.gov/v2/natural-gas/stor/lng",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:07:53.520471+00:00"
+      },
+      {
+        "id": "route.natural-gas/stor/cap",
+        "url": "https://api.eia.gov/v2/natural-gas/stor/cap",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:07:54.694957+00:00"
+      },
+      {
+        "id": "route.natural-gas/cons",
+        "url": "https://api.eia.gov/v2/natural-gas/cons",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:07:55.775020+00:00"
+      },
+      {
+        "id": "route.natural-gas/cons/sum",
+        "url": "https://api.eia.gov/v2/natural-gas/cons/sum",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:07:56.943457+00:00"
+      },
+      {
+        "id": "route.natural-gas/cons/num",
+        "url": "https://api.eia.gov/v2/natural-gas/cons/num",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:07:58.174552+00:00"
+      },
+      {
+        "id": "route.natural-gas/cons/pns",
+        "url": "https://api.eia.gov/v2/natural-gas/cons/pns",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:07:59.310307+00:00"
+      },
+      {
+        "id": "route.natural-gas/cons/acct",
+        "url": "https://api.eia.gov/v2/natural-gas/cons/acct",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:08:00.731061+00:00"
+      },
+      {
+        "id": "route.natural-gas/cons/heat",
+        "url": "https://api.eia.gov/v2/natural-gas/cons/heat",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:08:01.887873+00:00"
+      },
+      {
+        "id": "route.nuclear-outages",
+        "url": "https://api.eia.gov/v2/nuclear-outages",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:08:02.961430+00:00"
+      },
+      {
+        "id": "route.nuclear-outages/us-nuclear-outages",
+        "url": "https://api.eia.gov/v2/nuclear-outages/us-nuclear-outages",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:08:04.172229+00:00"
+      },
+      {
+        "id": "route.nuclear-outages/generator-nuclear-outages",
+        "url": "https://api.eia.gov/v2/nuclear-outages/generator-nuclear-outages",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:08:05.292678+00:00"
+      },
+      {
+        "id": "route.nuclear-outages/facility-nuclear-outages",
+        "url": "https://api.eia.gov/v2/nuclear-outages/facility-nuclear-outages",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:08:06.516995+00:00"
+      },
+      {
+        "id": "route.petroleum",
+        "url": "https://api.eia.gov/v2/petroleum",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:08:07.565624+00:00"
+      },
+      {
+        "id": "route.petroleum/sum",
+        "url": "https://api.eia.gov/v2/petroleum/sum",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:08:08.609587+00:00"
+      },
+      {
+        "id": "route.petroleum/sum/b100",
+        "url": "https://api.eia.gov/v2/petroleum/sum/b100",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:08:09.760763+00:00"
+      },
+      {
+        "id": "route.petroleum/sum/snd",
+        "url": "https://api.eia.gov/v2/petroleum/sum/snd",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:08:11.965392+00:00"
+      },
+      {
+        "id": "route.petroleum/sum/sndw",
+        "url": "https://api.eia.gov/v2/petroleum/sum/sndw",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:08:13.706074+00:00"
+      },
+      {
+        "id": "route.petroleum/sum/crdsnd",
+        "url": "https://api.eia.gov/v2/petroleum/sum/crdsnd",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:08:14.849061+00:00"
+      },
+      {
+        "id": "route.petroleum/sum/mkt",
+        "url": "https://api.eia.gov/v2/petroleum/sum/mkt",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:08:16.608462+00:00"
+      },
+      {
+        "id": "route.petroleum/pri",
+        "url": "https://api.eia.gov/v2/petroleum/pri",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:08:17.812052+00:00"
+      },
+      {
+        "id": "route.petroleum/pri/gnd",
+        "url": "https://api.eia.gov/v2/petroleum/pri/gnd",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:08:19.305235+00:00"
+      },
+      {
+        "id": "route.petroleum/pri/spt",
+        "url": "https://api.eia.gov/v2/petroleum/pri/spt",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:08:20.454248+00:00"
+      },
+      {
+        "id": "route.petroleum/pri/fut",
+        "url": "https://api.eia.gov/v2/petroleum/pri/fut",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:08:21.643331+00:00"
+      },
+      {
+        "id": "route.petroleum/pri/wfr",
+        "url": "https://api.eia.gov/v2/petroleum/pri/wfr",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:08:22.824288+00:00"
+      },
+      {
+        "id": "route.petroleum/pri/refmg",
+        "url": "https://api.eia.gov/v2/petroleum/pri/refmg",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:08:24.158238+00:00"
+      },
+      {
+        "id": "route.petroleum/pri/refmg2",
+        "url": "https://api.eia.gov/v2/petroleum/pri/refmg2",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:08:25.277261+00:00"
+      },
+      {
+        "id": "route.petroleum/pri/refoth",
+        "url": "https://api.eia.gov/v2/petroleum/pri/refoth",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:08:26.748963+00:00"
+      },
+      {
+        "id": "route.petroleum/pri/allmg",
+        "url": "https://api.eia.gov/v2/petroleum/pri/allmg",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:08:29.288520+00:00"
+      },
+      {
+        "id": "route.petroleum/pri/dist",
+        "url": "https://api.eia.gov/v2/petroleum/pri/dist",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:08:30.633151+00:00"
+      },
+      {
+        "id": "route.petroleum/pri/prop",
+        "url": "https://api.eia.gov/v2/petroleum/pri/prop",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:08:31.818425+00:00"
+      },
+      {
+        "id": "route.petroleum/pri/resid",
+        "url": "https://api.eia.gov/v2/petroleum/pri/resid",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:08:33.068046+00:00"
+      },
+      {
+        "id": "route.petroleum/pri/dfp1",
+        "url": "https://api.eia.gov/v2/petroleum/pri/dfp1",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:08:34.328021+00:00"
+      },
+      {
+        "id": "route.petroleum/pri/dfp2",
+        "url": "https://api.eia.gov/v2/petroleum/pri/dfp2",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:08:35.421200+00:00"
+      },
+      {
+        "id": "route.petroleum/pri/dfp3",
+        "url": "https://api.eia.gov/v2/petroleum/pri/dfp3",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:08:36.574281+00:00"
+      },
+      {
+        "id": "route.petroleum/pri/rac2",
+        "url": "https://api.eia.gov/v2/petroleum/pri/rac2",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:08:37.844060+00:00"
+      },
+      {
+        "id": "route.petroleum/pri/imc1",
+        "url": "https://api.eia.gov/v2/petroleum/pri/imc1",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:08:38.964822+00:00"
+      },
+      {
+        "id": "route.petroleum/pri/imc2",
+        "url": "https://api.eia.gov/v2/petroleum/pri/imc2",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:08:40.088554+00:00"
+      },
+      {
+        "id": "route.petroleum/pri/imc3",
+        "url": "https://api.eia.gov/v2/petroleum/pri/imc3",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:08:41.180946+00:00"
+      },
+      {
+        "id": "route.petroleum/pri/land1",
+        "url": "https://api.eia.gov/v2/petroleum/pri/land1",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:08:42.330350+00:00"
+      },
+      {
+        "id": "route.petroleum/pri/land2",
+        "url": "https://api.eia.gov/v2/petroleum/pri/land2",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:08:43.489978+00:00"
+      },
+      {
+        "id": "route.petroleum/pri/land3",
+        "url": "https://api.eia.gov/v2/petroleum/pri/land3",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:08:44.641125+00:00"
+      },
+      {
+        "id": "route.petroleum/pri/ipct",
+        "url": "https://api.eia.gov/v2/petroleum/pri/ipct",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:08:45.833849+00:00"
+      },
+      {
+        "id": "route.petroleum/crd",
+        "url": "https://api.eia.gov/v2/petroleum/crd",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:08:46.887587+00:00"
+      },
+      {
+        "id": "route.petroleum/crd/pres",
+        "url": "https://api.eia.gov/v2/petroleum/crd/pres",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:08:48.075914+00:00"
+      },
+      {
+        "id": "route.petroleum/crd/cplc",
+        "url": "https://api.eia.gov/v2/petroleum/crd/cplc",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:08:49.315769+00:00"
+      },
+      {
+        "id": "route.petroleum/crd/nprod",
+        "url": "https://api.eia.gov/v2/petroleum/crd/nprod",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:08:50.472201+00:00"
+      },
+      {
+        "id": "route.petroleum/crd/crpdn",
+        "url": "https://api.eia.gov/v2/petroleum/crd/crpdn",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:08:51.712777+00:00"
+      },
+      {
+        "id": "route.petroleum/crd/api",
+        "url": "https://api.eia.gov/v2/petroleum/crd/api",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:08:52.873072+00:00"
+      },
+      {
+        "id": "route.petroleum/crd/gom",
+        "url": "https://api.eia.gov/v2/petroleum/crd/gom",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:08:54.115726+00:00"
+      },
+      {
+        "id": "route.petroleum/crd/drill",
+        "url": "https://api.eia.gov/v2/petroleum/crd/drill",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:08:55.334052+00:00"
+      },
+      {
+        "id": "route.petroleum/crd/wellend",
+        "url": "https://api.eia.gov/v2/petroleum/crd/wellend",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:08:56.580147+00:00"
+      },
+      {
+        "id": "route.petroleum/crd/seis",
+        "url": "https://api.eia.gov/v2/petroleum/crd/seis",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:08:57.788144+00:00"
+      },
+      {
+        "id": "route.petroleum/crd/wellfoot",
+        "url": "https://api.eia.gov/v2/petroleum/crd/wellfoot",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:08:58.945576+00:00"
+      },
+      {
+        "id": "route.petroleum/crd/welldep",
+        "url": "https://api.eia.gov/v2/petroleum/crd/welldep",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:09:00.202149+00:00"
+      },
+      {
+        "id": "route.petroleum/crd/wellcost",
+        "url": "https://api.eia.gov/v2/petroleum/crd/wellcost",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:09:01.314865+00:00"
+      },
+      {
+        "id": "route.petroleum/pnp",
+        "url": "https://api.eia.gov/v2/petroleum/pnp",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:09:02.401152+00:00"
+      },
+      {
+        "id": "route.petroleum/pnp/wiup",
+        "url": "https://api.eia.gov/v2/petroleum/pnp/wiup",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:09:03.858946+00:00"
+      },
+      {
+        "id": "route.petroleum/pnp/wprodrb",
+        "url": "https://api.eia.gov/v2/petroleum/pnp/wprodrb",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:09:05.350126+00:00"
+      },
+      {
+        "id": "route.petroleum/pnp/wprodr",
+        "url": "https://api.eia.gov/v2/petroleum/pnp/wprodr",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:09:06.532266+00:00"
+      },
+      {
+        "id": "route.petroleum/pnp/wprodb",
+        "url": "https://api.eia.gov/v2/petroleum/pnp/wprodb",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:09:07.708265+00:00"
+      },
+      {
+        "id": "route.petroleum/pnp/wprode",
+        "url": "https://api.eia.gov/v2/petroleum/pnp/wprode",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:09:08.828162+00:00"
+      },
+      {
+        "id": "route.petroleum/pnp/inpt",
+        "url": "https://api.eia.gov/v2/petroleum/pnp/inpt",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:09:10.210107+00:00"
+      },
+      {
+        "id": "route.petroleum/pnp/inpt2",
+        "url": "https://api.eia.gov/v2/petroleum/pnp/inpt2",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:09:11.557357+00:00"
+      },
+      {
+        "id": "route.petroleum/pnp/inpt3",
+        "url": "https://api.eia.gov/v2/petroleum/pnp/inpt3",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:09:12.818835+00:00"
+      },
+      {
+        "id": "route.petroleum/pnp/refp",
+        "url": "https://api.eia.gov/v2/petroleum/pnp/refp",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:09:14.294588+00:00"
+      },
+      {
+        "id": "route.petroleum/pnp/refp2",
+        "url": "https://api.eia.gov/v2/petroleum/pnp/refp2",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:09:15.852575+00:00"
+      },
+      {
+        "id": "route.petroleum/pnp/refp3",
+        "url": "https://api.eia.gov/v2/petroleum/pnp/refp3",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:09:17.349834+00:00"
+      },
+      {
+        "id": "route.petroleum/pnp/capbio",
+        "url": "https://api.eia.gov/v2/petroleum/pnp/capbio",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:09:18.512261+00:00"
+      },
+      {
+        "id": "route.petroleum/pnp/oxy",
+        "url": "https://api.eia.gov/v2/petroleum/pnp/oxy",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:09:19.600943+00:00"
+      },
+      {
+        "id": "route.petroleum/pnp/feedbiofuel",
+        "url": "https://api.eia.gov/v2/petroleum/pnp/feedbiofuel",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:09:20.833382+00:00"
+      },
+      {
+        "id": "route.petroleum/pnp/unc",
+        "url": "https://api.eia.gov/v2/petroleum/pnp/unc",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:09:22.082230+00:00"
+      },
+      {
+        "id": "route.petroleum/pnp/crq",
+        "url": "https://api.eia.gov/v2/petroleum/pnp/crq",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:09:23.280950+00:00"
+      },
+      {
+        "id": "route.petroleum/pnp/dwns",
+        "url": "https://api.eia.gov/v2/petroleum/pnp/dwns",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:09:24.576409+00:00"
+      },
+      {
+        "id": "route.petroleum/pnp/pct",
+        "url": "https://api.eia.gov/v2/petroleum/pnp/pct",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:09:25.770225+00:00"
+      },
+      {
+        "id": "route.petroleum/pnp/cap1",
+        "url": "https://api.eia.gov/v2/petroleum/pnp/cap1",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:09:26.991949+00:00"
+      },
+      {
+        "id": "route.petroleum/pnp/capchg",
+        "url": "https://api.eia.gov/v2/petroleum/pnp/capchg",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:09:28.218249+00:00"
+      },
+      {
+        "id": "route.petroleum/pnp/capprod",
+        "url": "https://api.eia.gov/v2/petroleum/pnp/capprod",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:09:29.478042+00:00"
+      },
+      {
+        "id": "route.petroleum/pnp/capfuel",
+        "url": "https://api.eia.gov/v2/petroleum/pnp/capfuel",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:09:30.592121+00:00"
+      },
+      {
+        "id": "route.petroleum/pnp/feedng",
+        "url": "https://api.eia.gov/v2/petroleum/pnp/feedng",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:09:31.696311+00:00"
+      },
+      {
+        "id": "route.petroleum/pnp/capwork",
+        "url": "https://api.eia.gov/v2/petroleum/pnp/capwork",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:09:32.869206+00:00"
+      },
+      {
+        "id": "route.petroleum/pnp/capshell",
+        "url": "https://api.eia.gov/v2/petroleum/pnp/capshell",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:09:33.998162+00:00"
+      },
+      {
+        "id": "route.petroleum/pnp/caprec",
+        "url": "https://api.eia.gov/v2/petroleum/pnp/caprec",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:09:35.185229+00:00"
+      },
+      {
+        "id": "route.petroleum/pnp/bioplfuel",
+        "url": "https://api.eia.gov/v2/petroleum/pnp/bioplfuel",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:09:36.272241+00:00"
+      },
+      {
+        "id": "route.petroleum/pnp/gp",
+        "url": "https://api.eia.gov/v2/petroleum/pnp/gp",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:09:37.487708+00:00"
+      },
+      {
+        "id": "route.petroleum/move",
+        "url": "https://api.eia.gov/v2/petroleum/move",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:09:38.641846+00:00"
+      },
+      {
+        "id": "route.petroleum/move/expcp",
+        "url": "https://api.eia.gov/v2/petroleum/move/expcp",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:09:40.868089+00:00"
+      },
+      {
+        "id": "route.petroleum/move/wkly",
+        "url": "https://api.eia.gov/v2/petroleum/move/wkly",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:09:42.221837+00:00"
+      },
+      {
+        "id": "route.petroleum/move/wimpc",
+        "url": "https://api.eia.gov/v2/petroleum/move/wimpc",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:09:43.458191+00:00"
+      },
+      {
+        "id": "route.petroleum/move/imp",
+        "url": "https://api.eia.gov/v2/petroleum/move/imp",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:09:44.913330+00:00"
+      },
+      {
+        "id": "route.petroleum/move/imp2",
+        "url": "https://api.eia.gov/v2/petroleum/move/imp2",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:09:46.200628+00:00"
+      },
+      {
+        "id": "route.petroleum/move/res",
+        "url": "https://api.eia.gov/v2/petroleum/move/res",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:09:47.436678+00:00"
+      },
+      {
+        "id": "route.petroleum/move/exp",
+        "url": "https://api.eia.gov/v2/petroleum/move/exp",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:09:48.780767+00:00"
+      },
+      {
+        "id": "route.petroleum/move/expc",
+        "url": "https://api.eia.gov/v2/petroleum/move/expc",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:09:50.659368+00:00"
+      },
+      {
+        "id": "route.petroleum/move/neti",
+        "url": "https://api.eia.gov/v2/petroleum/move/neti",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:09:52.397322+00:00"
+      },
+      {
+        "id": "route.petroleum/move/imc1",
+        "url": "https://api.eia.gov/v2/petroleum/move/imc1",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:09:53.576087+00:00"
+      },
+      {
+        "id": "route.petroleum/move/imc2",
+        "url": "https://api.eia.gov/v2/petroleum/move/imc2",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:09:54.672180+00:00"
+      },
+      {
+        "id": "route.petroleum/move/imc3",
+        "url": "https://api.eia.gov/v2/petroleum/move/imc3",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:09:55.815232+00:00"
+      },
+      {
+        "id": "route.petroleum/move/land1",
+        "url": "https://api.eia.gov/v2/petroleum/move/land1",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:09:57.098546+00:00"
+      },
+      {
+        "id": "route.petroleum/move/land2",
+        "url": "https://api.eia.gov/v2/petroleum/move/land2",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:09:58.203844+00:00"
+      },
+      {
+        "id": "route.petroleum/move/land3",
+        "url": "https://api.eia.gov/v2/petroleum/move/land3",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:09:59.447315+00:00"
+      },
+      {
+        "id": "route.petroleum/move/ipct",
+        "url": "https://api.eia.gov/v2/petroleum/move/ipct",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:10:00.616488+00:00"
+      },
+      {
+        "id": "route.petroleum/move/ptb",
+        "url": "https://api.eia.gov/v2/petroleum/move/ptb",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:10:01.860668+00:00"
+      },
+      {
+        "id": "route.petroleum/move/pipe",
+        "url": "https://api.eia.gov/v2/petroleum/move/pipe",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:10:03.154858+00:00"
+      },
+      {
+        "id": "route.petroleum/move/tb",
+        "url": "https://api.eia.gov/v2/petroleum/move/tb",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:10:04.359368+00:00"
+      },
+      {
+        "id": "route.petroleum/move/netr",
+        "url": "https://api.eia.gov/v2/petroleum/move/netr",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:10:05.605098+00:00"
+      },
+      {
+        "id": "route.petroleum/move/impcus",
+        "url": "https://api.eia.gov/v2/petroleum/move/impcus",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:10:07.144213+00:00"
+      },
+      {
+        "id": "route.petroleum/move/impcp",
+        "url": "https://api.eia.gov/v2/petroleum/move/impcp",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:10:09.064788+00:00"
+      },
+      {
+        "id": "route.petroleum/move/rail",
+        "url": "https://api.eia.gov/v2/petroleum/move/rail",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:10:10.279165+00:00"
+      },
+      {
+        "id": "route.petroleum/move/railNA",
+        "url": "https://api.eia.gov/v2/petroleum/move/railNA",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:10:11.598101+00:00"
+      },
+      {
+        "id": "route.petroleum/stoc",
+        "url": "https://api.eia.gov/v2/petroleum/stoc",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:10:12.659133+00:00"
+      },
+      {
+        "id": "route.petroleum/stoc/ts",
+        "url": "https://api.eia.gov/v2/petroleum/stoc/ts",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:10:13.890506+00:00"
+      },
+      {
+        "id": "route.petroleum/stoc/wstk",
+        "url": "https://api.eia.gov/v2/petroleum/stoc/wstk",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:10:15.168306+00:00"
+      },
+      {
+        "id": "route.petroleum/stoc/typ",
+        "url": "https://api.eia.gov/v2/petroleum/stoc/typ",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:10:16.795122+00:00"
+      },
+      {
+        "id": "route.petroleum/stoc/st",
+        "url": "https://api.eia.gov/v2/petroleum/stoc/st",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:10:18.162801+00:00"
+      },
+      {
+        "id": "route.petroleum/stoc/cu",
+        "url": "https://api.eia.gov/v2/petroleum/stoc/cu",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:10:19.319389+00:00"
+      },
+      {
+        "id": "route.petroleum/stoc/ref",
+        "url": "https://api.eia.gov/v2/petroleum/stoc/ref",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:10:20.817446+00:00"
+      },
+      {
+        "id": "route.petroleum/stoc/gp",
+        "url": "https://api.eia.gov/v2/petroleum/stoc/gp",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:10:22.015178+00:00"
+      },
+      {
+        "id": "route.petroleum/cons",
+        "url": "https://api.eia.gov/v2/petroleum/cons",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:10:23.106621+00:00"
+      },
+      {
+        "id": "route.petroleum/cons/wpsup",
+        "url": "https://api.eia.gov/v2/petroleum/cons/wpsup",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:10:24.320491+00:00"
+      },
+      {
+        "id": "route.petroleum/cons/psup",
+        "url": "https://api.eia.gov/v2/petroleum/cons/psup",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:10:25.754454+00:00"
+      },
+      {
+        "id": "route.petroleum/cons/prim",
+        "url": "https://api.eia.gov/v2/petroleum/cons/prim",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:10:27.428973+00:00"
+      },
+      {
+        "id": "route.petroleum/cons/refmg",
+        "url": "https://api.eia.gov/v2/petroleum/cons/refmg",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:10:29.185834+00:00"
+      },
+      {
+        "id": "route.petroleum/cons/refoth",
+        "url": "https://api.eia.gov/v2/petroleum/cons/refoth",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:10:30.636871+00:00"
+      },
+      {
+        "id": "route.petroleum/cons/refres",
+        "url": "https://api.eia.gov/v2/petroleum/cons/refres",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:10:31.827039+00:00"
+      },
+      {
+        "id": "route.petroleum/cons/821dst",
+        "url": "https://api.eia.gov/v2/petroleum/cons/821dst",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:10:33.043162+00:00"
+      },
+      {
+        "id": "route.petroleum/cons/821dsta",
+        "url": "https://api.eia.gov/v2/petroleum/cons/821dsta",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:10:34.228236+00:00"
+      },
+      {
+        "id": "route.petroleum/cons/821rsd",
+        "url": "https://api.eia.gov/v2/petroleum/cons/821rsd",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:10:35.354098+00:00"
+      },
+      {
+        "id": "route.petroleum/cons/821rsda",
+        "url": "https://api.eia.gov/v2/petroleum/cons/821rsda",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:10:36.478159+00:00"
+      },
+      {
+        "id": "route.petroleum/cons/821ker",
+        "url": "https://api.eia.gov/v2/petroleum/cons/821ker",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:10:37.780708+00:00"
+      },
+      {
+        "id": "route.petroleum/cons/821kera",
+        "url": "https://api.eia.gov/v2/petroleum/cons/821kera",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:10:39.030200+00:00"
+      },
+      {
+        "id": "route.petroleum/cons/821use",
+        "url": "https://api.eia.gov/v2/petroleum/cons/821use",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:10:40.300798+00:00"
+      },
+      {
+        "id": "route.petroleum/cons/821usea",
+        "url": "https://api.eia.gov/v2/petroleum/cons/821usea",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:10:41.508060+00:00"
+      },
+      {
+        "id": "route.seds",
+        "url": "https://api.eia.gov/v2/seds",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:10:44.865312+00:00"
+      },
+      {
+        "id": "route.steo",
+        "url": "https://api.eia.gov/v2/steo",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:10:46.152370+00:00"
+      },
+      {
+        "id": "route.densified-biomass",
+        "url": "https://api.eia.gov/v2/densified-biomass",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:10:47.265589+00:00"
+      },
+      {
+        "id": "route.densified-biomass/capacity-by-region",
+        "url": "https://api.eia.gov/v2/densified-biomass/capacity-by-region",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:10:49.761202+00:00"
+      },
+      {
+        "id": "route.densified-biomass/sales-and-price-by-region",
+        "url": "https://api.eia.gov/v2/densified-biomass/sales-and-price-by-region",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:10:51.480754+00:00"
+      },
+      {
+        "id": "route.densified-biomass/export-sales-and-price",
+        "url": "https://api.eia.gov/v2/densified-biomass/export-sales-and-price",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:10:53.115541+00:00"
+      },
+      {
+        "id": "route.densified-biomass/feedstocks-and-cost",
+        "url": "https://api.eia.gov/v2/densified-biomass/feedstocks-and-cost",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:10:54.245096+00:00"
+      },
+      {
+        "id": "route.densified-biomass/production-by-region",
+        "url": "https://api.eia.gov/v2/densified-biomass/production-by-region",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:10:55.544386+00:00"
+      },
+      {
+        "id": "route.densified-biomass/characteristics-by-region",
+        "url": "https://api.eia.gov/v2/densified-biomass/characteristics-by-region",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:10:56.668402+00:00"
+      },
+      {
+        "id": "route.densified-biomass/inventories-by-region",
+        "url": "https://api.eia.gov/v2/densified-biomass/inventories-by-region",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:10:57.790012+00:00"
+      },
+      {
+        "id": "route.densified-biomass/wood-pellet-plants",
+        "url": "https://api.eia.gov/v2/densified-biomass/wood-pellet-plants",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:10:58.851905+00:00"
+      },
+      {
+        "id": "route.total-energy",
+        "url": "https://api.eia.gov/v2/total-energy",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:11:01.620782+00:00"
+      },
+      {
+        "id": "route.aeo",
+        "url": "https://api.eia.gov/v2/aeo",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:11:02.679090+00:00"
+      },
+      {
+        "id": "route.aeo/2026",
+        "url": "https://api.eia.gov/v2/aeo/2026",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:11:03.937886+00:00"
+      },
+      {
+        "id": "route.aeo/2025",
+        "url": "https://api.eia.gov/v2/aeo/2025",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:11:05.072916+00:00"
+      },
+      {
+        "id": "route.aeo/2023",
+        "url": "https://api.eia.gov/v2/aeo/2023",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:11:06.154341+00:00"
+      },
+      {
+        "id": "route.aeo/2022",
+        "url": "https://api.eia.gov/v2/aeo/2022",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:11:07.224425+00:00"
+      },
+      {
+        "id": "route.aeo/2021",
+        "url": "https://api.eia.gov/v2/aeo/2021",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:11:08.322366+00:00"
+      },
+      {
+        "id": "route.aeo/2020",
+        "url": "https://api.eia.gov/v2/aeo/2020",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:11:09.502082+00:00"
+      },
+      {
+        "id": "route.aeo/2019",
+        "url": "https://api.eia.gov/v2/aeo/2019",
+        "status": "error",
+        "http_status": 429,
+        "count": 0,
+        "error": "429 Client Error: Too Many Requests for url: https://api.eia.gov/v2/aeo/2019?api_key=qD64AGzwdbPtRe4G0BrfwEcIL9ov0KqO517FFdzP",
+        "fetched_at": "2026-04-15T22:11:10.426327+00:00"
+      },
+      {
+        "id": "route.aeo/2018",
+        "url": "https://api.eia.gov/v2/aeo/2018",
+        "status": "error",
+        "http_status": 429,
+        "count": 0,
+        "error": "429 Client Error: Too Many Requests for url: https://api.eia.gov/v2/aeo/2018?api_key=qD64AGzwdbPtRe4G0BrfwEcIL9ov0KqO517FFdzP",
+        "fetched_at": "2026-04-15T22:11:11.333118+00:00"
+      },
+      {
+        "id": "route.aeo/2017",
+        "url": "https://api.eia.gov/v2/aeo/2017",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:11:12.424642+00:00"
+      },
+      {
+        "id": "route.aeo/2016",
+        "url": "https://api.eia.gov/v2/aeo/2016",
+        "status": "error",
+        "http_status": 429,
+        "count": 0,
+        "error": "429 Client Error: Too Many Requests for url: https://api.eia.gov/v2/aeo/2016?api_key=qD64AGzwdbPtRe4G0BrfwEcIL9ov0KqO517FFdzP",
+        "fetched_at": "2026-04-15T22:11:13.376005+00:00"
+      },
+      {
+        "id": "route.aeo/2015",
+        "url": "https://api.eia.gov/v2/aeo/2015",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:11:14.439529+00:00"
+      },
+      {
+        "id": "route.aeo/2014",
+        "url": "https://api.eia.gov/v2/aeo/2014",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:11:15.527583+00:00"
+      },
+      {
+        "id": "route.aeo/2014-er",
+        "url": "https://api.eia.gov/v2/aeo/2014-er",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:11:16.623125+00:00"
+      },
+      {
+        "id": "route.ieo",
+        "url": "https://api.eia.gov/v2/ieo",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:11:17.660857+00:00"
+      },
+      {
+        "id": "route.ieo/2023",
+        "url": "https://api.eia.gov/v2/ieo/2023",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:11:18.840817+00:00"
+      },
+      {
+        "id": "route.ieo/2021",
+        "url": "https://api.eia.gov/v2/ieo/2021",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:11:19.886559+00:00"
+      },
+      {
+        "id": "route.ieo/2019",
+        "url": "https://api.eia.gov/v2/ieo/2019",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:11:21.079237+00:00"
+      },
+      {
+        "id": "route.ieo/2017",
+        "url": "https://api.eia.gov/v2/ieo/2017",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:11:22.192274+00:00"
+      },
+      {
+        "id": "route.co2-emissions",
+        "url": "https://api.eia.gov/v2/co2-emissions",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:11:23.217361+00:00"
+      },
+      {
+        "id": "route.co2-emissions/co2-emissions-aggregates",
+        "url": "https://api.eia.gov/v2/co2-emissions/co2-emissions-aggregates",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:11:24.492001+00:00"
+      },
+      {
+        "id": "route.co2-emissions/co2-emissions-and-carbon-coefficients",
+        "url": "https://api.eia.gov/v2/co2-emissions/co2-emissions-and-carbon-coefficients",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T22:11:25.776788+00:00"
+      }
+    ],
+    "docs": [
+      "https://www.eia.gov/opendata/documentation.php"
+    ]
+  }
+}

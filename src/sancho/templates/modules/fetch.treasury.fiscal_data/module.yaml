@@ -1,0 +1,49 @@
+id: fetch.treasury.fiscal_data
+version: 1.1.0
+type: fetch
+catalog_tier: small
+entrypoint: main.py:run
+description: 'Path-driven Treasury FiscalData client. Many datasets, all under
+
+  `/services/api/fiscal_service/v1|v2/accounting/od/{dataset}`. Uses
+
+  `filter`, `fields`, `sort`, `page[size]`, `page[number]`, `format` query
+
+  params. Common datasets: rates_of_exchange, debt_to_penny,
+
+  avg_interest_rates, securities_sales.
+
+  '
+managed_paths:
+- module.yaml
+- main.py
+- api.py
+- transform.py
+- schema.sample.json
+input_schema:
+  type: object
+  properties:
+    endpoint:
+      type: string
+      description: 'Treasury FiscalData endpoint URL.
+
+        '
+      examples:
+      - https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v1/accounting/od/rates_of_exchange
+      - https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v2/accounting/od/debt_to_penny
+      - https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v2/accounting/od/avg_interest_rates
+    params:
+      type: object
+      description: 'Query parameters. `filter` (e.g. `record_date:gte:2024-01-01`),
+
+        `fields`, `sort` (`-record_date` for desc), `page[size]`,
+
+        `page[number]`, `format` (json/csv/xml).
+
+        '
+output_schema:
+  type: object
+  required:
+  - dataset_ref
+  - endpoint
+  - retrieved_at

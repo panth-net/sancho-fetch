@@ -1,0 +1,29 @@
+id: fetch.pew
+version: 1.0.0
+type: fetch
+catalog_tier: small
+entrypoint: main.py:run
+description: 'Fetch Pew Research Center dataset catalog. WARNING: Full dataset downloads
+  require Selenium browser automation and a Pew Research account. Catalog browsing
+  works without auth.'
+managed_paths:
+- module.yaml
+- main.py
+- api.py
+- transform.py
+- schema.sample.json
+input_schema:
+  type: object
+  properties:
+    search:
+      type: string
+    page:
+      type: integer
+    limit:
+      type: integer
+output_schema:
+  type: object
+  required:
+  - dataset_ref
+  - source_url
+  - retrieved_at

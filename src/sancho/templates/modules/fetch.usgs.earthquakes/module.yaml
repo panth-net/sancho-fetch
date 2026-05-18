@@ -1,0 +1,61 @@
+id: fetch.usgs.earthquakes
+version: 1.2.0
+type: fetch
+catalog_tier: large
+entrypoint: main.py:run
+description: 'Path-driven USGS FDSN earthquake events client. Filter by time
+
+  (starttime/endtime), magnitude, geography (bbox or radius), event ID,
+
+  catalog. No auth required.
+
+
+  catalog.json enumerates all 61 catalogs, ~50 contributors, every
+
+  eventtype/magnitudetype, and the full query param surface.
+
+  '
+managed_paths:
+- module.yaml
+- main.py
+- api.py
+- transform.py
+- schema.sample.json
+- catalog.json
+- catalog.meta.json
+- catalog_blueprint.py
+- discovery.py
+input_schema:
+  type: object
+  properties:
+    endpoint:
+      type: string
+      description: 'USGS FDSN event endpoint. Default `/fdsnws/event/1/query`.
+
+        '
+      examples:
+      - https://earthquake.usgs.gov/fdsnws/event/1/query
+      - https://earthquake.usgs.gov/fdsnws/event/1/count
+    params:
+      type: object
+      description: 'Query parameters. Time: `starttime`/`endtime` (ISO 8601).
+
+        Magnitude: `minmagnitude`/`maxmagnitude`. Region:
+
+        `minlatitude`/`maxlatitude`/`minlongitude`/`maxlongitude`, or
+
+        radius via `latitude`/`longitude`/`maxradiuskm`. Filter:
+
+        `eventtype` (earthquake/quarry blast/explosion), `eventid`,
+
+        `catalog`, `contributor`. Output: `format` (geojson/json/csv/xml),
+
+        `orderby`, `limit` (1-20000), `offset`.
+
+        '
+output_schema:
+  type: object
+  required:
+  - dataset_ref
+  - endpoint
+  - retrieved_at

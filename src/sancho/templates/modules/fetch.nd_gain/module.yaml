@@ -1,0 +1,26 @@
+id: fetch.nd_gain
+version: 1.0.0
+type: fetch
+catalog_tier: small
+entrypoint: main.py:run
+description: Fetch Notre Dame Global Adaptation Initiative (ND-GAIN) country climate
+  vulnerability index from the published ZIP archive.
+managed_paths:
+- module.yaml
+- main.py
+- api.py
+- transform.py
+- schema.sample.json
+input_schema:
+  type: object
+  properties:
+    country:
+      type: string
+    metric:
+      type: string
+output_schema:
+  type: object
+  required:
+  - dataset_ref
+  - source_url
+  - retrieved_at

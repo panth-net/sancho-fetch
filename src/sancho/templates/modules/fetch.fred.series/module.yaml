@@ -1,0 +1,161 @@
+id: fetch.fred.series
+version: 1.2.0
+type: fetch
+catalog_tier: large
+entrypoint: main.py:run
+description: 'Fetch FRED timeseries observations from the St. Louis Fed. Wraps
+
+  /fred/series/observations with all 12 of its query parameters as typed
+
+  knobs: pick a series, pick a date range, optionally resample with
+
+  `frequency` + `aggregation_method`, transform with `units` (e.g. "pc1" for
+
+  year-over-year percent change), or query a historical vintage with
+
+  `realtime_start`/`realtime_end`/`vintage_dates`.
+
+
+  catalog.json enumerates 324 releases, 119 sources, 5,955+ tags, and the
+
+  root-category children so callers can resolve any FRED series ID without
+
+  round-tripping. Requires FRED_API_KEY.
+
+  '
+managed_paths:
+- module.yaml
+- main.py
+- api.py
+- transform.py
+- schema.sample.json
+- catalog.json
+- catalog.meta.json
+- catalog_blueprint.py
+- discovery.py
+input_schema:
+  type: object
+  required:
+  - series_id
+  properties:
+    series_id:
+      type: string
+      description: 'FRED series identifier. Examples: "CPIAUCSL" (CPI All Urban
+
+        Consumers), "UNRATE" (unemployment rate), "GDP" (nominal GDP),
+
+        "DGS10" (10-year Treasury yield).
+
+        '
+      examples:
+      - CPIAUCSL
+      - UNRATE
+      - GDP
+      - DGS10
+    observation_start:
+      type: string
+      description: Earliest observation date (YYYY-MM-DD).
+      default: '2020-01-01'
+      examples:
+      - '2020-01-01'
+      - '2000-01-01'
+    observation_end:
+      type: string
+      description: Latest observation date (YYYY-MM-DD). Empty = through latest.
+      default: ''
+      examples:
+      - ''
+      - '2024-12-31'
+    frequency:
+      type: string
+      description: 'Resample to this cadence: d=daily, w=weekly, bw=biweekly, m=monthly,
+
+        q=quarterly, sa=semi-annual, a=annual. Omit for source-native.
+
+        '
+      examples:
+      - ''
+      - m
+      - q
+      - a
+    aggregation_method:
+      type: string
+      description: 'How to aggregate when resampling. "avg" (default), "sum", or "eop"
+
+        (end-of-period). Only meaningful when `frequency` is set.
+
+        '
+      examples:
+      - avg
+      - sum
+      - eop
+    units:
+      type: string
+      description: 'Value transform: "lin" raw level (default), "chg" change, "ch1"
+
+        year-over-year change, "pch" percent change from previous, "pc1"
+
+        year-over-year percent change, "pca" compounded annual rate, "cch",
+
+        "cca", "log".
+
+        '
+      examples:
+      - lin
+      - pc1
+      - pch
+      - log
+    realtime_start:
+      type: string
+      description: "Vintage start date (YYYY-MM-DD) \u2014 return values as they would\
+        \ have\nappeared on this date. Mutually exclusive with `vintage_dates`.\n"
+      examples:
+      - '2024-01-01'
+    realtime_end:
+      type: string
+      description: Vintage end date (YYYY-MM-DD).
+      examples:
+      - '2024-12-31'
+    vintage_dates:
+      type: string
+      description: 'Comma-separated YYYY-MM-DD list of specific vintages to fetch.
+
+        Alternative to `realtime_start`/`realtime_end`.
+
+        '
+      examples:
+      - 2024-01-15,2024-04-15,2024-07-15
+    limit:
+      type: integer
+      description: Maximum observations returned (1-100000). Default 100000.
+      examples:
+      - 100
+      - 1000
+    offset:
+      type: integer
+      description: Pagination offset (non-negative). Used with `limit`.
+      examples:
+      - 0
+      - 1000
+    sort_order:
+      type: string
+      description: '"asc" (oldest first, default) or "desc" (newest first).'
+      examples:
+      - asc
+      - desc
+  allOf:
+  - if:
+      properties:
+        aggregation_method:
+          type: string
+          pattern: .+
+    then:
+      required:
+      - frequency
+output_schema:
+  type: object
+  required:
+  - dataset_ref
+  - series_id
+  - observations
+  - retrieved_at

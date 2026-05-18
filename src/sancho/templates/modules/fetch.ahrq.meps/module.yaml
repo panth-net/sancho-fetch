@@ -1,0 +1,45 @@
+id: fetch.ahrq.meps
+version: 1.0.0
+type: fetch
+catalog_tier: small
+entrypoint: main.py:run
+description: "AHRQ Medical Expenditure Panel Survey (MEPS) public-use file downloader.\n\
+  No key required. Downloads the Stata (.dta) variant of MEPS PUFs at\nhttps://meps.ahrq.gov/mepsweb/data_files/pufs/{puf_id}/{puf_id}dta.zip,\n\
+  parses with pyreadstat, and returns the first N rows.\n\nCommon PUFs:\n  h233 -\
+  \ 2021 Full Year Consolidated (28K respondents, 1488 cols)\n  h243 - 2022 Full Year\
+  \ Consolidated\n  h232 - 2021 Medical Conditions (subset)\n  h220 - 2020 Full Year\
+  \ Consolidated\n\nRequired: pyreadstat for Stata .dta parsing.\n"
+managed_paths:
+- module.yaml
+- main.py
+- api.py
+- transform.py
+- schema.sample.json
+input_schema:
+  type: object
+  properties:
+    puf_id:
+      type: string
+      description: 'MEPS PUF identifier (e.g. "h233" for 2021 Full Year Consolidated).
+
+        Find PUF IDs at meps.ahrq.gov/mepsweb/data_stats/download_data_files.jsp.
+
+        '
+      default: h233
+      examples:
+      - h233
+      - h243
+      - h220
+    limit:
+      type: integer
+      description: Max rows to extract (default 1000).
+      default: 1000
+      examples:
+      - 1000
+      - 100
+output_schema:
+  type: object
+  required:
+  - dataset_ref
+  - rows
+  - retrieved_at

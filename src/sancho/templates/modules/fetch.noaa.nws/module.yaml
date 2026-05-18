@@ -1,0 +1,57 @@
+id: fetch.noaa.nws
+version: 1.0.0
+type: fetch
+catalog_tier: small
+entrypoint: main.py:run
+description: 'Path-driven NOAA National Weather Service API client (api.weather.gov).
+
+  Public, no key required. Endpoints cover active alerts (warnings,
+
+  watches, advisories), point/forecast lookups, observation stations,
+
+  forecast zones, and product types. Required: a contact User-Agent
+
+  (auto-set by the runtime).
+
+  '
+managed_paths:
+- module.yaml
+- main.py
+- api.py
+- transform.py
+- schema.sample.json
+input_schema:
+  type: object
+  properties:
+    endpoint:
+      type: string
+      description: 'NWS API endpoint URL. Defaults to /alerts/active. Common patterns:
+
+        `/alerts/active?area={state}`, `/points/{lat},{lon}`,
+
+        `/gridpoints/{office}/{x},{y}/forecast`, `/stations?state={state}`,
+
+        `/zones?area={state}&type=forecast`, `/products/types`.
+
+        '
+      examples:
+      - https://api.weather.gov/alerts/active
+      - https://api.weather.gov/points/38.8894,-77.0352
+      - https://api.weather.gov/stations
+    params:
+      type: object
+      description: 'Query parameters. Common: `area` (state code or marine zone),
+
+        `status` (actual/test), `severity` (Extreme/Severe/Moderate/Minor),
+
+        `urgency` (Immediate/Expected/Future), `event` (event name filter),
+
+        `limit` (max items). Datetime filters: `start` and `end` (ISO-8601).
+
+        '
+output_schema:
+  type: object
+  required:
+  - dataset_ref
+  - endpoint
+  - retrieved_at

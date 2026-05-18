@@ -1,0 +1,44 @@
+id: fetch.earthdata
+version: 1.1.0
+type: fetch
+catalog_tier: large
+entrypoint: main.py:run
+description: 'Search NASA EOSDIS via CMR. catalog.json lists all 60 data providers
+  plus a
+
+  2,000-collection sample with simplified metadata. Total live CMR collection
+
+  count (~54,194) is recorded in catalog.meta.json.stats for progress tracking.
+
+  Pagination params documented under catalog.json.families so callers can walk
+
+  beyond the inlined sample.
+
+  '
+managed_paths:
+- module.yaml
+- main.py
+- api.py
+- transform.py
+- schema.sample.json
+- catalog.json
+- catalog.meta.json
+- catalog_blueprint.py
+- discovery.py
+input_schema:
+  type: object
+  properties:
+    mode:
+      type: string
+      description: 'Query mode: collections or granules.'
+      default: collections
+    limit:
+      type: integer
+      description: Max results.
+      default: 2000
+output_schema:
+  type: object
+  required:
+  - dataset_ref
+  - rows
+  - retrieved_at

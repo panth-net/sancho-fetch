@@ -1,0 +1,58 @@
+id: fetch.brfss
+version: 1.1.0
+type: fetch
+catalog_tier: small
+entrypoint: main.py:run
+description: 'Fetch CDC BRFSS (Behavioral Risk Factor Surveillance System) annual
+  file
+
+  manifest. Returns download URLs + file kinds for SAS XPORT data, ASCII,
+
+  codebooks, questionnaires, and documentation. Does not download the data
+
+  files themselves (those are 100-400 MB each).
+
+
+  Filter by `year` and/or `file_kind`.
+
+  '
+managed_paths:
+- module.yaml
+- main.py
+- api.py
+- transform.py
+- schema.sample.json
+input_schema:
+  type: object
+  properties:
+    year:
+      type: integer
+      description: 'BRFSS survey year. Available 1984+. Omit to fetch the index page
+
+        listing all years.
+
+        '
+      examples:
+      - 2023
+      - 2022
+      - 2021
+    file_kind:
+      type: string
+      description: 'Filter to a specific file category: "data_xpt" (SAS XPORT data
+        file),
+
+        "data_ascii" (fixed-width ASCII), "codebook" (variable docs),
+
+        "questionnaire" (survey instrument), "documentation" (overview).
+
+        '
+      examples:
+      - data_xpt
+      - codebook
+      - questionnaire
+output_schema:
+  type: object
+  required:
+  - dataset_ref
+  - source_url
+  - retrieved_at

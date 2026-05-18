@@ -1,0 +1,2325 @@
+{
+  "provider": "fetch.open_payments.datasets",
+  "schema_version": "1.0",
+  "generated_at": "2026-04-14T19:00:10.973312+00:00",
+  "conformsTo": "https://project-open-data.cio.gov/v1.1/schema",
+  "describedBy": "https://project-open-data.cio.gov/v1.1/schema/catalog.json",
+  "families": [
+    {
+      "id": "dcat.dataset",
+      "base_aliases": [
+        "v1"
+      ],
+      "base_url": "https://openpaymentsdata.cms.gov",
+      "path_templates": [
+        "/data.json"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "query_params": {},
+      "response_mode": "json",
+      "envelope_key": "dataset",
+      "description": "DCAT-US catalog for https://openpaymentsdata.cms.gov. One HTTP GET returns every dataset.",
+      "source_refs": [
+        "https://openpaymentsdata.cms.gov/api"
+      ]
+    }
+  ],
+  "datasets": [
+    {
+      "identifier": "7b82fb48-2bec-45f0-b40e-aed5f1d1eba0",
+      "title": "2018 Research Payment Data",
+      "description": "Research Payment Data \u2013 Detailed Dataset 2018 Reporting Year\nAll research-related payments from the 2018 program year [January 1 \u2013 December 31, 2018]",
+      "modified": "2026-01-27",
+      "issued": "2026-01-27",
+      "temporal": "2018-01-01/2018-12-31",
+      "accessLevel": "public",
+      "accrualPeriodicity": null,
+      "keyword": [
+        "2018"
+      ],
+      "theme": [
+        "Research Payments"
+      ],
+      "publisher": "openpaymentsdata.cms.gov",
+      "contactPoint": "Open Payments",
+      "license": "https://www.usa.gov/government-works",
+      "landingPage": null,
+      "describedBy": null,
+      "distribution": [
+        {
+          "title": "Research Payment Data \u2013 Detailed Dataset 2018 Reporting Year",
+          "description": null,
+          "mediaType": "text/csv",
+          "format": "csv",
+          "downloadURL": "https://download.cms.gov/openpayments/PGYR2018_P01232026_01102026/OP_DTL_RSRCH_PGYR2018_P01232026_01102026.csv",
+          "accessURL": null
+        }
+      ]
+    },
+    {
+      "identifier": "de0087e0-101b-43c1-acdf-69986a4c166b",
+      "title": "2018 Ownership Payment Data",
+      "description": "Ownership Payment Data - Detailed Dataset 2018 Reporting Year\nAll ownership and investment payments from the 2018 program year [January 1 \u2013 December 31, 2018]",
+      "modified": "2026-01-27",
+      "issued": "2026-01-27",
+      "temporal": "2018-01-01/2018-12-31",
+      "accessLevel": "public",
+      "accrualPeriodicity": null,
+      "keyword": [
+        "2018"
+      ],
+      "theme": [
+        "Ownership Payments"
+      ],
+      "publisher": "openpaymentsdata.cms.gov",
+      "contactPoint": "Open Payments",
+      "license": "https://www.usa.gov/government-works",
+      "landingPage": null,
+      "describedBy": null,
+      "distribution": [
+        {
+          "title": "Ownership Payment Data - Detailed Dataset 2018 Reporting Year",
+          "description": null,
+          "mediaType": "text/csv",
+          "format": "csv",
+          "downloadURL": "https://download.cms.gov/openpayments/PGYR2018_P01232026_01102026/OP_DTL_OWNRSHP_PGYR2018_P01232026_01102026.csv",
+          "accessURL": null
+        }
+      ]
+    },
+    {
+      "identifier": "713a6016-1930-4a0c-b7c2-3e3de4f244c5",
+      "title": "2019 Research Payment Data",
+      "description": "Research Payment Data \u2013 Detailed Dataset 2019 Reporting Year\nAll research-related payments from the 2019 program year [January 1 \u2013 December 31, 2019]",
+      "modified": "2026-01-27",
+      "issued": "2026-01-27",
+      "temporal": "2019-01-01/2019-12-31",
+      "accessLevel": "public",
+      "accrualPeriodicity": null,
+      "keyword": [
+        "2019"
+      ],
+      "theme": [
+        "Research Payments"
+      ],
+      "publisher": "openpaymentsdata.cms.gov",
+      "contactPoint": "Open Payments",
+      "license": "https://www.usa.gov/government-works",
+      "landingPage": null,
+      "describedBy": null,
+      "distribution": [
+        {
+          "title": "Research Payment Data \u2013 Detailed Dataset 2019 Reporting Year",
+          "description": null,
+          "mediaType": "text/csv",
+          "format": "csv",
+          "downloadURL": "https://download.cms.gov/openpayments/PGYR2019_P01232026_01102026/OP_DTL_RSRCH_PGYR2019_P01232026_01102026.csv",
+          "accessURL": null
+        }
+      ]
+    },
+    {
+      "identifier": "0b5c9710-7edb-484e-abc8-39293849ccb2",
+      "title": "2019 Ownership Payment Data",
+      "description": "Ownership Payment Data - Detailed Dataset 2019 Reporting Year\nAll ownership and investment payments from the 2021 program year [January 1 \u2013 December 31, 2021]",
+      "modified": "2026-01-27",
+      "issued": "2026-01-27",
+      "temporal": "2019-01-01/2019-12-31",
+      "accessLevel": "public",
+      "accrualPeriodicity": null,
+      "keyword": [
+        "2019"
+      ],
+      "theme": [
+        "Ownership Payments"
+      ],
+      "publisher": "openpaymentsdata.cms.gov",
+      "contactPoint": "Open Payments",
+      "license": "https://www.usa.gov/government-works",
+      "landingPage": null,
+      "describedBy": null,
+      "distribution": [
+        {
+          "title": "Ownership Payment Data - Detailed Dataset 2019 Reporting Year",
+          "description": null,
+          "mediaType": "text/csv",
+          "format": "csv",
+          "downloadURL": "https://download.cms.gov/openpayments/PGYR2019_P01232026_01102026/OP_DTL_OWNRSHP_PGYR2019_P01232026_01102026.csv",
+          "accessURL": null
+        }
+      ]
+    },
+    {
+      "identifier": "9c248e7e-7c7f-478b-ab84-ce0919d72c1c",
+      "title": "2020 Research Payment Data",
+      "description": "Research Payment Data \u2013 Detailed Dataset 2020 Reporting Year\nAll research-related payments from the 2020 program year [January 1 \u2013 December 31, 2020]",
+      "modified": "2026-01-27",
+      "issued": "2026-01-27",
+      "temporal": "2020-01-01/2020-12-31",
+      "accessLevel": "public",
+      "accrualPeriodicity": null,
+      "keyword": [
+        "2020"
+      ],
+      "theme": [
+        "Research Payments"
+      ],
+      "publisher": "openpaymentsdata.cms.gov",
+      "contactPoint": "Open Payments",
+      "license": "https://www.usa.gov/government-works",
+      "landingPage": null,
+      "describedBy": null,
+      "distribution": [
+        {
+          "title": "Research Payment Data \u2013 Detailed Dataset 2020 Reporting Year",
+          "description": null,
+          "mediaType": "text/csv",
+          "format": "csv",
+          "downloadURL": "https://download.cms.gov/openpayments/PGYR2020_P01232026_01102026/OP_DTL_RSRCH_PGYR2020_P01232026_01102026.csv",
+          "accessURL": null
+        }
+      ]
+    },
+    {
+      "identifier": "a9a0bf48-6b96-4589-b4c2-3c5dcfbeaca2",
+      "title": "2020 Ownership Payment Data",
+      "description": "Ownership Payment Data - Detailed Dataset 2020 Reporting Year\nAll ownership and investment payments from the 2020 program year [January 1 \u2013 December 31, 2020]",
+      "modified": "2026-01-27",
+      "issued": "2026-01-27",
+      "temporal": "2020-01-01/2020-12-31",
+      "accessLevel": "public",
+      "accrualPeriodicity": null,
+      "keyword": [
+        "2020"
+      ],
+      "theme": [
+        "Ownership Payments"
+      ],
+      "publisher": "openpaymentsdata.cms.gov",
+      "contactPoint": "Open Payments",
+      "license": "https://www.usa.gov/government-works",
+      "landingPage": null,
+      "describedBy": null,
+      "distribution": [
+        {
+          "title": "Ownership Payment Data - Detailed Dataset 2020 Reporting Year",
+          "description": null,
+          "mediaType": "text/csv",
+          "format": "csv",
+          "downloadURL": "https://download.cms.gov/openpayments/PGYR2020_P01232026_01102026/OP_DTL_OWNRSHP_PGYR2020_P01232026_01102026.csv",
+          "accessURL": null
+        }
+      ]
+    },
+    {
+      "identifier": "ce1d28dd-0094-5060-a036-580329439600",
+      "title": "2021 Research Payment Data",
+      "description": "Research Payment Data \u2013 Detailed Dataset 2021 Reporting Year\nAll research-related payments from the 2021 program year [January 1 \u2013 December 31, 2021]",
+      "modified": "2026-01-27",
+      "issued": "2026-01-27",
+      "temporal": "2021-01-01/2021-12-31",
+      "accessLevel": "public",
+      "accrualPeriodicity": null,
+      "keyword": [
+        "2021"
+      ],
+      "theme": [
+        "Research Payments"
+      ],
+      "publisher": "openpaymentsdata.cms.gov",
+      "contactPoint": "Open Payments",
+      "license": "https://www.usa.gov/government-works",
+      "landingPage": null,
+      "describedBy": null,
+      "distribution": [
+        {
+          "title": "Research Payment Data \u2013 Detailed Dataset 2021 Reporting Year",
+          "description": null,
+          "mediaType": "text/csv",
+          "format": "csv",
+          "downloadURL": "https://download.cms.gov/openpayments/PGYR2021_P01232026_01102026/OP_DTL_RSRCH_PGYR2021_P01232026_01102026.csv",
+          "accessURL": null
+        }
+      ]
+    },
+    {
+      "identifier": "b0c03b8d-06df-58f2-8ce2-4daeffee147e",
+      "title": "2021 Ownership Payment Data",
+      "description": "Ownership Payment Data - Detailed Dataset 2021 Reporting Year\nAll ownership and investment payments from the 2021 program year [January 1 \u2013 December 31, 2021]",
+      "modified": "2026-01-27",
+      "issued": "2026-01-27",
+      "temporal": "2021-01-01/2021-12-31",
+      "accessLevel": "public",
+      "accrualPeriodicity": null,
+      "keyword": [
+        "2021"
+      ],
+      "theme": [
+        "Ownership Payments"
+      ],
+      "publisher": "openpaymentsdata.cms.gov",
+      "contactPoint": "Open Payments",
+      "license": "https://www.usa.gov/government-works",
+      "landingPage": null,
+      "describedBy": null,
+      "distribution": [
+        {
+          "title": "Ownership Payment Data - Detailed Dataset 2021 Reporting Year",
+          "description": null,
+          "mediaType": "text/csv",
+          "format": "csv",
+          "downloadURL": "https://download.cms.gov/openpayments/PGYR2021_P01232026_01102026/OP_DTL_OWNRSHP_PGYR2021_P01232026_01102026.csv",
+          "accessURL": null
+        }
+      ]
+    },
+    {
+      "identifier": "fdc3c773-018a-412c-8a81-d7b8a13a037b",
+      "title": "2022 Research Payment Data",
+      "description": "Research Payment Data \u2013 Detailed Dataset 2022 Reporting Year\nAll research-related payments from the 2022 program year [January 1 \u2013 December 31, 2022]",
+      "modified": "2026-01-27",
+      "issued": "2026-01-27",
+      "temporal": "2022-01-01/2022-12-31",
+      "accessLevel": "public",
+      "accrualPeriodicity": null,
+      "keyword": [
+        "2022"
+      ],
+      "theme": [
+        "Research Payments"
+      ],
+      "publisher": "openpaymentsdata.cms.gov",
+      "contactPoint": "Open Payments",
+      "license": "https://www.usa.gov/government-works",
+      "landingPage": null,
+      "describedBy": null,
+      "distribution": [
+        {
+          "title": "Research Payment Data \u2013 Detailed Dataset 2022 Reporting Year",
+          "description": null,
+          "mediaType": "text/csv",
+          "format": "csv",
+          "downloadURL": "https://download.cms.gov/openpayments/PGYR2022_P01232026_01102026/OP_DTL_RSRCH_PGYR2022_P01232026_01102026.csv",
+          "accessURL": null
+        }
+      ]
+    },
+    {
+      "identifier": "37792388-800f-427a-9e02-b11601454eeb",
+      "title": "2022 Ownership Payment Data",
+      "description": "Ownership Payment Data - Detailed Dataset 2022 Reporting Year\nAll ownership and investment payments from the 2022 program year [January 1 \u2013 December 31, 2022]",
+      "modified": "2026-01-27",
+      "issued": "2026-01-27",
+      "temporal": "2022-01-01/2022-12-31",
+      "accessLevel": "public",
+      "accrualPeriodicity": null,
+      "keyword": [
+        "2022"
+      ],
+      "theme": [
+        "Ownership Payments"
+      ],
+      "publisher": "openpaymentsdata.cms.gov",
+      "contactPoint": "Open Payments",
+      "license": "https://www.usa.gov/government-works",
+      "landingPage": null,
+      "describedBy": null,
+      "distribution": [
+        {
+          "title": "Ownership Payment Data - Detailed Dataset 2022 Reporting Year",
+          "description": null,
+          "mediaType": "text/csv",
+          "format": "csv",
+          "downloadURL": "https://download.cms.gov/openpayments/PGYR2022_P01232026_01102026/OP_DTL_OWNRSHP_PGYR2022_P01232026_01102026.csv",
+          "accessURL": null
+        }
+      ]
+    },
+    {
+      "identifier": "ec9521bf-9d97-4603-814c-f4132d34bc4f",
+      "title": "2023 Research Payment Data",
+      "description": "Research Payment Data \u2013 Detailed Dataset 2023 Reporting Year\nAll research-related payments from the 2023 program year [January 1 \u2013 December 31, 2023]",
+      "modified": "2026-01-27",
+      "issued": "2026-01-27",
+      "temporal": "2023-01-01/2023-12-31",
+      "accessLevel": "public",
+      "accrualPeriodicity": null,
+      "keyword": [
+        "2023"
+      ],
+      "theme": [
+        "Research Payments"
+      ],
+      "publisher": "openpaymentsdata.cms.gov",
+      "contactPoint": "Open Payments",
+      "license": "https://www.usa.gov/government-works",
+      "landingPage": null,
+      "describedBy": null,
+      "distribution": [
+        {
+          "title": "Research Payment Data \u2013 Detailed Dataset 2023 Reporting Year",
+          "description": null,
+          "mediaType": "text/csv",
+          "format": "csv",
+          "downloadURL": "https://download.cms.gov/openpayments/PGYR2023_P01232026_01102026/OP_DTL_RSRCH_PGYR2023_P01232026_01102026.csv",
+          "accessURL": null
+        }
+      ]
+    },
+    {
+      "identifier": "ac0bc85c-02e3-45d9-89e8-2ff43da85df7",
+      "title": "2023 Ownership Payment Data",
+      "description": "Ownership Payment Data - Detailed Dataset 2023 Reporting Year\nAll ownership and investment payments from the 2023 program year [January 1 \u2013 December 31, 2023]",
+      "modified": "2026-01-27",
+      "issued": "2026-01-27",
+      "temporal": "2023-01-01/2023-12-31",
+      "accessLevel": "public",
+      "accrualPeriodicity": null,
+      "keyword": [
+        "2023"
+      ],
+      "theme": [
+        "Ownership Payments"
+      ],
+      "publisher": "openpaymentsdata.cms.gov",
+      "contactPoint": "Open Payments",
+      "license": "https://www.usa.gov/government-works",
+      "landingPage": null,
+      "describedBy": null,
+      "distribution": [
+        {
+          "title": "Ownership Payment Data - Detailed Dataset 2023 Reporting Year",
+          "description": null,
+          "mediaType": "text/csv",
+          "format": "csv",
+          "downloadURL": "https://download.cms.gov/openpayments/PGYR2023_P01232026_01102026/OP_DTL_OWNRSHP_PGYR2023_P01232026_01102026.csv",
+          "accessURL": null
+        }
+      ]
+    },
+    {
+      "identifier": "2f15cb85-8887-4dcc-a318-1f8ec1d815b3",
+      "title": "2024 Research Payment Data",
+      "description": "Research Payment Data \u2013 Detailed Dataset 2024 Reporting Year\nAll research-related payments from the 2024 program year [January 1 \u2013 December 31, 2024]",
+      "modified": "2026-01-27",
+      "issued": "2026-01-27",
+      "temporal": "2024-01-01/2024-12-31",
+      "accessLevel": "public",
+      "accrualPeriodicity": null,
+      "keyword": [
+        "2024"
+      ],
+      "theme": [
+        "Research Payments"
+      ],
+      "publisher": "openpaymentsdata.cms.gov",
+      "contactPoint": "Open Payments",
+      "license": "https://www.usa.gov/government-works",
+      "landingPage": null,
+      "describedBy": null,
+      "distribution": [
+        {
+          "title": "Research Payment Data \u2013 Detailed Dataset 2024 Reporting Year",
+          "description": null,
+          "mediaType": "text/csv",
+          "format": "csv",
+          "downloadURL": "https://download.cms.gov/openpayments/PGYR2024_P01232026_01102026/OP_DTL_RSRCH_PGYR2024_P01232026_01102026.csv",
+          "accessURL": null
+        }
+      ]
+    },
+    {
+      "identifier": "9ac4f7f8-b6e4-4d80-8410-4aba7e71dd02",
+      "title": "2024 Ownership Payment Data",
+      "description": "Ownership Payment Data - Detailed Dataset 2024 Reporting Year\nAll ownership and investment payments from the 2024 program year [January 1 \u2013 December 31, 2024]",
+      "modified": "2026-01-27",
+      "issued": "2026-01-27",
+      "temporal": "2024-01-01/2024-12-31",
+      "accessLevel": "public",
+      "accrualPeriodicity": null,
+      "keyword": [
+        "2024"
+      ],
+      "theme": [
+        "Ownership Payments"
+      ],
+      "publisher": "openpaymentsdata.cms.gov",
+      "contactPoint": "Open Payments",
+      "license": "https://www.usa.gov/government-works",
+      "landingPage": null,
+      "describedBy": null,
+      "distribution": [
+        {
+          "title": "Ownership Payment Data - Detailed Dataset 2024 Reporting Year",
+          "description": null,
+          "mediaType": "text/csv",
+          "format": "csv",
+          "downloadURL": "https://download.cms.gov/openpayments/PGYR2024_P01232026_01102026/OP_DTL_OWNRSHP_PGYR2024_P01232026_01102026.csv",
+          "accessURL": null
+        }
+      ]
+    },
+    {
+      "identifier": "23160558-6742-54ff-8b9f-cac7d514ff4e",
+      "title": "Covered Recipient Profile Supplement",
+      "description": "The Covered Recipient Profile Supplement file contains information about physicians and non-physician practitioners who have been indicated as recipients of payments, other transfers of value, or ownership and investment interest in payment records, as well as physicians and non-physician practitioners who have been identified as principal investigators associated with research payment records published by Open Payments.\n\nThis file contains only those physicians that have at least one published payment record in this cycle of the publication as of December 31, 2025. The criteria used by the Centers for Medicare &amp; Medicaid Services (CMS) to determine which payment records are eligible for publication is available in the Open Payments Methodology and Data Dictionary Document. This document can be found on the Resources page of the Open Payments website (https://www.cms.gov/OpenPayments/Resources). The Methodology and Data Dictionary Document also includes information on the data collection and reporting methodology, data fields included in the files, and any notes or special considerations that users should be aware of.",
+      "modified": "2026-01-27",
+      "issued": "2026-01-27",
+      "temporal": "2018-01-01/2024-12-31",
+      "accessLevel": "public",
+      "accrualPeriodicity": null,
+      "keyword": [
+        "all years"
+      ],
+      "theme": [
+        "Summary"
+      ],
+      "publisher": "openpaymentsdata.cms.gov",
+      "contactPoint": "Open Payments",
+      "license": "https://www.usa.gov/government-works",
+      "landingPage": null,
+      "describedBy": null,
+      "distribution": [
+        {
+          "title": "Covered Recipient Profile Supplement",
+          "description": null,
+          "mediaType": "text/csv",
+          "format": "csv",
+          "downloadURL": "https://download.cms.gov/openpayments/PHPRFL_P01232026_01102026/OP_CVRD_RCPNT_PRFL_SPLMTL_P01232026_01102026.csv",
+          "accessURL": null
+        }
+      ]
+    },
+    {
+      "identifier": "f003634c-c103-568f-876c-73017fa83be0",
+      "title": "2018 General Payment Data",
+      "description": "All general (non-research, non-ownership related) payments from the 2018 program year [January 1 \u2013 December 31, 2018] <p><strong>NOTE:</strong> This is a very large file and, depending on your network characteristics and software, may take a long time to download or fail to download. Additionally, the number of rows in the file may be larger than the maximum rows your version of <a href=\"https://support.microsoft.com/en-us/office/excel-specifications-and-limits-1672b34d-7043-467e-8e27-269d656771c3\">Microsoft Excel</a> supports. If you can't download the file, we recommend engaging your IT support staff. If you are able to download the file but are unable to open it in MS Excel or get a message that the data has been truncated, we recommend trying alternative programs such as MS Access, Universal Viewer, Editpad or any other software your organization has available for large datasets.</p>",
+      "modified": "2026-01-27",
+      "issued": "2026-01-27",
+      "temporal": "2018-01-01/2018-12-31",
+      "accessLevel": "public",
+      "accrualPeriodicity": null,
+      "keyword": [
+        "2018"
+      ],
+      "theme": [
+        "General Payments"
+      ],
+      "publisher": "openpaymentsdata.cms.gov",
+      "contactPoint": "Open Payments",
+      "license": "https://www.usa.gov/government-works",
+      "landingPage": null,
+      "describedBy": null,
+      "distribution": [
+        {
+          "title": "General Payment Data \u2013 Detailed Dataset 2018 Reporting Year",
+          "description": null,
+          "mediaType": "text/csv",
+          "format": "csv",
+          "downloadURL": "https://download.cms.gov/openpayments/PGYR2018_P01232026_01102026/OP_DTL_GNRL_PGYR2018_P01232026_01102026.csv",
+          "accessURL": null
+        }
+      ]
+    },
+    {
+      "identifier": "4e54dd6c-30f8-4f86-86a7-3c109a89528e",
+      "title": "2019 General Payment Data",
+      "description": "All general (non-research, non-ownership related) payments from the 2019 program year [January 1 \u2013 December 31, 2019] <p><strong>NOTE:</strong> This is a very large file and, depending on your network characteristics and software, may take a long time to download or fail to download. Additionally, the number of rows in the file may be larger than the maximum rows your version of <a href=\"https://support.microsoft.com/en-us/office/excel-specifications-and-limits-1672b34d-7043-467e-8e27-269d656771c3\">Microsoft Excel</a> supports. If you can't download the file, we recommend engaging your IT support staff. If you are able to download the file but are unable to open it in MS Excel or get a message that the data has been truncated, we recommend trying alternative programs such as MS Access, Universal Viewer, Editpad or any other software your organization has available for large datasets.</p>",
+      "modified": "2026-01-27",
+      "issued": "2026-01-27",
+      "temporal": "2019-01-01/2019-12-31",
+      "accessLevel": "public",
+      "accrualPeriodicity": null,
+      "keyword": [
+        "2019"
+      ],
+      "theme": [
+        "General Payments"
+      ],
+      "publisher": "openpaymentsdata.cms.gov",
+      "contactPoint": "Open Payments",
+      "license": "https://www.usa.gov/government-works",
+      "landingPage": null,
+      "describedBy": null,
+      "distribution": [
+        {
+          "title": "General Payment Data \u2013 Detailed Dataset 2019 Reporting Year",
+          "description": null,
+          "mediaType": "text/csv",
+          "format": "csv",
+          "downloadURL": "https://download.cms.gov/openpayments/PGYR2019_P01232026_01102026/OP_DTL_GNRL_PGYR2019_P01232026_01102026.csv",
+          "accessURL": null
+        }
+      ]
+    },
+    {
+      "identifier": "a08c4b30-5cf3-4948-ad40-36f404619019",
+      "title": "2020 General Payment Data",
+      "description": "All general (non-research, non-ownership related) payments from the 2020 program year [January 1 \u2013 December 31, 2020] <p><strong>NOTE:</strong> This is a very large file and, depending on your network characteristics and software, may take a long time to download or fail to download. Additionally, the number of rows in the file may be larger than the maximum rows your version of <a href=\"https://support.microsoft.com/en-us/office/excel-specifications-and-limits-1672b34d-7043-467e-8e27-269d656771c3\">Microsoft Excel</a> supports. If you can't download the file, we recommend engaging your IT support staff. If you are able to download the file but are unable to open it in MS Excel or get a message that the data has been truncated, we recommend trying alternative programs such as MS Access, Universal Viewer, Editpad or any other software your organization has available for large datasets.</p>",
+      "modified": "2026-01-27",
+      "issued": "2026-01-27",
+      "temporal": "2020-01-01/2020-12-31",
+      "accessLevel": "public",
+      "accrualPeriodicity": null,
+      "keyword": [
+        "2020"
+      ],
+      "theme": [
+        "General Payments"
+      ],
+      "publisher": "openpaymentsdata.cms.gov",
+      "contactPoint": "Open Payments",
+      "license": "https://www.usa.gov/government-works",
+      "landingPage": null,
+      "describedBy": null,
+      "distribution": [
+        {
+          "title": "General Payment Data \u2013 Detailed Dataset 2020 Reporting Year",
+          "description": null,
+          "mediaType": "text/csv",
+          "format": "csv",
+          "downloadURL": "https://download.cms.gov/openpayments/PGYR2020_P01232026_01102026/OP_DTL_GNRL_PGYR2020_P01232026_01102026.csv",
+          "accessURL": null
+        }
+      ]
+    },
+    {
+      "identifier": "0380bbeb-aea1-58b6-b708-829f92a48202",
+      "title": "2021 General Payment Data",
+      "description": "All general (non-research, non-ownership related) payments from the 2021 program year [January 1 \u2013 December 31, 2021] <p><strong>NOTE:</strong> This is a very large file and, depending on your network characteristics and software, may take a long time to download or fail to download. Additionally, the number of rows in the file may be larger than the maximum rows your version of <a href=\"https://support.microsoft.com/en-us/office/excel-specifications-and-limits-1672b34d-7043-467e-8e27-269d656771c3\">Microsoft Excel</a> supports. If you can't download the file, we recommend engaging your IT support staff. If you are able to download the file but are unable to open it in MS Excel or get a message that the data has been truncated, we recommend trying alternative programs such as MS Access, Universal Viewer, Editpad or any other software your organization has available for large datasets.</p>",
+      "modified": "2026-01-27",
+      "issued": "2026-01-27",
+      "temporal": "2021-01-01/2021-12-31",
+      "accessLevel": "public",
+      "accrualPeriodicity": null,
+      "keyword": [
+        "2021"
+      ],
+      "theme": [
+        "General Payments"
+      ],
+      "publisher": "openpaymentsdata.cms.gov",
+      "contactPoint": "Open Payments",
+      "license": "https://www.usa.gov/government-works",
+      "landingPage": null,
+      "describedBy": null,
+      "distribution": [
+        {
+          "title": "General Payment Data \u2013 Detailed Dataset 2021 Reporting Year",
+          "description": null,
+          "mediaType": "text/csv",
+          "format": "csv",
+          "downloadURL": "https://download.cms.gov/openpayments/PGYR2021_P01232026_01102026/OP_DTL_GNRL_PGYR2021_P01232026_01102026.csv",
+          "accessURL": null
+        }
+      ]
+    },
+    {
+      "identifier": "df01c2f8-dc1f-4e79-96cb-8208beaf143c",
+      "title": "2022 General Payment Data",
+      "description": "All general (non-research, non-ownership related) payments from the 2022 program year [January 1 \u2013 December 31, 2022] <p><strong>NOTE:</strong> This is a very large file and, depending on your network characteristics and software, may take a long time to download or fail to download. Additionally, the number of rows in the file may be larger than the maximum rows your version of <a href=\"https://support.microsoft.com/en-us/office/excel-specifications-and-limits-1672b34d-7043-467e-8e27-269d656771c3\">Microsoft Excel</a> supports. If you can't download the file, we recommend engaging your IT support staff. If you are able to download the file but are unable to open it in MS Excel or get a message that the data has been truncated, we recommend trying alternative programs such as MS Access, Universal Viewer, Editpad or any other software your organization has available for large datasets.</p>",
+      "modified": "2026-01-27",
+      "issued": "2026-01-27",
+      "temporal": "2022-01-01/2022-12-31",
+      "accessLevel": "public",
+      "accrualPeriodicity": null,
+      "keyword": [
+        "2022"
+      ],
+      "theme": [
+        "General Payments"
+      ],
+      "publisher": "openpaymentsdata.cms.gov",
+      "contactPoint": "Open Payments",
+      "license": "https://www.usa.gov/government-works",
+      "landingPage": null,
+      "describedBy": null,
+      "distribution": [
+        {
+          "title": "General Payment Data \u2013 Detailed Dataset 2022 Reporting Year",
+          "description": null,
+          "mediaType": "text/csv",
+          "format": "csv",
+          "downloadURL": "https://download.cms.gov/openpayments/PGYR2022_P01232026_01102026/OP_DTL_GNRL_PGYR2022_P01232026_01102026.csv",
+          "accessURL": null
+        }
+      ]
+    },
+    {
+      "identifier": "fb3a65aa-c901-4a38-a813-b04b00dfa2a9",
+      "title": "2023 General Payment Data",
+      "description": "All general (non-research, non-ownership related) payments from the 2023 program year [January 1 \u2013 December 31, 2023] <p><strong>NOTE:</strong> This is a very large file and, depending on your network characteristics and software, may take a long time to download or fail to download. Additionally, the number of rows in the file may be larger than the maximum rows your version of <a href=\"https://support.microsoft.com/en-us/office/excel-specifications-and-limits-1672b34d-7043-467e-8e27-269d656771c3\">Microsoft Excel</a> supports. If you can't download the file, we recommend engaging your IT support staff. If you are able to download the file but are unable to open it in MS Excel or get a message that the data has been truncated, we recommend trying alternative programs such as MS Access, Universal Viewer, Editpad or any other software your organization has available for large datasets.</p>",
+      "modified": "2026-01-27",
+      "issued": "2026-01-27",
+      "temporal": "2023-01-01/2023-12-31",
+      "accessLevel": "public",
+      "accrualPeriodicity": null,
+      "keyword": [
+        "2023"
+      ],
+      "theme": [
+        "General Payments"
+      ],
+      "publisher": "openpaymentsdata.cms.gov",
+      "contactPoint": "Open Payments",
+      "license": "https://www.usa.gov/government-works",
+      "landingPage": null,
+      "describedBy": null,
+      "distribution": [
+        {
+          "title": "General Payment Data \u2013 Detailed Dataset 2023 Reporting Year",
+          "description": null,
+          "mediaType": "text/csv",
+          "format": "csv",
+          "downloadURL": "https://download.cms.gov/openpayments/PGYR2023_P01232026_01102026/OP_DTL_GNRL_PGYR2023_P01232026_01102026.csv",
+          "accessURL": null
+        }
+      ]
+    },
+    {
+      "identifier": "e6b17c6a-2534-4207-a4a1-6746a14911ff",
+      "title": "2024 General Payment Data",
+      "description": "All general (non-research, non-ownership related) payments from the 2024 program year [January 1 \u2013 December 31, 2024] <p><strong>NOTE:</strong> This is a very large file and, depending on your network characteristics and software, may take a long time to download or fail to download. Additionally, the number of rows in the file may be larger than the maximum rows your version of <a href=\"https://support.microsoft.com/en-us/office/excel-specifications-and-limits-1672b34d-7043-467e-8e27-269d656771c3\">Microsoft Excel</a> supports. If you can't download the file, we recommend engaging your IT support staff. If you are able to download the file but are unable to open it in MS Excel or get a message that the data has been truncated, we recommend trying alternative programs such as MS Access, Universal Viewer, Editpad or any other software your organization has available for large datasets.</p>",
+      "modified": "2026-01-27",
+      "issued": "2026-01-27",
+      "temporal": "2024-01-01/2024-12-31",
+      "accessLevel": "public",
+      "accrualPeriodicity": null,
+      "keyword": [
+        "2024"
+      ],
+      "theme": [
+        "General Payments"
+      ],
+      "publisher": "openpaymentsdata.cms.gov",
+      "contactPoint": "Open Payments",
+      "license": "https://www.usa.gov/government-works",
+      "landingPage": null,
+      "describedBy": null,
+      "distribution": [
+        {
+          "title": "General Payment Data \u2013 Detailed Dataset 2024 Reporting Year",
+          "description": null,
+          "mediaType": "text/csv",
+          "format": "csv",
+          "downloadURL": "https://download.cms.gov/openpayments/PGYR2024_P01232026_01102026/OP_DTL_GNRL_PGYR2024_P01232026_01102026.csv",
+          "accessURL": null
+        }
+      ]
+    },
+    {
+      "identifier": "1cf0c6c0-c377-466e-b78f-037b442559f8",
+      "title": "Reporting entity profile information",
+      "description": "This dataset is pre-filtered based on the most frequent searches of Open Payments data.",
+      "modified": "2026-01-27",
+      "issued": "2026-01-27",
+      "temporal": null,
+      "accessLevel": "public",
+      "accrualPeriodicity": null,
+      "keyword": [
+        "all years"
+      ],
+      "theme": [
+        "Summary"
+      ],
+      "publisher": "openpaymentsdata.cms.gov",
+      "contactPoint": "Open Payments",
+      "license": "https://www.usa.gov/government-works",
+      "landingPage": null,
+      "describedBy": null,
+      "distribution": [
+        {
+          "title": "Reporting entity profile information",
+          "description": null,
+          "mediaType": "text/csv",
+          "format": "csv",
+          "downloadURL": "https://download.cms.gov/openpayments/SMRY_RPTS_P01232026_01102026/PBLCTN_RPTG_ORG_PRFL_SRCH_P01232026_01102026.csv",
+          "accessURL": null
+        }
+      ]
+    },
+    {
+      "identifier": "8219fcb3-fb3d-4b51-9f65-be8a048c0608",
+      "title": "Teaching Hospital profile information",
+      "description": "This dataset is pre-filtered based on the most frequent searches of Open Payments data.",
+      "modified": "2026-01-27",
+      "issued": "2026-01-27",
+      "temporal": null,
+      "accessLevel": "public",
+      "accrualPeriodicity": null,
+      "keyword": [
+        "all years"
+      ],
+      "theme": [
+        "Summary"
+      ],
+      "publisher": "openpaymentsdata.cms.gov",
+      "contactPoint": "Open Payments",
+      "license": "https://www.usa.gov/government-works",
+      "landingPage": null,
+      "describedBy": null,
+      "distribution": [
+        {
+          "title": "Teaching Hospital profile information",
+          "description": null,
+          "mediaType": "text/csv",
+          "format": "csv",
+          "downloadURL": "https://download.cms.gov/openpayments/SMRY_RPTS_P01232026_01102026/PBLCTN_TH_PRFL_SRCH_P01232026_01102026.csv",
+          "accessURL": null
+        }
+      ]
+    },
+    {
+      "identifier": "6ed6ae76-2999-49da-b0b2-d7df150ac754",
+      "title": "Physician (distinct) profile information",
+      "description": "This dataset is pre-filtered based on the most frequent searches of Open Payments data.",
+      "modified": "2026-01-27",
+      "issued": "2026-01-27",
+      "temporal": null,
+      "accessLevel": "public",
+      "accrualPeriodicity": null,
+      "keyword": [
+        "all years"
+      ],
+      "theme": [
+        "Summary"
+      ],
+      "publisher": "openpaymentsdata.cms.gov",
+      "contactPoint": "Open Payments",
+      "license": "https://www.usa.gov/government-works",
+      "landingPage": null,
+      "describedBy": null,
+      "distribution": [
+        {
+          "title": "Physician (distinct) profile information",
+          "description": null,
+          "mediaType": "text/csv",
+          "format": "csv",
+          "downloadURL": "https://download.cms.gov/openpayments/SMRY_RPTS_P01232026_01102026/PBLCTN_PHYSN_NON_PHYSN_PRCTNR_PRFL_SRCH_P01232026_01102026.csv",
+          "accessURL": null
+        }
+      ]
+    },
+    {
+      "identifier": "29c23b6a-dd1e-4d82-a606-8d792c7f229e",
+      "title": "2023 payments grouped by reporting entities, covered recipient, and nature of payments",
+      "description": "This dataset is pre-filtered based on the most frequent searches of Open Payments data.",
+      "modified": "2026-01-27",
+      "issued": "2026-01-27",
+      "temporal": "2023-01-01/2023-12-31",
+      "accessLevel": "public",
+      "accrualPeriodicity": null,
+      "keyword": [
+        "2023"
+      ],
+      "theme": [
+        "Summary"
+      ],
+      "publisher": "openpaymentsdata.cms.gov",
+      "contactPoint": "Open Payments",
+      "license": "https://www.usa.gov/government-works",
+      "landingPage": null,
+      "describedBy": null,
+      "distribution": [
+        {
+          "title": "2023 payments grouped by reporting entities, covered recipient, and nature of payments",
+          "description": null,
+          "mediaType": "text/csv",
+          "format": "csv",
+          "downloadURL": "https://download.cms.gov/openpayments/SMRY_RPTS_P01232026_01102026/PBLCTN_SMRY_BY_AMGPO_BY_CR_BY_NTR_OF_PYMT_PGYR2023_P01232026_01102026.csv",
+          "accessURL": null
+        }
+      ]
+    },
+    {
+      "identifier": "03ac661d-a0a7-426f-aca2-c5916ee55db8",
+      "title": "2024 payments grouped by reporting entities, covered recipient, and nature of payments",
+      "description": "This dataset is pre-filtered based on the most frequent searches of Open Payments data.",
+      "modified": "2026-01-27",
+      "issued": "2026-01-27",
+      "temporal": "2024-01-01/2024-12-31",
+      "accessLevel": "public",
+      "accrualPeriodicity": null,
+      "keyword": [
+        "2024"
+      ],
+      "theme": [
+        "Summary"
+      ],
+      "publisher": "openpaymentsdata.cms.gov",
+      "contactPoint": "Open Payments",
+      "license": "https://www.usa.gov/government-works",
+      "landingPage": null,
+      "describedBy": null,
+      "distribution": [
+        {
+          "title": "2024 payments grouped by reporting entities, covered recipient, and nature of payments",
+          "description": null,
+          "mediaType": "text/csv",
+          "format": "csv",
+          "downloadURL": "https://download.cms.gov/openpayments/SMRY_RPTS_P01232026_01102026/PBLCTN_SMRY_BY_AMGPO_BY_CR_BY_NTR_OF_PYMT_PGYR2024_P01232026_01102026.csv",
+          "accessURL": null
+        }
+      ]
+    },
+    {
+      "identifier": "c1ce263b-0625-4ce6-9e81-62a7b3708f4b",
+      "title": "2018 payments grouped by reporting entities, covered recipient, and nature of payments",
+      "description": "This dataset is pre-filtered based on the most frequent searches of Open Payments data.",
+      "modified": "2026-01-27",
+      "issued": "2026-01-27",
+      "temporal": "2018-01-01/2018-12-31",
+      "accessLevel": "public",
+      "accrualPeriodicity": null,
+      "keyword": [
+        "2018"
+      ],
+      "theme": [
+        "Summary"
+      ],
+      "publisher": "openpaymentsdata.cms.gov",
+      "contactPoint": "Open Payments",
+      "license": "https://www.usa.gov/government-works",
+      "landingPage": null,
+      "describedBy": null,
+      "distribution": [
+        {
+          "title": "2018 payments grouped by reporting entities, covered recipient, and nature of payments",
+          "description": null,
+          "mediaType": "text/csv",
+          "format": "csv",
+          "downloadURL": "https://download.cms.gov/openpayments/SMRY_RPTS_P01232026_01102026/PBLCTN_SMRY_BY_AMGPO_BY_CR_BY_NTR_OF_PYMT_PGYR2018_P01232026_01102026.csv",
+          "accessURL": null
+        }
+      ]
+    },
+    {
+      "identifier": "6c8251d4-3839-444b-810b-5bf035a23326",
+      "title": "2019 payments grouped by reporting entities, covered recipient, and nature of payments",
+      "description": "This dataset is pre-filtered based on the most frequent searches of Open Payments data.",
+      "modified": "2026-01-27",
+      "issued": "2026-01-27",
+      "temporal": "2019-01-01/2019-12-31",
+      "accessLevel": "public",
+      "accrualPeriodicity": null,
+      "keyword": [
+        "2019"
+      ],
+      "theme": [
+        "Summary"
+      ],
+      "publisher": "openpaymentsdata.cms.gov",
+      "contactPoint": "Open Payments",
+      "license": "https://www.usa.gov/government-works",
+      "landingPage": null,
+      "describedBy": null,
+      "distribution": [
+        {
+          "title": "2019 payments grouped by reporting entities, covered recipient, and nature of payments",
+          "description": null,
+          "mediaType": "text/csv",
+          "format": "csv",
+          "downloadURL": "https://download.cms.gov/openpayments/SMRY_RPTS_P01232026_01102026/PBLCTN_SMRY_BY_AMGPO_BY_CR_BY_NTR_OF_PYMT_PGYR2019_P01232026_01102026.csv",
+          "accessURL": null
+        }
+      ]
+    },
+    {
+      "identifier": "532df191-473f-4bcc-9056-a6260b9437b5",
+      "title": "2020 payments grouped by reporting entities, covered recipient, and nature of payments",
+      "description": "This dataset is pre-filtered based on the most frequent searches of Open Payments data.",
+      "modified": "2026-01-27",
+      "issued": "2026-01-27",
+      "temporal": "2020-01-01/2020-12-31",
+      "accessLevel": "public",
+      "accrualPeriodicity": null,
+      "keyword": [
+        "2020"
+      ],
+      "theme": [
+        "Summary"
+      ],
+      "publisher": "openpaymentsdata.cms.gov",
+      "contactPoint": "Open Payments",
+      "license": "https://www.usa.gov/government-works",
+      "landingPage": null,
+      "describedBy": null,
+      "distribution": [
+        {
+          "title": "2020 payments grouped by reporting entities, covered recipient, and nature of payments",
+          "description": null,
+          "mediaType": "text/csv",
+          "format": "csv",
+          "downloadURL": "https://download.cms.gov/openpayments/SMRY_RPTS_P01232026_01102026/PBLCTN_SMRY_BY_AMGPO_BY_CR_BY_NTR_OF_PYMT_PGYR2020_P01232026_01102026.csv",
+          "accessURL": null
+        }
+      ]
+    },
+    {
+      "identifier": "f240c437-9d8a-5be7-95a5-8ce8e0d970bf",
+      "title": "2021 payments grouped by reporting entities, covered recipient, and nature of payments",
+      "description": "This dataset is pre-filtered based on the most frequent searches of Open Payments data.",
+      "modified": "2026-01-27",
+      "issued": "2026-01-27",
+      "temporal": "2021-01-01/2021-12-31",
+      "accessLevel": "public",
+      "accrualPeriodicity": null,
+      "keyword": [
+        "2021"
+      ],
+      "theme": [
+        "Summary"
+      ],
+      "publisher": "openpaymentsdata.cms.gov",
+      "contactPoint": "Open Payments",
+      "license": "https://www.usa.gov/government-works",
+      "landingPage": null,
+      "describedBy": null,
+      "distribution": [
+        {
+          "title": "2021 payments grouped by reporting entities, covered recipient, and nature of payments",
+          "description": null,
+          "mediaType": "text/csv",
+          "format": "csv",
+          "downloadURL": "https://download.cms.gov/openpayments/SMRY_RPTS_P01232026_01102026/PBLCTN_SMRY_BY_AMGPO_BY_CR_BY_NTR_OF_PYMT_PGYR2021_P01232026_01102026.csv",
+          "accessURL": null
+        }
+      ]
+    },
+    {
+      "identifier": "171e369a-6f25-49eb-aa36-37f0a497e5ca",
+      "title": "2022 payments grouped by reporting entities, covered recipient, and nature of payments",
+      "description": "This dataset is pre-filtered based on the most frequent searches of Open Payments data.",
+      "modified": "2026-01-27",
+      "issued": "2026-01-27",
+      "temporal": "2022-01-01/2022-12-31",
+      "accessLevel": "public",
+      "accrualPeriodicity": null,
+      "keyword": [
+        "2022"
+      ],
+      "theme": [
+        "Summary"
+      ],
+      "publisher": "openpaymentsdata.cms.gov",
+      "contactPoint": "Open Payments",
+      "license": "https://www.usa.gov/government-works",
+      "landingPage": null,
+      "describedBy": null,
+      "distribution": [
+        {
+          "title": "2022 payments grouped by reporting entities, covered recipient, and nature of payments",
+          "description": null,
+          "mediaType": "text/csv",
+          "format": "csv",
+          "downloadURL": "https://download.cms.gov/openpayments/SMRY_RPTS_P01232026_01102026/PBLCTN_SMRY_BY_AMGPO_BY_CR_BY_NTR_OF_PYMT_PGYR2022_P01232026_01102026.csv",
+          "accessURL": null
+        }
+      ]
+    },
+    {
+      "identifier": "72008dab-0953-4226-a4cd-9f1872e8170d",
+      "title": "2023 payments grouped by reporting entities and nature of payments",
+      "description": "This dataset is pre-filtered based on the most frequent searches of Open Payments data.",
+      "modified": "2026-01-27",
+      "issued": "2026-01-27",
+      "temporal": "2023-01-01/2023-12-31",
+      "accessLevel": "public",
+      "accrualPeriodicity": null,
+      "keyword": [
+        "2023"
+      ],
+      "theme": [
+        "Summary"
+      ],
+      "publisher": "openpaymentsdata.cms.gov",
+      "contactPoint": "Open Payments",
+      "license": "https://www.usa.gov/government-works",
+      "landingPage": null,
+      "describedBy": null,
+      "distribution": [
+        {
+          "title": "2023 payments grouped by reporting entities and nature of payments",
+          "description": null,
+          "mediaType": "text/csv",
+          "format": "csv",
+          "downloadURL": "https://download.cms.gov/openpayments/SMRY_RPTS_P01232026_01102026/PBLCTN_SMRY_BY_AMGPO_BY_NTR_OF_PYMT_PGYR2023_P01232026_01102026.csv",
+          "accessURL": null
+        }
+      ]
+    },
+    {
+      "identifier": "d7e3f320-9ddc-4a5b-8aaf-45048cbd7386",
+      "title": "2024 payments grouped by reporting entities and nature of payments",
+      "description": "This dataset is pre-filtered based on the most frequent searches of Open Payments data.",
+      "modified": "2026-01-27",
+      "issued": "2026-01-27",
+      "temporal": "2024-01-01/2024-12-31",
+      "accessLevel": "public",
+      "accrualPeriodicity": null,
+      "keyword": [
+        "2024"
+      ],
+      "theme": [
+        "Summary"
+      ],
+      "publisher": "openpaymentsdata.cms.gov",
+      "contactPoint": "Open Payments",
+      "license": "https://www.usa.gov/government-works",
+      "landingPage": null,
+      "describedBy": null,
+      "distribution": [
+        {
+          "title": "2024 payments grouped by reporting entities and nature of payments",
+          "description": null,
+          "mediaType": "text/csv",
+          "format": "csv",
+          "downloadURL": "https://download.cms.gov/openpayments/SMRY_RPTS_P01232026_01102026/PBLCTN_SMRY_BY_AMGPO_BY_NTR_OF_PYMT_PGYR2024_P01232026_01102026.csv",
+          "accessURL": null
+        }
+      ]
+    },
+    {
+      "identifier": "76d91818-7015-4f94-a5b8-6f0dbf4fe206",
+      "title": "2018 payments grouped by reporting entities and nature of payments",
+      "description": "This dataset is pre-filtered based on the most frequent searches of Open Payments data.",
+      "modified": "2026-01-27",
+      "issued": "2026-01-27",
+      "temporal": "2018-01-01/2018-12-31",
+      "accessLevel": "public",
+      "accrualPeriodicity": null,
+      "keyword": [
+        "2018"
+      ],
+      "theme": [
+        "Summary"
+      ],
+      "publisher": "openpaymentsdata.cms.gov",
+      "contactPoint": "Open Payments",
+      "license": "https://www.usa.gov/government-works",
+      "landingPage": null,
+      "describedBy": null,
+      "distribution": [
+        {
+          "title": "2018 payments grouped by reporting entities and nature of payments",
+          "description": null,
+          "mediaType": "text/csv",
+          "format": "csv",
+          "downloadURL": "https://download.cms.gov/openpayments/SMRY_RPTS_P01232026_01102026/PBLCTN_SMRY_BY_AMGPO_BY_NTR_OF_PYMT_PGYR2018_P01232026_01102026.csv",
+          "accessURL": null
+        }
+      ]
+    },
+    {
+      "identifier": "7f3bcc65-6f34-42de-8e63-7611e0a6f67b",
+      "title": "2019 payments grouped by reporting entities and nature of payments",
+      "description": "This dataset is pre-filtered based on the most frequent searches of Open Payments data.",
+      "modified": "2026-01-27",
+      "issued": "2026-01-27",
+      "temporal": "2019-01-01/2019-12-31",
+      "accessLevel": "public",
+      "accrualPeriodicity": null,
+      "keyword": [
+        "2019"
+      ],
+      "theme": [
+        "Summary"
+      ],
+      "publisher": "openpaymentsdata.cms.gov",
+      "contactPoint": "Open Payments",
+      "license": "https://www.usa.gov/government-works",
+      "landingPage": null,
+      "describedBy": null,
+      "distribution": [
+        {
+          "title": "2019 payments grouped by reporting entities and nature of payments",
+          "description": null,
+          "mediaType": "text/csv",
+          "format": "csv",
+          "downloadURL": "https://download.cms.gov/openpayments/SMRY_RPTS_P01232026_01102026/PBLCTN_SMRY_BY_AMGPO_BY_NTR_OF_PYMT_PGYR2019_P01232026_01102026.csv",
+          "accessURL": null
+        }
+      ]
+    },
+    {
+      "identifier": "7dfe6254-2aee-454f-9ea5-df611a9a7b55",
+      "title": "2020 payments grouped by reporting entities and nature of payments",
+      "description": "This dataset is pre-filtered based on the most frequent searches of Open Payments data.",
+      "modified": "2026-01-27",
+      "issued": "2026-01-27",
+      "temporal": "2020-01-01/2020-12-31",
+      "accessLevel": "public",
+      "accrualPeriodicity": null,
+      "keyword": [
+        "2020"
+      ],
+      "theme": [
+        "Summary"
+      ],
+      "publisher": "openpaymentsdata.cms.gov",
+      "contactPoint": "Open Payments",
+      "license": "https://www.usa.gov/government-works",
+      "landingPage": null,
+      "describedBy": null,
+      "distribution": [
+        {
+          "title": "2020 payments grouped by reporting entities and nature of payments",
+          "description": null,
+          "mediaType": "text/csv",
+          "format": "csv",
+          "downloadURL": "https://download.cms.gov/openpayments/SMRY_RPTS_P01232026_01102026/PBLCTN_SMRY_BY_AMGPO_BY_NTR_OF_PYMT_PGYR2020_P01232026_01102026.csv",
+          "accessURL": null
+        }
+      ]
+    },
+    {
+      "identifier": "a2714020-f599-52b0-b12b-8f5b510e547a",
+      "title": "2021 payments grouped by reporting entities and nature of payments",
+      "description": "This dataset is pre-filtered based on the most frequent searches of Open Payments data.",
+      "modified": "2026-01-27",
+      "issued": "2026-01-27",
+      "temporal": "2021-01-01/2021-12-31",
+      "accessLevel": "public",
+      "accrualPeriodicity": null,
+      "keyword": [
+        "2021"
+      ],
+      "theme": [
+        "Summary"
+      ],
+      "publisher": "openpaymentsdata.cms.gov",
+      "contactPoint": "Open Payments",
+      "license": "https://www.usa.gov/government-works",
+      "landingPage": null,
+      "describedBy": null,
+      "distribution": [
+        {
+          "title": "2021 payments grouped by reporting entities and nature of payments",
+          "description": null,
+          "mediaType": "text/csv",
+          "format": "csv",
+          "downloadURL": "https://download.cms.gov/openpayments/SMRY_RPTS_P01232026_01102026/PBLCTN_SMRY_BY_AMGPO_BY_NTR_OF_PYMT_PGYR2021_P01232026_01102026.csv",
+          "accessURL": null
+        }
+      ]
+    },
+    {
+      "identifier": "cedcd327-4e5d-43f9-8eb1-c11850fa7c66",
+      "title": "2022 payments grouped by reporting entities and nature of payments",
+      "description": "This dataset is pre-filtered based on the most frequent searches of Open Payments data.",
+      "modified": "2026-01-27",
+      "issued": "2026-01-27",
+      "temporal": "2022-01-01/2022-12-31",
+      "accessLevel": "public",
+      "accrualPeriodicity": null,
+      "keyword": [
+        "2022"
+      ],
+      "theme": [
+        "Summary"
+      ],
+      "publisher": "openpaymentsdata.cms.gov",
+      "contactPoint": "Open Payments",
+      "license": "https://www.usa.gov/government-works",
+      "landingPage": null,
+      "describedBy": null,
+      "distribution": [
+        {
+          "title": "2022 payments grouped by reporting entities and nature of payments",
+          "description": null,
+          "mediaType": "text/csv",
+          "format": "csv",
+          "downloadURL": "https://download.cms.gov/openpayments/SMRY_RPTS_P01232026_01102026/PBLCTN_SMRY_BY_AMGPO_BY_NTR_OF_PYMT_PGYR2022_P01232026_01102026.csv",
+          "accessURL": null
+        }
+      ]
+    },
+    {
+      "identifier": "61efcbef-b01d-47c5-a996-b6f09613f856",
+      "title": "Payments grouped by reporting entities and nature of payments for all years",
+      "description": "This dataset is pre-filtered based on the most frequent searches of Open Payments data.",
+      "modified": "2026-01-27",
+      "issued": "2026-01-27",
+      "temporal": "2017-01-01/2023-12-31",
+      "accessLevel": "public",
+      "accrualPeriodicity": null,
+      "keyword": [
+        "all years"
+      ],
+      "theme": [
+        "Summary"
+      ],
+      "publisher": "openpaymentsdata.cms.gov",
+      "contactPoint": "Open Payments",
+      "license": "https://www.usa.gov/government-works",
+      "landingPage": null,
+      "describedBy": null,
+      "distribution": [
+        {
+          "title": "Payments grouped by reporting entities and nature of payments for all years",
+          "description": null,
+          "mediaType": "text/csv",
+          "format": "csv",
+          "downloadURL": "https://download.cms.gov/openpayments/SMRY_RPTS_P01232026_01102026/PBLCTN_SMRY_BY_AMGPO_BY_NTR_OF_PYMT_PGYRall_P01232026_01102026.csv",
+          "accessURL": null
+        }
+      ]
+    },
+    {
+      "identifier": "4017acfa-0eeb-4b8a-b68c-3b41e779c4a2",
+      "title": "2023 payments grouped by covered recipient and nature of payments",
+      "description": "This dataset is pre-filtered based on the most frequent searches of Open Payments data.",
+      "modified": "2026-01-27",
+      "issued": "2026-01-27",
+      "temporal": "2023-01-01/2023-12-31",
+      "accessLevel": "public",
+      "accrualPeriodicity": null,
+      "keyword": [
+        "2023"
+      ],
+      "theme": [
+        "Summary"
+      ],
+      "publisher": "openpaymentsdata.cms.gov",
+      "contactPoint": "Open Payments",
+      "license": "https://www.usa.gov/government-works",
+      "landingPage": null,
+      "describedBy": null,
+      "distribution": [
+        {
+          "title": "2023 payments grouped by covered recipient and nature of payments",
+          "description": null,
+          "mediaType": "text/csv",
+          "format": "csv",
+          "downloadURL": "https://download.cms.gov/openpayments/SMRY_RPTS_P01232026_01102026/PBLCTN_SMRY_BY_CR_BY_NTR_OF_PYMT_PGYR2023_P01232026_01102026.csv",
+          "accessURL": null
+        }
+      ]
+    },
+    {
+      "identifier": "88822473-9093-46fc-ad38-81330eb8de4b",
+      "title": "2024 payments grouped by covered recipient and nature of payments",
+      "description": "This dataset is pre-filtered based on the most frequent searches of Open Payments data.",
+      "modified": "2026-01-27",
+      "issued": "2026-01-27",
+      "temporal": "2024-01-01/2024-12-31",
+      "accessLevel": "public",
+      "accrualPeriodicity": null,
+      "keyword": [
+        "2024"
+      ],
+      "theme": [
+        "Summary"
+      ],
+      "publisher": "openpaymentsdata.cms.gov",
+      "contactPoint": "Open Payments",
+      "license": "https://www.usa.gov/government-works",
+      "landingPage": null,
+      "describedBy": null,
+      "distribution": [
+        {
+          "title": "2024 payments grouped by covered recipient and nature of payments",
+          "description": null,
+          "mediaType": "text/csv",
+          "format": "csv",
+          "downloadURL": "https://download.cms.gov/openpayments/SMRY_RPTS_P01232026_01102026/PBLCTN_SMRY_BY_CR_BY_NTR_OF_PYMT_PGYR2024_P01232026_01102026.csv",
+          "accessURL": null
+        }
+      ]
+    },
+    {
+      "identifier": "07c1e377-eb5b-4830-ad9b-61f04258036e",
+      "title": "2018 payments grouped by covered recipient and nature of payments",
+      "description": "This dataset is pre-filtered based on the most frequent searches of Open Payments data.",
+      "modified": "2026-01-27",
+      "issued": "2026-01-27",
+      "temporal": "2018-01-01/2018-12-31",
+      "accessLevel": "public",
+      "accrualPeriodicity": null,
+      "keyword": [
+        "2018"
+      ],
+      "theme": [
+        "Summary"
+      ],
+      "publisher": "openpaymentsdata.cms.gov",
+      "contactPoint": "Open Payments",
+      "license": "https://www.usa.gov/government-works",
+      "landingPage": null,
+      "describedBy": null,
+      "distribution": [
+        {
+          "title": "2018 payments grouped by covered recipient and nature of payments",
+          "description": null,
+          "mediaType": "text/csv",
+          "format": "csv",
+          "downloadURL": "https://download.cms.gov/openpayments/SMRY_RPTS_P01232026_01102026/PBLCTN_SMRY_BY_CR_BY_NTR_OF_PYMT_PGYR2018_P01232026_01102026.csv",
+          "accessURL": null
+        }
+      ]
+    },
+    {
+      "identifier": "0ff0961f-8295-477c-8044-85b9a0753893",
+      "title": "2019 payments grouped by covered recipient and nature of payments",
+      "description": "This dataset is pre-filtered based on the most frequent searches of Open Payments data.",
+      "modified": "2026-01-27",
+      "issued": "2026-01-27",
+      "temporal": "2019-01-01/2019-12-31",
+      "accessLevel": "public",
+      "accrualPeriodicity": null,
+      "keyword": [
+        "2019"
+      ],
+      "theme": [
+        "Summary"
+      ],
+      "publisher": "openpaymentsdata.cms.gov",
+      "contactPoint": "Open Payments",
+      "license": "https://www.usa.gov/government-works",
+      "landingPage": null,
+      "describedBy": null,
+      "distribution": [
+        {
+          "title": "2019 payments grouped by covered recipient and nature of payments",
+          "description": null,
+          "mediaType": "text/csv",
+          "format": "csv",
+          "downloadURL": "https://download.cms.gov/openpayments/SMRY_RPTS_P01232026_01102026/PBLCTN_SMRY_BY_CR_BY_NTR_OF_PYMT_PGYR2019_P01232026_01102026.csv",
+          "accessURL": null
+        }
+      ]
+    },
+    {
+      "identifier": "1fd2be47-cb72-435a-b2df-142f38e99a05",
+      "title": "2020 payments grouped by covered recipient and nature of payments",
+      "description": "This dataset is pre-filtered based on the most frequent searches of Open Payments data.",
+      "modified": "2026-01-27",
+      "issued": "2026-01-27",
+      "temporal": "2020-01-01/2020-12-31",
+      "accessLevel": "public",
+      "accrualPeriodicity": null,
+      "keyword": [
+        "2020"
+      ],
+      "theme": [
+        "Summary"
+      ],
+      "publisher": "openpaymentsdata.cms.gov",
+      "contactPoint": "Open Payments",
+      "license": "https://www.usa.gov/government-works",
+      "landingPage": null,
+      "describedBy": null,
+      "distribution": [
+        {
+          "title": "2020 payments grouped by covered recipient and nature of payments",
+          "description": null,
+          "mediaType": "text/csv",
+          "format": "csv",
+          "downloadURL": "https://download.cms.gov/openpayments/SMRY_RPTS_P01232026_01102026/PBLCTN_SMRY_BY_CR_BY_NTR_OF_PYMT_PGYR2020_P01232026_01102026.csv",
+          "accessURL": null
+        }
+      ]
+    },
+    {
+      "identifier": "d35243be-55cb-5087-931e-a294e0e0917f",
+      "title": "2021 payments grouped by covered recipient and nature of payments",
+      "description": "This dataset is pre-filtered based on the most frequent searches of Open Payments data.",
+      "modified": "2026-01-27",
+      "issued": "2026-01-27",
+      "temporal": "2021-01-01/2021-12-31",
+      "accessLevel": "public",
+      "accrualPeriodicity": null,
+      "keyword": [
+        "2021"
+      ],
+      "theme": [
+        "Summary"
+      ],
+      "publisher": "openpaymentsdata.cms.gov",
+      "contactPoint": "Open Payments",
+      "license": "https://www.usa.gov/government-works",
+      "landingPage": null,
+      "describedBy": null,
+      "distribution": [
+        {
+          "title": "2021 payments grouped by covered recipient and nature of payments",
+          "description": null,
+          "mediaType": "text/csv",
+          "format": "csv",
+          "downloadURL": "https://download.cms.gov/openpayments/SMRY_RPTS_P01232026_01102026/PBLCTN_SMRY_BY_CR_BY_NTR_OF_PYMT_PGYR2021_P01232026_01102026.csv",
+          "accessURL": null
+        }
+      ]
+    },
+    {
+      "identifier": "686b765e-f4b7-4d35-a050-fb5af926dbbe",
+      "title": "2022 payments grouped by covered recipient and nature of payments",
+      "description": "This dataset is pre-filtered based on the most frequent searches of Open Payments data.",
+      "modified": "2026-01-27",
+      "issued": "2026-01-27",
+      "temporal": "2022-01-01/2022-12-31",
+      "accessLevel": "public",
+      "accrualPeriodicity": null,
+      "keyword": [
+        "2022"
+      ],
+      "theme": [
+        "Summary"
+      ],
+      "publisher": "openpaymentsdata.cms.gov",
+      "contactPoint": "Open Payments",
+      "license": "https://www.usa.gov/government-works",
+      "landingPage": null,
+      "describedBy": null,
+      "distribution": [
+        {
+          "title": "2022 payments grouped by covered recipient and nature of payments",
+          "description": null,
+          "mediaType": "text/csv",
+          "format": "csv",
+          "downloadURL": "https://download.cms.gov/openpayments/SMRY_RPTS_P01232026_01102026/PBLCTN_SMRY_BY_CR_BY_NTR_OF_PYMT_PGYR2022_P01232026_01102026.csv",
+          "accessURL": null
+        }
+      ]
+    },
+    {
+      "identifier": "8d4d1fa0-9419-4993-97ff-9134c95c27a9",
+      "title": "Payments grouped by covered recipient and nature of payments for all years",
+      "description": "This dataset is pre-filtered based on the most frequent searches of Open Payments data.",
+      "modified": "2026-01-27",
+      "issued": "2026-01-27",
+      "temporal": "2017-01-01/2023-12-31",
+      "accessLevel": "public",
+      "accrualPeriodicity": null,
+      "keyword": [
+        "all years"
+      ],
+      "theme": [
+        "Summary"
+      ],
+      "publisher": "openpaymentsdata.cms.gov",
+      "contactPoint": "Open Payments",
+      "license": "https://www.usa.gov/government-works",
+      "landingPage": null,
+      "describedBy": null,
+      "distribution": [
+        {
+          "title": "Payments grouped by covered recipient and nature of payments for all years",
+          "description": null,
+          "mediaType": "text/csv",
+          "format": "csv",
+          "downloadURL": "https://download.cms.gov/openpayments/SMRY_RPTS_P01232026_01102026/PBLCTN_SMRY_BY_CR_BY_NTR_OF_PYMT_PGYRall_P01232026_01102026.csv",
+          "accessURL": null
+        }
+      ]
+    },
+    {
+      "identifier": "e0d225fc-8230-401d-8fad-e2262fb22b4c",
+      "title": "Summary Dashboard - all years",
+      "description": "Summary data.",
+      "modified": "2026-01-27",
+      "issued": "2026-01-27",
+      "temporal": "2017-01-01/2023-12-31",
+      "accessLevel": "public",
+      "accrualPeriodicity": null,
+      "keyword": [
+        "all years"
+      ],
+      "theme": [
+        "Summary"
+      ],
+      "publisher": "openpaymentsdata.cms.gov",
+      "contactPoint": "Open Payments",
+      "license": "https://www.usa.gov/government-works",
+      "landingPage": null,
+      "describedBy": null,
+      "distribution": [
+        {
+          "title": "Summary Dashboard - all years",
+          "description": null,
+          "mediaType": "text/csv",
+          "format": "csv",
+          "downloadURL": "https://download.cms.gov/openpayments/SMRY_RPTS_P01232026_01102026/PBLCTN_DSHBRD_P01232026_01102026.csv",
+          "accessURL": null
+        }
+      ]
+    },
+    {
+      "identifier": "aaaddc12-a3a7-4cc5-9c12-4a726317aa1c",
+      "title": "National level payment total and averages for all years",
+      "description": "This dataset is pre-filtered based on the most frequent searches of Open Payments data.",
+      "modified": "2026-01-27",
+      "issued": "2026-01-27",
+      "temporal": "2017-01-01/2023-12-31",
+      "accessLevel": "public",
+      "accrualPeriodicity": null,
+      "keyword": [
+        "all years"
+      ],
+      "theme": [
+        "Summary"
+      ],
+      "publisher": "openpaymentsdata.cms.gov",
+      "contactPoint": "Open Payments",
+      "license": "https://www.usa.gov/government-works",
+      "landingPage": null,
+      "describedBy": null,
+      "distribution": [
+        {
+          "title": "National level payment total and averages for all years",
+          "description": null,
+          "mediaType": "text/csv",
+          "format": "csv",
+          "downloadURL": "https://download.cms.gov/openpayments/SMRY_RPTS_P01232026_01102026/PBLCTN_NTNL_SMRY_P01232026_01102026-joined.csv",
+          "accessURL": null
+        }
+      ]
+    },
+    {
+      "identifier": "d5762bed-26ca-4035-91c9-9d67297dc77c",
+      "title": "Payments grouped by reporting entities",
+      "description": "This dataset is pre-filtered based on the most frequent searches of Open Payments data.",
+      "modified": "2026-01-27",
+      "issued": "2026-01-27",
+      "temporal": "2017-01-01/2023-12-31",
+      "accessLevel": "public",
+      "accrualPeriodicity": null,
+      "keyword": [
+        "all years"
+      ],
+      "theme": [
+        "Summary"
+      ],
+      "publisher": "openpaymentsdata.cms.gov",
+      "contactPoint": "Open Payments",
+      "license": "https://www.usa.gov/government-works",
+      "landingPage": null,
+      "describedBy": null,
+      "distribution": [
+        {
+          "title": "Payments grouped by reporting entities",
+          "description": null,
+          "mediaType": "text/csv",
+          "format": "csv",
+          "downloadURL": "https://download.cms.gov/openpayments/SMRY_RPTS_P01232026_01102026/PBLCTN_RPTG_ORG_SMRY_P01232026_01102026.csv",
+          "accessURL": null
+        }
+      ]
+    },
+    {
+      "identifier": "4fbf0094-3c7b-425a-aabe-5778052559ad",
+      "title": "2023 payments grouped by covered recipient and reporting entities",
+      "description": "This dataset is pre-filtered based on the most frequent searches of Open Payments data.",
+      "modified": "2026-01-27",
+      "issued": "2026-01-27",
+      "temporal": "2023-01-01/2023-12-31",
+      "accessLevel": "public",
+      "accrualPeriodicity": null,
+      "keyword": [
+        "2023"
+      ],
+      "theme": [
+        "Summary"
+      ],
+      "publisher": "openpaymentsdata.cms.gov",
+      "contactPoint": "Open Payments",
+      "license": "https://www.usa.gov/government-works",
+      "landingPage": null,
+      "describedBy": null,
+      "distribution": [
+        {
+          "title": "2023 payments grouped by covered recipient and reporting entities",
+          "description": null,
+          "mediaType": "text/csv",
+          "format": "csv",
+          "downloadURL": "https://download.cms.gov/openpayments/SMRY_RPTS_P01232026_01102026/PBLCTN_SMRY_BY_CR_BY_AMGPO_PGYR2023_P01232026_01102026.csv",
+          "accessURL": null
+        }
+      ]
+    },
+    {
+      "identifier": "b34f98fa-a300-4700-a385-ab17c5c5978b",
+      "title": "2024 payments grouped by covered recipient and reporting entities",
+      "description": "This dataset is pre-filtered based on the most frequent searches of Open Payments data.",
+      "modified": "2026-01-27",
+      "issued": "2026-01-27",
+      "temporal": "2024-01-01/2024-12-31",
+      "accessLevel": "public",
+      "accrualPeriodicity": null,
+      "keyword": [
+        "2024"
+      ],
+      "theme": [
+        "Summary"
+      ],
+      "publisher": "openpaymentsdata.cms.gov",
+      "contactPoint": "Open Payments",
+      "license": "https://www.usa.gov/government-works",
+      "landingPage": null,
+      "describedBy": null,
+      "distribution": [
+        {
+          "title": "2024 payments grouped by covered recipient and reporting entities",
+          "description": null,
+          "mediaType": "text/csv",
+          "format": "csv",
+          "downloadURL": "https://download.cms.gov/openpayments/SMRY_RPTS_P01232026_01102026/PBLCTN_SMRY_BY_CR_BY_AMGPO_PGYR2024_P01232026_01102026.csv",
+          "accessURL": null
+        }
+      ]
+    },
+    {
+      "identifier": "b6f534a9-ae05-4e78-9acf-c48b79fcee13",
+      "title": "2018 payments grouped by covered recipient and reporting entities",
+      "description": "This dataset is pre-filtered based on the most frequent searches of Open Payments data.",
+      "modified": "2026-01-27",
+      "issued": "2026-01-27",
+      "temporal": "2018-01-01/2018-12-31",
+      "accessLevel": "public",
+      "accrualPeriodicity": null,
+      "keyword": [
+        "2018"
+      ],
+      "theme": [
+        "Summary"
+      ],
+      "publisher": "openpaymentsdata.cms.gov",
+      "contactPoint": "Open Payments",
+      "license": "https://www.usa.gov/government-works",
+      "landingPage": null,
+      "describedBy": null,
+      "distribution": [
+        {
+          "title": "2018 payments grouped by covered recipient and reporting entities",
+          "description": null,
+          "mediaType": "text/csv",
+          "format": "csv",
+          "downloadURL": "https://download.cms.gov/openpayments/SMRY_RPTS_P01232026_01102026/PBLCTN_SMRY_BY_CR_BY_AMGPO_PGYR2018_P01232026_01102026.csv",
+          "accessURL": null
+        }
+      ]
+    },
+    {
+      "identifier": "63c6fc23-1744-4040-babe-1af39a57c598",
+      "title": "2019 payments grouped by covered recipient and reporting entities",
+      "description": "This dataset is pre-filtered based on the most frequent searches of Open Payments data.",
+      "modified": "2026-01-27",
+      "issued": "2026-01-27",
+      "temporal": "2019-01-01/2019-12-31",
+      "accessLevel": "public",
+      "accrualPeriodicity": null,
+      "keyword": [
+        "2019"
+      ],
+      "theme": [
+        "Summary"
+      ],
+      "publisher": "openpaymentsdata.cms.gov",
+      "contactPoint": "Open Payments",
+      "license": "https://www.usa.gov/government-works",
+      "landingPage": null,
+      "describedBy": null,
+      "distribution": [
+        {
+          "title": "2019 payments grouped by covered recipient and reporting entities",
+          "description": null,
+          "mediaType": "text/csv",
+          "format": "csv",
+          "downloadURL": "https://download.cms.gov/openpayments/SMRY_RPTS_P01232026_01102026/PBLCTN_SMRY_BY_CR_BY_AMGPO_PGYR2019_P01232026_01102026.csv",
+          "accessURL": null
+        }
+      ]
+    },
+    {
+      "identifier": "78ad9c8d-d7ae-4066-bf2d-a66e3c9d6e3b",
+      "title": "2020 payments grouped by covered recipient and reporting entities",
+      "description": "This dataset is pre-filtered based on the most frequent searches of Open Payments data.",
+      "modified": "2026-01-27",
+      "issued": "2026-01-27",
+      "temporal": "2020-01-01/2020-12-31",
+      "accessLevel": "public",
+      "accrualPeriodicity": null,
+      "keyword": [
+        "2020"
+      ],
+      "theme": [
+        "Summary"
+      ],
+      "publisher": "openpaymentsdata.cms.gov",
+      "contactPoint": "Open Payments",
+      "license": "https://www.usa.gov/government-works",
+      "landingPage": null,
+      "describedBy": null,
+      "distribution": [
+        {
+          "title": "2020 payments grouped by covered recipient and reporting entities",
+          "description": null,
+          "mediaType": "text/csv",
+          "format": "csv",
+          "downloadURL": "https://download.cms.gov/openpayments/SMRY_RPTS_P01232026_01102026/PBLCTN_SMRY_BY_CR_BY_AMGPO_PGYR2020_P01232026_01102026.csv",
+          "accessURL": null
+        }
+      ]
+    },
+    {
+      "identifier": "7c9ebb83-8f88-5462-ab7d-1925b0113cfc",
+      "title": "2021 payments grouped by covered recipient and reporting entities",
+      "description": "This dataset is pre-filtered based on the most frequent searches of Open Payments data.",
+      "modified": "2026-01-27",
+      "issued": "2026-01-27",
+      "temporal": "2021-01-01/2021-12-31",
+      "accessLevel": "public",
+      "accrualPeriodicity": null,
+      "keyword": [
+        "2021"
+      ],
+      "theme": [
+        "Summary"
+      ],
+      "publisher": "openpaymentsdata.cms.gov",
+      "contactPoint": "Open Payments",
+      "license": "https://www.usa.gov/government-works",
+      "landingPage": null,
+      "describedBy": null,
+      "distribution": [
+        {
+          "title": "2021 payments grouped by covered recipient and reporting entities",
+          "description": null,
+          "mediaType": "text/csv",
+          "format": "csv",
+          "downloadURL": "https://download.cms.gov/openpayments/SMRY_RPTS_P01232026_01102026/PBLCTN_SMRY_BY_CR_BY_AMGPO_PGYR2021_P01232026_01102026.csv",
+          "accessURL": null
+        }
+      ]
+    },
+    {
+      "identifier": "d2d87f39-b117-4ac8-9f36-a088fb22a25b",
+      "title": "2022 payments grouped by covered recipient and reporting entities",
+      "description": "This dataset is pre-filtered based on the most frequent searches of Open Payments data.",
+      "modified": "2026-01-27",
+      "issued": "2026-01-27",
+      "temporal": "2022-01-01/2022-12-31",
+      "accessLevel": "public",
+      "accrualPeriodicity": null,
+      "keyword": [
+        "2022"
+      ],
+      "theme": [
+        "Summary"
+      ],
+      "publisher": "openpaymentsdata.cms.gov",
+      "contactPoint": "Open Payments",
+      "license": "https://www.usa.gov/government-works",
+      "landingPage": null,
+      "describedBy": null,
+      "distribution": [
+        {
+          "title": "2022 payments grouped by covered recipient and reporting entities",
+          "description": null,
+          "mediaType": "text/csv",
+          "format": "csv",
+          "downloadURL": "https://download.cms.gov/openpayments/SMRY_RPTS_P01232026_01102026/PBLCTN_SMRY_BY_CR_BY_AMGPO_PGYR2022_P01232026_01102026.csv",
+          "accessURL": null
+        }
+      ]
+    },
+    {
+      "identifier": "04c3355f-955b-4620-b3a8-08020cc9c1f2",
+      "title": "National level payment total and averages by provider specialty for all years",
+      "description": "This dataset is pre-filtered based on the most frequent searches of Open Payments data.",
+      "modified": "2026-01-27",
+      "issued": "2026-01-27",
+      "temporal": "2017-01-01/2023-12-31",
+      "accessLevel": "public",
+      "accrualPeriodicity": null,
+      "keyword": [
+        "all years"
+      ],
+      "theme": [
+        "Summary"
+      ],
+      "publisher": "openpaymentsdata.cms.gov",
+      "contactPoint": "Open Payments",
+      "license": "https://www.usa.gov/government-works",
+      "landingPage": null,
+      "describedBy": null,
+      "distribution": [
+        {
+          "title": "National level payment total and averages by provider specialty for all years",
+          "description": null,
+          "mediaType": "text/csv",
+          "format": "csv",
+          "downloadURL": "https://download.cms.gov/openpayments/SMRY_RPTS_P01232026_01102026/PBLCTN_SPLTY_SMRY_P01232026_01102026-joined.csv",
+          "accessURL": null
+        }
+      ]
+    },
+    {
+      "identifier": "217ad1a7-b659-41f6-8159-c41b73f47de4",
+      "title": "Payments grouped by Teaching Hospital",
+      "description": "This dataset is pre-filtered based on the most frequent searches of Open Payments data.",
+      "modified": "2026-01-27",
+      "issued": "2026-01-27",
+      "temporal": "2017-01-01/2023-12-31",
+      "accessLevel": "public",
+      "accrualPeriodicity": null,
+      "keyword": [
+        "all years"
+      ],
+      "theme": [
+        "Summary"
+      ],
+      "publisher": "openpaymentsdata.cms.gov",
+      "contactPoint": "Open Payments",
+      "license": "https://www.usa.gov/government-works",
+      "landingPage": null,
+      "describedBy": null,
+      "distribution": [
+        {
+          "title": "Payments grouped by Teaching Hospital",
+          "description": null,
+          "mediaType": "text/csv",
+          "format": "csv",
+          "downloadURL": "https://download.cms.gov/openpayments/SMRY_RPTS_P01232026_01102026/PBLCTN_TH_SMRY_P01232026_01102026.csv",
+          "accessURL": null
+        }
+      ]
+    },
+    {
+      "identifier": "f2ed17cc-f045-4e25-9b28-75c72f0c7efe",
+      "title": "Profile Information",
+      "description": "This dataset provides profile information to display on payment search results.",
+      "modified": "2026-01-27",
+      "issued": "2026-01-27",
+      "temporal": null,
+      "accessLevel": "public",
+      "accrualPeriodicity": null,
+      "keyword": [
+        "all years"
+      ],
+      "theme": [
+        "Summary"
+      ],
+      "publisher": "openpaymentsdata.cms.gov",
+      "contactPoint": "Open Payments",
+      "license": "https://www.usa.gov/government-works",
+      "landingPage": null,
+      "describedBy": null,
+      "distribution": [
+        {
+          "title": "Profile Information",
+          "description": null,
+          "mediaType": "text/csv",
+          "format": "csv",
+          "downloadURL": "https://download.cms.gov/openpayments/SMRY_RPTS_P01232026_01102026/all-entities-profile-search.csv",
+          "accessURL": null
+        }
+      ]
+    },
+    {
+      "identifier": "02157882-0f43-473a-a777-c96eb5b1b623",
+      "title": "State level payment total and averages for all years",
+      "description": "This dataset is pre-filtered based on the most frequent searches of Open Payments data.",
+      "modified": "2026-01-27",
+      "issued": "2026-01-27",
+      "temporal": "2017-01-01/2023-12-31",
+      "accessLevel": "public",
+      "accrualPeriodicity": null,
+      "keyword": [
+        "all years"
+      ],
+      "theme": [
+        "Summary"
+      ],
+      "publisher": "openpaymentsdata.cms.gov",
+      "contactPoint": "Open Payments",
+      "license": "https://www.usa.gov/government-works",
+      "landingPage": null,
+      "describedBy": null,
+      "distribution": [
+        {
+          "title": "State level payment total and averages for all years",
+          "description": null,
+          "mediaType": "text/csv",
+          "format": "csv",
+          "downloadURL": "https://download.cms.gov/openpayments/SMRY_RPTS_P01232026_01102026/PBLCTN_STATE_SMRY_P01232026_01102026-joined.csv",
+          "accessURL": null
+        }
+      ]
+    },
+    {
+      "identifier": "7c5144d9-1b2a-5039-a91a-cccb8ed7805c",
+      "title": "State payment totals and averages grouped by Nature of Payment for all years",
+      "description": "Groups payment data by state, recipient type, and nature of payment.",
+      "modified": "2026-01-27",
+      "issued": "2026-01-27",
+      "temporal": "2022-01-01/2022-12-31",
+      "accessLevel": "public",
+      "accrualPeriodicity": null,
+      "keyword": [
+        "all years"
+      ],
+      "theme": [
+        "Summary"
+      ],
+      "publisher": "openpaymentsdata.cms.gov",
+      "contactPoint": "Open Payments",
+      "license": "https://www.usa.gov/government-works",
+      "landingPage": null,
+      "describedBy": null,
+      "distribution": [
+        {
+          "title": "State level payment total and averages by Nature of Payment for all years",
+          "description": null,
+          "mediaType": "text/csv",
+          "format": "csv",
+          "downloadURL": "https://download.cms.gov/openpayments/SMRY_RPTS_P01232026_01102026/PBLCTN_NTR_OF_PYMT_BY_STATE_SMRY_PGYRall_P01232026_01102026.csv",
+          "accessURL": null
+        }
+      ]
+    },
+    {
+      "identifier": "f83aed3a-7504-4fca-aabb-ac0338c79688",
+      "title": "2023 state payment totals grouped by Nature of Payment for all years",
+      "description": "Groups payment data by state, recipient type, and nature of payment.",
+      "modified": "2026-01-27",
+      "issued": "2026-01-27",
+      "temporal": "2023-01-01/2023-12-31",
+      "accessLevel": "public",
+      "accrualPeriodicity": null,
+      "keyword": [
+        "2023"
+      ],
+      "theme": [
+        "Summary"
+      ],
+      "publisher": "openpaymentsdata.cms.gov",
+      "contactPoint": "Open Payments",
+      "license": "https://www.usa.gov/government-works",
+      "landingPage": null,
+      "describedBy": null,
+      "distribution": [
+        {
+          "title": "2023 state-level payment total and averages by Nature of Payment",
+          "description": null,
+          "mediaType": "text/csv",
+          "format": "csv",
+          "downloadURL": "https://download.cms.gov/openpayments/SMRY_RPTS_P01232026_01102026/PBLCTN_NTR_OF_PYMT_BY_STATE_SMRY_PGYR2023_P01232026_01102026.csv",
+          "accessURL": null
+        }
+      ]
+    },
+    {
+      "identifier": "e8a6db6a-a540-46aa-b04c-e216e2c72618",
+      "title": "2024 state payment totals grouped by Nature of Payment for all years",
+      "description": "Groups payment data by state, recipient type, and nature of payment.",
+      "modified": "2026-01-27",
+      "issued": "2026-01-27",
+      "temporal": "2024-01-01/2024-12-31",
+      "accessLevel": "public",
+      "accrualPeriodicity": null,
+      "keyword": [
+        "2024"
+      ],
+      "theme": [
+        "Summary"
+      ],
+      "publisher": "openpaymentsdata.cms.gov",
+      "contactPoint": "Open Payments",
+      "license": "https://www.usa.gov/government-works",
+      "landingPage": null,
+      "describedBy": null,
+      "distribution": [
+        {
+          "title": "2024 state-level payment total and averages by Nature of Payment",
+          "description": null,
+          "mediaType": "text/csv",
+          "format": "csv",
+          "downloadURL": "https://download.cms.gov/openpayments/SMRY_RPTS_P01232026_01102026/PBLCTN_NTR_OF_PYMT_BY_STATE_SMRY_PGYR2024_P01232026_01102026.csv",
+          "accessURL": null
+        }
+      ]
+    },
+    {
+      "identifier": "6dd14c90-a6bd-52f8-9629-4d27fc02096d",
+      "title": "2018 state payment totals grouped by Nature of Payment for all years",
+      "description": "Groups payment data by state, recipient type, and nature of payment.",
+      "modified": "2026-01-27",
+      "issued": "2026-01-27",
+      "temporal": "2018-01-01/2018-12-31",
+      "accessLevel": "public",
+      "accrualPeriodicity": null,
+      "keyword": [
+        "2018"
+      ],
+      "theme": [
+        "Summary"
+      ],
+      "publisher": "openpaymentsdata.cms.gov",
+      "contactPoint": "Open Payments",
+      "license": "https://www.usa.gov/government-works",
+      "landingPage": null,
+      "describedBy": null,
+      "distribution": [
+        {
+          "title": "2018 state-level payment total and averages by Nature of Payment",
+          "description": null,
+          "mediaType": "text/csv",
+          "format": "csv",
+          "downloadURL": "https://download.cms.gov/openpayments/SMRY_RPTS_P01232026_01102026/PBLCTN_NTR_OF_PYMT_BY_STATE_SMRY_PGYR2018_P01232026_01102026.csv",
+          "accessURL": null
+        }
+      ]
+    },
+    {
+      "identifier": "37fba404-224d-5bad-9c62-527d9316e516",
+      "title": "2019 state payment totals grouped by Nature of Payment for all years",
+      "description": "Groups payment data by state, recipient type, and nature of payment.",
+      "modified": "2026-01-27",
+      "issued": "2026-01-27",
+      "temporal": "2019-01-01/2019-12-31",
+      "accessLevel": "public",
+      "accrualPeriodicity": null,
+      "keyword": [
+        "2019"
+      ],
+      "theme": [
+        "Summary"
+      ],
+      "publisher": "openpaymentsdata.cms.gov",
+      "contactPoint": "Open Payments",
+      "license": "https://www.usa.gov/government-works",
+      "landingPage": null,
+      "describedBy": null,
+      "distribution": [
+        {
+          "title": "2019 state-level payment total and averages by Nature of Payment",
+          "description": null,
+          "mediaType": "text/csv",
+          "format": "csv",
+          "downloadURL": "https://download.cms.gov/openpayments/SMRY_RPTS_P01232026_01102026/PBLCTN_NTR_OF_PYMT_BY_STATE_SMRY_PGYR2019_P01232026_01102026.csv",
+          "accessURL": null
+        }
+      ]
+    },
+    {
+      "identifier": "7f3055b6-73d8-5aff-be15-55873552e2cd",
+      "title": "2020 state payment totals grouped by Nature of Payment for all years",
+      "description": "Groups payment data by state, recipient type, and nature of payment.",
+      "modified": "2026-01-27",
+      "issued": "2026-01-27",
+      "temporal": "2020-01-01/2020-12-31",
+      "accessLevel": "public",
+      "accrualPeriodicity": null,
+      "keyword": [
+        "2020"
+      ],
+      "theme": [
+        "Summary"
+      ],
+      "publisher": "openpaymentsdata.cms.gov",
+      "contactPoint": "Open Payments",
+      "license": "https://www.usa.gov/government-works",
+      "landingPage": null,
+      "describedBy": null,
+      "distribution": [
+        {
+          "title": "2020 state-level payment total and averages by Nature of Payment",
+          "description": null,
+          "mediaType": "text/csv",
+          "format": "csv",
+          "downloadURL": "https://download.cms.gov/openpayments/SMRY_RPTS_P01232026_01102026/PBLCTN_NTR_OF_PYMT_BY_STATE_SMRY_PGYR2020_P01232026_01102026.csv",
+          "accessURL": null
+        }
+      ]
+    },
+    {
+      "identifier": "7fad5b56-2cfe-52ab-ac4d-3200780287d4",
+      "title": "2021 state payment totals grouped by Nature of Payment for all years",
+      "description": "Groups payment data by state, recipient type, and nature of payment.",
+      "modified": "2026-01-27",
+      "issued": "2026-01-27",
+      "temporal": "2021-01-01/2021-12-31",
+      "accessLevel": "public",
+      "accrualPeriodicity": null,
+      "keyword": [
+        "2021"
+      ],
+      "theme": [
+        "Summary"
+      ],
+      "publisher": "openpaymentsdata.cms.gov",
+      "contactPoint": "Open Payments",
+      "license": "https://www.usa.gov/government-works",
+      "landingPage": null,
+      "describedBy": null,
+      "distribution": [
+        {
+          "title": "2021 state-level payment total and averages by Nature of Payment",
+          "description": null,
+          "mediaType": "text/csv",
+          "format": "csv",
+          "downloadURL": "https://download.cms.gov/openpayments/SMRY_RPTS_P01232026_01102026/PBLCTN_NTR_OF_PYMT_BY_STATE_SMRY_PGYR2021_P01232026_01102026.csv",
+          "accessURL": null
+        }
+      ]
+    },
+    {
+      "identifier": "c64c40af-23a5-4419-8b64-692684483664",
+      "title": "2022 state payment totals grouped by Nature of Payment for all years",
+      "description": "Groups payment data by state, recipient type, and nature of payment.",
+      "modified": "2026-01-27",
+      "issued": "2026-01-27",
+      "temporal": "2022-01-01/2022-12-31",
+      "accessLevel": "public",
+      "accrualPeriodicity": null,
+      "keyword": [
+        "2022"
+      ],
+      "theme": [
+        "Summary"
+      ],
+      "publisher": "openpaymentsdata.cms.gov",
+      "contactPoint": "Open Payments",
+      "license": "https://www.usa.gov/government-works",
+      "landingPage": null,
+      "describedBy": null,
+      "distribution": [
+        {
+          "title": "2022 state-level payment total and averages by Nature of Payment",
+          "description": null,
+          "mediaType": "text/csv",
+          "format": "csv",
+          "downloadURL": "https://download.cms.gov/openpayments/SMRY_RPTS_P01232026_01102026/PBLCTN_NTR_OF_PYMT_BY_STATE_SMRY_PGYR2022_P01232026_01102026.csv",
+          "accessURL": null
+        }
+      ]
+    },
+    {
+      "identifier": "d19e5be2-5b8c-562c-af22-c243503bcfac",
+      "title": "Provider profile ID mapping table",
+      "description": "Maps secondary/duplicate provider profile IDs to the primary ID in the Open Payments system. For multiple reasons, a small number of providers have more than one ID in the payments records.",
+      "modified": "2026-01-27",
+      "issued": "2026-01-27",
+      "temporal": "2017-01-01/2023-12-31",
+      "accessLevel": "public",
+      "accrualPeriodicity": null,
+      "keyword": [
+        "2022"
+      ],
+      "theme": [
+        "Summary"
+      ],
+      "publisher": "openpaymentsdata.cms.gov",
+      "contactPoint": "Open Payments",
+      "license": "https://www.usa.gov/government-works",
+      "landingPage": null,
+      "describedBy": null,
+      "distribution": [
+        {
+          "title": "Provider profile ID mapping table",
+          "description": null,
+          "mediaType": "text/csv",
+          "format": "csv",
+          "downloadURL": "https://download.cms.gov/openpayments/SMRY_RPTS_P01232026_01102026/PBLCTN_PRVDR_PRFL_MAPPING_P01232026_01102026.csv",
+          "accessURL": null
+        }
+      ]
+    },
+    {
+      "identifier": "895260f5-1ce9-4e7d-9cb2-90564322eed2",
+      "title": "Payments grouped by physician (distinct) for all years",
+      "description": "This dataset is pre-filtered based on the most frequent searches of Open Payments data.",
+      "modified": "2026-01-27",
+      "issued": "2026-01-27",
+      "temporal": "2017-01-01/2023-12-31",
+      "accessLevel": "public",
+      "accrualPeriodicity": null,
+      "keyword": [
+        "all years"
+      ],
+      "theme": [
+        "Summary"
+      ],
+      "publisher": "openpaymentsdata.cms.gov",
+      "contactPoint": "Open Payments",
+      "license": "https://www.usa.gov/government-works",
+      "landingPage": null,
+      "describedBy": null,
+      "distribution": [
+        {
+          "title": "Payments grouped by physician (distinct) for all years",
+          "description": null,
+          "mediaType": "text/csv",
+          "format": "csv",
+          "downloadURL": "https://download.cms.gov/openpayments/SMRY_RPTS_P01232026_01102026/PBLCTN_PHYSN_NON_PHYSN_PRCTNR_SMRY_P01232026_01102026.csv",
+          "accessURL": null
+        }
+      ]
+    },
+    {
+      "identifier": "ea5eea39-0fc2-4200-84e5-46ed3b302567",
+      "title": "Payments grouped by reporting entities, covered recipient, and nature of payments for all years",
+      "description": "This dataset is pre-filtered based on the most frequent searches of Open Payments data.",
+      "modified": "2026-01-27",
+      "issued": "2026-01-27",
+      "temporal": "2017-01-01/2023-12-31",
+      "accessLevel": "public",
+      "accrualPeriodicity": null,
+      "keyword": [
+        "all years"
+      ],
+      "theme": [
+        "Summary"
+      ],
+      "publisher": "openpaymentsdata.cms.gov",
+      "contactPoint": "Open Payments",
+      "license": "https://www.usa.gov/government-works",
+      "landingPage": null,
+      "describedBy": null,
+      "distribution": [
+        {
+          "title": "Payments grouped by reporting entities, covered recipient, and nature of payments for all years",
+          "description": null,
+          "mediaType": "text/csv",
+          "format": "csv",
+          "downloadURL": "https://download.cms.gov/openpayments/SMRY_RPTS_P01232026_01102026/PBLCTN_SMRY_BY_AMGPO_BY_CR_BY_NTR_OF_PYMT_PGYRall_P01232026_01102026.csv",
+          "accessURL": null
+        }
+      ]
+    },
+    {
+      "identifier": "e49defac-4013-408d-b36f-665fc0ad51b2",
+      "title": "Payments grouped by covered recipient and reporting entities for all years",
+      "description": "This dataset is pre-filtered based on the most frequent searches of Open Payments data.",
+      "modified": "2026-01-27",
+      "issued": "2026-01-27",
+      "temporal": "2017-01-01/2023-12-31",
+      "accessLevel": "public",
+      "accrualPeriodicity": null,
+      "keyword": [
+        "all years"
+      ],
+      "theme": [
+        "Summary"
+      ],
+      "publisher": "openpaymentsdata.cms.gov",
+      "contactPoint": "Open Payments",
+      "license": "https://www.usa.gov/government-works",
+      "landingPage": null,
+      "describedBy": null,
+      "distribution": [
+        {
+          "title": "Payments grouped by covered recipient and reporting entities for all years",
+          "description": null,
+          "mediaType": "text/csv",
+          "format": "csv",
+          "downloadURL": "https://download.cms.gov/openpayments/SMRY_RPTS_P01232026_01102026/PBLCTN_SMRY_BY_CR_BY_AMGPO_PGYRall_P01232026_01102026.csv",
+          "accessURL": null
+        }
+      ]
+    }
+  ]
+}

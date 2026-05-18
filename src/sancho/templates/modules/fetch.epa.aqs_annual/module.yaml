@@ -1,0 +1,57 @@
+id: fetch.epa.aqs_annual
+version: 1.2.0
+type: fetch
+catalog_tier: large
+entrypoint: main.py:run
+description: 'Path-driven EPA AQS (Air Quality System) client. List endpoints for
+
+  catalog browsing (states, parameters, etc.) and data endpoints for
+
+  annual/daily aggregates by state/county/site/CBSA. Requires
+
+  AQS_EMAIL + AQS_API_KEY (auto-injected as query params).
+
+
+  catalog.json enumerates 2,900+ parameter codes across all classes.
+
+  '
+managed_paths:
+- module.yaml
+- main.py
+- api.py
+- transform.py
+- schema.sample.json
+- catalog.json
+- catalog.meta.json
+- catalog_blueprint.py
+- discovery.py
+input_schema:
+  type: object
+  properties:
+    endpoint:
+      type: string
+      description: 'EPA AQS endpoint. `/api/list/{resource}` for catalogs,
+
+        `/api/{annualData|dailyData}/{by*}` for data.
+
+        '
+      examples:
+      - https://aqs.epa.gov/data/api/list/states
+      - https://aqs.epa.gov/data/api/list/parametersByClass
+      - https://aqs.epa.gov/data/api/annualData/byState
+      - https://aqs.epa.gov/data/api/dailyData/byState
+    params:
+      type: object
+      description: 'Query parameters. For data: `param` (5-digit code), `bdate`/
+
+        `edate` (YYYYMMDD), `state` (FIPS), `county`, `site`, `cbsa`.
+
+        For catalog: `pc` (parameter class), etc.
+
+        '
+output_schema:
+  type: object
+  required:
+  - dataset_ref
+  - endpoint
+  - retrieved_at

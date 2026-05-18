@@ -1,0 +1,537 @@
+{
+  "provider": "fetch.fdic.institutions",
+  "schema_version": "1.0",
+  "generated_at": "2026-04-15T17:15:37.705297+00:00",
+  "families": [
+    {
+      "id": "bankfind.institutions",
+      "base_aliases": [
+        "v1"
+      ],
+      "base_url": "https://banks.data.fdic.gov/api",
+      "path_templates": [
+        "/institutions",
+        "/institutions/{cert}"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "query_params": {
+        "filters": {
+          "type": "string",
+          "description": "Field-level filter expression",
+          "examples": [
+            "STNAME:CA"
+          ]
+        },
+        "fields": {
+          "type": "string",
+          "description": "Comma-separated fields to return"
+        },
+        "sort_by": {
+          "type": "string",
+          "description": "Sort field"
+        },
+        "sort_order": {
+          "type": "string",
+          "description": "ASC or DESC"
+        },
+        "limit": {
+          "type": "int",
+          "description": "Page size (max 10,000)"
+        },
+        "offset": {
+          "type": "int",
+          "description": "Pagination offset"
+        },
+        "format": {
+          "type": "string",
+          "description": "Response format",
+          "examples": [
+            "json",
+            "csv"
+          ]
+        },
+        "search": {
+          "type": "string",
+          "description": "Free-text search"
+        },
+        "agg_by": {
+          "type": "string",
+          "description": "Aggregation field"
+        },
+        "agg_sum_fields": {
+          "type": "string",
+          "description": "Fields to aggregate"
+        }
+      },
+      "response_mode": "json",
+      "envelope_key": "data",
+      "description": "FDIC-insured depository institutions (CERT, NAME, ADDRESS, STALP, ...)",
+      "source_refs": [
+        "https://banks.data.fdic.gov/docs/"
+      ]
+    },
+    {
+      "id": "bankfind.locations",
+      "base_aliases": [
+        "v1"
+      ],
+      "base_url": "https://banks.data.fdic.gov/api",
+      "path_templates": [
+        "/locations",
+        "/locations/{cert}"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "query_params": {
+        "filters": {
+          "type": "string",
+          "description": "Field-level filter expression",
+          "examples": [
+            "STNAME:CA"
+          ]
+        },
+        "fields": {
+          "type": "string",
+          "description": "Comma-separated fields to return"
+        },
+        "sort_by": {
+          "type": "string",
+          "description": "Sort field"
+        },
+        "sort_order": {
+          "type": "string",
+          "description": "ASC or DESC"
+        },
+        "limit": {
+          "type": "int",
+          "description": "Page size (max 10,000)"
+        },
+        "offset": {
+          "type": "int",
+          "description": "Pagination offset"
+        },
+        "format": {
+          "type": "string",
+          "description": "Response format",
+          "examples": [
+            "json",
+            "csv"
+          ]
+        },
+        "search": {
+          "type": "string",
+          "description": "Free-text search"
+        },
+        "agg_by": {
+          "type": "string",
+          "description": "Aggregation field"
+        },
+        "agg_sum_fields": {
+          "type": "string",
+          "description": "Fields to aggregate"
+        }
+      },
+      "response_mode": "json",
+      "envelope_key": "data",
+      "description": "Branch locations \u2014 geocoded, hierarchical (BKCLASS, UNINUM, OFFNAME, ...)",
+      "source_refs": [
+        "https://banks.data.fdic.gov/docs/"
+      ]
+    },
+    {
+      "id": "bankfind.financials",
+      "base_aliases": [
+        "v1"
+      ],
+      "base_url": "https://banks.data.fdic.gov/api",
+      "path_templates": [
+        "/financials",
+        "/financials/{cert}"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "query_params": {
+        "filters": {
+          "type": "string",
+          "description": "Field-level filter expression",
+          "examples": [
+            "STNAME:CA"
+          ]
+        },
+        "fields": {
+          "type": "string",
+          "description": "Comma-separated fields to return"
+        },
+        "sort_by": {
+          "type": "string",
+          "description": "Sort field"
+        },
+        "sort_order": {
+          "type": "string",
+          "description": "ASC or DESC"
+        },
+        "limit": {
+          "type": "int",
+          "description": "Page size (max 10,000)"
+        },
+        "offset": {
+          "type": "int",
+          "description": "Pagination offset"
+        },
+        "format": {
+          "type": "string",
+          "description": "Response format",
+          "examples": [
+            "json",
+            "csv"
+          ]
+        },
+        "search": {
+          "type": "string",
+          "description": "Free-text search"
+        },
+        "agg_by": {
+          "type": "string",
+          "description": "Aggregation field"
+        },
+        "agg_sum_fields": {
+          "type": "string",
+          "description": "Fields to aggregate"
+        }
+      },
+      "response_mode": "json",
+      "envelope_key": "data",
+      "description": "Quarterly call-report + UBPR financial metrics (ASSET, DEP, INCOME, ...)",
+      "source_refs": [
+        "https://banks.data.fdic.gov/docs/"
+      ]
+    }
+  ],
+  "resources": [
+    {
+      "path": "/institutions",
+      "envelope_key": "institutions",
+      "description": "FDIC-insured depository institutions (CERT, NAME, ADDRESS, STALP, ...)",
+      "total_count": 27832,
+      "field_count": 95,
+      "fields": {
+        "ZIP": "string",
+        "INSAGNT1": "string",
+        "BKCLASS": "string",
+        "SASSER": "int",
+        "CHRTAGNT": "string",
+        "EFFDATE": "string",
+        "SUPRV_FD": "string",
+        "DATEUPDT": "string",
+        "CONSERVE": "string",
+        "REGAGENT2": "string",
+        "STNAME": "string",
+        "INSAGNT2": "string",
+        "TE05N528": "string",
+        "TE05N529": "string",
+        "INSDATE": "string",
+        "FDICREGN": "string",
+        "TE06N528": "string",
+        "TE06N529": "string",
+        "WEBADDR": "string",
+        "FDICDBS": "int",
+        "QBPRCOML": "string",
+        "COUNTY": "string",
+        "DOCKET": "string",
+        "ULTCERT": "string",
+        "OCCDIST": "string",
+        "LAW_SASSER_FLG": "string",
+        "CFPBFLAG": "int",
+        "RISDATE": "string",
+        "CBSA_METRO_FLG": "string",
+        "TE10N528": "string",
+        "INSCOML": "int",
+        "CBSA_DIV_NO": "string",
+        "RUNDATE": "string",
+        "TE03N528": "string",
+        "TE03N529": "string",
+        "NAME": "string",
+        "INSSAVE": "int",
+        "CHARTER": "string",
+        "MDI_STATUS_DESC": "string",
+        "CBSA_DIV": "string",
+        "ADDRESS": "string",
+        "TE04N528": "string",
+        "TE04N529": "string",
+        "CERT": "int",
+        "STALP": "string",
+        "LATITUDE": "float",
+        "CFPBENDDTE": "string",
+        "PROCDATE": "string",
+        "INSSAIF": "int",
+        "CBSA_NO": "string",
+        "ACTIVE": "int",
+        "CBSA_METRO_NAME": "string",
+        "CFPBEFFDTE": "string",
+        "STCHRTR": "int",
+        "TE09N528": "string",
+        "LONGITUDE": "float",
+        "IBA": "int",
+        "MDI_STATUS_CODE": "string",
+        "CSA": "string",
+        "INSDIF": "int",
+        "TE01N529": "string",
+        "INSBIF": "int",
+        "INSFDIC": "int",
+        "ENDEFYMD": "string",
+        "OI": "int",
+        "STNUM": "string",
+        "OAKAR": "int",
+        "TE02N528": "string",
+        "TE02N529": "string",
+        "ADDRESS2": "string",
+        "TE07N528": "string",
+        "FDICSUPV": "string",
+        "FED": "string",
+        "REGAGNT": "string",
+        "PRIORNAME1": "string",
+        "FED_RSSD": "string",
+        "NEWCERT": "int",
+        "CBSA_MICRO_FLG": "string",
+        "CSA_NO": "string",
+        "CBSA_METRO": "string",
+        "UNINUM": "string",
+        "TE01N528": "string",
+        "STCNTY": "string",
+        "CSA_FLG": "string",
+        "CBSA": "string",
+        "CITY": "string",
+        "CBSA_DIV_FLG": "string",
+        "TE08N528": "string",
+        "CLCODE": "string",
+        "INACTIVE": "int",
+        "CHANGEC1": "int",
+        "ESTYMD": "string",
+        "FEDCHRTR": "int",
+        "TRUST": "string",
+        "ID": "string"
+      }
+    },
+    {
+      "path": "/locations",
+      "envelope_key": "locations",
+      "description": "Branch locations \u2014 geocoded, hierarchical (BKCLASS, UNINUM, OFFNAME, ...)",
+      "total_count": 78341,
+      "field_count": 38,
+      "fields": {
+        "ZIP": "string",
+        "CBSA_NO": "string",
+        "ACQDATE": "string",
+        "CBSA_METRO_NAME": "string",
+        "BKCLASS": "string",
+        "FI_UNINUM": "int",
+        "LONGITUDE": "float",
+        "STNAME": "string",
+        "MDI_STATUS_CODE": "string",
+        "CSA": "string",
+        "COUNTY": "string",
+        "ADDRESS2": "string",
+        "MAINOFF": "int",
+        "OFFNAME": "string",
+        "CBSA_METRO_FLG": "string",
+        "CBSA_MICRO_FLG": "string",
+        "CSA_NO": "string",
+        "CBSA_METRO": "string",
+        "CBSA_DIV_NO": "string",
+        "RUNDATE": "string",
+        "NAME": "string",
+        "UNINUM": "int",
+        "SERVTYPE": "int",
+        "CSA_FLG": "string",
+        "STCNTY": "string",
+        "SERVTYPE_DESC": "string",
+        "CBSA": "string",
+        "MDI_STATUS_DESC": "string",
+        "CBSA_DIV": "string",
+        "CBSA_DIV_FLG": "string",
+        "CITY": "string",
+        "ADDRESS": "string",
+        "CERT": "string",
+        "STALP": "string",
+        "LATITUDE": "float",
+        "OFFNUM": "int",
+        "ESTYMD": "string",
+        "ID": "string"
+      }
+    },
+    {
+      "path": "/financials",
+      "envelope_key": "financials",
+      "description": "Quarterly call-report + UBPR financial metrics (ASSET, DEP, INCOME, ...)",
+      "total_count": 1674197,
+      "field_count": 161,
+      "fields": {
+        "ZIP": "int",
+        "IDT1RWAJR": "int",
+        "EXTRA": "int",
+        "TFRA": "int",
+        "IDNCCONR": "int",
+        "STNAME": "string",
+        "EQCDIVNTINC": "float",
+        "INSDATE": "string",
+        "BKPREM": "int",
+        "SZLNCON": "nullable",
+        "INTAN": "int",
+        "NTRENRSR": "int",
+        "OBSDIR": "nullable",
+        "OFFOA": "int",
+        "P9LTOT": "nullable",
+        "NTALLOTHR": "int",
+        "IGLSEC": "int",
+        "EEFFR": "int",
+        "IDT1CER": "int",
+        "NAMEHCR": "string",
+        "NTREMULR": "int",
+        "DEPDOM": "int",
+        "IBEFXTR": "int",
+        "INTINCY": "float",
+        "EQV": "float",
+        "NETINC": "int",
+        "LNLSDEPR": "float",
+        "FDICSUPVDESC": "string",
+        "MUTUAL": "int",
+        "OFFFOR": "int",
+        "NAASSET": "int",
+        "NTLNLSR": "float",
+        "DEPUNINS": "nullable",
+        "DEPNIDOM": "int",
+        "RSSDHCR": "string",
+        "LNATRESR": "float",
+        "ASDROTH": "nullable",
+        "SZLNRES": "nullable",
+        "CERT": "int",
+        "STALP": "string",
+        "NTCOMRER": "int",
+        "EINTEXP": "int",
+        "DEPCSBQ": "nullable",
+        "COREDEP": "int",
+        "MSA_NAME": "string",
+        "CALLFORM": "int",
+        "RSSDID": "int",
+        "CBLRIND": "nullable",
+        "SC": "int",
+        "QBPRCOMLDESC": "string",
+        "ELNANTR": "float",
+        "ENDEFYMD": "int",
+        "NPERFV": "float",
+        "LNRESNCR": "float",
+        "CB": "string",
+        "REGAGNT": "string",
+        "NUMEMP": "int",
+        "ASSET": "int",
+        "NCREMULR": "int",
+        "NCRECONR": "int",
+        "STCNTY": "string",
+        "NALTOT": "nullable",
+        "IDLNCORR": "float",
+        "SPECGRPDESC": "string",
+        "SZLAUTO": "nullable",
+        "CITY": "string",
+        "P9ASSET": "int",
+        "STMULT": "string",
+        "P3ASSET": "nullable",
+        "DEPALLEX": "nullable",
+        "LIAB": "int",
+        "ITAX": "int",
+        "TRADE": "int",
+        "NIMY": "float",
+        "INSAGNT1": "string",
+        "DEPINS": "nullable",
+        "BKCLASS": "string",
+        "NOIJ": "int",
+        "NOIJY": "float",
+        "IDNCCIR": "int",
+        "EFFDATE": "int",
+        "LSAORE": "nullable",
+        "ELNATR": "int",
+        "NTRER": "float",
+        "INTINC": "int",
+        "NETINBM": "nullable",
+        "EQCSTKRX": "nullable",
+        "UC": "int",
+        "LSALNLS": "nullable",
+        "NTLNLS": "int",
+        "FLDOFF": "string",
+        "ERNASTR": "float",
+        "NCLNLSR": "float",
+        "LNLSNET": "int",
+        "LNNDEPC": "nullable",
+        "LNNDEPD": "nullable",
+        "DEPFOR": "nullable",
+        "NCRENRER": "int",
+        "PARCERT": "string",
+        "ROA": "float",
+        "P3LTOT": "nullable",
+        "RISDATE": "string",
+        "EQCDIV": "int",
+        "ROEINJR": "float",
+        "ROE": "float",
+        "SZLNHEL": "nullable",
+        "OCCDISTDESC": "string",
+        "EQ": "int",
+        "NAME": "string",
+        "HCTMULT": "string",
+        "SZLNCRCD": "nullable",
+        "NONIXAY": "float",
+        "SZLNOTH": "nullable",
+        "FREPO": "int",
+        "FDICDBSDESC": "string",
+        "CHBAL": "int",
+        "LSAOA": "nullable",
+        "OFFDOM": "int",
+        "SUBCHAPS": "int",
+        "ASDRRES": "nullable",
+        "NCRER": "int",
+        "AOAR": "float",
+        "ORE": "int",
+        "ACTIVE": "int",
+        "NTRECOSR": "int",
+        "NCRERESR": "int",
+        "DEPIDOM": "int",
+        "REPDTE": "string",
+        "IDNTCIR": "float",
+        "INTEXPY": "float",
+        "RBC1AAJ": "float",
+        "NTRERESR": "int",
+        "ASTEMPM": "float",
+        "AOA": "int",
+        "ROAPTX": "float",
+        "PTAXNETINC": "int",
+        "DEPDASTR": "float",
+        "NCCOMRER": "int",
+        "DEPBEFEX": "nullable",
+        "FEDDESC": "string",
+        "NONIIAY": "float",
+        "IDNTCONR": "float",
+        "ELNATRY": "float",
+        "NONIX": "int",
+        "LNLSNTV": "float",
+        "DEP": "int",
+        "CBSA": "string",
+        "IDNCOTHR": "int",
+        "NIM": "int",
+        "RBCRWAJ": "int",
+        "SZLNCI": "nullable",
+        "LSASCDBT": "nullable",
+        "IDNCGTPR": "int",
+        "NAMEFULL": "string",
+        "IDERNCVR": "float",
+        "NFAA": "int",
+        "ESTYMD": "int",
+        "NONII": "int",
+        "TRUST": "string",
+        "EQTOT": "int",
+        "ID": "string"
+      }
+    }
+  ]
+}

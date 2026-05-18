@@ -1,0 +1,63 @@
+id: fetch.atsdr.svi
+version: 1.0.0
+type: fetch
+catalog_tier: small
+entrypoint: main.py:run
+description: 'CDC/ATSDR Social Vulnerability Index (SVI) downloader. Public, no key
+
+  required. Downloads census-tract-level SVI CSVs from
+
+  https://svi.cdc.gov/Documents/Data/{year}/csv/States/SVI_{year}_US.csv,
+
+  filters by state and returns rows.
+
+
+  Available years: 2000, 2010, 2014, 2016, 2018, 2020, 2022.
+
+
+  Required columns include FIPS (county+tract), STATE, COUNTY, RPL_THEMES
+
+  (overall vulnerability percentile), and four sub-theme percentiles
+
+  (RPL_THEME1..4 = socioeconomic, household composition, minority
+
+  status, housing/transportation).
+
+  '
+managed_paths:
+- module.yaml
+- main.py
+- api.py
+- transform.py
+- schema.sample.json
+input_schema:
+  type: object
+  properties:
+    year:
+      type: integer
+      description: SVI year (2000, 2010, 2014, 2016, 2018, 2020, 2022).
+      default: 2022
+      examples:
+      - 2022
+      - 2020
+      - 2018
+    state:
+      type: string
+      description: Optional 2-letter state filter (e.g. "CA", "NY").
+      examples:
+      - CA
+      - TX
+      - NY
+    limit:
+      type: integer
+      description: Max rows to return (default 1000).
+      default: 1000
+      examples:
+      - 1000
+      - 100
+output_schema:
+  type: object
+  required:
+  - dataset_ref
+  - rows
+  - retrieved_at

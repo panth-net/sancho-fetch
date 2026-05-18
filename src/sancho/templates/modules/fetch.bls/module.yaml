@@ -1,0 +1,78 @@
+id: fetch.bls
+version: 1.1.0
+type: fetch
+catalog_tier: large
+entrypoint: run.py:run
+description: 'Path-driven BLS provider. Supply a `path` (e.g. "/timeseries/data/"
+  for
+
+  series fetch, "/surveys" for the survey list) and the wrapper routes
+
+  through catalog.json family specs to validate fields and dispatch the call.
+
+  Per-endpoint parameters live in catalog.json''s family entries, not here.
+
+
+  Auth: BLS_API_KEY (optional registration key auto-injected as
+
+  `registrationkey` in the JSON body for POST /timeseries/data/).
+
+  '
+managed_paths:
+- module.yaml
+- run.py
+- discovery.py
+- catalog_blueprint.py
+- catalog.json
+- catalog.meta.json
+- client.py
+input_schema:
+  type: object
+  required:
+  - path
+  properties:
+    path:
+      type: string
+      description: 'BLS API path. Use "/timeseries/data/" with method=POST and a body
+
+        containing seriesid/startyear/endyear for series data, or "/surveys"
+
+        with method=GET for the survey listing.
+
+        '
+      examples:
+      - /timeseries/data/
+      - /surveys
+    method:
+      type: string
+      description: HTTP method. "POST" for /timeseries/data/, "GET" for /surveys.
+      default: GET
+      examples:
+      - GET
+      - POST
+    base:
+      type: string
+      description: Catalog base alias selecting the API family. Default "v2".
+      default: v2
+      examples:
+      - v2
+    params:
+      type: object
+      description: Query parameters (used for GET requests).
+    body:
+      type: object
+      description: 'JSON body for POST requests. /timeseries/data/ requires `seriesid`
+
+        (list of series IDs), `startyear`, `endyear`. `registrationkey` is
+
+        auto-injected from BLS_API_KEY when set.
+
+        '
+output_schema:
+  type: object
+  required:
+  - provider
+  - dataset_ref
+  - family_id
+  - path
+  - retrieved_at

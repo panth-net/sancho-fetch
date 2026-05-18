@@ -1,0 +1,44 @@
+{
+  "provider": "fetch.open_payments.datasets",
+  "generated_at": "2026-03-30T18:59:54.810750+00:00",
+  "columns": [
+    {
+      "name": "dataset_ref",
+      "type": "string",
+      "sample": "usgov_open_payments"
+    },
+    {
+      "name": "endpoint",
+      "type": "string",
+      "sample": "https://openpaymentsdata.cms.gov/api/1/metastore/schemas/dataset/items"
+    },
+    {
+      "name": "params",
+      "type": "dict",
+      "sample": {}
+    },
+    {
+      "name": "rows",
+      "type": "list",
+      "sample": []
+    },
+    {
+      "name": "raw",
+      "type": "list",
+      "sample": []
+    },
+    {
+      "name": "retrieved_at",
+      "type": "string",
+      "sample": "2026-03-30T18:59:54.810750+00:00"
+    }
+  ],
+  "sample_row": {
+    "dataset_ref": "usgov_open_payments",
+    "endpoint": "https://openpaymentsdata.cms.gov/api/1/metastore/schemas/dataset/items",
+    "params": {},
+    "rows": [],
+    "raw": [],
+    "retrieved_at": "2026-03-30T18:59:54.810750+00:00"
+  }
+}

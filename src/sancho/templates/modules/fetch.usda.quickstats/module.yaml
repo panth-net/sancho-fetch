@@ -1,0 +1,51 @@
+id: fetch.usda.quickstats
+version: 1.2.0
+type: fetch
+catalog_tier: large
+entrypoint: main.py:run
+description: "Path-driven USDA NASS QuickStats client. Filter by commodity (CORN,\n\
+  WHEAT, SOYBEANS, ...), geography (NATIONAL/STATE/COUNTY), year, statistic.\nAlways\
+  \ include `agg_level_desc` + at least one filter \u2014 broad queries\nreturn tens\
+  \ of thousands of rows.\n\ncatalog.json walks every enumerable dimension via /get_param_values/\
+  \ \u2014\n19 parameters \xD7 69,186 total allowed values. Requires USDA_NASS_API_KEY.\n"
+managed_paths:
+- module.yaml
+- main.py
+- api.py
+- transform.py
+- schema.sample.json
+- catalog.json
+- catalog.meta.json
+- catalog_blueprint.py
+- discovery.py
+input_schema:
+  type: object
+  properties:
+    endpoint:
+      type: string
+      description: 'QuickStats endpoint. `/api_GET/` for data, `/get_param_values/`
+        for
+
+        autocomplete.
+
+        '
+      examples:
+      - https://quickstats.nass.usda.gov/api/api_GET/
+      - https://quickstats.nass.usda.gov/api/get_param_values/
+    params:
+      type: object
+      description: 'Query parameters. `commodity_desc`, `state_alpha`, `county_name`,
+
+        `agg_level_desc` (NATIONAL/STATE/COUNTY/AG DISTRICT), `year` or
+
+        `year__GE`/`year__LE`, `sector_desc`, `group_desc`, `short_desc`,
+
+        `format=JSON`. Auth: USDA_NASS_API_KEY auto-injected as `key`.
+
+        '
+output_schema:
+  type: object
+  required:
+  - dataset_ref
+  - endpoint
+  - retrieved_at

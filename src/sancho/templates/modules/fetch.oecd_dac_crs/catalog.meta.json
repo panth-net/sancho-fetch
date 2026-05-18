@@ -1,0 +1,29 @@
+{
+  "provider": "fetch.oecd_dac_crs",
+  "schema_version": "1.0",
+  "generated_at": "2026-04-15T17:19:49.912769+00:00",
+  "stats": {
+    "family_count": 1,
+    "dataflow_count": 12,
+    "dataflows_count": 12,
+    "agency_count": 2,
+    "agencies_count": 2
+  },
+  "discovery": {
+    "mode": "live_required",
+    "sources": [
+      {
+        "id": "dataflow",
+        "url": "https://sdmx.oecd.org/dcd-public/rest/dataflow/all/all/latest",
+        "status": "ok",
+        "http_status": 200,
+        "count": 12,
+        "error": "",
+        "fetched_at": "2026-04-15T17:19:49.910045+00:00"
+      }
+    ],
+    "docs": [
+      "https://data-explorer.oecd.org/?tm=dac&lc=en"
+    ]
+  }
+}

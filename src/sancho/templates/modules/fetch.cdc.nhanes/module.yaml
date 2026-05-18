@@ -1,0 +1,63 @@
+id: fetch.cdc.nhanes
+version: 1.0.0
+type: fetch
+catalog_tier: small
+entrypoint: main.py:run
+description: "CDC National Health and Nutrition Examination Survey (NHANES) public-use\n\
+  file downloader. No key required. NHANES publishes biennial cycles of\nSAS Transport\
+  \ (.XPT) files at\nwwwn.cdc.gov/Nchs/Data/Nhanes/Public/{cycle_start_year}/DataFiles/.\n\
+  \nFile naming pattern is `{COMPONENT}_{CYCLE_LETTER}.XPT` where:\n  A=1999-2000,\
+  \ B=2001-2002, C=2003-2004, D=2005-2006, E=2007-2008,\n  F=2009-2010, G=2011-2012,\
+  \ H=2013-2014, I=2015-2016, J=2017-2018,\n  K=2019-2020 (cycle disrupted by COVID),\
+  \ L=2021-2023, M=2023-2025\n\nCommon components: DEMO (demographics), BMX (body\
+  \ measures), BPX (blood\npressure), TCHOL (cholesterol), GHB (HbA1c), WHQ (weight\
+  \ history),\nDBQ (diet behavior), MCQ (medical conditions), SMQ (smoking).\n\nRequired:\
+  \ pyreadstat for SAS Transport parsing.\n"
+managed_paths:
+- module.yaml
+- main.py
+- api.py
+- transform.py
+- schema.sample.json
+input_schema:
+  type: object
+  properties:
+    cycle:
+      type: string
+      description: 'Cycle letter (J=2017-2018, K=2019-2020, L=2021-2023, etc.). Default
+        "J".
+
+        '
+      default: J
+      examples:
+      - J
+      - K
+      - L
+      - I
+    component:
+      type: string
+      description: 'Component code (DEMO, BMX, BPX, TCHOL, GHB, WHQ, etc.).
+
+        Default DEMO (demographics).
+
+        '
+      default: DEMO
+      examples:
+      - DEMO
+      - BMX
+      - BPX
+      - TCHOL
+      - GHB
+    limit:
+      type: integer
+      description: Max rows to extract (default 1000).
+      default: 1000
+      examples:
+      - 1000
+      - 100
+output_schema:
+  type: object
+  required:
+  - dataset_ref
+  - rows
+  - retrieved_at

@@ -1,0 +1,35 @@
+{
+  "provider": "fetch.bls",
+  "schema_version": "1.0",
+  "generated_at": "2026-04-14T17:10:27.275875+00:00",
+  "stats": {
+    "family_count": 5,
+    "surveys_count": 70,
+    "sample_series_count": 1
+  },
+  "discovery": {
+    "mode": "live_required",
+    "sources": [
+      {
+        "id": "v2.surveys.list",
+        "url": "https://api.bls.gov/publicAPI/v2/surveys",
+        "status": "ok",
+        "http_status": 200,
+        "count": 70,
+        "fetched_at": "2026-04-14T17:10:26.287536+00:00"
+      },
+      {
+        "id": "v2.timeseries.data",
+        "url": "https://api.bls.gov/publicAPI/v2/timeseries/data/",
+        "status": "ok",
+        "http_status": 200,
+        "count": 1,
+        "fetched_at": "2026-04-14T17:10:27.275875+00:00"
+      }
+    ],
+    "docs": [
+      "https://www.bls.gov/developers/home.htm",
+      "https://www.bls.gov/developers/api_signature_v2.htm"
+    ]
+  }
+}

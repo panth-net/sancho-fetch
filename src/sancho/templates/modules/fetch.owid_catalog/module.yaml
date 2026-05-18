@@ -1,0 +1,28 @@
+id: fetch.owid_catalog
+version: 1.0.0
+type: fetch
+catalog_tier: small
+entrypoint: main.py:run
+description: Fetch Our World in Data chart catalog and tag metadata from the OWID
+  Datasette public API.
+managed_paths:
+- module.yaml
+- main.py
+- api.py
+- transform.py
+- schema.sample.json
+input_schema:
+  type: object
+  properties:
+    search:
+      type: string
+    tag:
+      type: string
+    limit:
+      type: integer
+output_schema:
+  type: object
+  required:
+  - dataset_ref
+  - source_url
+  - retrieved_at

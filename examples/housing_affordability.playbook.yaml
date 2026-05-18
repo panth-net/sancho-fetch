@@ -1,0 +1,31 @@
+name: housing_affordability_workflow
+version: 1
+description: >-
+  Example workflow that pulls baseline housing, labor, and macro context data,
+  then runs a simple summary analysis step.
+
+steps:
+  - module: fetch.hud.fmr
+    input:
+      url: https://www.huduser.gov/hudapi/public/fmr/listMetroAreas
+
+  - module: fetch.census.acs_profile
+    input:
+      geography: state:06
+
+  - module: fetch.bls
+    input:
+      base: v2
+      method: POST
+      path: /timeseries/data/
+      body:
+        seriesid:
+          - CUUR0000SA0
+
+  - module: analyze.summary
+    input:
+      records:
+        - metric: median_rent
+          source: hud_fmr
+        - metric: cpi
+          source: bls

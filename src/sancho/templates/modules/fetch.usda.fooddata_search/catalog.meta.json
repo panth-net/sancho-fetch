@@ -1,0 +1,76 @@
+{
+  "provider": "fetch.usda.fooddata_search",
+  "schema_version": "1.0",
+  "generated_at": "2026-04-15T17:15:44.291653+00:00",
+  "stats": {
+    "family_count": 3,
+    "data_type_count": 5,
+    "data_types_count": 5,
+    "field_count": 18,
+    "fields_count": 18,
+    "total_food_count": 468382,
+    "per_type_total": 468382
+  },
+  "discovery": {
+    "mode": "live_required",
+    "sources": [
+      {
+        "id": "/foods/search:all",
+        "url": "https://api.nal.usda.gov/fdc/v1/foods/search",
+        "status": "ok",
+        "http_status": 200,
+        "count": 468382,
+        "error": "",
+        "fetched_at": "2026-04-15T17:15:38.909734+00:00"
+      },
+      {
+        "id": "/foods/search:Branded",
+        "url": "https://api.nal.usda.gov/fdc/v1/foods/search",
+        "status": "ok",
+        "http_status": 200,
+        "count": 454678,
+        "error": "",
+        "fetched_at": "2026-04-15T17:15:39.990891+00:00"
+      },
+      {
+        "id": "/foods/search:Foundation",
+        "url": "https://api.nal.usda.gov/fdc/v1/foods/search",
+        "status": "ok",
+        "http_status": 200,
+        "count": 365,
+        "error": "",
+        "fetched_at": "2026-04-15T17:15:41.046837+00:00"
+      },
+      {
+        "id": "/foods/search:Survey (FNDDS)",
+        "url": "https://api.nal.usda.gov/fdc/v1/foods/search",
+        "status": "ok",
+        "http_status": 200,
+        "count": 5432,
+        "error": "",
+        "fetched_at": "2026-04-15T17:15:42.094293+00:00"
+      },
+      {
+        "id": "/foods/search:SR Legacy",
+        "url": "https://api.nal.usda.gov/fdc/v1/foods/search",
+        "status": "ok",
+        "http_status": 200,
+        "count": 7793,
+        "error": "",
+        "fetched_at": "2026-04-15T17:15:43.160579+00:00"
+      },
+      {
+        "id": "/foods/search:Experimental",
+        "url": "https://api.nal.usda.gov/fdc/v1/foods/search",
+        "status": "ok",
+        "http_status": 200,
+        "count": 114,
+        "error": "",
+        "fetched_at": "2026-04-15T17:15:44.289727+00:00"
+      }
+    ],
+    "docs": [
+      "https://fdc.nal.usda.gov/api-guide.html"
+    ]
+  }
+}

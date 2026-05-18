@@ -1,0 +1,56 @@
+id: fetch.usda.fooddata_search
+version: 1.2.0
+type: fetch
+catalog_tier: large
+entrypoint: main.py:run
+description: 'Path-driven USDA FoodData Central client. Three core endpoints:
+
+  `/foods/search` (text + dataType filter), `/foods/list` (catalog),
+
+  `/food/{fdcId}` (full detail with nutrients/portions).
+
+
+  catalog.json enumerates 5 data types (~468k foods total) and the
+
+  18-field response schema. Requires DATA_GOV_API_KEY.
+
+  '
+managed_paths:
+- module.yaml
+- main.py
+- api.py
+- transform.py
+- schema.sample.json
+- catalog.json
+- catalog.meta.json
+- catalog_blueprint.py
+- discovery.py
+input_schema:
+  type: object
+  properties:
+    endpoint:
+      type: string
+      description: 'FoodData Central endpoint URL.
+
+        '
+      examples:
+      - https://api.nal.usda.gov/fdc/v1/foods/search
+      - https://api.nal.usda.gov/fdc/v1/foods/list
+      - https://api.nal.usda.gov/fdc/v1/food/167512
+    params:
+      type: object
+      description: 'Query parameters. For /search: `query` (text), `dataType`
+
+        (Branded/Foundation/etc., comma-separated), `pageSize`,
+
+        `pageNumber`, `sortBy`, `sortOrder`. For /list: `pageSize`,
+
+        `pageNumber`, `sortBy`.
+
+        '
+output_schema:
+  type: object
+  required:
+  - dataset_ref
+  - endpoint
+  - retrieved_at

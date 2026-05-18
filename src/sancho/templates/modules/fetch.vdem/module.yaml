@@ -1,0 +1,55 @@
+id: fetch.vdem
+version: 1.1.0
+type: fetch
+catalog_tier: small
+entrypoint: main.py:run
+description: 'Fetch V-Dem (Varieties of Democracy) Core country-year indicators from
+
+  the published CSV archive. Filter by `version`, `indicators` (V-Dem
+
+  variable codes like v2x_polyarchy), `country` (ISO3), `year_min`,
+
+  `year_max`.
+
+  '
+managed_paths:
+- module.yaml
+- main.py
+- api.py
+- transform.py
+- schema.sample.json
+input_schema:
+  type: object
+  properties:
+    version:
+      type: string
+      description: V-Dem release version (default "14").
+      examples:
+      - '14'
+      - '13'
+    indicators:
+      type: array
+      items:
+        type: string
+      description: V-Dem indicator codes.
+      examples:
+      - - v2x_polyarchy
+    country:
+      type: string
+      description: 3-letter ISO country code.
+      examples:
+      - USA
+      - FRA
+    year_min:
+      type: integer
+      description: Earliest year to include.
+    year_max:
+      type: integer
+      description: Latest year to include.
+output_schema:
+  type: object
+  required:
+  - dataset_ref
+  - version
+  - source_url
+  - retrieved_at

@@ -1,0 +1,31 @@
+{
+  "provider": "fetch.fda.drug_events",
+  "schema_version": "1.0",
+  "generated_at": "2026-04-14T18:58:03.420246+00:00",
+  "stats": {
+    "family_count": 3,
+    "category_count": 8,
+    "categories_count": 8,
+    "endpoint_count": 28,
+    "endpoints_count": 28,
+    "total_records": 53072732,
+    "total_partition_count": 2308
+  },
+  "discovery": {
+    "mode": "live_required",
+    "sources": [
+      {
+        "id": "/download.json",
+        "url": "https://api.fda.gov/download.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 1,
+        "error": "",
+        "fetched_at": "2026-04-14T18:58:03.418243+00:00"
+      }
+    ],
+    "docs": [
+      "https://open.fda.gov/apis/"
+    ]
+  }
+}
