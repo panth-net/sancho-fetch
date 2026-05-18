@@ -15,30 +15,76 @@ from sancho.mcp.tooling import _build_context, _handle_method, _tools_payload
 
 
 def _read_stdio_message() -> dict[str, Any] | None:
-    headers: dict[str, str] = {}
+    """Read one JSON-RPC message from stdin per the MCP stdio transport spec.
+
+    The MCP spec (every version since 2024-11-05) defines stdio framing as
+    newline-delimited JSON: each message is a single line of UTF-8 JSON
+    terminated by ``\\n``, with no embedded newlines. This is what Claude
+    Desktop, Codex, Cursor, VS Code, and every other MCP client send.
+
+    For defensive backward compatibility we also accept the legacy LSP-style
+    ``Content-Length: N\\r\\n\\r\\n<body>`` framing that an earlier sancho
+    release shipped — detected by a header line starting with ``Content-Length``.
+    """
     while True:
         line = sys.stdin.buffer.readline()
         if line == b"":
             return None
         stripped = line.strip()
         if not stripped:
-            break
-        key, value = line.decode("utf-8").split(":", 1)
-        headers[key.strip().lower()] = value.strip()
-
-    content_length = int(headers.get("content-length", "0"))
-    if content_length <= 0:
-        return None
-    body = sys.stdin.buffer.read(content_length)
-    if not body:
-        return None
-    return json.loads(body.decode("utf-8"))
+            # Skip blank lines between messages.
+            continue
+        # Newline-delimited JSON — the MCP spec format.
+        if stripped[:1] == b"{":
+            try:
+                return json.loads(stripped.decode("utf-8"))
+            except json.JSONDecodeError:
+                # Malformed line; skip and try the next one.
+                continue
+        # Legacy LSP-style Content-Length framing (compat only).
+        lower = stripped.lower()
+        if lower.startswith(b"content-length:"):
+            headers: dict[str, str] = {}
+            try:
+                key, value = stripped.decode("utf-8").split(":", 1)
+                headers[key.strip().lower()] = value.strip()
+            except ValueError:
+                return None
+            while True:
+                next_line = sys.stdin.buffer.readline()
+                if next_line == b"":
+                    return None
+                if not next_line.strip():
+                    break
+                try:
+                    key, value = next_line.decode("utf-8").split(":", 1)
+                    headers[key.strip().lower()] = value.strip()
+                except ValueError:
+                    continue
+            content_length = int(headers.get("content-length", "0"))
+            if content_length <= 0:
+                return None
+            body = sys.stdin.buffer.read(content_length)
+            if not body:
+                return None
+            try:
+                return json.loads(body.decode("utf-8"))
+            except json.JSONDecodeError:
+                return None
+        # Unknown line — skip and keep reading.
+        continue
 
 
 def _write_stdio_message(payload: dict[str, Any]) -> None:
+    """Write one JSON-RPC message to stdout as newline-delimited JSON.
+
+    Per the MCP stdio transport spec: one UTF-8 JSON object per line,
+    ``\\n``-terminated, no embedded newlines. ``json.dumps`` does not emit
+    newlines inside the serialized output, so the spec guarantee holds.
+    """
     body = json.dumps(payload).encode("utf-8")
-    sys.stdout.buffer.write(f"Content-Length: {len(body)}\r\n\r\n".encode("utf-8"))
     sys.stdout.buffer.write(body)
+    sys.stdout.buffer.write(b"\n")
     sys.stdout.buffer.flush()
 
 

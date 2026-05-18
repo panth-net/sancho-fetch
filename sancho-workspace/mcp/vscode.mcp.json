@@ -1,0 +1,16 @@
+{
+  "client": "vscode",
+  "mcpServers": {
+    "sancho": {
+      "command": "/Users/rumi/.local/share/uv/tools/sancho-fetch/bin/sancho",
+      "args": [
+        "mcp",
+        "serve",
+        "--workspace",
+        "/Users/rumi/Documents/GitHub/sancho-fetch/sancho-workspace",
+        "--transport",
+        "stdio"
+      ]
+    }
+  }
+}

@@ -23,6 +23,29 @@ from sancho.provider_kits import load_provider_catalog
 _ALIAS_PLACEHOLDER_RE = re.compile(r"\{([A-Za-z0-9_]+)\}")
 _ALIAS_SAFE_RE = re.compile(r"[^a-z0-9]+")
 
+# Published MCP protocol versions sancho's stdio surface is compatible with.
+# Per the MCP spec on version negotiation: if the client's requested version
+# is supported, the server MUST echo it back; otherwise the server returns
+# its latest supported version. Returning a version the client doesn't
+# recognize (e.g. a future or made-up date) causes clients such as Claude
+# Desktop to disconnect immediately after the initialize response.
+# Source: https://modelcontextprotocol.io/specification/2025-11-25/basic/lifecycle
+_SUPPORTED_MCP_PROTOCOL_VERSIONS = (
+    "2024-10-07",
+    "2024-11-05",
+    "2025-03-26",
+    "2025-06-18",
+    "2025-11-25",
+)
+_LATEST_MCP_PROTOCOL_VERSION = _SUPPORTED_MCP_PROTOCOL_VERSIONS[-1]
+
+
+def _negotiate_protocol_version(requested: Any) -> str:
+    """Echo the client's version if supported, else return our latest."""
+    if isinstance(requested, str) and requested in _SUPPORTED_MCP_PROTOCOL_VERSIONS:
+        return requested
+    return _LATEST_MCP_PROTOCOL_VERSION
+
 
 def _build_context(
     *,
@@ -196,7 +219,7 @@ def _handle_method(ctx: MCPContext, method: str, params: dict[str, Any] | None) 
     params = params or {}
     if method == "initialize":
         result: dict[str, Any] = {
-            "protocolVersion": "2026-03-26",
+            "protocolVersion": _negotiate_protocol_version(params.get("protocolVersion")),
             "capabilities": {"tools": {}, "resources": {}},
             "serverInfo": {"name": "sancho-mcp", "version": __version__},
         }
