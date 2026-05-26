@@ -194,11 +194,13 @@ Filenames that start with `.` (like `.env` and `.env.example`) are
 hidden by default on macOS and Windows. If you can't see them in your
 file manager:
 
-- **macOS Finder:** open the `sancho-workspace/` folder, then press
+- **macOS Finder:** open the Sancho Fetch folder, then press
   `Cmd+Shift+.` (Command + Shift + period) to toggle hidden files.
 - **Windows File Explorer:** click **View -> Show -> Hidden items**.
-- Or open `sancho-workspace/.env` directly from VS Code without any
-  toggling.
+- Or run `sancho env open` to open the right `.env` directly from your editor.
+
+Sancho checks the project-level `.env` as a fallback and lets
+`sancho-workspace/.env` override matching names when both files exist.
 
 `.env` is personal and never overwritten by `sancho update`.
 

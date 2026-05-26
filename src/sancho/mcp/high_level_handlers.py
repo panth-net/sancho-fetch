@@ -225,14 +225,19 @@ class EnvOpenHandler:
     workspace_root: Path
 
     def __call__(self, arguments: dict[str, Any]) -> Any:
-        from sancho.env_keys import provider_key_hints
+        from sancho.env_keys import env_status, provider_key_hints
         provider = str(arguments.get("provider") or "").strip()
-        env_path = self.workspace_root / ".env"
+        status = env_status(self.workspace_root)
+        env_path = Path(str(status["env_path"]))
         env_example = self.workspace_root / ".env.example"
         hints = provider_key_hints(provider) if provider else []
         return {
             "env_path": str(env_path),
             "env_exists": env_path.exists(),
+            "env_paths": status["env_paths"],
+            "workspace_env_path": status["workspace_env_path"],
+            "project_env_path": status["project_env_path"],
+            "shadowed_keys": status["shadowed_keys"],
             "env_example_path": str(env_example),
             "env_example_exists": env_example.exists(),
             "provider": provider,

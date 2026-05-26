@@ -45,6 +45,19 @@ def test_env_recommend_marks_provider_ready_when_key_is_populated(tmp_path: Path
     assert "FRED_API_KEY" not in payload["missing_required_keys"]
 
 
+def test_env_recommend_uses_project_env_fallback(tmp_path: Path) -> None:
+    workspace = _init_workspace(tmp_path)
+    (workspace / ".env").write_text("SANCHO_DEVELOPER_MODE=false\n", encoding="utf-8")
+    (tmp_path / ".env").write_text("FRED_API_KEY=any-non-empty-value\n", encoding="utf-8")
+
+    payload = env_recommend(workspace, "Federal Reserve series FRED interest rates")
+
+    fred = next(c for c in payload["candidates"] if c["module_id"] == "fetch.fred.series")
+    assert fred["missing_keys"] == []
+    assert fred["ready"] is True
+    assert payload["env_path"] == str(tmp_path / ".env")
+
+
 def test_env_recommend_marks_optional_keys_distinctly(tmp_path: Path) -> None:
     workspace = _init_workspace(tmp_path)
     (workspace / ".env").write_text("# blank\n", encoding="utf-8")

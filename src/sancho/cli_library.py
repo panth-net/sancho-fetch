@@ -9,6 +9,7 @@ from pathlib import Path
 from typing import Any
 
 from sancho.constants import WORKSPACE_DIRNAME
+from sancho.env_keys import env_status
 from sancho.project_export import PROJECT_FOLDER
 from sancho.library import (
     LibraryStatus,
@@ -130,6 +131,7 @@ def _paths_payload() -> dict[str, Any]:
     }
     if workspace is not None:
         repo_root = workspace.parent
+        env = env_status(workspace)
         payload["workspace"] = {
             "root": str(repo_root),
             "workspace": str(workspace),
@@ -141,6 +143,9 @@ def _paths_payload() -> dict[str, Any]:
             "logs": str(workspace / "logs"),
             "update_backups": str(workspace / "update-backups"),
             "env_file": str(workspace / ".env"),
+            "active_env_file": env["env_path"],
+            "project_env_file": env["project_env_path"],
+            "env_files_checked": env["env_paths"],
         }
         payload["project_copy_target"] = str(cwd / PROJECT_FOLDER)
         git = git_status_summary(repo_root)
@@ -174,7 +179,7 @@ def cmd_paths(args: argparse.Namespace) -> int:
     print(f"  Outputs:        {ws['outputs']}")
     print(f"  Logs:           {ws['logs']}")
     print(f"  Update backups: {ws['update_backups']}")
-    print(f"  Env file:       {ws['env_file']}")
+    print(f"  Env file:       {ws['active_env_file']}")
     print()
     print(f"  Current project:      {payload['current_project']}")
     print(f"  Project copy target:  {payload['project_copy_target']}")

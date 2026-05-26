@@ -24,6 +24,8 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Any
 
+from sancho.constants import WORKSPACE_DIRNAME
+
 
 REPO_ENV_EXAMPLE = Path(__file__).resolve().parents[2] / ".env.example"
 
@@ -108,19 +110,119 @@ def provider_key_hints(provider: str) -> list[dict[str, object]]:
 
 def read_populated_env_keys(env_path: Path) -> set[str]:
     """Return env-var NAMES with non-empty values. Values are checked for emptiness only -- never stored."""
+    return set(read_env_values(env_path))
+
+
+def read_env_values(env_path: Path) -> dict[str, str]:
+    """Return non-empty env values for runtime use.
+
+    Values are intentionally only returned to trusted in-process callers.
+    CLI/MCP status payloads must expose names only.
+    """
     if not env_path.exists():
-        return set()
-    keys: set[str] = set()
+        return {}
+    values: dict[str, str] = {}
     with env_path.open("r", encoding="utf-8", errors="replace") as handle:
         for line in handle:
             stripped = line.strip()
             if not stripped or stripped.startswith("#") or "=" not in stripped:
                 continue
+            if stripped.startswith("export "):
+                stripped = stripped[len("export ") :].lstrip()
             name, value = stripped.split("=", 1)
             name = name.strip()
-            if name and value.strip():
-                keys.add(name)
-    return keys
+            value = value.strip()
+            if name and value:
+                values[name] = value
+    return values
+
+
+def project_env_path(workspace_root: Path) -> Path:
+    """Return the user-facing project-level .env path for a workspace."""
+    if workspace_root.name == WORKSPACE_DIRNAME:
+        return workspace_root.parent / ".env"
+    return workspace_root / ".env"
+
+
+def workspace_env_path(workspace_root: Path) -> Path:
+    return workspace_root / ".env"
+
+
+def env_candidate_paths(workspace_root: Path) -> list[Path]:
+    """Return env files in load order: project fallback, then workspace override."""
+    project_env = project_env_path(workspace_root)
+    workspace_env = workspace_env_path(workspace_root)
+    if project_env.resolve() == workspace_env.resolve():
+        return [workspace_env]
+    return [project_env, workspace_env]
+
+
+def load_env_values(workspace_root: Path) -> dict[str, str]:
+    """Load Sancho env values with workspace keys overriding project fallback keys."""
+    merged: dict[str, str] = {}
+    for path in env_candidate_paths(workspace_root):
+        merged.update(read_env_values(path))
+    return merged
+
+
+def resolve_env_edit_path(workspace_root: Path) -> Path:
+    """Choose the most helpful .env file to open for a human.
+
+    New users usually see the repo/project root in their editor, so prefer a
+    project-level .env when it already exists or when the workspace copy has no
+    provider keys yet. Existing workspaces with populated provider keys keep
+    opening the workspace file.
+    """
+    project_env = project_env_path(workspace_root)
+    workspace_env = workspace_env_path(workspace_root)
+    if project_env.exists():
+        return project_env
+    workspace_keys = set(read_env_values(workspace_env))
+    provider_keys = {key for keys in MODULE_KEYS.values() for key in keys}
+    if workspace_keys & provider_keys:
+        return workspace_env
+    return project_env
+
+
+def env_status(workspace_root: Path) -> dict[str, Any]:
+    """Names-only status for all Sancho env files.
+
+    This reports enough to diagnose split .env files without exposing values.
+    """
+    by_path: list[dict[str, Any]] = []
+    values_by_path: dict[Path, dict[str, str]] = {}
+    for path in env_candidate_paths(workspace_root):
+        values = read_env_values(path)
+        values_by_path[path] = values
+        by_path.append({
+            "path": str(path),
+            "exists": path.exists(),
+            "keys_present": sorted(values),
+        })
+
+    merged = load_env_values(workspace_root)
+    project_env = project_env_path(workspace_root)
+    workspace_env = workspace_env_path(workspace_root)
+    project_values = values_by_path.get(project_env, {})
+    workspace_values = values_by_path.get(workspace_env, {})
+    shadowed = sorted(
+        key for key in set(project_values) & set(workspace_values)
+        if project_values.get(key) != workspace_values.get(key)
+    )
+    return {
+        "env_path": str(resolve_env_edit_path(workspace_root)),
+        "env_exists": resolve_env_edit_path(workspace_root).exists(),
+        "workspace_env_path": str(workspace_env),
+        "project_env_path": str(project_env),
+        "env_paths": by_path,
+        "keys_present": sorted(merged),
+        "shadowed_keys": shadowed,
+        "note": (
+            "Project .env is used as a fallback; sancho-workspace/.env overrides "
+            "matching names. Only env-var NAMES are reported. Values are never "
+            "printed."
+        ),
+    }
 
 
 def _env_example_contents(workspace_root: Path) -> tuple[Path, str | None]:
@@ -150,13 +252,15 @@ def env_recommend(workspace_root: Path, query: str, *, limit: int = 8) -> dict[s
     from sancho.cli_find import find_sources
 
     query = query.strip()
-    env_path = workspace_root / ".env"
+    status_payload = env_status(workspace_root)
+    env_path = Path(str(status_payload["env_path"]))
     env_example_path, env_example_text = _env_example_contents(workspace_root)
 
     if not query:
         return {
             "query": "",
             "candidates": [],
+            **status_payload,
             "env_path": str(env_path),
             "env_exists": env_path.exists(),
             "env_example_path": str(env_example_path),
@@ -167,7 +271,7 @@ def env_recommend(workspace_root: Path, query: str, *, limit: int = 8) -> dict[s
     from sancho.module_packs import MODULE_PACKS  # local import to avoid cycle
 
     candidates = find_sources(query, limit=limit)
-    populated = read_populated_env_keys(env_path)
+    populated = set(status_payload["keys_present"])
 
     rows: list[dict[str, Any]] = []
     missing_required: set[str] = set()
@@ -252,6 +356,7 @@ def env_recommend(workspace_root: Path, query: str, *, limit: int = 8) -> dict[s
     )
     return {
         "query": query,
+        **status_payload,
         "env_path": str(env_path),
         "env_exists": env_path.exists(),
         "env_example_path": str(env_example_path),

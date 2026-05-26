@@ -9,12 +9,42 @@ import pytest
 from sancho.cli import main
 from sancho.cli_env import MODULE_KEYS, provider_key_hints
 from sancho.constants import WORKSPACE_DIRNAME
+from sancho.runtime.executor import run_module
 
 
 def _init_workspace(tmp_path: Path) -> Path:
     rc = main(["init", "--path", str(tmp_path), "--yes"])
     assert rc == 0
     return tmp_path / WORKSPACE_DIRNAME
+
+
+def _write_env_probe_module(workspace: Path) -> None:
+    module_dir = workspace / "source" / "fetch" / "fetch_env_probe"
+    module_dir.mkdir(parents=True, exist_ok=True)
+    (module_dir / "module.yaml").write_text(
+        "\n".join([
+            "id: fetch.env_probe",
+            "version: 1.0.0",
+            "type: fetch",
+            "catalog_tier: small",
+            "entrypoint: run.py:run",
+            "api_key_env: SOME_REQUIRED_API_KEY",
+            "managed_paths:",
+            "  - module.yaml",
+            "  - run.py",
+            "output_schema:",
+            "  type: object",
+            "  required:",
+            "    - rows",
+            "",
+        ]),
+        encoding="utf-8",
+    )
+    (module_dir / "run.py").write_text(
+        "def run(context, payload):\n"
+        "    return {'rows': [{'key': context.env.get('SOME_REQUIRED_API_KEY')}]} \n",
+        encoding="utf-8",
+    )
 
 
 def test_provider_key_hints_resolves_short_provider() -> None:
@@ -52,6 +82,68 @@ def test_env_check_reports_missing_keys(tmp_path: Path, capsys: pytest.CaptureFi
     assert "CENSUS_API_KEY" in census["missing"]
 
 
+def test_env_check_uses_project_env_as_fallback(tmp_path: Path, capsys: pytest.CaptureFixture) -> None:
+    _init_workspace(tmp_path)
+    (tmp_path / ".env").write_text("FRED_API_KEY=anything\n", encoding="utf-8")
+    capsys.readouterr()
+
+    rc = main(["env", "check", "--workspace", str(tmp_path), "--json"])
+
+    assert rc == 0
+    payload = json.loads(capsys.readouterr().out)
+    fred = next(p for p in payload["providers"] if p["module_id"] == "fetch.fred.series")
+    assert fred["ready"] is True
+    assert payload["env_path"] == str(tmp_path / ".env")
+    checked = {row["path"] for row in payload["env_paths"]}
+    assert str(tmp_path / ".env") in checked
+    assert str(tmp_path / WORKSPACE_DIRNAME / ".env") in checked
+
+
+def test_workspace_env_overrides_project_env_by_name(
+    tmp_path: Path, capsys: pytest.CaptureFixture
+) -> None:
+    workspace = _init_workspace(tmp_path)
+    (tmp_path / ".env").write_text("FRED_API_KEY=project-value\n", encoding="utf-8")
+    (workspace / ".env").write_text("FRED_API_KEY=workspace-value\n", encoding="utf-8")
+    capsys.readouterr()
+
+    rc = main(["env", "check", "--workspace", str(tmp_path), "--json"])
+
+    assert rc == 0
+    payload = json.loads(capsys.readouterr().out)
+    assert payload["shadowed_keys"] == ["FRED_API_KEY"]
+    assert "project-value" not in json.dumps(payload)
+    assert "workspace-value" not in json.dumps(payload)
+
+
+def test_run_module_loads_project_env_fallback(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    workspace = _init_workspace(tmp_path)
+    _write_env_probe_module(workspace)
+    (tmp_path / ".env").write_text("SOME_REQUIRED_API_KEY=project-value\n", encoding="utf-8")
+    (workspace / ".env").write_text("SANCHO_DEVELOPER_MODE=false\n", encoding="utf-8")
+    monkeypatch.delenv("SOME_REQUIRED_API_KEY", raising=False)
+
+    result = run_module(workspace, "fetch.env_probe", {})
+
+    assert result.output["rows"] == [{"key": "project-value"}]
+
+
+def test_run_module_workspace_env_overrides_project_env(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    workspace = _init_workspace(tmp_path)
+    _write_env_probe_module(workspace)
+    (tmp_path / ".env").write_text("SOME_REQUIRED_API_KEY=project-value\n", encoding="utf-8")
+    (workspace / ".env").write_text("SOME_REQUIRED_API_KEY=workspace-value\n", encoding="utf-8")
+    monkeypatch.delenv("SOME_REQUIRED_API_KEY", raising=False)
+
+    result = run_module(workspace, "fetch.env_probe", {})
+
+    assert result.output["rows"] == [{"key": "workspace-value"}]
+
+
 def test_env_check_never_reports_values(tmp_path: Path, capsys: pytest.CaptureFixture) -> None:
     workspace = _init_workspace(tmp_path)
     secret = "extremely-secret-value-xyzqq"
@@ -74,7 +166,7 @@ def test_env_open_creates_env_file_if_missing(
     monkeypatch.setattr("sancho.cli_env._open_in_editor", lambda path: None)
     rc = main(["env", "open", "census", "--workspace", str(tmp_path)])
     assert rc == 0
-    assert (workspace / ".env").exists()
+    assert (tmp_path / ".env").exists()
     out = capsys.readouterr().out
     assert "CENSUS_API_KEY" in out
 

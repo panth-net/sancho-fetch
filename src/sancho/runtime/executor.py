@@ -10,7 +10,7 @@ from typing import Any
 from sancho import __version__ as SANCHO_VERSION
 from sancho.catalog_cache import resolve_cache_dir
 from sancho.config import load_workspace_config
-from sancho.env_keys import MODULE_KEYS
+from sancho.env_keys import MODULE_KEYS, load_env_values
 from sancho.modules import resolve_module_for_execution
 from sancho.repair_packet import write_error_packet
 from sancho.run_log import LOGS_DIRNAME, RUNS_LOG, begin_run, finish_run
@@ -20,19 +20,6 @@ from sancho.runtime.errors import ModuleExecutionError
 from sancho.runtime.redaction import redact_sensitive_text as _redact_secrets
 from sancho.runtime.schema import validate_schema
 from sancho.runtime.soft_validation import missing_required_keys, required_env_keys, soft_validate_schema
-
-
-def _load_env_file(env_path: Path) -> dict[str, str]:
-    payload: dict[str, str] = {}
-    if not env_path.exists():
-        return payload
-    for line in env_path.read_text(encoding="utf-8").splitlines():
-        stripped = line.strip()
-        if not stripped or stripped.startswith("#") or "=" not in stripped:
-            continue
-        key, value = stripped.split("=", 1)
-        payload[key.strip()] = value.strip()
-    return payload
 
 
 def _import_module_from_path(module_file: Path, module_name: str) -> Any:
@@ -205,7 +192,7 @@ def run_module(workspace_root: Path, module_id: str, input_payload: dict[str, An
         raise ModuleExecutionError(f"Entrypoint file does not exist: {module_file}")
 
     config = load_workspace_config(workspace_root)
-    env_values = _load_env_file(workspace_root / ".env")
+    env_values = load_env_values(workspace_root)
     env = {**env_values, **os.environ}
     declared_env_names = sorted(set(required_env_keys(module_manifest) + MODULE_KEYS.get(module_id, [])))
 
@@ -237,7 +224,7 @@ def run_module(workspace_root: Path, module_id: str, input_payload: dict[str, An
         message = (
             f"Module '{module_id}' declares required API key(s) "
             f"that are missing: {', '.join(missing_keys)}. "
-            "Add them to sancho-workspace/.env and re-run."
+            "Add them with `sancho env open` and re-run."
             f"{_api_key_hint(module_manifest, missing_keys)}"
         )
         packet = write_error_packet(

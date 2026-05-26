@@ -251,7 +251,9 @@ For setup and endpoint details, use:
 ## API Keys
 
 Most fetch modules use free public APIs. Some are zero-key, some require free credentials.
-Store keys in workspace `.env` after setup.
+Store keys in `.env` after setup. Sancho checks the project-level `.env`
+as a fallback and lets `sancho-workspace/.env` override matching names
+when both files exist.
 
 | Env var | Provider | Used by | Get it |
 |---|---|---|---|
@@ -275,13 +277,16 @@ Store keys in workspace `.env` after setup.
 
 ### Setting keys
 
-After setup, a `.env` file is created at `sancho-workspace/.env`. A template `.env.example` lives alongside it.
+After setup, use `sancho env open` to open the right `.env` file. Sancho can
+read keys from the project-level `.env`, while `sancho-workspace/.env` remains
+available for workspace-specific overrides. A template `.env.example` lives in
+the workspace.
 
 **Heads-up: these files are hidden by default.** Filenames that start with a dot (`.env`, `.env.example`) are hidden on macOS and Windows. If you don't see them in your file explorer, turn on hidden files first:
 
-- **macOS Finder:** open the `sancho-workspace/` folder, then press `Cmd + Shift + .` to toggle hidden files.
-- **Windows File Explorer:** open the `sancho-workspace/` folder, click the **View** menu -> **Show** -> **Hidden items**.
-- Or open `sancho-workspace/.env` directly from your editor without toggling anything.
+- **macOS Finder:** open the Sancho Fetch folder, then press `Cmd + Shift + .` to toggle hidden files.
+- **Windows File Explorer:** open the Sancho Fetch folder, click the **View** menu -> **Show** -> **Hidden items**.
+- Or run `sancho env open` to open the right `.env` directly from your editor.
 
 **Filling it in:** open `.env` and paste in your keys:
 

@@ -24,8 +24,10 @@ from sancho.env_keys import (
     MODULE_KEYS,
     OPTIONAL_KEY_MODULES,
     env_recommend,
+    env_status,
     provider_key_hints,
     read_populated_env_keys,
+    resolve_env_edit_path,
 )
 from sancho.workspace import find_workspace_root
 
@@ -62,7 +64,7 @@ def _open_in_editor(path: Path) -> None:
 
 def cmd_env_open(args: argparse.Namespace) -> int:
     workspace_root = _resolve_workspace(args.workspace)
-    env_path = workspace_root / ".env"
+    env_path = resolve_env_edit_path(workspace_root)
     if not env_path.exists():
         env_example = workspace_root / ".env.example"
         if env_example.exists():
@@ -94,8 +96,9 @@ def cmd_env_open(args: argparse.Namespace) -> int:
 
 def cmd_env_check(args: argparse.Namespace) -> int:
     workspace_root = _resolve_workspace(args.workspace)
-    env_path = workspace_root / ".env"
-    keys_present = read_populated_env_keys(env_path)
+    status_payload = env_status(workspace_root)
+    env_path = Path(str(status_payload["env_path"]))
+    keys_present = set(status_payload["keys_present"])
     providers: list[dict[str, object]] = []
     for module_id, env_keys in sorted(MODULE_KEYS.items()):
         missing = [name for name in env_keys if name not in keys_present]
@@ -107,18 +110,30 @@ def cmd_env_check(args: argparse.Namespace) -> int:
             "keys_optional": module_id in OPTIONAL_KEY_MODULES,
         })
     payload = {
+        **status_payload,
         "env_path": str(env_path),
         "env_exists": env_path.exists(),
         "keys_present": sorted(keys_present),
         "providers": providers,
         "ready_count": sum(1 for p in providers if p["ready"]),
         "total_count": len(providers),
-        "note": "Only env-var NAMES are reported. Values are never read or printed.",
     }
     if getattr(args, "json", False):
         print(json.dumps(payload, indent=2, default=str))
         return 0
     print(f"env path: {env_path}  exists={env_path.exists()}")
+    if payload.get("env_paths"):
+        print("env files checked:")
+        for row in payload["env_paths"]:
+            print(
+                f"  - {row['path']}  exists={row['exists']}  "
+                f"keys={len(row['keys_present'])}"
+            )
+        if payload.get("shadowed_keys"):
+            print(
+                "workspace .env overrides project .env for: "
+                + ", ".join(payload["shadowed_keys"])
+            )
     print(f"keys present: {len(keys_present)}  ({', '.join(sorted(keys_present)) or '(none)'})")
     print()
     print(f"Providers ready: {payload['ready_count']}/{payload['total_count']}")
@@ -179,11 +194,11 @@ def cmd_env_recommend(args: argparse.Namespace) -> int:
 
 def add_env_subcommands(subparsers: argparse._SubParsersAction) -> None:
     env = subparsers.add_parser(
-        "env", help="Open or check the workspace .env file (never prints values)"
+        "env", help="Open or check Sancho .env files (never prints values)"
     )
     env_sub = env.add_subparsers(dest="env_command", required=True)
 
-    open_p = env_sub.add_parser("open", help="Open sancho-workspace/.env in your default editor")
+    open_p = env_sub.add_parser("open", help="Open the most helpful Sancho .env in your default editor")
     open_p.add_argument("provider", nargs="?", help="Show which env vars a provider needs (e.g. 'zillow', 'census')")
     open_p.add_argument("--workspace", default=".", help="Project path containing sancho-workspace/")
     open_p.set_defaults(func=cmd_env_open)

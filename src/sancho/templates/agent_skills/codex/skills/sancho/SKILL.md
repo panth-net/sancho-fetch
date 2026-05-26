@@ -81,7 +81,7 @@ expanding.
 
 Read `logs/errors/<run-id>_error.md` before guessing. For
 `status: skipped_needs_key`, name the missing env var and point the user to the
-workspace `.env`; do not ask for the value. For upstream API drift, propose a
+file opened by `sancho env open`; do not ask for the value. For upstream API drift, propose a
 `custom/<type>/<id>/` override and record the repair afterward.
 
 The user's natural-language request comes from `/sancho ...`, the prompt, or

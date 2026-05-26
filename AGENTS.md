@@ -76,7 +76,7 @@ Sancho is not the planner.
 | `sancho inventory --json` | All built-in providers and packs. |
 | `sancho find sources "<text>" --json` | Ranked candidates for a natural-language query. |
 | `sancho env recommend "<text>" --json` | Provider/key readiness for a request without reading key values. |
-| `sancho env open` | Open the workspace `.env` without printing values. |
+| `sancho env open` | Open the right `.env` without printing values. |
 | `sancho module show <id> --json` | Manifest, schema, override status, and last run. |
 | `sancho cache status --module <id> --request-json '<json>' --json` | Per-unit cache status for an inline concrete request. |
 | `sancho fetch sample world_bank --json` | Parseable zero-key onboarding fetch with run ID, written files, and counts. |
@@ -97,7 +97,7 @@ traceback, files written before failure, last successful run, docs links,
 suggested override path, and a safe retry command.
 
 - Missing API key (`status: skipped_needs_key`): name the env var and tell the
-  user it goes in the workspace `.env`. Do not ask for or accept the value.
+  user to add it through `sancho env open`. Do not ask for or accept the value.
 - Upstream API drift: propose a `custom/<type>/<module>/` override. Do not edit
   `source/**`.
 - After any fix: record it with `sancho repair note ...` so future updates have
