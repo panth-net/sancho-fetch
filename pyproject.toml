@@ -9,6 +9,9 @@ description = "Sancho Fetch local-first CLI"
 readme = "README.md"
 license = { file = "LICENSE" }
 requires-python = ">=3.11"
+classifiers = [
+  "License :: OSI Approved :: Apache Software License"
+]
 dependencies = [
   "PyYAML>=6.0.1",
   "requests>=2.32.0",

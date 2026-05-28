@@ -15,3 +15,9 @@ npx --package @sancho/cli sancho-mcp-quick --profile broad
 
 For hosted/public MCP usage, use the hosted MCP URL instead of this local
 launcher. The npm package is for local workspace workflows.
+
+## License
+
+Apache License 2.0.
+
+This package is a convenience launcher for Sancho Fetch. The Sancho name, Sancho Fetch name, logo, and brand assets are protected separately.

@@ -10,7 +10,8 @@
   "files": [
     "bin/",
     "README.md",
-    "LICENSE"
+    "LICENSE",
+    "NOTICE"
   ],
   "scripts": {
     "test": "node -e \"const fs=require('fs'); let s=fs.readFileSync('package.json','utf8'); if (s.charCodeAt(0)===0xFEFF) s=s.slice(1); const p=JSON.parse(s); if (p.bin.sancho !== 'bin/sancho.js' || p.bin['sancho-mcp-quick'] !== 'bin/sancho-mcp-quick.js') process.exit(1);\""
@@ -22,7 +23,7 @@
     "claude",
     "codex"
   ],
-  "license": "SEE LICENSE IN LICENSE",
+  "license": "Apache-2.0",
   "engines": {
     "node": ">=18"
   }

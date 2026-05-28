@@ -218,6 +218,17 @@ Sancho checks the project-level `.env` as a fallback and lets
 
 ## License
 
-Sancho Fetch is public-source software under a fair-use community license. You can read it, use it, modify it, and build with it. If Sancho Fetch materially helps fetch or prepare data you share, cite it. Commercial use is free below the community threshold. Larger organizations, white-labeling, hosted resale, and products whose value derives primarily from Sancho Fetch require a paid license.
+Sancho Fetch code is licensed under the Apache License 2.0.
 
-See [LICENSE](./LICENSE) for full terms.
+Documentation and guides are licensed under CC BY 4.0 unless otherwise noted.
+
+The Sancho name, Sancho Fetch name, logo, and brand assets are protected separately. The Apache License 2.0 does not grant trademark or brand rights.
+
+See:
+
+- [LICENSE](./LICENSE)
+- [NOTICE](./NOTICE)
+- [LICENSE-DOCS.md](./LICENSE-DOCS.md)
+- [INTENDED_USE.md](./INTENDED_USE.md)
+
+Brand-use guidance lives in [NOTICE](./NOTICE).

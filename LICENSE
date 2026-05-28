@@ -1,198 +1,202 @@
-# Sancho Fetch Fair Community License 1.0
 
-Copyright (c) 2026 Pantheon Network
-
-Contact: contact@pantheonnetwork.co
-
-Sancho Fetch is public-source software under a fair-use community license. You can read it, use it, modify it, and build with it. If Sancho Fetch materially helps fetch or prepare data you share, cite it. Commercial use is free below the community threshold. Larger organizations, white-labeling, hosted resale, and products whose value derives primarily from Sancho Fetch require a paid license.
-
-This plain-English statement is provided for clarity. The full license below controls.
-
-## 1. License Grant
-
-Subject to this license, Pantheon Network grants you a worldwide, non-exclusive, no-charge license to use, copy, run, modify, and distribute Sancho Fetch, and to create works using Sancho Fetch.
-
-This license does not grant trademark rights, logo rights, brand rights, domain name rights, or the right to imply endorsement by Pantheon Network.
-
-## 2. Definitions
-
-“Sancho Fetch” means the software, source code, documentation, modules, examples, templates, scripts, configuration files, generated provenance files, and related materials distributed with this license.
-
-“Licensor” means Pantheon Network.
-
-“You” means the individual or entity using Sancho Fetch.
-
-“Output” means a dataset, report, dashboard, file, database, API, visualization, model input, export, or other work created, fetched, prepared, or materially assisted by Sancho Fetch.
-
-“Material” or “Materially” means Sancho Fetch was used in whole or in part to fetch, prepare, transform, document, package, or generate substantive data included in an Output.
-
-“Community Threshold” means the free-use threshold described in Section 7.
-
-“Commercial License” means a separate written agreement with Pantheon Network granting rights beyond this license.
-
-## 3. Attribution
-
-When Sancho Fetch materially helps create an Output that you publish, share, sell, distribute, or provide to another person or organization, you must cite Sancho Fetch in a reasonable location.
-
-A simple citation is sufficient:
-
-> Source: U.S. Census Bureau, fetched via Sancho Fetch.
-
-If the upstream data source is different, replace “U.S. Census Bureau” with the correct source.
-
-You may use other citation formats as long as they clearly identify Sancho Fetch as the tool used to fetch or prepare the data.
-
-You may not remove Sancho Fetch attribution from source files, notices, documentation, generated metadata, generated provenance files, or Outputs where attribution is required.
-
-## 4. Notices
-
-If you distribute Sancho Fetch or a modified version of Sancho Fetch, you must include this license and preserve copyright notices and required notices.
-
-If you modify Sancho Fetch and distribute the modified version, you must make clear that you modified it.
-
-You may not imply that Pantheon Network endorses your modified version.
-
-## 5. No White-Label Resale
-
-You may not white-label Sancho Fetch or offer Sancho Fetch, or a substantially similar version of Sancho Fetch, as a standalone product, hosted service, SDK, platform, or client deliverable without a Commercial License.
-
-This includes rebranding, renaming, repackaging, hosting under another brand, or selling access to functionality whose value derives primarily from Sancho Fetch itself.
-
-You may use Sancho Fetch inside a larger product, service, report, dashboard, analysis, workflow, or data product that adds meaningful independent value, provided that required attribution is preserved and the use otherwise complies with this license.
-
-You may not remove Sancho Fetch attribution in order to make Sancho Fetch, Sancho-generated work, or Sancho-derived functionality appear to be entirely your own.
-
-Minor changes to names, commands, interfaces, configuration, packaging, styling, wrappers, folder structure, or implementation details do not avoid this section.
-
-## 6. Commercial Use
-
-You may use Sancho Fetch commercially if your use complies with this license.
-
-You may charge for your own work, including analysis, consulting, implementation, cleaning, transformation, visualization, hosting, reporting, and products or services that add meaningful value beyond Sancho Fetch itself.
-
-You need a Commercial License if:
-
-1. your organization is at or above the Community Threshold;
-2. you want to white-label Sancho Fetch;
-3. you want to sell Sancho Fetch, or a substantially similar derivative, as a product or service;
-4. you want to offer hosted access to functionality whose value derives primarily from Sancho Fetch;
-5. you want to remove, suppress, or materially alter required Sancho Fetch attribution;
-6. you want to embed Sancho Fetch as core infrastructure in a proprietary commercial platform in a way that hides Sancho Fetch; or
-7. your use is not otherwise permitted by this license.
-
-Commercial licensing inquiries may be sent to:
-
-contact@pantheonnetwork.co
-
-## 7. Community Threshold
-
-Unless Pantheon Network provides different written terms, use without a Commercial License is limited to individuals and organizations with less than USD $2,000,000 in annual gross revenue or operating budget in the prior fiscal year.
-
-Organizations at or above USD $2,000,000 need a Commercial License.
-
-Affiliated entities, parent companies, subsidiaries, and commonly controlled entities are counted together for this threshold.
-
-Pantheon Network may update the Community Threshold for future versions of this license.
-
-## 8. Public Data and Third-Party Terms
-
-This license does not claim ownership over public-domain data, government data, third-party data, or upstream datasets fetched through Sancho Fetch.
-
-Upstream data remains governed by its own source, license, terms, and applicable law.
-
-You are responsible for complying with upstream data terms.
-
-If an upstream source requires attribution, you must preserve that attribution in addition to citing Sancho Fetch where required.
-
-If an upstream source prohibits a use, Sancho Fetch does not authorize that use.
-
-## 9. Prohibited Uses
-
-You may not use Sancho Fetch or Sancho Fetch Outputs for:
-
-1. targeted enforcement actions that identify, locate, rank, detain, remove, penalize, or restrict individuals primarily on the basis of immigration status, nationality, ethnicity, religion, or another sensitive personal attribute;
-2. unlawful discrimination, discriminatory profiling, eligibility scoring, exclusion, or surveillance based on protected-class status or a proxy for protected-class status;
-3. mass surveillance, unlawful tracking, social scoring, or automated decision systems that create a material risk of denying rights, benefits, services, housing, employment, education, healthcare, due process, or equal protection;
-4. law-enforcement, intelligence, or security uses that are unlawful, lack required legal authority, or are reasonably likely to violate civil rights, privacy rights, human rights, or due-process protections;
-5. studies, tools, datasets, reports, or claims designed to materially support unlawful discrimination, targeted harassment, coercive displacement, or deprivation of legally protected rights; or
-6. unlawful, deceptive, fraudulent, threatening, or harassing conduct.
-
-This section does not prohibit good-faith research, journalism, auditing, public-interest analysis, safety analysis, civil-rights analysis, public health work, or accountability work.
-
-Commercial Licenses do not authorize the prohibited uses described in this section unless Pantheon Network expressly states otherwise in a signed written agreement. Pantheon Network has no obligation to grant any such exception.
-
-## 10. Circumvention
-
-You may not use another person, contractor, client, affiliate, subsidiary, parent company, shell entity, technical wrapper, or indirect workflow to do anything this license prohibits.
-
-You may not knowingly help another person or organization violate this license.
-
-## 11. Contributions
-
-Unless you have a separate written agreement with Pantheon Network, any contribution you intentionally submit to Sancho Fetch may be used, modified, distributed, sublicensed, or relicensed by Pantheon Network.
-
-You represent that you have the right to submit your contribution.
-
-Submitting a contribution does not give you ownership of Sancho Fetch as a whole.
-
-## 12. Patent License
-
-Subject to this license, Pantheon Network grants you a worldwide, non-exclusive, no-charge patent license to use Sancho Fetch, but only for uses permitted by this license and only for patent claims Pantheon Network can license.
-
-If you make a written claim that Sancho Fetch infringes or contributes to infringement of any patent, your patent license under this license ends immediately.
-
-## 13. Termination
-
-Your rights under this license terminate automatically if you violate the license.
-
-For a first-time violation that can be cured, your rights may be reinstated if you stop the violation, correct it where reasonably possible, and come into compliance within 30 days after receiving written notice from Pantheon Network.
-
-Pantheon Network is not required to reinstate rights for prohibited uses, intentional removal of attribution, intentional white-label resale, intentional evasion, or bad-faith conduct.
-
-After termination, you must stop using Sancho Fetch and stop distributing noncompliant copies or Outputs to the extent legally and practically possible.
-
-Sections concerning attribution, prohibited uses, circumvention, contributions, patent claims, termination, warranty, liability, endorsement, governing law, and severability survive termination where legally permitted.
-
-## 14. No Warranty
-
-Sancho Fetch is provided “as is” and “as available,” without warranties or conditions of any kind.
-
-Pantheon Network disclaims all warranties, including warranties of merchantability, fitness for a particular purpose, title, non-infringement, accuracy, availability, security, and compliance with law.
-
-You are responsible for verifying data sources, outputs, assumptions, transformations, and downstream uses.
-
-Sancho Fetch may fetch incomplete, outdated, incorrect, biased, unavailable, restricted, or otherwise problematic data. You are responsible for review and validation.
-
-## 15. Limitation of Liability
-
-To the maximum extent permitted by law, Pantheon Network will not be liable for any damages arising from or related to Sancho Fetch, this license, Outputs, data fetched through Sancho Fetch, or downstream use of Sancho Fetch.
-
-This limitation applies under all legal theories, including contract, tort, negligence, strict liability, statute, and otherwise.
-
-## 16. No Endorsement
-
-Use of Sancho Fetch does not mean Pantheon Network endorses your work, organization, client, data, analysis, conclusions, product, platform, or use case.
-
-You may not imply endorsement without written permission.
-
-## 17. Governing Law
-
-This license is governed by the laws of the District of Columbia, without regard to conflict-of-law rules.
-
-Any dispute arising from or related to this license must be brought in a court located in the District of Columbia, unless applicable law requires otherwise.
-
-## 18. Severability
-
-If any part of this license is held unenforceable, invalid, or illegal, the remaining parts remain in effect to the maximum extent permitted by law.
-
-If a court narrows any part of this license, that part should be interpreted as narrowly as necessary to make it enforceable while preserving its purpose.
-
-## 19. Required Notice
-
-Required Notice: Sancho Fetch is public-source software licensed under the Sancho Fetch Fair Community License 1.0 by Pantheon Network.
-
-If Sancho Fetch materially helps fetch or prepare data that you publish, share, sell, distribute, or provide to others, cite it as “fetched via Sancho Fetch.”
-
-Commercial use is free below the Community Threshold. Organizations at or above the Community Threshold, white-labeling, hosted resale, and products whose value derives primarily from Sancho Fetch require a Commercial License.
-
-Commercial licensing contact: contact@pantheonnetwork.co
+                                 Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+
+      "Legal Entity" shall mean the union of the acting entity and all
+      other entities that control, are controlled by, or are under common
+      control with that entity. For the purposes of this definition,
+      "control" means (i) the power, direct or indirect, to cause the
+      direction or management of such entity, whether by contract or
+      otherwise, or (ii) ownership of fifty percent (50%) or more of the
+      outstanding shares, or (iii) beneficial ownership of such entity.
+
+      "You" (or "Your") shall mean an individual or Legal Entity
+      exercising permissions granted by this License.
+
+      "Source" form shall mean the preferred form for making modifications,
+      including but not limited to software source code, documentation
+      source, and configuration files.
+
+      "Object" form shall mean any form resulting from mechanical
+      transformation or translation of a Source form, including but
+      not limited to compiled object code, generated documentation,
+      and conversions to other media types.
+
+      "Work" shall mean the work of authorship, whether in Source or
+      Object form, made available under the License, as indicated by a
+      copyright notice that is included in or attached to the work
+      (an example is provided in the Appendix below).
+
+      "Derivative Works" shall mean any work, whether in Source or Object
+      form, that is based on (or derived from) the Work and for which the
+      editorial revisions, annotations, elaborations, or other modifications
+      represent, as a whole, an original work of authorship. For the purposes
+      of this License, Derivative Works shall not include works that remain
+      separable from, or merely link (or bind by name) to the interfaces of,
+      the Work and Derivative Works thereof.
+
+      "Contribution" shall mean any work of authorship, including
+      the original version of the Work and any modifications or additions
+      to that Work or Derivative Works thereof, that is intentionally
+      submitted to Licensor for inclusion in the Work by the copyright owner
+      or by an individual or Legal Entity authorized to submit on behalf of
+      the copyright owner. For the purposes of this definition, "submitted"
+      means any form of electronic, verbal, or written communication sent
+      to the Licensor or its representatives, including but not limited to
+      communication on electronic mailing lists, source code control systems,
+      and issue tracking systems that are managed by, or on behalf of, the
+      Licensor for the purpose of discussing and improving the Work, but
+      excluding communication that is conspicuously marked or otherwise
+      designated in writing by the copyright owner as "Not a Contribution."
+
+      "Contributor" shall mean Licensor and any individual or Legal Entity
+      on behalf of whom a Contribution has been received by Licensor and
+      subsequently incorporated within the Work.
+
+   2. Grant of Copyright License. Subject to the terms and conditions of
+      this License, each Contributor hereby grants to You a perpetual,
+      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+      copyright license to reproduce, prepare Derivative Works of,
+      publicly display, publicly perform, sublicense, and distribute the
+      Work and such Derivative Works in Source or Object form.
+
+   3. Grant of Patent License. Subject to the terms and conditions of
+      this License, each Contributor hereby grants to You a perpetual,
+      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+      (except as stated in this section) patent license to make, have made,
+      use, offer to sell, sell, import, and otherwise transfer the Work,
+      where such license applies only to those patent claims licensable
+      by such Contributor that are necessarily infringed by their
+      Contribution(s) alone or by combination of their Contribution(s)
+      with the Work to which such Contribution(s) was submitted. If You
+      institute patent litigation against any entity (including a
+      cross-claim or counterclaim in a lawsuit) alleging that the Work
+      or a Contribution incorporated within the Work constitutes direct
+      or contributory patent infringement, then any patent licenses
+      granted to You under this License for that Work shall terminate
+      as of the date such litigation is filed.
+
+   4. Redistribution. You may reproduce and distribute copies of the
+      Work or Derivative Works thereof in any medium, with or without
+      modifications, and in Source or Object form, provided that You
+      meet the following conditions:
+
+      (a) You must give any other recipients of the Work or
+          Derivative Works a copy of this License; and
+
+      (b) You must cause any modified files to carry prominent notices
+          stating that You changed the files; and
+
+      (c) You must retain, in the Source form of any Derivative Works
+          that You distribute, all copyright, patent, trademark, and
+          attribution notices from the Source form of the Work,
+          excluding those notices that do not pertain to any part of
+          the Derivative Works; and
+
+      (d) If the Work includes a "NOTICE" text file as part of its
+          distribution, then any Derivative Works that You distribute must
+          include a readable copy of the attribution notices contained
+          within such NOTICE file, excluding those notices that do not
+          pertain to any part of the Derivative Works, in at least one
+          of the following places: within a NOTICE text file distributed
+          as part of the Derivative Works; within the Source form or
+          documentation, if provided along with the Derivative Works; or,
+          within a display generated by the Derivative Works, if and
+          wherever such third-party notices normally appear. The contents
+          of the NOTICE file are for informational purposes only and
+          do not modify the License. You may add Your own attribution
+          notices within Derivative Works that You distribute, alongside
+          or as an addendum to the NOTICE text from the Work, provided
+          that such additional attribution notices cannot be construed
+          as modifying the License.
+
+      You may add Your own copyright statement to Your modifications and
+      may provide additional or different license terms and conditions
+      for use, reproduction, or distribution of Your modifications, or
+      for any such Derivative Works as a whole, provided Your use,
+      reproduction, and distribution of the Work otherwise complies with
+      the conditions stated in this License.
+
+   5. Submission of Contributions. Unless You explicitly state otherwise,
+      any Contribution intentionally submitted for inclusion in the Work
+      by You to the Licensor shall be under the terms and conditions of
+      this License, without any additional terms or conditions.
+      Notwithstanding the above, nothing herein shall supersede or modify
+      the terms of any separate license agreement you may have executed
+      with Licensor regarding such Contributions.
+
+   6. Trademarks. This License does not grant permission to use the trade
+      names, trademarks, service marks, or product names of the Licensor,
+      except as required for reasonable and customary use in describing the
+      origin of the Work and reproducing the content of the NOTICE file.
+
+   7. Disclaimer of Warranty. Unless required by applicable law or
+      agreed to in writing, Licensor provides the Work (and each
+      Contributor provides its Contributions) on an "AS IS" BASIS,
+      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+      implied, including, without limitation, any warranties or conditions
+      of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A
+      PARTICULAR PURPOSE. You are solely responsible for determining the
+      appropriateness of using or redistributing the Work and assume any
+      risks associated with Your exercise of permissions under this License.
+
+   8. Limitation of Liability. In no event and under no legal theory,
+      whether in tort (including negligence), contract, or otherwise,
+      unless required by applicable law (such as deliberate and grossly
+      negligent acts) or agreed to in writing, shall any Contributor be
+      liable to You for damages, including any direct, indirect, special,
+      incidental, or consequential damages of any character arising as a
+      result of this License or out of the use or inability to use the
+      Work (including but not limited to damages for loss of goodwill,
+      work stoppage, computer failure or malfunction, or any and all
+      other commercial damages or losses), even if such Contributor
+      has been advised of the possibility of such damages.
+
+   9. Accepting Warranty or Additional Liability. While redistributing
+      the Work or Derivative Works thereof, You may choose to offer,
+      and charge a fee for, acceptance of support, warranty, indemnity,
+      or other liability obligations and/or rights consistent with this
+      License. However, in accepting such obligations, You may act only
+      on Your own behalf and on Your sole responsibility, not on behalf
+      of any other Contributor, and only if You agree to indemnify,
+      defend, and hold each Contributor harmless for any liability
+      incurred by, or claims asserted against, such Contributor by reason
+      of your accepting any such warranty or additional liability.
+
+   END OF TERMS AND CONDITIONS
+
+   APPENDIX: How to apply the Apache License to your work.
+
+      To apply the Apache License to your work, attach the following
+      boilerplate notice, with the fields enclosed by brackets "[]"
+      replaced with your own identifying information. (Don't include
+      the brackets!)  The text should be enclosed in the appropriate
+      comment syntax for the file format. We also recommend that a
+      file or class name and description of purpose be included on the
+      same "printed page" as the copyright notice for easier
+      identification within third-party archives.
+
+   Copyright 2026 Pantheon Network
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
