@@ -1,0 +1,22 @@
+{
+  "provider": "fetch.un_egdi",
+  "generated_at": "2026-04-09T00:00:00+00:00",
+  "columns": [
+    {"name": "dataset_ref", "type": "string", "sample": "intl_un_egdi"},
+    {"name": "params", "type": "dict", "sample": {}},
+    {"name": "raw", "type": "dict", "sample": {}},
+    {"name": "retrieved_at", "type": "string", "sample": "2026-04-09T00:00:00+00:00"},
+    {"name": "row_count", "type": "int", "sample": 0},
+    {"name": "rows", "type": "list", "sample": []},
+    {"name": "source_url", "type": "string", "sample": "https://publicadministration.un.org/egovkb/en-us/Data-Center"}
+  ],
+  "sample_row": {
+    "dataset_ref": "intl_un_egdi",
+    "params": {},
+    "raw": {},
+    "retrieved_at": "2026-04-09T00:00:00+00:00",
+    "row_count": 0,
+    "rows": [],
+    "source_url": "https://publicadministration.un.org/egovkb/en-us/Data-Center"
+  }
+}

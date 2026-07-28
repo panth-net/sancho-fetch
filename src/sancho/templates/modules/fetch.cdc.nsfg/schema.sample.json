@@ -1,0 +1,20 @@
+{
+  "provider": "fetch.cdc.nsfg",
+  "generated_at": "2026-05-06T00:00:00+00:00",
+  "columns": [
+    {
+      "name": "title",
+      "type": "string",
+      "sample": "Official public record or link"
+    },
+    {
+      "name": "url",
+      "type": "string",
+      "sample": "https://www.cdc.gov/nchs/nsfg/index.htm"
+    }
+  ],
+  "sample_row": {
+    "title": "Official public record or link",
+    "url": "https://www.cdc.gov/nchs/nsfg/index.htm"
+  }
+}

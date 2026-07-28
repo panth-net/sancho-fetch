@@ -1,0 +1,44 @@
+{
+  "provider": "fetch.census.acs_profile",
+  "generated_at": "2026-05-05T00:00:00+00:00",
+  "columns": [
+    {
+      "name": "dataset_ref",
+      "type": "string",
+      "sample": "us_census_api"
+    },
+    {
+      "name": "geography",
+      "type": "string",
+      "sample": "place:81072"
+    },
+    {
+      "name": "year",
+      "type": "string",
+      "sample": "2021"
+    },
+    {
+      "name": "rows",
+      "type": "list",
+      "sample": [
+        ["NAME", "DP05_0001E", "state", "place"],
+        ["Vienna town, Virginia", "16465", "51", "81072"]
+      ]
+    },
+    {
+      "name": "retrieved_at",
+      "type": "string",
+      "sample": "2026-05-05T00:00:00+00:00"
+    }
+  ],
+  "sample_row": {
+    "dataset_ref": "us_census_api",
+    "geography": "place:81072",
+    "year": "2021",
+    "rows": [
+      ["NAME", "DP05_0001E", "state", "place"],
+      ["Vienna town, Virginia", "16465", "51", "81072"]
+    ],
+    "retrieved_at": "2026-05-05T00:00:00+00:00"
+  }
+}

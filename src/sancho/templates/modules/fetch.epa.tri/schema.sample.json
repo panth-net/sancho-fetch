@@ -1,0 +1,20 @@
+{
+  "provider": "fetch.epa.tri",
+  "generated_at": "2026-05-06T00:00:00+00:00",
+  "columns": [
+    {"name": "dataset_ref", "type": "string", "sample": "usgov_epa_tri"},
+    {"name": "endpoint", "type": "string", "sample": "https://data.epa.gov/efservice/tri_facility/state_abbr/CA/Rows/0:25/JSON"},
+    {"name": "params", "type": "dict", "sample": {}},
+    {"name": "raw", "type": "dict", "sample": []},
+    {"name": "retrieved_at", "type": "string", "sample": "2026-05-06T00:00:00+00:00"},
+    {"name": "rows", "type": "list", "sample": []}
+  ],
+  "sample_row": {
+    "dataset_ref": "usgov_epa_tri",
+    "endpoint": "https://data.epa.gov/efservice/tri_facility/state_abbr/CA/Rows/0:25/JSON",
+    "params": {},
+    "raw": [],
+    "retrieved_at": "2026-05-06T00:00:00+00:00",
+    "rows": []
+  }
+}

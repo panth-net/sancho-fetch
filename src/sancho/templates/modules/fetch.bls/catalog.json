@@ -1,0 +1,882 @@
+{
+  "provider": "fetch.bls",
+  "schema_version": "1.0",
+  "generated_at": "2026-04-14T17:10:27.275875+00:00",
+  "families": [
+    {
+      "id": "v2.timeseries.data",
+      "base_aliases": [
+        "v2"
+      ],
+      "base_url": "https://api.bls.gov/publicAPI/v2",
+      "path_templates": [
+        "/timeseries/data/",
+        "/timeseries/data"
+      ],
+      "methods": [
+        "POST"
+      ],
+      "query_params": {},
+      "allow_unknown_query_params": false,
+      "body_fields": {
+        "seriesid": {
+          "type": "list",
+          "required": true,
+          "description": "Series identifiers list (max 50).",
+          "examples": [
+            [
+              "CUUR0000SA0"
+            ]
+          ],
+          "source_refs": [
+            "https://www.bls.gov/developers/api_signature_v2.htm"
+          ]
+        },
+        "startyear": {
+          "type": "string",
+          "required": false,
+          "description": "Start year for observations.",
+          "examples": [
+            "2020",
+            "2023"
+          ],
+          "source_refs": [
+            "https://www.bls.gov/developers/api_signature_v2.htm"
+          ]
+        },
+        "endyear": {
+          "type": "string",
+          "required": false,
+          "description": "End year for observations.",
+          "examples": [
+            "2024"
+          ],
+          "source_refs": [
+            "https://www.bls.gov/developers/api_signature_v2.htm"
+          ]
+        },
+        "catalog": {
+          "type": "bool",
+          "required": false,
+          "description": "Include catalog metadata.",
+          "examples": [
+            true,
+            false
+          ],
+          "source_refs": [
+            "https://www.bls.gov/developers/api_signature_v2.htm"
+          ]
+        },
+        "calculations": {
+          "type": "bool",
+          "required": false,
+          "description": "Include calculations payload.",
+          "examples": [
+            true,
+            false
+          ],
+          "source_refs": [
+            "https://www.bls.gov/developers/api_signature_v2.htm"
+          ]
+        },
+        "annualaverage": {
+          "type": "bool",
+          "required": false,
+          "description": "Include annual average values.",
+          "examples": [
+            true,
+            false
+          ],
+          "source_refs": [
+            "https://www.bls.gov/developers/api_signature_v2.htm"
+          ]
+        },
+        "aspects": {
+          "type": "bool",
+          "required": false,
+          "description": "Include additional aspects in result.",
+          "examples": [
+            true,
+            false
+          ],
+          "source_refs": [
+            "https://www.bls.gov/developers/api_signature_v2.htm"
+          ]
+        },
+        "latest": {
+          "type": "bool",
+          "required": false,
+          "description": "Return most recent values only.",
+          "examples": [
+            true,
+            false
+          ],
+          "source_refs": [
+            "https://www.bls.gov/developers/api_signature_v2.htm"
+          ]
+        }
+      },
+      "allow_unknown_body_fields": false,
+      "default_query_params": {},
+      "default_body": {
+        "seriesid": [
+          "CUUR0000SA0"
+        ],
+        "startyear": "2023",
+        "endyear": "2024",
+        "calculations": false,
+        "annualaverage": false
+      },
+      "auth": {
+        "body": {
+          "registrationkey": "BLS_API_KEY"
+        },
+        "required": false
+      },
+      "response_mode": "json",
+      "description": "Primary BLS time series data family.",
+      "source_refs": [
+        "https://www.bls.gov/developers/home.htm",
+        "https://www.bls.gov/developers/api_signature_v2.htm"
+      ]
+    },
+    {
+      "id": "v2.timeseries.latest",
+      "base_aliases": [
+        "v2_latest"
+      ],
+      "base_url": "https://api.bls.gov/publicAPI/v2",
+      "path_templates": [
+        "/timeseries/data/",
+        "/timeseries/data"
+      ],
+      "methods": [
+        "POST"
+      ],
+      "query_params": {},
+      "allow_unknown_query_params": false,
+      "body_fields": {
+        "seriesid": {
+          "type": "list",
+          "required": true,
+          "description": "Series identifiers list (max 50).",
+          "examples": [
+            [
+              "CUUR0000SA0"
+            ]
+          ],
+          "source_refs": [
+            "https://www.bls.gov/developers/api_signature_v2.htm"
+          ]
+        },
+        "startyear": {
+          "type": "string",
+          "required": false,
+          "description": "Start year for observations.",
+          "examples": [
+            "2020",
+            "2023"
+          ],
+          "source_refs": [
+            "https://www.bls.gov/developers/api_signature_v2.htm"
+          ]
+        },
+        "endyear": {
+          "type": "string",
+          "required": false,
+          "description": "End year for observations.",
+          "examples": [
+            "2024"
+          ],
+          "source_refs": [
+            "https://www.bls.gov/developers/api_signature_v2.htm"
+          ]
+        },
+        "catalog": {
+          "type": "bool",
+          "required": false,
+          "description": "Include catalog metadata.",
+          "examples": [
+            true,
+            false
+          ],
+          "source_refs": [
+            "https://www.bls.gov/developers/api_signature_v2.htm"
+          ]
+        },
+        "calculations": {
+          "type": "bool",
+          "required": false,
+          "description": "Include calculations payload.",
+          "examples": [
+            true,
+            false
+          ],
+          "source_refs": [
+            "https://www.bls.gov/developers/api_signature_v2.htm"
+          ]
+        },
+        "annualaverage": {
+          "type": "bool",
+          "required": false,
+          "description": "Include annual average values.",
+          "examples": [
+            true,
+            false
+          ],
+          "source_refs": [
+            "https://www.bls.gov/developers/api_signature_v2.htm"
+          ]
+        },
+        "aspects": {
+          "type": "bool",
+          "required": false,
+          "description": "Include additional aspects in result.",
+          "examples": [
+            true,
+            false
+          ],
+          "source_refs": [
+            "https://www.bls.gov/developers/api_signature_v2.htm"
+          ]
+        },
+        "latest": {
+          "type": "bool",
+          "required": false,
+          "description": "Return most recent values only.",
+          "examples": [
+            true,
+            false
+          ],
+          "source_refs": [
+            "https://www.bls.gov/developers/api_signature_v2.htm"
+          ]
+        }
+      },
+      "allow_unknown_body_fields": false,
+      "default_query_params": {},
+      "default_body": {
+        "seriesid": [
+          "CUUR0000SA0"
+        ],
+        "latest": true
+      },
+      "auth": {
+        "body": {
+          "registrationkey": "BLS_API_KEY"
+        },
+        "required": false
+      },
+      "response_mode": "json",
+      "description": "Latest-value convenience profile for BLS time series data.",
+      "source_refs": [
+        "https://www.bls.gov/developers/home.htm",
+        "https://www.bls.gov/developers/api_signature_v2.htm"
+      ]
+    },
+    {
+      "id": "v2.timeseries.cpi_components",
+      "base_aliases": [
+        "v2_cpi_components"
+      ],
+      "base_url": "https://api.bls.gov/publicAPI/v2",
+      "path_templates": [
+        "/timeseries/data/",
+        "/timeseries/data"
+      ],
+      "methods": [
+        "POST"
+      ],
+      "query_params": {},
+      "allow_unknown_query_params": false,
+      "body_fields": {
+        "seriesid": {
+          "type": "list",
+          "required": true,
+          "description": "Series identifiers list (max 50).",
+          "examples": [
+            [
+              "CUUR0000SA0"
+            ]
+          ],
+          "source_refs": [
+            "https://www.bls.gov/developers/api_signature_v2.htm"
+          ]
+        },
+        "startyear": {
+          "type": "string",
+          "required": false,
+          "description": "Start year for observations.",
+          "examples": [
+            "2020",
+            "2023"
+          ],
+          "source_refs": [
+            "https://www.bls.gov/developers/api_signature_v2.htm"
+          ]
+        },
+        "endyear": {
+          "type": "string",
+          "required": false,
+          "description": "End year for observations.",
+          "examples": [
+            "2024"
+          ],
+          "source_refs": [
+            "https://www.bls.gov/developers/api_signature_v2.htm"
+          ]
+        },
+        "catalog": {
+          "type": "bool",
+          "required": false,
+          "description": "Include catalog metadata.",
+          "examples": [
+            true,
+            false
+          ],
+          "source_refs": [
+            "https://www.bls.gov/developers/api_signature_v2.htm"
+          ]
+        },
+        "calculations": {
+          "type": "bool",
+          "required": false,
+          "description": "Include calculations payload.",
+          "examples": [
+            true,
+            false
+          ],
+          "source_refs": [
+            "https://www.bls.gov/developers/api_signature_v2.htm"
+          ]
+        },
+        "annualaverage": {
+          "type": "bool",
+          "required": false,
+          "description": "Include annual average values.",
+          "examples": [
+            true,
+            false
+          ],
+          "source_refs": [
+            "https://www.bls.gov/developers/api_signature_v2.htm"
+          ]
+        },
+        "aspects": {
+          "type": "bool",
+          "required": false,
+          "description": "Include additional aspects in result.",
+          "examples": [
+            true,
+            false
+          ],
+          "source_refs": [
+            "https://www.bls.gov/developers/api_signature_v2.htm"
+          ]
+        },
+        "latest": {
+          "type": "bool",
+          "required": false,
+          "description": "Return most recent values only.",
+          "examples": [
+            true,
+            false
+          ],
+          "source_refs": [
+            "https://www.bls.gov/developers/api_signature_v2.htm"
+          ]
+        }
+      },
+      "allow_unknown_body_fields": false,
+      "default_query_params": {},
+      "default_body": {
+        "seriesid": [
+          "CUUR0000SA0",
+          "CUUR0000SA0L1E",
+          "CUUR0000SAF1",
+          "CUUR0000SAH1",
+          "CUUR0000SETB01"
+        ],
+        "startyear": "2020",
+        "endyear": "2024"
+      },
+      "auth": {
+        "body": {
+          "registrationkey": "BLS_API_KEY"
+        },
+        "required": false
+      },
+      "response_mode": "json",
+      "description": "Curated CPI component profile over the BLS time series family.",
+      "source_refs": [
+        "https://www.bls.gov/developers/home.htm",
+        "https://www.bls.gov/developers/api_signature_v2.htm"
+      ]
+    },
+    {
+      "id": "v2.timeseries.state_employment",
+      "base_aliases": [
+        "v2_state_employment"
+      ],
+      "base_url": "https://api.bls.gov/publicAPI/v2",
+      "path_templates": [
+        "/timeseries/data/",
+        "/timeseries/data"
+      ],
+      "methods": [
+        "POST"
+      ],
+      "query_params": {},
+      "allow_unknown_query_params": false,
+      "body_fields": {
+        "seriesid": {
+          "type": "list",
+          "required": true,
+          "description": "Series identifiers list (max 50).",
+          "examples": [
+            [
+              "CUUR0000SA0"
+            ]
+          ],
+          "source_refs": [
+            "https://www.bls.gov/developers/api_signature_v2.htm"
+          ]
+        },
+        "startyear": {
+          "type": "string",
+          "required": false,
+          "description": "Start year for observations.",
+          "examples": [
+            "2020",
+            "2023"
+          ],
+          "source_refs": [
+            "https://www.bls.gov/developers/api_signature_v2.htm"
+          ]
+        },
+        "endyear": {
+          "type": "string",
+          "required": false,
+          "description": "End year for observations.",
+          "examples": [
+            "2024"
+          ],
+          "source_refs": [
+            "https://www.bls.gov/developers/api_signature_v2.htm"
+          ]
+        },
+        "catalog": {
+          "type": "bool",
+          "required": false,
+          "description": "Include catalog metadata.",
+          "examples": [
+            true,
+            false
+          ],
+          "source_refs": [
+            "https://www.bls.gov/developers/api_signature_v2.htm"
+          ]
+        },
+        "calculations": {
+          "type": "bool",
+          "required": false,
+          "description": "Include calculations payload.",
+          "examples": [
+            true,
+            false
+          ],
+          "source_refs": [
+            "https://www.bls.gov/developers/api_signature_v2.htm"
+          ]
+        },
+        "annualaverage": {
+          "type": "bool",
+          "required": false,
+          "description": "Include annual average values.",
+          "examples": [
+            true,
+            false
+          ],
+          "source_refs": [
+            "https://www.bls.gov/developers/api_signature_v2.htm"
+          ]
+        },
+        "aspects": {
+          "type": "bool",
+          "required": false,
+          "description": "Include additional aspects in result.",
+          "examples": [
+            true,
+            false
+          ],
+          "source_refs": [
+            "https://www.bls.gov/developers/api_signature_v2.htm"
+          ]
+        },
+        "latest": {
+          "type": "bool",
+          "required": false,
+          "description": "Return most recent values only.",
+          "examples": [
+            true,
+            false
+          ],
+          "source_refs": [
+            "https://www.bls.gov/developers/api_signature_v2.htm"
+          ]
+        }
+      },
+      "allow_unknown_body_fields": false,
+      "default_query_params": {},
+      "default_body": {
+        "seriesid": [
+          "LASST060000000000003",
+          "LASST060000000000005",
+          "LASST060000000000006"
+        ],
+        "startyear": "2020",
+        "endyear": "2024"
+      },
+      "auth": {
+        "body": {
+          "registrationkey": "BLS_API_KEY"
+        },
+        "required": false
+      },
+      "response_mode": "json",
+      "description": "Curated state employment profile over the BLS time series family.",
+      "source_refs": [
+        "https://www.bls.gov/developers/home.htm",
+        "https://www.bls.gov/developers/api_signature_v2.htm"
+      ]
+    },
+    {
+      "id": "v2.surveys.list",
+      "base_aliases": [
+        "v2"
+      ],
+      "base_url": "https://api.bls.gov/publicAPI/v2",
+      "path_templates": [
+        "/surveys",
+        "/surveys/"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "query_params": {},
+      "allow_unknown_query_params": false,
+      "body_fields": {},
+      "allow_unknown_body_fields": false,
+      "default_query_params": {},
+      "default_body": {},
+      "auth": {},
+      "response_mode": "json",
+      "description": "BLS survey metadata list family.",
+      "source_refs": [
+        "https://www.bls.gov/developers/home.htm",
+        "https://www.bls.gov/developers/api_signature_v2.htm"
+      ]
+    }
+  ],
+  "indices": {
+    "surveys": [
+      {
+        "survey_abbreviation": "AP",
+        "survey_name": "Consumer Price Index - Average Price Data"
+      },
+      {
+        "survey_abbreviation": "BD",
+        "survey_name": "Business Employment Dynamics"
+      },
+      {
+        "survey_abbreviation": "BG",
+        "survey_name": "Collective Bargaining Agreements-State and Local Government"
+      },
+      {
+        "survey_abbreviation": "BP",
+        "survey_name": "Collective Bargaining Agreements-Private Sector"
+      },
+      {
+        "survey_abbreviation": "CA",
+        "survey_name": "Biennial Nonfatal Case and Demographic numbers and rates: selected characteristics"
+      },
+      {
+        "survey_abbreviation": "CB",
+        "survey_name": "Biennial Nonfatal Case and Demographic numbers and rates: selected characteristics"
+      },
+      {
+        "survey_abbreviation": "CC",
+        "survey_name": "Employer Costs for Employee Compensation"
+      },
+      {
+        "survey_abbreviation": "CD",
+        "survey_name": "Nonfatal cases involving days away from work: selected characteristics"
+      },
+      {
+        "survey_abbreviation": "CE",
+        "survey_name": "Employment, Hours, and Earnings from the Current Employment Statistics survey (National)"
+      },
+      {
+        "survey_abbreviation": "CF",
+        "survey_name": "Census of Fatal Occupational Injuries"
+      },
+      {
+        "survey_abbreviation": "CH",
+        "survey_name": "Nonfatal cases involving days away from work: selected characteristics (2003 - 2010)"
+      },
+      {
+        "survey_abbreviation": "CI",
+        "survey_name": "Employment Cost Index"
+      },
+      {
+        "survey_abbreviation": "CM",
+        "survey_name": "Employer Costs for Employee Compensation"
+      },
+      {
+        "survey_abbreviation": "CS",
+        "survey_name": "Nonfatal cases involving days away from work: selected characteristics (2011 forward)"
+      },
+      {
+        "survey_abbreviation": "CU",
+        "survey_name": "Consumer Price Index - All Urban Consumers"
+      },
+      {
+        "survey_abbreviation": "CW",
+        "survey_name": "Consumer Price Index - Urban Wage Earners and Clerical Workers"
+      },
+      {
+        "survey_abbreviation": "CX",
+        "survey_name": "Consumer Expenditure Survey"
+      },
+      {
+        "survey_abbreviation": "EB",
+        "survey_name": "Employee Benefits Survey"
+      },
+      {
+        "survey_abbreviation": "EC",
+        "survey_name": "Employment Cost Index"
+      },
+      {
+        "survey_abbreviation": "EE",
+        "survey_name": "National Employment, Hours, and Earnings"
+      },
+      {
+        "survey_abbreviation": "EI",
+        "survey_name": "Import/Export Price Indexes"
+      },
+      {
+        "survey_abbreviation": "EN",
+        "survey_name": "Quarterly Census of Employment and Wages"
+      },
+      {
+        "survey_abbreviation": "EP",
+        "survey_name": "Employment Projections by Industry"
+      },
+      {
+        "survey_abbreviation": "EW",
+        "survey_name": "Quarterly Census of Employment and Wages (SIC)"
+      },
+      {
+        "survey_abbreviation": "FA",
+        "survey_name": "Census of Fatal Occupational Injuries (2023 forward)"
+      },
+      {
+        "survey_abbreviation": "FI",
+        "survey_name": "Census of Fatal Occupational Injuries (2003 - 2010)"
+      },
+      {
+        "survey_abbreviation": "FM",
+        "survey_name": "Marital and family labor force statistics from the Current Population Survey"
+      },
+      {
+        "survey_abbreviation": "FW",
+        "survey_name": "Census of Fatal Occupational Injuries (2011-2022)"
+      },
+      {
+        "survey_abbreviation": "GG",
+        "survey_name": "Green Goods and Services"
+      },
+      {
+        "survey_abbreviation": "GP",
+        "survey_name": "Geographic Profile"
+      },
+      {
+        "survey_abbreviation": "HC",
+        "survey_name": "Nonfatal cases involving days away from work: Selected Characteristics (2002)"
+      },
+      {
+        "survey_abbreviation": "HS",
+        "survey_name": "Occupational injuries and illnesses: industry data (pre-1989)"
+      },
+      {
+        "survey_abbreviation": "II",
+        "survey_name": "Occupational injuries and illnesses: industry data"
+      },
+      {
+        "survey_abbreviation": "IN",
+        "survey_name": "International Labor Comparison"
+      },
+      {
+        "survey_abbreviation": "IP",
+        "survey_name": "Industry Productivity"
+      },
+      {
+        "survey_abbreviation": "IS",
+        "survey_name": "Occupational injuries and illnesses industry data"
+      },
+      {
+        "survey_abbreviation": "JL",
+        "survey_name": "Job Openings and Labor Turnover Survey"
+      },
+      {
+        "survey_abbreviation": "JT",
+        "survey_name": "Job Openings and Labor Turnover Survey"
+      },
+      {
+        "survey_abbreviation": "KV",
+        "survey_name": "Veterans Supplement data from the Current Population Survey"
+      },
+      {
+        "survey_abbreviation": "LA",
+        "survey_name": "Local Area Unemployment Statistics"
+      },
+      {
+        "survey_abbreviation": "LE",
+        "survey_name": "Weekly and hourly earnings data from the Current Population Survey"
+      },
+      {
+        "survey_abbreviation": "LF",
+        "survey_name": "Labor Force Statistics from the Current Population Survey (SIC)"
+      },
+      {
+        "survey_abbreviation": "LI",
+        "survey_name": "Consumer Price Index - Department Store Inventory Price Index"
+      },
+      {
+        "survey_abbreviation": "LN",
+        "survey_name": "Labor Force Statistics from the Current Population Survey"
+      },
+      {
+        "survey_abbreviation": "LU",
+        "survey_name": "Union affiliation data from the Current Population Survey"
+      },
+      {
+        "survey_abbreviation": "ML",
+        "survey_name": "Mass Layoff Statistics"
+      },
+      {
+        "survey_abbreviation": "MP",
+        "survey_name": "Major Sector Total Factor Productivity"
+      },
+      {
+        "survey_abbreviation": "MU",
+        "survey_name": "Consumer Price Index - All Urban Consumers (Old Series)"
+      },
+      {
+        "survey_abbreviation": "MW",
+        "survey_name": "Consumer Price Index - Urban Wage Earners and Clerical Workers (Old Series)"
+      },
+      {
+        "survey_abbreviation": "NB",
+        "survey_name": "National Compensation Survey-Benefits"
+      },
+      {
+        "survey_abbreviation": "NC",
+        "survey_name": "National Compensation Survey"
+      },
+      {
+        "survey_abbreviation": "ND",
+        "survey_name": "Producer Price Index Industry Data"
+      },
+      {
+        "survey_abbreviation": "NW",
+        "survey_name": "National Compensation Survey"
+      },
+      {
+        "survey_abbreviation": "OE",
+        "survey_name": "Occupational Employment and Wage Statistics"
+      },
+      {
+        "survey_abbreviation": "OR",
+        "survey_name": "Occupational Requirements"
+      },
+      {
+        "survey_abbreviation": "PC",
+        "survey_name": "Producer Price Index Industry Data"
+      },
+      {
+        "survey_abbreviation": "PD",
+        "survey_name": "Producer Price Index - Discontinued (SIC)"
+      },
+      {
+        "survey_abbreviation": "PF",
+        "survey_name": "Federal Government Productivity Index"
+      },
+      {
+        "survey_abbreviation": "PI",
+        "survey_name": "Industry Productivity Index"
+      },
+      {
+        "survey_abbreviation": "PR",
+        "survey_name": "Major Sector Productivity and Costs"
+      },
+      {
+        "survey_abbreviation": "SA",
+        "survey_name": "State and Area Employment, Hours, and Earnings (SIC)"
+      },
+      {
+        "survey_abbreviation": "SH",
+        "survey_name": "Occupational injuries and illnesses: industry data (1989-2001)"
+      },
+      {
+        "survey_abbreviation": "SI",
+        "survey_name": "Occupational injuries and illnesses: industry data (2002)"
+      },
+      {
+        "survey_abbreviation": "SM",
+        "survey_name": "State and Area Employment, Hours, and Earnings"
+      },
+      {
+        "survey_abbreviation": "SU",
+        "survey_name": "Consumer Price Index - Chained Consumer Price Index"
+      },
+      {
+        "survey_abbreviation": "TU",
+        "survey_name": "American Time Use"
+      },
+      {
+        "survey_abbreviation": "WD",
+        "survey_name": "Producer Price Index Commodity-Discontinued Series"
+      },
+      {
+        "survey_abbreviation": "WM",
+        "survey_name": "Wage Modeling"
+      },
+      {
+        "survey_abbreviation": "WP",
+        "survey_name": "Producer Price Index-Commodities"
+      },
+      {
+        "survey_abbreviation": "WS",
+        "survey_name": "Work Stoppage Data"
+      }
+    ],
+    "sample_series": [
+      {
+        "seriesID": "CUUR0000SA0",
+        "data": [
+          {
+            "year": "2026",
+            "period": "M03",
+            "periodName": "March",
+            "latest": "true",
+            "value": "330.213",
+            "footnotes": [
+              {}
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

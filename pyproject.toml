@@ -1,0 +1,81 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sancho-fetch"
+version = "0.1.0"
+description = "Ask your AI for public data. Get real files on your computer."
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.11"
+authors = [
+  { name = "Pantheon Network" }
+]
+keywords = ["data", "open-data", "fetch", "ai-agent", "mcp", "census", "public-data"]
+classifiers = [
+  "License :: OSI Approved :: Apache Software License",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Operating System :: OS Independent",
+  "Intended Audience :: End Users/Desktop",
+  "Topic :: Scientific/Engineering :: Information Analysis"
+]
+
+dependencies = [
+  "PyYAML>=6.0.1",
+  "requests>=2.32.0",
+  "packaging>=24.0",
+  "openpyxl>=3.1.0"
+]
+
+[project.urls]
+Homepage = "https://pantheonnetwork.co"
+Repository = "https://github.com/panth-net/sancho-fetch"
+Issues = "https://github.com/panth-net/sancho-fetch/issues"
+
+[project.scripts]
+sancho = "sancho.cli:main"
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0.0"]
+analysis = [
+  "polars>=1.0.0",
+  "duckdb>=1.0.0",
+  "pyarrow>=16.0.0"
+]
+all = [
+  "polars>=1.0.0",
+  "duckdb>=1.0.0",
+  "pyarrow>=16.0.0"
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+sancho = [
+    "templates/**/*.py",
+    "templates/**/*.yaml",
+    "templates/**/*.json",
+    "templates/**/*.md",
+    "templates/**/.env.example",
+]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
+pythonpath = ["src", "."]
+markers = [
+  "live: real API integration checks requiring network access and optional API keys",
+  "shape: code structure, readability, and file-size contract tests",
+  "runtime: HttpClient, caching, retries, and data-store behavior tests",
+  "mcp: MCP server, policy, tooling, and hosted behavior tests",
+  "e2e: end-to-end flows covering CLI, MCP quick mode, and product-critical paths",
+  "release_gate: doc-vs-code consistency and placeholder token checks",
+  "slow: tests that download large files (>50MB) — exclude with -m 'not slow'",
+]

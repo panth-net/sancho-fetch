@@ -1,0 +1,327 @@
+{
+  "provider": "fetch.uspto.application",
+  "schema_version": "1.0",
+  "notes": "USPTO Open Data Portal (ODP). All endpoints share base URL https://api.uspto.gov and auth header 'x-api-key'. Rate limits: 60 req/min standard, 4 req/min for downloads/bulk. Pass endpoint/params/method/body on the module payload to reach any of the endpoints below.",
+  "base_url": "https://api.uspto.gov",
+  "auth": {
+    "type": "header",
+    "header": "x-api-key",
+    "env_var": "USPTO_API_KEY",
+    "signup_url": "https://data.uspto.gov/myodp"
+  },
+  "rate_limits": {
+    "standard_per_minute": 60,
+    "downloads_per_minute": 4
+  },
+  "query_language_reference": "https://data.uspto.gov/documents/documents/ODP-API-Query-Spec.pdf",
+  "domains": [
+    {
+      "id": "patent.applications",
+      "description": "Patent File Wrapper (PFW) — application records and every sub-resource for a given application number.",
+      "envelope_key": "patentFileWrapperDataBag",
+      "endpoints": [
+        {
+          "name": "search_applications",
+          "method": "GET",
+          "path": "/api/v1/patent/applications/search",
+          "description": "Paginated application search. Top-level 'count' plus 'patentFileWrapperDataBag'.",
+          "query_params": {
+            "q": "free-text query (e.g. 'solar')",
+            "filters": "comma/JSON list of {name,value[]}",
+            "rangeFilters": "JSON list of {field, valueFrom, valueTo}",
+            "fields": "comma-separated dot-paths to project",
+            "facets": "comma-separated facet fields",
+            "sort": "JSON list of {field, order}",
+            "offset": "int, default 0",
+            "limit": "int, default 25, max 100"
+          },
+          "example": "?q=solar&limit=25"
+        },
+        {
+          "name": "search_applications_post",
+          "method": "POST",
+          "path": "/api/v1/patent/applications/search",
+          "description": "POST variant accepting full JSON query body.",
+          "body_shape": {
+            "q": "string",
+            "filters": [{"name": "string", "value": ["string"]}],
+            "rangeFilters": [{"field": "string", "valueFrom": "string", "valueTo": "string"}],
+            "fields": ["string"],
+            "facets": ["string"],
+            "sort": [{"field": "string", "order": "asc|desc"}],
+            "pagination": {"offset": 0, "limit": 25}
+          }
+        },
+        {
+          "name": "search_applications_download",
+          "method": "POST",
+          "path": "/api/v1/patent/applications/search/download",
+          "description": "Bulk export of search results (JSON or CSV).",
+          "query_params": {"format": "json|csv"}
+        },
+        {
+          "name": "get_application",
+          "method": "GET",
+          "path": "/api/v1/patent/applications/{applicationNumberText}",
+          "description": "Full single-application record.",
+          "path_params": {"applicationNumberText": "e.g. 17908782 (slashes must be URL-encoded)"},
+          "example": "/api/v1/patent/applications/17908782"
+        },
+        {
+          "name": "get_application_metadata",
+          "method": "GET",
+          "path": "/api/v1/patent/applications/{applicationNumberText}/meta-data",
+          "description": "Bibliographic metadata only (applicationMetaData)."
+        },
+        {
+          "name": "get_application_adjustment",
+          "method": "GET",
+          "path": "/api/v1/patent/applications/{applicationNumberText}/adjustment",
+          "description": "Patent Term Adjustment (patentTermAdjustmentData)."
+        },
+        {
+          "name": "get_application_assignment",
+          "method": "GET",
+          "path": "/api/v1/patent/applications/{applicationNumberText}/assignment",
+          "description": "Assignment/ownership chain.",
+          "envelope_key": "assignmentBag"
+        },
+        {
+          "name": "get_application_attorney",
+          "method": "GET",
+          "path": "/api/v1/patent/applications/{applicationNumberText}/attorney",
+          "description": "Attorney/agent of record (recordAttorney)."
+        },
+        {
+          "name": "get_application_continuity",
+          "method": "GET",
+          "path": "/api/v1/patent/applications/{applicationNumberText}/continuity",
+          "description": "Parent/child continuity graph.",
+          "envelope_keys": ["parentContinuityBag", "childContinuityBag"]
+        },
+        {
+          "name": "get_application_foreign_priority",
+          "method": "GET",
+          "path": "/api/v1/patent/applications/{applicationNumberText}/foreign-priority",
+          "description": "Foreign priority claims.",
+          "envelope_key": "foreignPriorityBag"
+        },
+        {
+          "name": "get_application_transactions",
+          "method": "GET",
+          "path": "/api/v1/patent/applications/{applicationNumberText}/transactions",
+          "description": "Prosecution event history.",
+          "envelope_key": "eventDataBag"
+        },
+        {
+          "name": "get_application_documents",
+          "method": "GET",
+          "path": "/api/v1/patent/applications/{applicationNumberText}/documents",
+          "description": "Filed/issued documents with download URLs.",
+          "envelope_keys": ["documents", "DocumentBag"]
+        },
+        {
+          "name": "get_application_associated_documents",
+          "method": "GET",
+          "path": "/api/v1/patent/applications/{applicationNumberText}/associated-documents",
+          "description": "PGPub + grant metadata (pgpubDocumentMetaData, grantDocumentMetaData)."
+        }
+      ]
+    },
+    {
+      "id": "patent.status_codes",
+      "description": "Patent application status code lookup.",
+      "envelope_key": "patentFileWrapperDataBag",
+      "endpoints": [
+        {
+          "name": "search_status_codes",
+          "method": "GET",
+          "path": "/api/v1/patent/status-codes",
+          "description": "Lookup status codes with q/filters."
+        },
+        {
+          "name": "search_status_codes_post",
+          "method": "POST",
+          "path": "/api/v1/patent/status-codes",
+          "description": "POST variant."
+        }
+      ]
+    },
+    {
+      "id": "patent.ptab",
+      "description": "PTAB trials, appeals, and interferences — ODP 3.0 (Nov 2025).",
+      "envelope_keys": ["proceedingBag", "patentTrialDecisionDataBag", "documentBag"],
+      "endpoints": [
+        {
+          "name": "search_trial_proceedings",
+          "method": "POST",
+          "path": "/api/v1/patent/trials/proceedings/search",
+          "description": "Search IPR/PGR/CBM/derivation proceedings."
+        },
+        {
+          "name": "get_trial_proceeding",
+          "method": "GET",
+          "path": "/api/v1/patent/trials/proceedings/{trialNumber}",
+          "description": "Full proceeding record."
+        },
+        {
+          "name": "search_trial_decisions",
+          "method": "POST",
+          "path": "/api/v1/patent/trials/decisions/search",
+          "description": "Search trial decisions (institution, final written, terminations)."
+        },
+        {
+          "name": "search_trial_decisions_get",
+          "method": "GET",
+          "path": "/api/v1/patent/trials/decisions/search",
+          "description": "GET variant of trial-decisions search."
+        },
+        {
+          "name": "search_trial_documents",
+          "method": "POST",
+          "path": "/api/v1/patent/trials/documents/search",
+          "description": "Search petitions, POPRs, expert declarations."
+        },
+        {
+          "name": "get_trial_documents",
+          "method": "GET",
+          "path": "/api/v1/patent/trials/{trialNumber}/documents",
+          "description": "All documents for one trial."
+        },
+        {
+          "name": "search_appeal_decisions",
+          "method": "POST",
+          "path": "/api/v1/patent/appeals/decisions/search",
+          "description": "Ex parte appeal decisions."
+        },
+        {
+          "name": "search_interference_decisions",
+          "method": "POST",
+          "path": "/api/v1/patent/interferences/decisions/search",
+          "description": "Historical interferences (1997+)."
+        }
+      ]
+    },
+    {
+      "id": "patent.petitions",
+      "description": "USPTO petition decisions.",
+      "envelope_key": "petitionDecisionBag",
+      "endpoints": [
+        {
+          "name": "search_petition_decisions",
+          "method": "GET",
+          "path": "/api/v1/patent/petition/decisions/search",
+          "description": "Paginated petition decision records."
+        },
+        {
+          "name": "search_petition_decisions_post",
+          "method": "POST",
+          "path": "/api/v1/patent/petition/decisions/search",
+          "description": "POST variant."
+        },
+        {
+          "name": "search_petition_decisions_download",
+          "method": "POST",
+          "path": "/api/v1/patent/petition/decisions/search/download",
+          "description": "Bulk export (JSON or CSV)."
+        },
+        {
+          "name": "get_petition_decision",
+          "method": "GET",
+          "path": "/api/v1/patent/petition/decisions/{petitionDecisionRecordIdentifier}",
+          "description": "One decision record (supports includeDocuments=true)."
+        }
+      ]
+    },
+    {
+      "id": "bulk.datasets",
+      "description": "Bulk data product catalog (replaces legacy BDSS).",
+      "envelope_key": "bulkDataProductBag",
+      "endpoints": [
+        {
+          "name": "search_products",
+          "method": "GET",
+          "path": "/api/v1/datasets/products/search",
+          "description": "Search bulk data products.",
+          "query_params": {
+            "q": "free-text",
+            "productTitle": "string",
+            "latest": "true|false",
+            "fromDate": "YYYY-MM-DD",
+            "toDate": "YYYY-MM-DD",
+            "offset": "int",
+            "limit": "int",
+            "fields": "comma-separated",
+            "facets": "comma-separated"
+          }
+        },
+        {
+          "name": "get_product",
+          "method": "GET",
+          "path": "/api/v1/datasets/products/{productIdentifier}",
+          "description": "One product with file listing (e.g. PTGRXML, PTAPXML).",
+          "query_params": {
+            "fileDataFromDate": "YYYY-MM-DD",
+            "fileDataToDate": "YYYY-MM-DD",
+            "offset": "int",
+            "limit": "int",
+            "latest": "true|false",
+            "includeFiles": "true|false"
+          }
+        }
+      ]
+    }
+  ],
+  "common_examples": [
+    {
+      "description": "Single application",
+      "payload": {
+        "endpoint": "https://api.uspto.gov/api/v1/patent/applications/17908782",
+        "method": "GET"
+      }
+    },
+    {
+      "description": "Keyword search (top 25)",
+      "payload": {
+        "endpoint": "https://api.uspto.gov/api/v1/patent/applications/search",
+        "method": "GET",
+        "params": {"q": "solar", "limit": 25}
+      }
+    },
+    {
+      "description": "Search with date range (POST)",
+      "payload": {
+        "endpoint": "https://api.uspto.gov/api/v1/patent/applications/search",
+        "method": "POST",
+        "body": {
+          "q": "solar",
+          "rangeFilters": [{"field": "applicationMetaData.filingDate", "valueFrom": "2024-01-01", "valueTo": "2024-12-31"}],
+          "pagination": {"offset": 0, "limit": 10}
+        }
+      }
+    },
+    {
+      "description": "Continuity tree for an application",
+      "payload": {
+        "endpoint": "https://api.uspto.gov/api/v1/patent/applications/17908782/continuity",
+        "method": "GET"
+      }
+    },
+    {
+      "description": "Bulk product catalog (latest files only)",
+      "payload": {
+        "endpoint": "https://api.uspto.gov/api/v1/datasets/products/search",
+        "method": "GET",
+        "params": {"latest": true, "limit": 25}
+      }
+    },
+    {
+      "description": "PTAB trial decisions search",
+      "payload": {
+        "endpoint": "https://api.uspto.gov/api/v1/patent/trials/decisions/search",
+        "method": "GET",
+        "params": {"q": "obviousness", "limit": 10}
+      }
+    }
+  ]
+}

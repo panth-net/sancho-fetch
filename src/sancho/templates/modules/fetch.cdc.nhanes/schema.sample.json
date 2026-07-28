@@ -1,0 +1,22 @@
+{
+  "provider": "fetch.cdc.nhanes",
+  "generated_at": "2026-05-06T00:00:00+00:00",
+  "columns": [
+    {"name": "dataset_ref", "type": "string", "sample": "usgov_cdc_nhanes"},
+    {"name": "source_url", "type": "string", "sample": "https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/DEMO_J.XPT"},
+    {"name": "params", "type": "dict", "sample": {"cycle": "J", "component": "DEMO", "limit": 1000}},
+    {"name": "rows", "type": "list", "sample": []},
+    {"name": "row_count", "type": "int", "sample": 1000},
+    {"name": "raw", "type": "dict", "sample": {}},
+    {"name": "retrieved_at", "type": "string", "sample": "2026-05-06T00:00:00+00:00"}
+  ],
+  "sample_row": {
+    "dataset_ref": "usgov_cdc_nhanes",
+    "source_url": "https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/DEMO_J.XPT",
+    "params": {"cycle": "J", "component": "DEMO", "limit": 1000},
+    "rows": [],
+    "row_count": 1000,
+    "raw": {},
+    "retrieved_at": "2026-05-06T00:00:00+00:00"
+  }
+}

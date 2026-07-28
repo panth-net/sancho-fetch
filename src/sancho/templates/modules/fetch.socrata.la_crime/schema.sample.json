@@ -1,0 +1,44 @@
+{
+  "provider": "fetch.socrata.la_crime",
+  "generated_at": "2026-03-30T18:08:42.114883+00:00",
+  "columns": [
+    {
+      "name": "dataset_ref",
+      "type": "string",
+      "sample": "socrata_2nrs-mtv8"
+    },
+    {
+      "name": "endpoint",
+      "type": "string",
+      "sample": "https://data.lacity.org/resource/2nrs-mtv8.json"
+    },
+    {
+      "name": "params",
+      "type": "dict",
+      "sample": {}
+    },
+    {
+      "name": "rows",
+      "type": "list",
+      "sample": []
+    },
+    {
+      "name": "raw",
+      "type": "list",
+      "sample": []
+    },
+    {
+      "name": "retrieved_at",
+      "type": "string",
+      "sample": "2026-03-30T18:08:42.114883+00:00"
+    }
+  ],
+  "sample_row": {
+    "dataset_ref": "socrata_2nrs-mtv8",
+    "endpoint": "https://data.lacity.org/resource/2nrs-mtv8.json",
+    "params": {},
+    "rows": [],
+    "raw": [],
+    "retrieved_at": "2026-03-30T18:08:42.114883+00:00"
+  }
+}

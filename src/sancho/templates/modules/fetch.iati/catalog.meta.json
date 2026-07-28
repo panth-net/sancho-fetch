@@ -1,0 +1,660 @@
+{
+  "provider": "fetch.iati",
+  "schema_version": "1.0",
+  "generated_at": "2026-04-15T13:55:07.223998+00:00",
+  "stats": {
+    "family_count": 4,
+    "codelist_count": 69,
+    "codelists_count": 69,
+    "total_codelist_entries": 5174,
+    "successful_fetches": 69,
+    "failed_fetches": 2
+  },
+  "discovery": {
+    "mode": "live_required",
+    "sources": [
+      {
+        "id": "codelist.ActivityDateType",
+        "url": "https://codelists.codeforiati.org/api/json/en/ActivityDateType.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 4,
+        "error": "",
+        "fetched_at": "2026-04-15T13:54:04.865876+00:00"
+      },
+      {
+        "id": "codelist.ActivityScope",
+        "url": "https://codelists.codeforiati.org/api/json/en/ActivityScope.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 8,
+        "error": "",
+        "fetched_at": "2026-04-15T13:54:05.513698+00:00"
+      },
+      {
+        "id": "codelist.ActivityStatus",
+        "url": "https://codelists.codeforiati.org/api/json/en/ActivityStatus.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 6,
+        "error": "",
+        "fetched_at": "2026-04-15T13:54:06.408324+00:00"
+      },
+      {
+        "id": "codelist.AidType",
+        "url": "https://codelists.codeforiati.org/api/json/en/AidType.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 25,
+        "error": "",
+        "fetched_at": "2026-04-15T13:54:08.133955+00:00"
+      },
+      {
+        "id": "codelist.AidType-category",
+        "url": "https://codelists.codeforiati.org/api/json/en/AidType-category.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 8,
+        "error": "",
+        "fetched_at": "2026-04-15T13:54:09.740446+00:00"
+      },
+      {
+        "id": "codelist.AidTypeVocabulary",
+        "url": "https://codelists.codeforiati.org/api/json/en/AidTypeVocabulary.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 4,
+        "error": "",
+        "fetched_at": "2026-04-15T13:54:10.852985+00:00"
+      },
+      {
+        "id": "codelist.BudgetIdentifier",
+        "url": "https://codelists.codeforiati.org/api/json/en/BudgetIdentifier.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 152,
+        "error": "",
+        "fetched_at": "2026-04-15T13:54:11.782182+00:00"
+      },
+      {
+        "id": "codelist.BudgetIdentifierSector",
+        "url": "https://codelists.codeforiati.org/api/json/en/BudgetIdentifierSector.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 31,
+        "error": "",
+        "fetched_at": "2026-04-15T13:54:12.604088+00:00"
+      },
+      {
+        "id": "codelist.BudgetIdentifierSector-category",
+        "url": "https://codelists.codeforiati.org/api/json/en/BudgetIdentifierSector-category.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 7,
+        "error": "",
+        "fetched_at": "2026-04-15T13:54:13.401021+00:00"
+      },
+      {
+        "id": "codelist.BudgetIdentifierVocabulary",
+        "url": "https://codelists.codeforiati.org/api/json/en/BudgetIdentifierVocabulary.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 5,
+        "error": "",
+        "fetched_at": "2026-04-15T13:54:14.268689+00:00"
+      },
+      {
+        "id": "codelist.BudgetNotProvided",
+        "url": "https://codelists.codeforiati.org/api/json/en/BudgetNotProvided.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 3,
+        "error": "",
+        "fetched_at": "2026-04-15T13:54:15.136937+00:00"
+      },
+      {
+        "id": "codelist.BudgetStatus",
+        "url": "https://codelists.codeforiati.org/api/json/en/BudgetStatus.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 2,
+        "error": "",
+        "fetched_at": "2026-04-15T13:54:16.023700+00:00"
+      },
+      {
+        "id": "codelist.BudgetType",
+        "url": "https://codelists.codeforiati.org/api/json/en/BudgetType.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 2,
+        "error": "",
+        "fetched_at": "2026-04-15T13:54:16.917256+00:00"
+      },
+      {
+        "id": "codelist.CRSAddOtherFlags",
+        "url": "https://codelists.codeforiati.org/api/json/en/CRSAddOtherFlags.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 4,
+        "error": "",
+        "fetched_at": "2026-04-15T13:54:17.722650+00:00"
+      },
+      {
+        "id": "codelist.CRSChannelCode",
+        "url": "https://codelists.codeforiati.org/api/json/en/CRSChannelCode.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 442,
+        "error": "",
+        "fetched_at": "2026-04-15T13:54:18.564132+00:00"
+      },
+      {
+        "id": "codelist.CashandVoucherModalities",
+        "url": "https://codelists.codeforiati.org/api/json/en/CashandVoucherModalities.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 2,
+        "error": "",
+        "fetched_at": "2026-04-15T13:54:19.401950+00:00"
+      },
+      {
+        "id": "codelist.CollaborationType",
+        "url": "https://codelists.codeforiati.org/api/json/en/CollaborationType.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 7,
+        "error": "",
+        "fetched_at": "2026-04-15T13:54:20.211749+00:00"
+      },
+      {
+        "id": "codelist.ConditionType",
+        "url": "https://codelists.codeforiati.org/api/json/en/ConditionType.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 3,
+        "error": "",
+        "fetched_at": "2026-04-15T13:54:20.988245+00:00"
+      },
+      {
+        "id": "codelist.ContactType",
+        "url": "https://codelists.codeforiati.org/api/json/en/ContactType.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 4,
+        "error": "",
+        "fetched_at": "2026-04-15T13:54:21.769927+00:00"
+      },
+      {
+        "id": "codelist.Country",
+        "url": "https://codelists.codeforiati.org/api/json/en/Country.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 257,
+        "error": "",
+        "fetched_at": "2026-04-15T13:54:22.520437+00:00"
+      },
+      {
+        "id": "codelist.Currency",
+        "url": "https://codelists.codeforiati.org/api/json/en/Currency.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 306,
+        "error": "",
+        "fetched_at": "2026-04-15T13:54:23.314271+00:00"
+      },
+      {
+        "id": "codelist.DescriptionType",
+        "url": "https://codelists.codeforiati.org/api/json/en/DescriptionType.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 4,
+        "error": "",
+        "fetched_at": "2026-04-15T13:54:24.169326+00:00"
+      },
+      {
+        "id": "codelist.DisbursementChannel",
+        "url": "https://codelists.codeforiati.org/api/json/en/DisbursementChannel.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 4,
+        "error": "",
+        "fetched_at": "2026-04-15T13:54:24.963072+00:00"
+      },
+      {
+        "id": "codelist.DocumentCategory",
+        "url": "https://codelists.codeforiati.org/api/json/en/DocumentCategory.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 30,
+        "error": "",
+        "fetched_at": "2026-04-15T13:54:25.699633+00:00"
+      },
+      {
+        "id": "codelist.DocumentCategory-category",
+        "url": "https://codelists.codeforiati.org/api/json/en/DocumentCategory-category.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 2,
+        "error": "",
+        "fetched_at": "2026-04-15T13:54:26.598268+00:00"
+      },
+      {
+        "id": "codelist.EarmarkingCategory",
+        "url": "https://codelists.codeforiati.org/api/json/en/EarmarkingCategory.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 4,
+        "error": "",
+        "fetched_at": "2026-04-15T13:54:27.535935+00:00"
+      },
+      {
+        "id": "codelist.FileFormat",
+        "url": "https://codelists.codeforiati.org/api/json/en/FileFormat.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 1665,
+        "error": "",
+        "fetched_at": "2026-04-15T13:54:28.335023+00:00"
+      },
+      {
+        "id": "codelist.FinanceType",
+        "url": "https://codelists.codeforiati.org/api/json/en/FinanceType.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 78,
+        "error": "",
+        "fetched_at": "2026-04-15T13:54:29.114150+00:00"
+      },
+      {
+        "id": "codelist.FinanceType-category",
+        "url": "https://codelists.codeforiati.org/api/json/en/FinanceType-category.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 13,
+        "error": "",
+        "fetched_at": "2026-04-15T13:54:29.953123+00:00"
+      },
+      {
+        "id": "codelist.FlowType",
+        "url": "https://codelists.codeforiati.org/api/json/en/FlowType.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 11,
+        "error": "",
+        "fetched_at": "2026-04-15T13:54:30.691995+00:00"
+      },
+      {
+        "id": "codelist.GazetteerAgency",
+        "url": "https://codelists.codeforiati.org/api/json/en/GazetteerAgency.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 3,
+        "error": "",
+        "fetched_at": "2026-04-15T13:54:31.476826+00:00"
+      },
+      {
+        "id": "codelist.GeographicExactness",
+        "url": "https://codelists.codeforiati.org/api/json/en/GeographicExactness.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 2,
+        "error": "",
+        "fetched_at": "2026-04-15T13:54:32.196678+00:00"
+      },
+      {
+        "id": "codelist.GeographicLocationClass",
+        "url": "https://codelists.codeforiati.org/api/json/en/GeographicLocationClass.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 4,
+        "error": "",
+        "fetched_at": "2026-04-15T13:54:32.968365+00:00"
+      },
+      {
+        "id": "codelist.GeographicLocationReach",
+        "url": "https://codelists.codeforiati.org/api/json/en/GeographicLocationReach.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 2,
+        "error": "",
+        "fetched_at": "2026-04-15T13:54:33.753751+00:00"
+      },
+      {
+        "id": "codelist.GeographicVocabulary",
+        "url": "https://codelists.codeforiati.org/api/json/en/GeographicVocabulary.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 6,
+        "error": "",
+        "fetched_at": "2026-04-15T13:54:34.628383+00:00"
+      },
+      {
+        "id": "codelist.GeographicalPrecision",
+        "url": "https://codelists.codeforiati.org/api/json/en/GeographicalPrecision.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 9,
+        "error": "",
+        "fetched_at": "2026-04-15T13:54:35.504328+00:00"
+      },
+      {
+        "id": "codelist.HumanitarianScopeType",
+        "url": "https://codelists.codeforiati.org/api/json/en/HumanitarianScopeType.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 2,
+        "error": "",
+        "fetched_at": "2026-04-15T13:54:36.403744+00:00"
+      },
+      {
+        "id": "codelist.HumanitarianScopeVocabulary",
+        "url": "https://codelists.codeforiati.org/api/json/en/HumanitarianScopeVocabulary.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 3,
+        "error": "",
+        "fetched_at": "2026-04-15T13:54:37.309129+00:00"
+      },
+      {
+        "id": "codelist.IATIOrganisationIdentifier",
+        "url": "https://codelists.codeforiati.org/api/json/en/IATIOrganisationIdentifier.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 45,
+        "error": "",
+        "fetched_at": "2026-04-15T13:54:38.209429+00:00"
+      },
+      {
+        "id": "codelist.IndicatorMeasure",
+        "url": "https://codelists.codeforiati.org/api/json/en/IndicatorMeasure.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 5,
+        "error": "",
+        "fetched_at": "2026-04-15T13:54:39.108867+00:00"
+      },
+      {
+        "id": "codelist.IndicatorVocabulary",
+        "url": "https://codelists.codeforiati.org/api/json/en/IndicatorVocabulary.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 10,
+        "error": "",
+        "fetched_at": "2026-04-15T13:54:40.072480+00:00"
+      },
+      {
+        "id": "codelist.Language",
+        "url": "https://codelists.codeforiati.org/api/json/en/Language.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 184,
+        "error": "",
+        "fetched_at": "2026-04-15T13:54:40.974668+00:00"
+      },
+      {
+        "id": "codelist.LoanRepaymentPeriod",
+        "url": "https://codelists.codeforiati.org/api/json/en/LoanRepaymentPeriod.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 4,
+        "error": "",
+        "fetched_at": "2026-04-15T13:54:41.848416+00:00"
+      },
+      {
+        "id": "codelist.LoanRepaymentType",
+        "url": "https://codelists.codeforiati.org/api/json/en/LoanRepaymentType.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 4,
+        "error": "",
+        "fetched_at": "2026-04-15T13:54:42.814470+00:00"
+      },
+      {
+        "id": "codelist.LocationType",
+        "url": "https://codelists.codeforiati.org/api/json/en/LocationType.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 682,
+        "error": "",
+        "fetched_at": "2026-04-15T13:54:43.880505+00:00"
+      },
+      {
+        "id": "codelist.LocationType-category",
+        "url": "https://codelists.codeforiati.org/api/json/en/LocationType-category.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 9,
+        "error": "",
+        "fetched_at": "2026-04-15T13:54:44.803347+00:00"
+      },
+      {
+        "id": "codelist.OrganisationIdentifier",
+        "url": "https://codelists.codeforiati.org/api/json/en/OrganisationIdentifier.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 419,
+        "error": "",
+        "fetched_at": "2026-04-15T13:54:45.684177+00:00"
+      },
+      {
+        "id": "codelist.OrganisationRegistrationAgency",
+        "url": "https://codelists.codeforiati.org/api/json/en/OrganisationRegistrationAgency.json",
+        "status": "error",
+        "http_status": 503,
+        "count": 0,
+        "error": "503 Server Error: Service Unavailable for url: https://codelists.codeforiati.org/api/json/en/OrganisationRegistrationAgency.json",
+        "fetched_at": "2026-04-15T13:54:46.753644+00:00"
+      },
+      {
+        "id": "codelist.OrganisationRole",
+        "url": "https://codelists.codeforiati.org/api/json/en/OrganisationRole.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 4,
+        "error": "",
+        "fetched_at": "2026-04-15T13:54:47.584300+00:00"
+      },
+      {
+        "id": "codelist.OrganisationType",
+        "url": "https://codelists.codeforiati.org/api/json/en/OrganisationType.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 16,
+        "error": "",
+        "fetched_at": "2026-04-15T13:54:48.351448+00:00"
+      },
+      {
+        "id": "codelist.OtherIdentifierType",
+        "url": "https://codelists.codeforiati.org/api/json/en/OtherIdentifierType.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 6,
+        "error": "",
+        "fetched_at": "2026-04-15T13:54:49.188046+00:00"
+      },
+      {
+        "id": "codelist.PolicyMarker",
+        "url": "https://codelists.codeforiati.org/api/json/en/PolicyMarker.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 12,
+        "error": "",
+        "fetched_at": "2026-04-15T13:54:49.951309+00:00"
+      },
+      {
+        "id": "codelist.PolicyMarkerVocabulary",
+        "url": "https://codelists.codeforiati.org/api/json/en/PolicyMarkerVocabulary.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 2,
+        "error": "",
+        "fetched_at": "2026-04-15T13:54:50.866154+00:00"
+      },
+      {
+        "id": "codelist.PolicySignificance",
+        "url": "https://codelists.codeforiati.org/api/json/en/PolicySignificance.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 5,
+        "error": "",
+        "fetched_at": "2026-04-15T13:54:51.818558+00:00"
+      },
+      {
+        "id": "codelist.PublisherType",
+        "url": "https://codelists.codeforiati.org/api/json/en/PublisherType.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 3,
+        "error": "",
+        "fetched_at": "2026-04-15T13:54:52.634484+00:00"
+      },
+      {
+        "id": "codelist.Region",
+        "url": "https://codelists.codeforiati.org/api/json/en/Region.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 26,
+        "error": "",
+        "fetched_at": "2026-04-15T13:54:53.631687+00:00"
+      },
+      {
+        "id": "codelist.RegionVocabulary",
+        "url": "https://codelists.codeforiati.org/api/json/en/RegionVocabulary.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 3,
+        "error": "",
+        "fetched_at": "2026-04-15T13:54:54.653152+00:00"
+      },
+      {
+        "id": "codelist.RelatedActivityType",
+        "url": "https://codelists.codeforiati.org/api/json/en/RelatedActivityType.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 5,
+        "error": "",
+        "fetched_at": "2026-04-15T13:54:55.533670+00:00"
+      },
+      {
+        "id": "codelist.ResultType",
+        "url": "https://codelists.codeforiati.org/api/json/en/ResultType.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 4,
+        "error": "",
+        "fetched_at": "2026-04-15T13:54:56.371171+00:00"
+      },
+      {
+        "id": "codelist.ResultVocabulary",
+        "url": "https://codelists.codeforiati.org/api/json/en/ResultVocabulary.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 1,
+        "error": "",
+        "fetched_at": "2026-04-15T13:54:57.223811+00:00"
+      },
+      {
+        "id": "codelist.Sector",
+        "url": "https://codelists.codeforiati.org/api/json/en/Sector.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 326,
+        "error": "",
+        "fetched_at": "2026-04-15T13:54:58.172243+00:00"
+      },
+      {
+        "id": "codelist.SectorCategory",
+        "url": "https://codelists.codeforiati.org/api/json/en/SectorCategory.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 44,
+        "error": "",
+        "fetched_at": "2026-04-15T13:54:59.082678+00:00"
+      },
+      {
+        "id": "codelist.SectorVocabulary",
+        "url": "https://codelists.codeforiati.org/api/json/en/SectorVocabulary.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 14,
+        "error": "",
+        "fetched_at": "2026-04-15T13:54:59.977577+00:00"
+      },
+      {
+        "id": "codelist.TagVocabulary",
+        "url": "https://codelists.codeforiati.org/api/json/en/TagVocabulary.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 5,
+        "error": "",
+        "fetched_at": "2026-04-15T13:55:00.839112+00:00"
+      },
+      {
+        "id": "codelist.TiedStatus",
+        "url": "https://codelists.codeforiati.org/api/json/en/TiedStatus.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 3,
+        "error": "",
+        "fetched_at": "2026-04-15T13:55:01.724347+00:00"
+      },
+      {
+        "id": "codelist.TransactionType",
+        "url": "https://codelists.codeforiati.org/api/json/en/TransactionType.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 13,
+        "error": "",
+        "fetched_at": "2026-04-15T13:55:02.641432+00:00"
+      },
+      {
+        "id": "codelist.UNSDG-Goals",
+        "url": "https://codelists.codeforiati.org/api/json/en/UNSDG-Goals.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 17,
+        "error": "",
+        "fetched_at": "2026-04-15T13:55:03.599362+00:00"
+      },
+      {
+        "id": "codelist.UNSDG-Targets",
+        "url": "https://codelists.codeforiati.org/api/json/en/UNSDG-Targets.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 169,
+        "error": "",
+        "fetched_at": "2026-04-15T13:55:04.516893+00:00"
+      },
+      {
+        "id": "codelist.VerificationStatus",
+        "url": "https://codelists.codeforiati.org/api/json/en/VerificationStatus.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 2,
+        "error": "",
+        "fetched_at": "2026-04-15T13:55:05.380418+00:00"
+      },
+      {
+        "id": "codelist.Version",
+        "url": "https://codelists.codeforiati.org/api/json/en/Version.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 8,
+        "error": "",
+        "fetched_at": "2026-04-15T13:55:06.375550+00:00"
+      },
+      {
+        "id": "codelist.Vocabulary",
+        "url": "https://codelists.codeforiati.org/api/json/en/Vocabulary.json",
+        "status": "error",
+        "http_status": 404,
+        "count": 0,
+        "error": "404 Client Error: Not Found for url: https://codelists.codeforiati.org/api/json/en/Vocabulary.json",
+        "fetched_at": "2026-04-15T13:55:07.222005+00:00"
+      }
+    ],
+    "docs": [
+      "https://iatistandard.org/en/guidance/developer/codelist-api/"
+    ]
+  }
+}

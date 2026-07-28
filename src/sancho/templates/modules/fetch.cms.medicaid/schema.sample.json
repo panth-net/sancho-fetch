@@ -1,0 +1,20 @@
+{
+  "provider": "fetch.cms.medicaid",
+  "generated_at": "2026-05-06T00:00:00+00:00",
+  "columns": [
+    {"name": "dataset_ref", "type": "string", "sample": "usgov_medicaid"},
+    {"name": "endpoint", "type": "string", "sample": "https://data.medicaid.gov/api/1/metastore/schemas/dataset/items"},
+    {"name": "params", "type": "dict", "sample": {}},
+    {"name": "rows", "type": "list", "sample": []},
+    {"name": "raw", "type": "list", "sample": []},
+    {"name": "retrieved_at", "type": "string", "sample": "2026-05-06T00:00:00+00:00"}
+  ],
+  "sample_row": {
+    "dataset_ref": "usgov_medicaid",
+    "endpoint": "https://data.medicaid.gov/api/1/metastore/schemas/dataset/items",
+    "params": {},
+    "rows": [],
+    "raw": [],
+    "retrieved_at": "2026-05-06T00:00:00+00:00"
+  }
+}

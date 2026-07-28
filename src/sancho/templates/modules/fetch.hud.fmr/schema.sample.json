@@ -1,0 +1,32 @@
+{
+  "provider": "fetch.hud.fmr",
+  "generated_at": "2026-03-30T18:59:54.810750+00:00",
+  "columns": [
+    {
+      "name": "dataset_ref",
+      "type": "string",
+      "sample": "usgov_hud"
+    },
+    {
+      "name": "url",
+      "type": "string",
+      "sample": "https://www.huduser.gov/hudapi/public/fmr/listMetroAreas"
+    },
+    {
+      "name": "raw",
+      "type": "dict",
+      "sample": {}
+    },
+    {
+      "name": "retrieved_at",
+      "type": "string",
+      "sample": "2026-03-30T18:59:54.810750+00:00"
+    }
+  ],
+  "sample_row": {
+    "dataset_ref": "usgov_hud",
+    "url": "https://www.huduser.gov/hudapi/public/fmr/listMetroAreas",
+    "raw": {},
+    "retrieved_at": "2026-03-30T18:59:54.810750+00:00"
+  }
+}

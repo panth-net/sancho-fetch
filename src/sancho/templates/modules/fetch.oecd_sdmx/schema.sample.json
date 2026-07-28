@@ -1,0 +1,22 @@
+{
+  "provider": "fetch.oecd_sdmx",
+  "generated_at": "2026-04-09T00:00:00+00:00",
+  "columns": [
+    {"name": "dataset_ref", "type": "string", "sample": "intl_oecd_bli"},
+    {"name": "params", "type": "dict", "sample": {}},
+    {"name": "raw", "type": "dict", "sample": {}},
+    {"name": "retrieved_at", "type": "string", "sample": "2026-04-09T00:00:00+00:00"},
+    {"name": "row_count", "type": "int", "sample": 0},
+    {"name": "rows", "type": "list", "sample": []},
+    {"name": "source_url", "type": "string", "sample": "https://sdmx.oecd.org/public/rest/data/OECD,current_wellbeing,1.0/all?format=csvfilewithlabels&dimensionAtObservation=AllDimensions"}
+  ],
+  "sample_row": {
+    "dataset_ref": "intl_oecd_bli",
+    "params": {},
+    "raw": {},
+    "retrieved_at": "2026-04-09T00:00:00+00:00",
+    "row_count": 0,
+    "rows": [],
+    "source_url": "https://sdmx.oecd.org/public/rest/data/OECD,current_wellbeing,1.0/all?format=csvfilewithlabels&dimensionAtObservation=AllDimensions"
+  }
+}
