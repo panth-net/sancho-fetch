@@ -1,0 +1,18 @@
+{
+  "provider": "fetch.census.htops",
+  "generated_at": "2026-05-06T00:00:00+00:00",
+  "columns": [
+    {"name": "dataset_ref", "type": "string", "sample": "us_census_htops"},
+    {"name": "geography", "type": "string", "sample": "us:1"},
+    {"name": "time", "type": "string", "sample": "2023"},
+    {"name": "rows", "type": "list", "sample": [["WEEK","UNITS_TOTAL","time","us"],["63","254966752","2023","1"]]},
+    {"name": "retrieved_at", "type": "string", "sample": "2026-05-06T00:00:00+00:00"}
+  ],
+  "sample_row": {
+    "dataset_ref": "us_census_htops",
+    "geography": "us:1",
+    "time": "2023",
+    "rows": [["WEEK","UNITS_TOTAL","time","us"],["63","254966752","2023","1"]],
+    "retrieved_at": "2026-05-06T00:00:00+00:00"
+  }
+}

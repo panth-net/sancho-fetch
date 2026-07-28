@@ -1,0 +1,46 @@
+{
+  "provider": "fetch.usgs.earthquakes",
+  "schema_version": "1.0",
+  "generated_at": "2026-04-14T18:25:48.742051+00:00",
+  "stats": {
+    "family_count": 3,
+    "catalog_count": 61,
+    "catalogs_count": 61,
+    "contributor_count": 28,
+    "contributors_count": 28,
+    "producttype_count": 60,
+    "producttypes_count": 60,
+    "eventtype_count": 46,
+    "eventtypes_count": 46,
+    "magnitudetype_count": 40,
+    "magnitudetypes_count": 40,
+    "parameter_count": 0,
+    "parameters_count": 0
+  },
+  "discovery": {
+    "mode": "live_required",
+    "sources": [
+      {
+        "id": "/application.json",
+        "url": "https://earthquake.usgs.gov/fdsnws/event/1/application.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 235,
+        "error": "",
+        "fetched_at": "2026-04-14T18:25:48.246066+00:00"
+      },
+      {
+        "id": "/version",
+        "url": "https://earthquake.usgs.gov/fdsnws/event/1/version",
+        "status": "ok",
+        "http_status": 200,
+        "count": 1,
+        "error": "",
+        "fetched_at": "2026-04-14T18:25:48.741053+00:00"
+      }
+    ],
+    "docs": [
+      "https://earthquake.usgs.gov/fdsnws/event/1/"
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "provider": "fetch.planetary_computer",
+  "generated_at": "2026-04-12T00:00:00+00:00",
+  "columns": [
+    {"name": "dataset_ref", "type": "string", "sample": "planetary_computer"},
+    {"name": "mode", "type": "string", "sample": "list"},
+    {"name": "collection", "type": "string", "sample": "sentinel-2-l2a"},
+    {"name": "rows", "type": "list", "sample": []},
+    {"name": "row_count", "type": "int", "sample": 100},
+    {"name": "raw", "type": "dict", "sample": {}},
+    {"name": "retrieved_at", "type": "string", "sample": "2026-04-12T00:00:00+00:00"}
+  ],
+  "sample_row": {
+    "dataset_ref": "planetary_computer",
+    "mode": "list",
+    "collection": null,
+    "rows": [{"id": "sentinel-2-l2a", "title": "Sentinel-2 Level-2A"}],
+    "row_count": 100,
+    "raw": {},
+    "retrieved_at": "2026-04-12T00:00:00+00:00"
+  }
+}

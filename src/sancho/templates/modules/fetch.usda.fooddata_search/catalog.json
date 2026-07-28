@@ -1,0 +1,283 @@
+{
+  "provider": "fetch.usda.fooddata_search",
+  "schema_version": "1.0",
+  "generated_at": "2026-04-15T17:15:44.291653+00:00",
+  "families": [
+    {
+      "id": "foods.search",
+      "base_aliases": [
+        "v1"
+      ],
+      "base_url": "https://api.nal.usda.gov/fdc/v1",
+      "path_templates": [
+        "/foods/search"
+      ],
+      "methods": [
+        "GET",
+        "POST"
+      ],
+      "query_params": {
+        "api_key": {
+          "type": "string",
+          "description": "DATA_GOV_API_KEY"
+        },
+        "query": {
+          "type": "string",
+          "description": "Free-text search expression",
+          "examples": [
+            "apple",
+            "milk+whole"
+          ]
+        },
+        "dataType": {
+          "type": "string",
+          "description": "Comma-separated data types"
+        },
+        "pageSize": {
+          "type": "int",
+          "description": "Results per page (max 200)"
+        },
+        "pageNumber": {
+          "type": "int",
+          "description": "1-based page number"
+        },
+        "sortBy": {
+          "type": "string",
+          "description": "Sort field",
+          "examples": [
+            "dataType.keyword",
+            "publishedDate",
+            "fdcId"
+          ]
+        },
+        "sortOrder": {
+          "type": "string",
+          "description": "asc or desc"
+        },
+        "brandOwner": {
+          "type": "string",
+          "description": "Brand owner filter (Branded)"
+        },
+        "tradeChannel": {
+          "type": "list[string]",
+          "description": "Trade channel filter"
+        },
+        "startDate": {
+          "type": "string",
+          "description": "Publication start date"
+        },
+        "endDate": {
+          "type": "string",
+          "description": "Publication end date"
+        }
+      },
+      "response_mode": "json",
+      "envelope_key": "foods",
+      "description": "Full-text search across all food records. Total count returned in 'totalHits'.",
+      "source_refs": [
+        "https://fdc.nal.usda.gov/api-guide.html"
+      ]
+    },
+    {
+      "id": "foods.list",
+      "base_aliases": [
+        "v1"
+      ],
+      "base_url": "https://api.nal.usda.gov/fdc/v1",
+      "path_templates": [
+        "/foods/list"
+      ],
+      "methods": [
+        "GET",
+        "POST"
+      ],
+      "query_params": {
+        "api_key": {
+          "type": "string",
+          "description": "DATA_GOV_API_KEY"
+        },
+        "query": {
+          "type": "string",
+          "description": "Free-text search expression",
+          "examples": [
+            "apple",
+            "milk+whole"
+          ]
+        },
+        "dataType": {
+          "type": "string",
+          "description": "Comma-separated data types"
+        },
+        "pageSize": {
+          "type": "int",
+          "description": "Results per page (max 200)"
+        },
+        "pageNumber": {
+          "type": "int",
+          "description": "1-based page number"
+        },
+        "sortBy": {
+          "type": "string",
+          "description": "Sort field",
+          "examples": [
+            "dataType.keyword",
+            "publishedDate",
+            "fdcId"
+          ]
+        },
+        "sortOrder": {
+          "type": "string",
+          "description": "asc or desc"
+        },
+        "brandOwner": {
+          "type": "string",
+          "description": "Brand owner filter (Branded)"
+        },
+        "tradeChannel": {
+          "type": "list[string]",
+          "description": "Trade channel filter"
+        },
+        "startDate": {
+          "type": "string",
+          "description": "Publication start date"
+        },
+        "endDate": {
+          "type": "string",
+          "description": "Publication end date"
+        }
+      },
+      "response_mode": "json",
+      "envelope_key": "",
+      "description": "Paginated list of foods (unfiltered + sorted).",
+      "source_refs": [
+        "https://fdc.nal.usda.gov/api-guide.html"
+      ]
+    },
+    {
+      "id": "food.single",
+      "base_aliases": [
+        "v1"
+      ],
+      "base_url": "https://api.nal.usda.gov/fdc/v1",
+      "path_templates": [
+        "/food/{fdcId}",
+        "/foods"
+      ],
+      "methods": [
+        "GET",
+        "POST"
+      ],
+      "query_params": {
+        "api_key": {
+          "type": "string",
+          "description": "DATA_GOV_API_KEY"
+        },
+        "query": {
+          "type": "string",
+          "description": "Free-text search expression",
+          "examples": [
+            "apple",
+            "milk+whole"
+          ]
+        },
+        "dataType": {
+          "type": "string",
+          "description": "Comma-separated data types"
+        },
+        "pageSize": {
+          "type": "int",
+          "description": "Results per page (max 200)"
+        },
+        "pageNumber": {
+          "type": "int",
+          "description": "1-based page number"
+        },
+        "sortBy": {
+          "type": "string",
+          "description": "Sort field",
+          "examples": [
+            "dataType.keyword",
+            "publishedDate",
+            "fdcId"
+          ]
+        },
+        "sortOrder": {
+          "type": "string",
+          "description": "asc or desc"
+        },
+        "brandOwner": {
+          "type": "string",
+          "description": "Brand owner filter (Branded)"
+        },
+        "tradeChannel": {
+          "type": "list[string]",
+          "description": "Trade channel filter"
+        },
+        "startDate": {
+          "type": "string",
+          "description": "Publication start date"
+        },
+        "endDate": {
+          "type": "string",
+          "description": "Publication end date"
+        },
+        "fdcIds": {
+          "type": "list[string]",
+          "description": "Up to 20 FDC IDs (POST /foods)"
+        },
+        "format": {
+          "type": "string",
+          "examples": [
+            "abridged",
+            "full"
+          ]
+        },
+        "nutrients": {
+          "type": "list[int]",
+          "description": "Restrict response to specific nutrient IDs"
+        }
+      },
+      "response_mode": "json",
+      "envelope_key": "",
+      "description": "Full record for one or multiple foods by fdcId.",
+      "source_refs": [
+        "https://fdc.nal.usda.gov/api-guide.html"
+      ]
+    }
+  ],
+  "data_types": [
+    "Branded",
+    "Foundation",
+    "Survey (FNDDS)",
+    "SR Legacy",
+    "Experimental"
+  ],
+  "per_data_type_count": {
+    "Branded": 454678,
+    "Foundation": 365,
+    "Survey (FNDDS)": 5432,
+    "SR Legacy": 7793,
+    "Experimental": 114
+  },
+  "total_food_count": 468382,
+  "field_schema": {
+    "fdcId": "int",
+    "description": "string",
+    "scientificName": "string",
+    "commonNames": "string",
+    "additionalDescriptions": "string",
+    "dataType": "string",
+    "ndbNumber": "int",
+    "publishedDate": "string",
+    "foodCategory": "string",
+    "allHighlightFields": "string",
+    "score": "float",
+    "microbes": "list",
+    "foodNutrients": "list",
+    "finalFoodInputFoods": "list",
+    "foodMeasures": "list",
+    "foodAttributes": "list",
+    "foodAttributeTypes": "list",
+    "foodVersionIds": "list"
+  }
+}

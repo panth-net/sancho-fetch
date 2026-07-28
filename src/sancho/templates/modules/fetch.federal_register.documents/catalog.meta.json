@@ -1,0 +1,79 @@
+{
+  "provider": "fetch.federal_register.documents",
+  "schema_version": "1.0",
+  "generated_at": "2026-04-14T18:25:47.684118+00:00",
+  "stats": {
+    "family_count": 4,
+    "agency_count": 470,
+    "agencies_count": 470,
+    "facet_count": 5,
+    "facets_count": 5,
+    "facet_agency_bucket_count": 445,
+    "facet_topic_bucket_count": 883,
+    "facet_section_bucket_count": 6,
+    "facet_type_bucket_count": 4,
+    "facet_subtype_bucket_count": 7
+  },
+  "discovery": {
+    "mode": "live_required",
+    "sources": [
+      {
+        "id": "/agencies.json",
+        "url": "https://www.federalregister.gov/api/v1/agencies.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 470,
+        "error": "",
+        "fetched_at": "2026-04-14T18:25:45.282495+00:00"
+      },
+      {
+        "id": "facet.agency",
+        "url": "https://www.federalregister.gov/api/v1/documents/facets/agency",
+        "status": "ok",
+        "http_status": 200,
+        "count": 445,
+        "error": "",
+        "fetched_at": "2026-04-14T18:25:45.777615+00:00"
+      },
+      {
+        "id": "facet.topic",
+        "url": "https://www.federalregister.gov/api/v1/documents/facets/topic",
+        "status": "ok",
+        "http_status": 200,
+        "count": 883,
+        "error": "",
+        "fetched_at": "2026-04-14T18:25:46.263083+00:00"
+      },
+      {
+        "id": "facet.section",
+        "url": "https://www.federalregister.gov/api/v1/documents/facets/section",
+        "status": "ok",
+        "http_status": 200,
+        "count": 6,
+        "error": "",
+        "fetched_at": "2026-04-14T18:25:46.726534+00:00"
+      },
+      {
+        "id": "facet.type",
+        "url": "https://www.federalregister.gov/api/v1/documents/facets/type",
+        "status": "ok",
+        "http_status": 200,
+        "count": 4,
+        "error": "",
+        "fetched_at": "2026-04-14T18:25:47.195127+00:00"
+      },
+      {
+        "id": "facet.subtype",
+        "url": "https://www.federalregister.gov/api/v1/documents/facets/subtype",
+        "status": "ok",
+        "http_status": 200,
+        "count": 7,
+        "error": "",
+        "fetched_at": "2026-04-14T18:25:47.682554+00:00"
+      }
+    ],
+    "docs": [
+      "https://www.federalregister.gov/developers/api/v1"
+    ]
+  }
+}

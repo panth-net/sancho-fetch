@@ -1,0 +1,16 @@
+id: dashboard.basic_report
+version: 1.0.0
+type: dashboard
+entrypoint: main.py:run
+description: Generate a lightweight markdown dashboard report from summary metrics.
+managed_paths:
+- module.yaml
+- main.py
+input_schema:
+  type: object
+  required:
+  - title
+output_schema:
+  type: object
+  required:
+  - report_path

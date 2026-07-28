@@ -1,0 +1,20 @@
+{
+  "provider": "fetch.natural_earth",
+  "generated_at": "2026-04-12T00:00:00+00:00",
+  "columns": [
+    {"name": "dataset_ref", "type": "string", "sample": "natural_earth"},
+    {"name": "level", "type": "string", "sample": "adm0"},
+    {"name": "rows", "type": "list", "sample": []},
+    {"name": "feature_count", "type": "int", "sample": 177},
+    {"name": "raw", "type": "dict", "sample": {}},
+    {"name": "retrieved_at", "type": "string", "sample": "2026-04-12T00:00:00+00:00"}
+  ],
+  "sample_row": {
+    "dataset_ref": "natural_earth",
+    "level": "adm0",
+    "rows": [],
+    "feature_count": 177,
+    "raw": {},
+    "retrieved_at": "2026-04-12T00:00:00+00:00"
+  }
+}

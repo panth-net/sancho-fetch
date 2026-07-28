@@ -1,0 +1,242 @@
+families:
+  Global Development & Indicators:
+    - id: worldbank_wdi_api
+      module_id: fetch.world_bank
+      dataset: World Bank WDI and companion World Bank APIs
+      provider: api.worldbank.org + search.worldbank.org
+      provenance: Federal/global open API
+
+  Civic Municipal / Open Data:
+    - id: socrata_generic
+      module_id: fetch.socrata.dataset
+      dataset: Generic Socrata dataset reader for municipal portals
+      provider: data.cityof*.gov / data.*.org
+      provenance: Municipal open data platform
+    - id: nyc_open_data_portal
+      module_id: fetch.nyc_open_data
+      dataset: NYC Open Data portal datasets
+      provider: data.cityofnewyork.us
+      provenance: Municipal open data platform
+    - id: socrata_ijzp-q8t2
+      module_id: fetch.socrata.chicago_crimes
+      dataset: Chicago Crimes (2001-present)
+      provider: data.cityofchicago.org
+      provenance: Municipal open data platform
+    - id: socrata_i98e-djp9
+      module_id: fetch.socrata.sf_building_permits
+      dataset: San Francisco Building Permits
+      provider: data.sfgov.org
+      provenance: Municipal open data platform
+    - id: socrata_2nrs-mtv8
+      module_id: fetch.socrata.la_crime
+      dataset: Los Angeles Crime Data
+      provider: data.lacity.org
+      provenance: Municipal open data platform
+    - id: socrata_76t5-zqzr
+      module_id: fetch.socrata.seattle_building_permits
+      dataset: Seattle Building Permits
+      provider: data.seattle.gov
+      provenance: Municipal open data platform
+
+  US Federal Demographics & Geography:
+    - id: us_census_api
+      module_id: fetch.census.acs_profile
+      dataset: Census ACS profile tables
+      provider: api.census.gov
+      provenance: Federal open API
+
+  US Federal Economic & Fiscal:
+    - id: usgov_bea
+      module_id: fetch.bea.nipa_table
+      dataset: BEA national income and product accounts tables
+      provider: apps.bea.gov
+      provenance: Federal open API
+    - id: usgov_bls
+      module_id: fetch.bls
+      dataset: Bureau of Labor Statistics time-series endpoints
+      provider: api.bls.gov
+      provenance: Federal open API
+    - id: usgov_treasury_fiscal
+      module_id: fetch.treasury.fiscal_data
+      dataset: US Treasury FiscalData debt, revenue, and spending
+      provider: api.fiscaldata.treasury.gov
+      provenance: Federal open API
+
+  US Housing:
+    - id: usgov_hud
+      module_id: fetch.hud.fmr
+      dataset: HUD fair market rent and housing indicators
+      provider: huduser.gov/hudapi
+      provenance: Federal open API
+
+  US Procurement & Spending:
+    - id: usgov_gsa_calc
+      module_id: fetch.gsa_calc.ceiling_rates
+      dataset: GSA CALC ceiling rates
+      provider: api.gsa.gov/calc
+      provenance: Federal open API
+    - id: usgov_usaspending
+      module_id: fetch.usaspending.awards
+      dataset: USASpending awards and obligations
+      provider: api.usaspending.gov
+      provenance: Federal open API
+
+  US Legislative & Regulatory:
+    - id: usgov_congress
+      module_id: fetch.congress.bills
+      dataset: Congress bills and related entities
+      provider: api.congress.gov
+      provenance: Federal open API
+    - id: usgov_federal_register
+      module_id: fetch.federal_register.documents
+      dataset: Federal Register documents and notices
+      provider: federalregister.gov/api/v1
+      provenance: Federal open API
+    - id: usgov_regulations
+      module_id: fetch.regulations.dockets
+      dataset: Regulations.gov dockets and comments
+      provider: api.regulations.gov
+      provenance: Federal open API
+    - id: usgov_fec
+      module_id: fetch.fec
+      dataset: Federal Election Commission campaign finance data
+      provider: api.open.fec.gov
+      provenance: Federal open API
+
+  US Federal Financial Regulation:
+    - id: usgov_cfpb
+      module_id: fetch.cfpb.complaints
+      dataset: CFPB consumer complaints
+      provider: api.consumerfinance.gov
+      provenance: Federal open API
+    - id: usgov_fdic
+      module_id: fetch.fdic.institutions
+      dataset: FDIC institution directory and metadata
+      provider: banks.data.fdic.gov
+      provenance: Federal open API
+    - id: usgov_sec_filings
+      module_id: fetch.sec.company_submissions
+      dataset: SEC company submissions and filing metadata
+      provider: data.sec.gov
+      provenance: Federal open API
+
+  US Justice & Public Safety:
+    - id: usgov_fbi
+      module_id: fetch.fbi.crime
+      dataset: FBI crime data explorer
+      provider: api.usa.gov/crime/fbi
+      provenance: Federal open API
+    - id: usgov_nhtsa
+      module_id: fetch.nhtsa.recalls
+      dataset: NHTSA recalls and vehicle safety feeds
+      provider: api.nhtsa.gov
+      provenance: Federal open API
+    - id: usgov_doj_news
+      module_id: fetch.doj.press_releases
+      dataset: Department of Justice press releases
+      provider: justice.gov
+      provenance: Federal website data
+
+  US Emergency & Disaster:
+    - id: usgov_fema
+      module_id: fetch.fema.openfema
+      dataset: OpenFEMA disaster datasets
+      provider: fema.gov/openfema-data-page
+      provenance: Federal open API
+
+  US Energy & Environment:
+    - id: usgov_eia
+      module_id: fetch.eia.series
+      dataset: Energy Information Administration series
+      provider: api.eia.gov
+      provenance: Federal open API
+    - id: usgov_epa_aqs
+      module_id: fetch.epa.aqs_annual
+      dataset: EPA AQS annual air quality metrics
+      provider: aqs.epa.gov
+      provenance: Federal open API
+    - id: usgov_epa
+      module_id: fetch.epa.echo_facilities
+      dataset: EPA ECHO facility and compliance data
+      provider: echo.epa.gov
+      provenance: Federal open API
+    - id: usgov_noaa
+      module_id: fetch.noaa.cdo
+      dataset: NOAA climate and weather observations
+      provider: ncei.noaa.gov/cdo-web
+      provenance: Federal open API
+    - id: usgov_nrel
+      module_id: fetch.nrel.alt_fuel_stations
+      dataset: NREL alternative fuel stations
+      provider: developer.nrel.gov
+      provenance: Federal open API
+    - id: usgov_usgs
+      module_id: fetch.usgs.earthquakes
+      dataset: USGS earthquake observations
+      provider: earthquake.usgs.gov
+      provenance: Federal open API
+
+  US Federal Health & Survey Microdata:
+    - id: usgov_cdc
+      module_id: fetch.cdc
+      dataset: CDC open health datasets
+      provider: data.cdc.gov
+      provenance: Federal open API
+    - id: usgov_cms
+      module_id: fetch.cms.data
+      dataset: CMS open data endpoint access
+      provider: data.cms.gov
+      provenance: Federal open API
+    - id: usgov_clinical_trials
+      module_id: fetch.clinical_trials.studies
+      dataset: ClinicalTrials.gov study records
+      provider: clinicaltrials.gov
+      provenance: Federal open API
+    - id: usgov_fda
+      module_id: fetch.fda.drug_events
+      dataset: openFDA drug event feeds
+      provider: api.fda.gov
+      provenance: Federal open API
+    - id: usgov_open_payments
+      module_id: fetch.open_payments.datasets
+      dataset: CMS Open Payments datasets
+      provider: openpaymentsdata.cms.gov
+      provenance: Federal open API
+
+  US Agriculture & Food:
+    - id: usgov_usda_nass
+      module_id: fetch.usda.quickstats
+      dataset: USDA NASS QuickStats crops and livestock
+      provider: quickstats.nass.usda.gov
+      provenance: Federal open API
+    - id: usgov_usda_fooddata
+      module_id: fetch.usda.fooddata_search
+      dataset: USDA FoodData Central search
+      provider: api.nal.usda.gov/fdc
+      provenance: Federal open API
+
+  US Education:
+    - id: usgov_college_scorecard
+      module_id: fetch.college_scorecard.schools
+      dataset: College Scorecard institution outcomes
+      provider: api.data.gov/ed/collegescorecard
+      provenance: Federal open API
+    - id: usgov_naep
+      module_id: fetch.naep.adhoc_data
+      dataset: NAEP ad hoc assessment data
+      provider: nationsreportcard.gov
+      provenance: Federal open API
+
+  US Innovation & IP:
+    - id: usgov_uspto
+      module_id: fetch.uspto.application
+      dataset: USPTO patent application and publication data
+      provider: api.uspto.gov
+      provenance: Federal open API
+
+  US Labor & Workforce:
+    - id: usgov_dol
+      module_id: fetch.dol.osha_inspections
+      dataset: Department of Labor OSHA inspections
+      provider: data.dol.gov
+      provenance: Federal open API

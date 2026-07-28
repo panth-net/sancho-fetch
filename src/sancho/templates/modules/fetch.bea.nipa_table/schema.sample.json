@@ -1,0 +1,44 @@
+{
+  "provider": "fetch.bea.nipa_table",
+  "generated_at": "2026-03-30T18:59:54.810750+00:00",
+  "columns": [
+    {
+      "name": "dataset_ref",
+      "type": "string",
+      "sample": "usgov_bea"
+    },
+    {
+      "name": "table_name",
+      "type": "string",
+      "sample": "T10101"
+    },
+    {
+      "name": "year",
+      "type": "string",
+      "sample": "2024"
+    },
+    {
+      "name": "frequency",
+      "type": "string",
+      "sample": "A"
+    },
+    {
+      "name": "raw",
+      "type": "dict",
+      "sample": {}
+    },
+    {
+      "name": "retrieved_at",
+      "type": "string",
+      "sample": "2026-03-30T18:59:54.810750+00:00"
+    }
+  ],
+  "sample_row": {
+    "dataset_ref": "usgov_bea",
+    "table_name": "T10101",
+    "year": "2024",
+    "frequency": "A",
+    "raw": {},
+    "retrieved_at": "2026-03-30T18:59:54.810750+00:00"
+  }
+}

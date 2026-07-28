@@ -1,0 +1,35 @@
+{
+  "provider": "fetch.census.acs_profile",
+  "schema_version": "1.0",
+  "generated_at": "2026-04-14T19:44:04.950889+00:00",
+  "stats": {
+    "family_count": 1,
+    "dataset_count": 1775,
+    "datasets_count": 1775,
+    "distribution_count": 1775,
+    "distributions_count": 1775,
+    "keyword_count": 4,
+    "keywords_count": 4,
+    "theme_count": 0,
+    "themes_count": 0,
+    "publisher_count": 1,
+    "publishers_count": 1
+  },
+  "discovery": {
+    "mode": "live_required",
+    "sources": [
+      {
+        "id": "/data.json",
+        "url": "https://api.census.gov/data.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 1775,
+        "error": "",
+        "fetched_at": "2026-04-14T19:44:04.930573+00:00"
+      }
+    ],
+    "docs": [
+      "https://www.census.gov/data/developers/data-sets.html"
+    ]
+  }
+}

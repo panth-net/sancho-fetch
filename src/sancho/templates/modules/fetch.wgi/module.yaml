@@ -1,0 +1,33 @@
+id: fetch.wgi
+version: 1.0.0
+type: fetch
+coverage: global
+catalog_tier: small
+entrypoint: main.py:run
+codebook:
+  url_template: "https://api.worldbank.org/v2/source/3/indicator?per_page=500&format=json"
+  format: worldbank_indicators
+description: Fetch World Governance Indicators (WGI) from the World Bank API.
+managed_paths:
+- module.yaml
+- main.py
+- api.py
+- transform.py
+- schema.sample.json
+input_schema:
+  type: object
+  properties:
+    indicators:
+      type: array
+    country:
+      type: string
+    year_min:
+      type: integer
+    year_max:
+      type: integer
+output_schema:
+  type: object
+  required:
+  - dataset_ref
+  - source_url
+  - retrieved_at

@@ -1,0 +1,22 @@
+{
+  "provider": "fetch.eurostat",
+  "generated_at": "2026-07-29T00:00:00+00:00",
+  "columns": [
+    {"name": "dataset_ref", "type": "string", "sample": "une_rt_a"},
+    {"name": "source_url", "type": "string", "sample": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/une_rt_a"},
+    {"name": "params", "type": "dict", "sample": {"dataset": "une_rt_a", "filters": {"geo": ["DE"], "time": "2024"}, "lang": "EN"}},
+    {"name": "rows", "type": "list", "sample": [{"freq": "A", "freq_label": "Annual", "age": "Y15-74", "age_label": "From 15 to 74 years", "unit": "PC_ACT", "unit_label": "Percentage of population in the labour force", "sex": "T", "sex_label": "Total", "geo": "DE", "geo_label": "Germany", "time": "2024", "value": 3.5}]},
+    {"name": "row_count", "type": "int", "sample": 1},
+    {"name": "raw", "type": "dict", "sample": {}},
+    {"name": "retrieved_at", "type": "string", "sample": "2026-07-29T00:00:00+00:00"}
+  ],
+  "sample_row": {
+    "dataset_ref": "une_rt_a",
+    "source_url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/une_rt_a",
+    "params": {"dataset": "une_rt_a", "filters": {"geo": ["DE"], "time": "2024"}, "lang": "EN"},
+    "rows": [{"freq": "A", "freq_label": "Annual", "age": "Y15-74", "age_label": "From 15 to 74 years", "unit": "PC_ACT", "unit_label": "Percentage of population in the labour force", "sex": "T", "sex_label": "Total", "geo": "DE", "geo_label": "Germany", "time": "2024", "value": 3.5}],
+    "row_count": 1,
+    "raw": {},
+    "retrieved_at": "2026-07-29T00:00:00+00:00"
+  }
+}

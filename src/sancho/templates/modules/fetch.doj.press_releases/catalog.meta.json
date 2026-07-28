@@ -1,0 +1,47 @@
+{
+  "provider": "fetch.doj.press_releases",
+  "schema_version": "1.0",
+  "generated_at": "2026-04-15T22:12:03.199315+00:00",
+  "stats": {
+    "family_count": 3,
+    "content_type_count": 2,
+    "content_types_count": 2,
+    "total_record_count": 268050,
+    "total_field_count": 25
+  },
+  "discovery": {
+    "mode": "live_required",
+    "sources": [
+      {
+        "id": "/press_releases.json",
+        "url": "https://www.justice.gov/api/v1/press_releases.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 264749,
+        "error": "",
+        "fetched_at": "2026-04-15T22:12:00.944469+00:00"
+      },
+      {
+        "id": "/blog_entries.json",
+        "url": "https://www.justice.gov/api/v1/blog_entries.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 3301,
+        "error": "",
+        "fetched_at": "2026-04-15T22:12:01.950966+00:00"
+      },
+      {
+        "id": "/speeches.json",
+        "url": "https://www.justice.gov/api/v1/speeches.json",
+        "status": "error",
+        "http_status": 404,
+        "count": 0,
+        "error": "404 Client Error: Not Found for url: https://www.justice.gov/api/v1/speeches.json?pagesize=1",
+        "fetched_at": "2026-04-15T22:12:03.197304+00:00"
+      }
+    ],
+    "docs": [
+      "https://www.justice.gov/developer"
+    ]
+  }
+}

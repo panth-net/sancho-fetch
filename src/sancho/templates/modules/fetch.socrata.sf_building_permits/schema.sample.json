@@ -1,0 +1,44 @@
+{
+  "provider": "fetch.socrata.sf_building_permits",
+  "generated_at": "2026-03-30T18:08:42.114883+00:00",
+  "columns": [
+    {
+      "name": "dataset_ref",
+      "type": "string",
+      "sample": "socrata_i98e-djp9"
+    },
+    {
+      "name": "endpoint",
+      "type": "string",
+      "sample": "https://data.sfgov.org/resource/i98e-djp9.json"
+    },
+    {
+      "name": "params",
+      "type": "dict",
+      "sample": {}
+    },
+    {
+      "name": "rows",
+      "type": "list",
+      "sample": []
+    },
+    {
+      "name": "raw",
+      "type": "list",
+      "sample": []
+    },
+    {
+      "name": "retrieved_at",
+      "type": "string",
+      "sample": "2026-03-30T18:08:42.114883+00:00"
+    }
+  ],
+  "sample_row": {
+    "dataset_ref": "socrata_i98e-djp9",
+    "endpoint": "https://data.sfgov.org/resource/i98e-djp9.json",
+    "params": {},
+    "rows": [],
+    "raw": [],
+    "retrieved_at": "2026-03-30T18:08:42.114883+00:00"
+  }
+}
