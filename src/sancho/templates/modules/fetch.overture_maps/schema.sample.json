@@ -1,0 +1,57 @@
+{
+  "provider": "fetch.overture_maps",
+  "generated_at": "2026-04-09T00:00:00.000000+00:00",
+  "note": "Requires DuckDB with spatial and httpfs extensions. Full dataset is ~500GB; always scope queries to a bounding box.",
+  "columns": [
+    {
+      "name": "dataset_ref",
+      "type": "string",
+      "sample": "intl_overture_maps"
+    },
+    {
+      "name": "source_url",
+      "type": "string",
+      "sample": "s3://overturemaps-us-west-2/release/2024-12-18.0/theme=places/type=*/*"
+    },
+    {
+      "name": "theme",
+      "type": "string",
+      "sample": "places"
+    },
+    {
+      "name": "release",
+      "type": "string",
+      "sample": "2024-12-18.0"
+    },
+    {
+      "name": "bbox",
+      "type": "array",
+      "sample": [-77.1, 38.8, -76.9, 39.0]
+    },
+    {
+      "name": "rows",
+      "type": "list",
+      "sample": []
+    },
+    {
+      "name": "row_count",
+      "type": "integer",
+      "sample": 0
+    },
+    {
+      "name": "retrieved_at",
+      "type": "string",
+      "sample": "2026-04-09T00:00:00.000000+00:00"
+    }
+  ],
+  "sample_row": {
+    "dataset_ref": "intl_overture_maps",
+    "source_url": "s3://overturemaps-us-west-2/release/2024-12-18.0/theme=places/type=*/*",
+    "theme": "places",
+    "release": "2024-12-18.0",
+    "bbox": [-77.1, 38.8, -76.9, 39.0],
+    "rows": [],
+    "row_count": 0,
+    "retrieved_at": "2026-04-09T00:00:00.000000+00:00"
+  }
+}

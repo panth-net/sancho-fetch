@@ -1,0 +1,20 @@
+{
+  "provider": "fetch.cdc.nwss",
+  "generated_at": "2026-05-06T00:00:00+00:00",
+  "columns": [
+    {
+      "name": "id",
+      "type": "string",
+      "sample": "Official public record or link"
+    },
+    {
+      "name": "source",
+      "type": "string",
+      "sample": "https://data.cdc.gov/resource/g653-rqe2.json"
+    }
+  ],
+  "sample_row": {
+    "id": "Official public record or link",
+    "source": "https://data.cdc.gov/resource/g653-rqe2.json"
+  }
+}

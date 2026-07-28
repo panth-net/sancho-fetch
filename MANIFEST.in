@@ -1,0 +1,5 @@
+# Keep the published sdist to what a build needs. Tests stay in the repo
+# (CI runs them from the checkout) but out of the distribution: the leak-scan
+# test necessarily names the identifier patterns it hunts for, and none of
+# those strings belong in a published artifact.
+prune tests

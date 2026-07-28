@@ -1,0 +1,37 @@
+{
+  "provider": "fetch.sec.company_submissions",
+  "schema_version": "1.0",
+  "generated_at": "2026-04-14T18:58:04.866502+00:00",
+  "stats": {
+    "family_count": 5,
+    "company_count": 10368,
+    "companies_count": 10368,
+    "companies_with_exchange": 10142
+  },
+  "discovery": {
+    "mode": "live_required",
+    "sources": [
+      {
+        "id": "/files/company_tickers.json",
+        "url": "https://www.sec.gov/files/company_tickers.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 10368,
+        "error": "",
+        "fetched_at": "2026-04-14T18:58:04.148053+00:00"
+      },
+      {
+        "id": "/files/company_tickers_exchange.json",
+        "url": "https://www.sec.gov/files/company_tickers_exchange.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 2,
+        "error": "",
+        "fetched_at": "2026-04-14T18:58:04.838901+00:00"
+      }
+    ],
+    "docs": [
+      "https://www.sec.gov/search-filings/edgar-application-programming-interfaces"
+    ]
+  }
+}

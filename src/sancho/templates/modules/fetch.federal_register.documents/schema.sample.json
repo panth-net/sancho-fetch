@@ -1,0 +1,44 @@
+{
+  "provider": "fetch.federal_register.documents",
+  "generated_at": "2026-03-30T18:08:42.114883+00:00",
+  "columns": [
+    {
+      "name": "dataset_ref",
+      "type": "string",
+      "sample": "usgov_federal_register"
+    },
+    {
+      "name": "endpoint",
+      "type": "string",
+      "sample": "https://www.federalregister.gov/api/v1/documents.json"
+    },
+    {
+      "name": "params",
+      "type": "dict",
+      "sample": {}
+    },
+    {
+      "name": "rows",
+      "type": "list",
+      "sample": []
+    },
+    {
+      "name": "raw",
+      "type": "list",
+      "sample": []
+    },
+    {
+      "name": "retrieved_at",
+      "type": "string",
+      "sample": "2026-03-30T18:08:42.114883+00:00"
+    }
+  ],
+  "sample_row": {
+    "dataset_ref": "usgov_federal_register",
+    "endpoint": "https://www.federalregister.gov/api/v1/documents.json",
+    "params": {},
+    "rows": [],
+    "raw": [],
+    "retrieved_at": "2026-03-30T18:08:42.114883+00:00"
+  }
+}

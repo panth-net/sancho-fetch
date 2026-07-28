@@ -1,0 +1,19 @@
+# Only ship what the hosted server needs. Keep the Docker build fast and the
+# image small. Anything not in this include list is excluded by default.
+*
+
+# Re-include only the paths the Dockerfile COPY lines reference.
+!pyproject.toml
+!README.md
+!src/
+!hosting/
+
+# And within those, still exclude caches, tests, and local junk.
+**/__pycache__
+**/*.pyc
+**/*.pyo
+**/.pytest_cache
+**/.venv
+**/.env
+**/.env.*
+src/**/tests/

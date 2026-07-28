@@ -1,0 +1,28 @@
+{
+  "provider": "fetch.wvs",
+  "generated_at": "2026-04-09T00:00:00+00:00",
+  "columns": [
+    {"name": "dataset_ref", "type": "string", "sample": "intl_wvs"},
+    {"name": "source_url", "type": "string", "sample": "https://www.worldvaluessurvey.org/WVSDocumentationWV7.jsp"},
+    {"name": "params", "type": "dict", "sample": {"file_path": null, "country": null, "wave": null}},
+    {"name": "rows", "type": "list", "sample": []},
+    {"name": "row_count", "type": "int", "sample": 0},
+    {"name": "raw", "type": "dict", "sample": {"status": "manual_download_required", "instructions": "World Values Survey requires a license agreement for data access."}},
+    {"name": "retrieved_at", "type": "string", "sample": "2026-04-09T00:00:00+00:00"}
+  ],
+  "sample_row": {
+    "dataset_ref": "intl_wvs",
+    "source_url": "https://www.worldvaluessurvey.org/WVSDocumentationWV7.jsp",
+    "params": {"file_path": null, "country": null, "wave": null},
+    "rows": [],
+    "row_count": 0,
+    "raw": {
+      "source_url": "https://www.worldvaluessurvey.org/WVSDocumentationWV7.jsp",
+      "status": "manual_download_required",
+      "instructions": "World Values Survey requires a license agreement for data access.\n1. Visit https://www.worldvaluessurvey.org/WVSDocumentationWV7.jsp\n2. Accept the license terms\n3. Download the SPSS (.sav) file\n4. Place it in your workspace and re-run with file_path pointing to it\nExample: {\"file_path\": \"fetched-data/WVS_Cross-National_Wave_7_v6_0.sav\"}",
+      "rows": [],
+      "row_count": 0
+    },
+    "retrieved_at": "2026-04-09T00:00:00+00:00"
+  }
+}

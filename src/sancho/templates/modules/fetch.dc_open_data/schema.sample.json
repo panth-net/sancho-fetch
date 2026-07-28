@@ -1,0 +1,44 @@
+{
+  "provider": "fetch.dc_open_data",
+  "generated_at": "2026-05-18T00:00:00+00:00",
+  "columns": [
+    {
+      "name": "SERVICEREQUESTID",
+      "type": "string",
+      "sample": "26-00297153"
+    },
+    {
+      "name": "SERVICECODEDESCRIPTION",
+      "type": "string",
+      "sample": "Container Removal"
+    },
+    {
+      "name": "SERVICETYPECODEDESCRIPTION",
+      "type": "string",
+      "sample": "SWMA- Solid Waste Management Admistration"
+    },
+    {
+      "name": "SERVICEORDERDATE",
+      "type": "integer_epoch_ms",
+      "sample": 1779067602000
+    },
+    {
+      "name": "WARD",
+      "type": "string",
+      "sample": "Ward 7"
+    },
+    {
+      "name": "STATUS_CODE",
+      "type": "string",
+      "sample": "OPEN"
+    }
+  ],
+  "sample_row": {
+    "SERVICEREQUESTID": "26-00297153",
+    "SERVICECODEDESCRIPTION": "Container Removal",
+    "SERVICETYPECODEDESCRIPTION": "SWMA- Solid Waste Management Admistration",
+    "SERVICEORDERDATE": 1779067602000,
+    "WARD": "Ward 7",
+    "STATUS_CODE": "OPEN"
+  }
+}

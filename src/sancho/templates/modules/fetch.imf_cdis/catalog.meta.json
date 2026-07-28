@@ -1,0 +1,29 @@
+{
+  "provider": "fetch.imf_cdis",
+  "schema_version": "1.0",
+  "generated_at": "2026-04-15T17:16:25.491856+00:00",
+  "stats": {
+    "family_count": 1,
+    "dataflow_count": 101,
+    "dataflows_count": 101,
+    "agency_count": 1,
+    "agencies_count": 1
+  },
+  "discovery": {
+    "mode": "live_required",
+    "sources": [
+      {
+        "id": "dataflow",
+        "url": "https://sdmxcentral.imf.org/ws/public/sdmxapi/rest/dataflow/IMF/all",
+        "status": "ok",
+        "http_status": 200,
+        "count": 101,
+        "error": "",
+        "fetched_at": "2026-04-15T17:16:25.489865+00:00"
+      }
+    ],
+    "docs": [
+      "https://data.imf.org/CDIS"
+    ]
+  }
+}

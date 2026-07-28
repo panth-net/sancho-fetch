@@ -1,0 +1,44 @@
+{
+  "provider": "fetch.sec.company_submissions",
+  "generated_at": "2026-03-30T18:59:54.810750+00:00",
+  "columns": [
+    {
+      "name": "dataset_ref",
+      "type": "string",
+      "sample": "usgov_sec_filings"
+    },
+    {
+      "name": "endpoint",
+      "type": "string",
+      "sample": "https://data.sec.gov/submissions/CIK0000320193.json"
+    },
+    {
+      "name": "params",
+      "type": "dict",
+      "sample": {}
+    },
+    {
+      "name": "rows",
+      "type": "list",
+      "sample": []
+    },
+    {
+      "name": "raw",
+      "type": "list",
+      "sample": []
+    },
+    {
+      "name": "retrieved_at",
+      "type": "string",
+      "sample": "2026-03-30T18:59:54.810750+00:00"
+    }
+  ],
+  "sample_row": {
+    "dataset_ref": "usgov_sec_filings",
+    "endpoint": "https://data.sec.gov/submissions/CIK0000320193.json",
+    "params": {},
+    "rows": [],
+    "raw": [],
+    "retrieved_at": "2026-03-30T18:59:54.810750+00:00"
+  }
+}

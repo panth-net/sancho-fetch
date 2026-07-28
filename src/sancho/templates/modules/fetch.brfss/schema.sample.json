@@ -1,0 +1,90 @@
+{
+  "provider": "fetch.brfss",
+  "generated_at": "2026-04-09T00:00:00.000000+00:00",
+  "columns": [
+    {
+      "name": "dataset_ref",
+      "type": "string",
+      "sample": "usgov_cdc_brfss"
+    },
+    {
+      "name": "source_url",
+      "type": "string",
+      "sample": "https://www.cdc.gov/brfss/annual_data/annual_2022.htm"
+    },
+    {
+      "name": "year",
+      "type": "integer",
+      "sample": 2022
+    },
+    {
+      "name": "file_kind",
+      "type": "string",
+      "sample": "data_xpt"
+    },
+    {
+      "name": "files",
+      "type": "list",
+      "sample": [
+        {
+          "name": "LLCP2022XPT.zip",
+          "url": "https://www.cdc.gov/brfss/annual_data/2022/files/LLCP2022XPT.zip",
+          "file_kind": "data_xpt",
+          "year": 2022,
+          "estimated_size": "~100-300 MB",
+          "link_text": "2022 BRFSS Data (SAS Transport Format)"
+        }
+      ]
+    },
+    {
+      "name": "rows",
+      "type": "list",
+      "sample": [
+        {
+          "name": "LLCP2022XPT.zip",
+          "url": "https://www.cdc.gov/brfss/annual_data/2022/files/LLCP2022XPT.zip",
+          "file_kind": "data_xpt",
+          "year": 2022,
+          "estimated_size": "~100-300 MB"
+        }
+      ]
+    },
+    {
+      "name": "row_count",
+      "type": "integer",
+      "sample": 1
+    },
+    {
+      "name": "retrieved_at",
+      "type": "string",
+      "sample": "2026-04-09T00:00:00.000000+00:00"
+    }
+  ],
+  "sample_row": {
+    "dataset_ref": "usgov_cdc_brfss",
+    "source_url": "https://www.cdc.gov/brfss/annual_data/annual_2022.htm",
+    "year": 2022,
+    "file_kind": "data_xpt",
+    "files": [
+      {
+        "name": "LLCP2022XPT.zip",
+        "url": "https://www.cdc.gov/brfss/annual_data/2022/files/LLCP2022XPT.zip",
+        "file_kind": "data_xpt",
+        "year": 2022,
+        "estimated_size": "~100-300 MB",
+        "link_text": "2022 BRFSS Data (SAS Transport Format)"
+      }
+    ],
+    "rows": [
+      {
+        "name": "LLCP2022XPT.zip",
+        "url": "https://www.cdc.gov/brfss/annual_data/2022/files/LLCP2022XPT.zip",
+        "file_kind": "data_xpt",
+        "year": 2022,
+        "estimated_size": "~100-300 MB"
+      }
+    ],
+    "row_count": 1,
+    "retrieved_at": "2026-04-09T00:00:00.000000+00:00"
+  }
+}

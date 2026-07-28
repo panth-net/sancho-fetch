@@ -1,0 +1,22 @@
+{
+  "provider": "fetch.earthengine",
+  "generated_at": "2026-04-12T00:00:00+00:00",
+  "columns": [
+    {"name": "dataset_ref", "type": "string", "sample": "earthengine"},
+    {"name": "dataset_id", "type": "string", "sample": "MODIS/006/MOD13A2"},
+    {"name": "mode", "type": "string", "sample": "raster"},
+    {"name": "rows", "type": "list", "sample": []},
+    {"name": "row_count", "type": "int", "sample": 1},
+    {"name": "raw", "type": "dict", "sample": {}},
+    {"name": "retrieved_at", "type": "string", "sample": "2026-04-12T00:00:00+00:00"}
+  ],
+  "sample_row": {
+    "dataset_ref": "earthengine",
+    "dataset_id": "MODIS/006/MOD13A2",
+    "mode": "raster",
+    "rows": [{"NDVI": 0.65, "EVI": 0.42}],
+    "row_count": 1,
+    "raw": {},
+    "retrieved_at": "2026-04-12T00:00:00+00:00"
+  }
+}

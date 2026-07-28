@@ -1,0 +1,31 @@
+{
+  "provider": "fetch.cfpb.complaints",
+  "schema_version": "1.0",
+  "generated_at": "2026-04-15T22:05:53.937841+00:00",
+  "stats": {
+    "family_count": 3,
+    "aggregation_count": 12,
+    "aggregations_count": 12,
+    "total_bucket_count": 6802,
+    "field_count": 19,
+    "fields_count": 19,
+    "total_complaints": 14533627
+  },
+  "discovery": {
+    "mode": "live_required",
+    "sources": [
+      {
+        "id": "aggregations",
+        "url": "https://www.consumerfinance.gov/data-research/consumer-complaints/search/api/v1/",
+        "status": "ok",
+        "http_status": 200,
+        "count": 14533627,
+        "error": "",
+        "fetched_at": "2026-04-15T22:05:53.933355+00:00"
+      }
+    ],
+    "docs": [
+      "https://cfpb.github.io/api/ccdb/"
+    ]
+  }
+}

@@ -1,0 +1,98 @@
+{
+  "provider": "fetch.epa.echo_facilities",
+  "schema_version": "1.0",
+  "generated_at": "2026-04-15T13:55:46.325852+00:00",
+  "stats": {
+    "family_count": 8,
+    "service_count": 6,
+    "services_count": 6,
+    "column_count": 855,
+    "columns_count": 855,
+    "service_air_column_count": 163,
+    "service_cwa_column_count": 260,
+    "service_rcra_column_count": 111,
+    "service_sdw_column_count": 78,
+    "service_case_column_count": 41,
+    "service_echo_column_count": 202
+  },
+  "discovery": {
+    "mode": "live_required",
+    "sources": [
+      {
+        "id": "service.air",
+        "url": "https://echodata.epa.gov/echo/air_rest_services.metadata",
+        "status": "ok",
+        "http_status": 200,
+        "count": 163,
+        "error": "",
+        "fetched_at": "2026-04-15T13:55:40.437704+00:00"
+      },
+      {
+        "id": "service.cwa",
+        "url": "https://echodata.epa.gov/echo/cwa_rest_services.metadata",
+        "status": "ok",
+        "http_status": 200,
+        "count": 260,
+        "error": "",
+        "fetched_at": "2026-04-15T13:55:41.336435+00:00"
+      },
+      {
+        "id": "service.rcra",
+        "url": "https://echodata.epa.gov/echo/rcra_rest_services.metadata",
+        "status": "ok",
+        "http_status": 200,
+        "count": 111,
+        "error": "",
+        "fetched_at": "2026-04-15T13:55:42.150163+00:00"
+      },
+      {
+        "id": "service.sdw",
+        "url": "https://echodata.epa.gov/echo/sdw_rest_services.metadata",
+        "status": "ok",
+        "http_status": 200,
+        "count": 78,
+        "error": "",
+        "fetched_at": "2026-04-15T13:55:43.017107+00:00"
+      },
+      {
+        "id": "service.case",
+        "url": "https://echodata.epa.gov/echo/case_rest_services.metadata",
+        "status": "ok",
+        "http_status": 200,
+        "count": 41,
+        "error": "",
+        "fetched_at": "2026-04-15T13:55:43.787699+00:00"
+      },
+      {
+        "id": "service.eff",
+        "url": "https://echodata.epa.gov/echo/eff_rest_services.metadata",
+        "status": "error",
+        "http_status": 500,
+        "count": 0,
+        "error": "500 Server Error: Internal Server Error for url: https://echodata.epa.gov/echo/eff_rest_services.metadata?output=JSON",
+        "fetched_at": "2026-04-15T13:55:44.547269+00:00"
+      },
+      {
+        "id": "service.dfr",
+        "url": "https://echodata.epa.gov/echo/dfr_rest_services.metadata",
+        "status": "error",
+        "http_status": 500,
+        "count": 0,
+        "error": "500 Server Error: Internal Server Error for url: https://echodata.epa.gov/echo/dfr_rest_services.metadata?output=JSON",
+        "fetched_at": "2026-04-15T13:55:45.319503+00:00"
+      },
+      {
+        "id": "service.echo",
+        "url": "https://echodata.epa.gov/echo/echo_rest_services.metadata",
+        "status": "ok",
+        "http_status": 200,
+        "count": 202,
+        "error": "",
+        "fetched_at": "2026-04-15T13:55:46.322256+00:00"
+      }
+    ],
+    "docs": [
+      "https://echo.epa.gov/tools/web-services"
+    ]
+  }
+}

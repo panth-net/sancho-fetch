@@ -1,0 +1,20 @@
+{
+  "provider": "fetch.hrsa.nsch",
+  "generated_at": "2026-05-06T00:00:00+00:00",
+  "columns": [
+    {
+      "name": "title",
+      "type": "string",
+      "sample": "Official public record or link"
+    },
+    {
+      "name": "url",
+      "type": "string",
+      "sample": "https://mchb.hrsa.gov/data-research/national-survey-childrens-health"
+    }
+  ],
+  "sample_row": {
+    "title": "Official public record or link",
+    "url": "https://mchb.hrsa.gov/data-research/national-survey-childrens-health"
+  }
+}

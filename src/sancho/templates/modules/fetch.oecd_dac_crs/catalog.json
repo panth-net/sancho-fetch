@@ -1,0 +1,250 @@
+{
+  "provider": "fetch.oecd_dac_crs",
+  "schema_version": "1.0",
+  "generated_at": "2026-04-15T17:19:49.912769+00:00",
+  "families": [
+    {
+      "id": "sdmx.dataflow",
+      "base_aliases": [
+        "v1"
+      ],
+      "base_url": "https://sdmx.oecd.org/dcd-public/rest",
+      "path_templates": [
+        "/dataflow/all/all",
+        "/dataflow/{agency}/{id}/{version}",
+        "/data/{agency},{dataflow},{version}/{key}",
+        "/datastructure/{agency}/{id}/{version}",
+        "/codelist/{agency}/{id}/{version}"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "query_params": {
+        "startPeriod": {
+          "type": "string",
+          "description": "Start period"
+        },
+        "endPeriod": {
+          "type": "string",
+          "description": "End period"
+        },
+        "dimensionAtObservation": {
+          "type": "string",
+          "examples": [
+            "TIME_PERIOD",
+            "AllDimensions"
+          ]
+        },
+        "detail": {
+          "type": "string",
+          "examples": [
+            "full",
+            "dataonly",
+            "serieskeysonly",
+            "nodata"
+          ]
+        },
+        "format": {
+          "type": "string",
+          "examples": [
+            "jsondata",
+            "structurespecific",
+            "generic"
+          ]
+        }
+      },
+      "response_mode": "json",
+      "envelope_key": "data.dataflows",
+      "description": "SDMX-REST dataflow catalog for fetch.oecd_dac_crs. See catalog.json.dataflows[].",
+      "source_refs": [
+        "https://data-explorer.oecd.org/?tm=dac&lc=en"
+      ]
+    }
+  ],
+  "dataflows": [
+    {
+      "id": "DSD_CPA@DF_CRS_CPA",
+      "agencyID": "OECD.DCD.FSD",
+      "version": "1.4",
+      "name": "Country Programmable Aid (CPA)",
+      "description": "<p>Country Programmable Aid (CPA) refers to official development assistance (ODA) that is subject to multi-year planning at the country or regional level. The OECD has published data on CPA at the aggregate level (provider-partner country) since 2007.</p><p>This data represents an update to the measurement of CPA. The main improvement is that this version is derived entirely from the OECD's aid activity database, the Creditor Reporting System (CRS). CPA is calculated by subtracting the following categories of aid from the total of gross bilateral ODA (category = 10):</p><ul><li>Debt relief (modality: F01 and sector: 600)</li><li>Humanitarian aid (sector codes: 720,730,740)</li><li>Administrative costs not included elsewhere (modality: G01 and sector: 910)</li><li>Scholarships/training in donor country (modality: E01)</li><li>Imputed student costs (modality: E02)</li><li>Promotion of development awareness (modality: H01)</li><li>Refugees in donor country (modality: H02-H06 and sector: 930)</li><li>Core support to NGOs (modality: B01)</li><li>Equity investments (measure: 5xx)</li><li>Other unallocated (sector code: 998 OR recipient: \"Developing countries unspecified\")</li><li>CPA = 1 (see \"Agency\" sheet in the 'DAC and CRS code lists', under <a href=\"https://www.oecd.org/en/data/insights/data-explainers/2024/10/resources-for-reporting-development-finance-statistics.html\">Resources and guidance material for reporters</a>)</li></ul><p>This measurement is an improvement from the previous CPA measure, which was derived from a combination of the OECD's aggregate aid tables and the CRS, resulting in an aggregate (provider-partner country) perspective on CPA. The result of the new measure is an activity-level perspective on CPA that provides much greater transparency on its composition and thereby allows users to conduct more granular analysis (e.g., by sector, channel, modality, etc.) on who is giving CPA where, how, and for what purpose. The measure is also therefore more replicable to users.</p><p>The time series of the CPA measure starts with 2022 in the \u201cTable\u201d view to differentiate it from the previous CPA measure, which was calculated at an aggregate level up to 2021. These two measures should not be presented together in a time series. For users who are interested in the time series using the new CPA measure, a version of the dataset that applies the new CPA measure retroactively from 2010 onwards has been produced and can be found under, \u201cRelated files\u201d.</p><p>For more information on this measure, please see: <a href=\"https://www.oecd.org/en/data/insights/data-explainers/2025/02/country-programmable-aid-in-official-development-assistance.html\">Country programmable aid in official development assistance (ODA)</a>.</p>",
+      "structure": {
+        "id": "DSD_CPA",
+        "agencyID": "OECD.DCD.FSD",
+        "version": "1.4",
+        "class": "DataStructure",
+        "package": "datastructure"
+      },
+      "annotations_count": 0
+    },
+    {
+      "id": "DSD_CRS@DF_CRS",
+      "agencyID": "OECD.DCD.FSD",
+      "version": "1.6",
+      "name": "CRS: Creditor Reporting System (flows)",
+      "description": "<p>This dataset provides readily available, granular data on who is giving what aid, to where, and for what purpose, on a flow basis. These data are comparable across all providers who report their activity-level statistics to the OECD.</p><p>Please consult our database of <a href=\"https://development-finance-codelists.oecd.org/CodesList.aspx\">development finance classifications</a> for further information on all possible codes for each attribute.</p><p>Users of the \"related files\", which contain the raw data by year (or altogether in .parquet format), may find descriptions of each column on the sheet \"CRS bulk data \u2013 codebook\" of <a href=\"https://webfs.oecd.org/oda/DataCollection/Resources/DAC-tables-CRS-codebook.xlsx\">this Excel file</a>.</p><p>For more information on these flows, please see the OECD's main page on <a href=\"https://www.oecd.org/en/topics/official-development-assistance-oda.html\">official development assistance</a> and <a href=\"https://www.oecd.org/en/topics/finance-for-sustainable-development.html\">finance for sustainable development</a>, including <a href=\"https://www.oecd.org/en/data/insights/data-explainers/2024/07/frequently-asked-questions-on-official-development-assistance-oda.html\">frequently asked questions (FAQs)</a> on ODA. See also the <a href=\"https://one.oecd.org/document/DCD/DAC(2024)40/FINAL/en/pdf\">converged statistical reporting directives</a> governing these data, alongside <a href=\"https://www.oecd.org/content/oecd/en/data/insights/data-explainers/2024/10/resources-for-reporting-development-finance-statistics.html\">other guidance on using our data</a>. You may also be interested in our latest <a href=\"https://www.oecd.org/en/data/dashboards-and-tools.html?orderBy=mostRecent&page=0&facetTags=oecd-policy-areas%3Apa3\">dashboards</a>.</p>",
+      "structure": {
+        "id": "DSD_CRS",
+        "agencyID": "OECD.DCD.FSD",
+        "version": "1.6",
+        "class": "DataStructure",
+        "package": "datastructure"
+      },
+      "annotations_count": 0
+    },
+    {
+      "id": "DSD_GNDR@DF_GENDER",
+      "agencyID": "OECD.DCD.FSD",
+      "version": "1.6",
+      "name": "Gender Equality: Aid (ODA) activities in support of gender equality and women's empowerment",
+      "description": "<p>This dataset contains data on bilateral allocable ODA in support of gender equality and women's empowerment, using the OECD DAC Gender Equality policy marker, from the Development Assistance Committee (DAC) Creditor Reporting System (CRS). These data are available for commitments since 2002 and disbursements since 2009.</p><p>In their reporting to the CRS, providers are requested to indicate for each activity whether or not it includes gender equality as one of its policy objectives. An activity can include gender equality as its \"principal\" objective (score 2) or as a \"significant\" objective (score 1), or not at all \"screened, not targeted\" (score 0). An activity may also be \"not screened\" against the marker (blank or empty field). The column \"Gender total\" includes the activities marked as \"principal\" plus those marked as \"significant\".</p><p>For more information on the gender equality marker, see the <a href=\"https://one.oecd.org/document/DCD/DAC/GEN(2025)2/en/pdf\">Handbook on the OECD-DAC Gender Equality Policy Marker</a>. Please see the OECD's main page on <a href=\"https://www.oecd.org/en/topics/official-development-assistance-oda.html\">official development assistance</a> and <a href=\"https://www.oecd.org/en/topics/finance-for-sustainable-development.html\">finance for sustainable development</a>, including <a href=\"https://www.oecd.org/en/data/insights/data-explainers/2024/07/frequently-asked-questions-on-official-development-assistance-oda.html\">frequently asked questions (FAQs)</a> on ODA. See also the <a href=\"https://one.oecd.org/document/DCD/DAC(2024)40/FINAL/en/pdf\">converged statistical reporting directives</a> governing these data, alongside <a href=\"https://www.oecd.org/content/oecd/en/data/insights/data-explainers/2024/10/resources-for-reporting-development-finance-statistics.html\">other guidance on using our data</a>.</p><p>To view these data presented in ready-made charts, see the <a href=\"https://www.oecd.org/en/data/dashboards/development-finance-for-gender-equality.html\">Dashboard on Development Finance for Gender Equality</a>.</p>",
+      "structure": {
+        "id": "DSD_GNDR",
+        "agencyID": "OECD.DCD.FSD",
+        "version": "1.6",
+        "class": "DataStructure",
+        "package": "datastructure"
+      },
+      "annotations_count": 0
+    },
+    {
+      "id": "DSD_GREQ@DF_CRS_GREQ",
+      "agencyID": "OECD.DCD.FSD",
+      "version": "1.6",
+      "name": "CRS: Creditor Reporting System grant equivalent",
+      "description": "<p>This dataset provides readily available, granular data on who is giving what aid, to where, and for what purpose, on a grant equivalent basis, and are available for data from 2018 onwards. These data are comparable across all providers who report their activity-level statistics to the OECD.</p><p>Please consult our database of <a href=\"https://development-finance-codelists.oecd.org/CodesList.aspx\">development finance classifications</a> for further information on all possible codes for each attribute.</p><p>For more information on these flows, please see the OECD's main page on <a href=\"https://www.oecd.org/en/topics/official-development-assistance-oda.html\">official development assistance</a> and <a href=\"https://www.oecd.org/en/topics/finance-for-sustainable-development.html\">finance for sustainable development</a>, including <a href=\"https://www.oecd.org/en/data/insights/data-explainers/2024/07/frequently-asked-questions-on-official-development-assistance-oda.html\">frequently asked questions (FAQs)</a> on ODA. See also the <a href=\"https://one.oecd.org/document/DCD/DAC(2024)40/FINAL/en/pdf\">converged statistical reporting directives</a> governing these data, alongside <a href=\"https://www.oecd.org/content/oecd/en/data/insights/data-explainers/2024/10/resources-for-reporting-development-finance-statistics.html\">other guidance on using our data</a>.</p>",
+      "structure": {
+        "id": "DSD_GREQ",
+        "agencyID": "OECD.DCD.FSD",
+        "version": "1.6",
+        "class": "DataStructure",
+        "package": "datastructure"
+      },
+      "annotations_count": 0
+    },
+    {
+      "id": "DSD_MOB@DF_MOBILISATION",
+      "agencyID": "OECD.DCD.FSD",
+      "version": "1.1",
+      "name": "CRS \u2013 Private: Mobilised private finance for development",
+      "description": "<p>This dataset presents information on amounts mobilised from the private sector from members' official sector interventions. The term \"mobilisation\" describes the causal link between private finance made available for a specific project and an official intervention.</p><p>Please also consult the <a href=\"https://www.oecd.org/en/data/dashboards/mobilisation-of-private-finance-for-development.html\">OECD Dashboard on Mobilisation</a>, as well as our database of <a href=\"https://development-finance-codelists.oecd.org/CodesList.aspx\">development finance classifications</a> for further information on all possible codes for each attribute.</p><p>For more information on these flows, please see the OECD's main page on <a href=\"https://www.oecd.org/en/topics/finance-for-sustainable-development.html\">finance for sustainable development</a> and <a href=\"https://www.oecd.org/en/topics/leveraging-private-finance-for-development.html\">Mobilising Private Finance</a>. See also the <a href=\"https://one.oecd.org/document/DCD/DAC(2024)40/FINAL/en/pdf\">converged statistical reporting directives</a> governing these data, alongside <a href=\"https://www.oecd.org/content/oecd/en/data/insights/data-explainers/2024/10/resources-for-reporting-development-finance-statistics.html\">other guidance on using our data</a>.</p>",
+      "structure": {
+        "id": "DSD_MOB",
+        "agencyID": "OECD.DCD.FSD",
+        "version": "1.1",
+        "class": "DataStructure",
+        "package": "datastructure"
+      },
+      "annotations_count": 0
+    },
+    {
+      "id": "DSD_MULTI@DF_MULTI",
+      "agencyID": "OECD.DCD.FSD",
+      "version": "1.6",
+      "name": "Providers' total use of the multilateral system",
+      "description": "<p>This dataset presents providers' total use of the multilateral system, including their multilateral aid (\"Core contributions to\") and bilateral aid channelled through multilateral organisations (\"Contributions through\"). These data originate from members' reporting to the Development Assistance Committee (DAC) Creditor Reporting System (CRS). These data are published starting with 2011 data \u2013 activity-level data for multilateral aid is not complete in CRS for earlier years.</p><p>Please consult our database of <a href=\"https://development-finance-codelists.oecd.org/CodesList.aspx\">development finance classifications</a> for further information on all possible codes for each attribute.</p><p>For more information on these flows, please see the OECD's main page on <a href=\"https://www.oecd.org/en/topics/official-development-assistance-oda.html\">official development assistance</a> and <a href=\"https://www.oecd.org/en/topics/finance-for-sustainable-development.html\">finance for sustainable development</a>, including <a href=\"https://www.oecd.org/en/data/insights/data-explainers/2024/07/frequently-asked-questions-on-official-development-assistance-oda.html\">frequently asked questions (FAQs)</a> on ODA. See also the <a href=\"https://one.oecd.org/document/DCD/DAC(2024)40/FINAL/en/pdf\">converged statistical reporting directives</a> governing these data, alongside <a href=\"https://www.oecd.org/content/oecd/en/data/insights/data-explainers/2024/10/resources-for-reporting-development-finance-statistics.html\">other guidance on using our data</a>.</p><p><b>Please note</b>: the raw data, available under \"Related files\" below, has been updated on 06/02/2025 to reflect a correction related to the inclusion/exclusion of certain criteria, which affected the overall values for certain providers. Please refer to this file for the latest, corrected version.</p>",
+      "structure": {
+        "id": "DSD_MULTI",
+        "agencyID": "OECD.DCD.FSD",
+        "version": "1.6",
+        "class": "DataStructure",
+        "package": "datastructure"
+      },
+      "annotations_count": 0
+    },
+    {
+      "id": "DSD_OTHMRKR@DF_OTHERMARKERS",
+      "agencyID": "OECD.DCD.FSD",
+      "version": "1.6",
+      "name": "OtherMarkers: Aid (ODA) activities targeting other policy objectives",
+      "description": "<p>This dataset contains bilateral commitment data on aid in support of five policy markers: 1) democratic and inclusive governance, 2) reproductive, maternal, newborn and child health (RMNCH), 3) nutrition, 4) inclusion and empowerment of persons with disabilities, and 5) disaster risk reduction (DRR) from the Development Assistance Committee (DAC) Creditor Reporting System (CRS) database.</p><p>In their reporting to the DAC CRS, donors are requested to indicate, for each activity, whether it targets the above-mentioned markers or not. A scoring system of three values is used, in which aid activities are marked as targeting the policy objective as either as the \"principal\" or \"significant\" objective, or not at all. Reporting is voluntary for the nutrition and disability markers.</p><p>For more information on these flows, please see the OECD's main page on <a href=\"https://www.oecd.org/en/topics/official-development-assistance-oda.html\">official development assistance</a> and <a href=\"https://www.oecd.org/en/topics/finance-for-sustainable-development.html\">finance for sustainable development</a>, including <a href=\"https://www.oecd.org/en/data/insights/data-explainers/2024/07/frequently-asked-questions-on-official-development-assistance-oda.html\">frequently asked questions (FAQs)</a> on ODA. See also the <a href=\"https://one.oecd.org/document/DCD/DAC(2024)40/FINAL/en/pdf\">converged statistical reporting directives</a> governing these data, alongside <a href=\"https://www.oecd.org/content/oecd/en/data/insights/data-explainers/2024/10/resources-for-reporting-development-finance-statistics.html\">other guidance on using our data</a>.</p>",
+      "structure": {
+        "id": "DSD_OTHMRKR",
+        "agencyID": "OECD.DCD.FSD",
+        "version": "1.6",
+        "class": "DataStructure",
+        "package": "datastructure"
+      },
+      "annotations_count": 0
+    },
+    {
+      "id": "DSD_PPFD@DF_PPFD",
+      "agencyID": "OECD.DCD.FSD",
+      "version": "1.6",
+      "name": "Private Philanthropy for Development",
+      "description": "<p>This dataset provides project-level information for over 40 of the largest private philanthropic foundations working for development. The data is reported to the OECD's Development Co-operation Directorate, using the same statistical standards and definitions as for ODA.</p><p>For providers who are unable to share data on both commitments and disbursements, the missing flow type is proxied based on the one that is available. Explore profiles of private philanthropic providers <a href=\"https://www.oecd.org/en/topics/development-co-operation-profiles.html#private-philanthropic-providers\">Development co-operation profiles</a>.</p><p>For more information on these flows, please see the OECD's main page on <a href=\"https://www.oecd.org/en/topics/official-development-assistance-oda.html\">official development assistance</a> and <a href=\"https://www.oecd.org/en/topics/finance-for-sustainable-development.html\">finance for sustainable development</a>, including <a href=\"https://www.oecd.org/en/data/insights/data-explainers/2024/07/frequently-asked-questions-on-official-development-assistance-oda.html\">frequently asked questions (FAQs)</a> on ODA. See also the <a href=\"https://one.oecd.org/document/DCD/DAC(2024)40/FINAL/en/pdf\">converged statistical reporting directives</a> governing these data, alongside <a href=\"https://www.oecd.org/content/oecd/en/data/insights/data-explainers/2024/10/resources-for-reporting-development-finance-statistics.html\">other guidance on using our data</a>.</p>",
+      "structure": {
+        "id": "DSD_PPFD",
+        "agencyID": "OECD.DCD.FSD",
+        "version": "1.6",
+        "class": "DataStructure",
+        "package": "datastructure"
+      },
+      "annotations_count": 0
+    },
+    {
+      "id": "DSD_PSI@DF_PSI",
+      "agencyID": "OECD.DCD.FSD",
+      "version": "1.1",
+      "name": "Private sector instruments (PSI)",
+      "description": "<p>Private sector instruments (PSI) include loans to the private sector, guarantees, equity investments, mezzanine finance instruments, and reimbursable grants. In 2023, the Development Assistance Committee (DAC) revised its rules for treating PSI in Official Development Assistance (ODA). The agreed treatment of PSI aims to enhance the measurement of donor effort, stimulate innovation in development finance, and encourage the mobilisation of private finance. It also seeks to promote local private sector development and domestic resource mobilisation, while strengthening ODA integrity.</p><p>This dataset provides readily available, granular data on who is extending PSI, to where, using which financial instruments and for what purpose. The data is presented both on a flow and grant equivalent bases (the latter being the measurement basis for ODA since 2018) and includes information of the additionality of the transactions with the private sector. The data are comparable across all providers who report their activity-level statistics to the OECD.</p><p>Please consult our database of <a href=\"https://development-finance-codelists.oecd.org/CodesList.aspx\">development finance classifications</a> for further information on all possible codes for each attribute.</p><p>For more information on PSI, please see the OECD's pages on <a href=\"https://www.oecd.org/en/topics/oda-standards.html\">ODA standards</a> and <a href=\"https://www.oecd.org/en/topics/sub-issues/oda-standards/modernising-official-development-assistance-oda.html\">ODA modernisation</a>, including <a href=\"https://www.oecd.org/en/data/insights/data-explainers/2025/03/modernising-official-development-assistance-oda-frequently-asked-questions.html\">frequently asked questions (FAQs)</a> on ODA modernisation and PSI. See also the <a href=\"https://one.oecd.org/document/DCD/DAC%282024%2940/ADD3/FINAL/en/pdf\">addendum 3 of the converged statistical reporting directives</a> governing PSI data, the <a href=\"https://one.oecd.org/document/DCD/DAC/STAT(2024)15/en/pdf\">Handbook on private sector instruments</a>, alongside <a href=\"https://www.oecd.org/en/data/insights/data-explainers/2024/10/resources-for-reporting-development-finance-statistics.html\">other guidance on using our data</a>. You can also consult the dashboard on private sector instruments providing further data visualisations on PSI (forthcoming).</p>",
+      "structure": {
+        "id": "DSD_PSI",
+        "agencyID": "OECD.DCD.FSD",
+        "version": "1.1",
+        "class": "DataStructure",
+        "package": "datastructure"
+      },
+      "annotations_count": 0
+    },
+    {
+      "id": "DSD_RIOMRKR@DF_RIOMARKERS",
+      "agencyID": "OECD.DCD.FSD",
+      "version": "1.6",
+      "name": "RioMarkers: Aid (ODA) activities targeting global environmental objectives",
+      "description": "<p>This dataset contains bilateral commitment data on aid in support of environment sustainability and aid to biodiversity, climate change mitigation, climate change adaptation and desertification from the Development Assistance Committee (DAC) Creditor Reporting System (CRS) database.</p><p>In their reporting to the DAC CRS, donors are requested to indicate for each activity whether it targets environment and the Rio Conventions (biodiversity, climate change mitigation, climate change adaptation and desertification) or not. A scoring system of three values is used, in which aid activities are marked as targeting environment as the \"principal\" or \"significant\" objective, or not at all. For more information on the scoring and criteria, please <a href=\"https://web-archive.oecd.org/temp/2023-05-22/658061-rioconventions.htm\">see here</a>. Please note that the same activity can be marked for several objectives, and therefore caution should be used to avoid double-counting.</p><p>For more information on these flows, please see the OECD's main page on <a href=\"https://www.oecd.org/en/topics/official-development-assistance-oda.html\">official development assistance</a> and <a href=\"https://www.oecd.org/en/topics/finance-for-sustainable-development.html\">finance for sustainable development</a>, including <a href=\"https://www.oecd.org/en/data/insights/data-explainers/2024/07/frequently-asked-questions-on-official-development-assistance-oda.html\">frequently asked questions (FAQs)</a> on ODA. See also the <a href=\"https://one.oecd.org/document/DCD/DAC(2024)40/FINAL/en/pdf\">converged statistical reporting directives</a> governing these data, alongside <a href=\"https://www.oecd.org/content/oecd/en/data/insights/data-explainers/2024/10/resources-for-reporting-development-finance-statistics.html\">other guidance on using our data</a>.</p>",
+      "structure": {
+        "id": "DSD_RIOMRKR",
+        "agencyID": "OECD.DCD.FSD",
+        "version": "1.6",
+        "class": "DataStructure",
+        "package": "datastructure"
+      },
+      "annotations_count": 0
+    },
+    {
+      "id": "DF_TEST_MEI",
+      "agencyID": "OECD.SDD.SDPS",
+      "version": "1.0",
+      "name": "TEST - Main Economic Indicators Publication",
+      "description": "",
+      "structure": {
+        "id": "DSD_TEST_MEI",
+        "agencyID": "OECD.SDD.SDPS",
+        "version": "1.0",
+        "class": "DataStructure",
+        "package": "datastructure"
+      },
+      "annotations_count": 0
+    },
+    {
+      "id": "DSD_DD_HCL@DF_DD_HCL_TEST",
+      "agencyID": "OECD.SDD.SDPS",
+      "version": "1.0",
+      "name": "DD HCL order hierarcy test",
+      "description": "<div>OECD statistics contact:&nbsp;<a href=\"mailto:stat.contact@oecd.org\">stat.contact@oecd.org</a></div><div><a href=\"http://www.oecd.org/sdd\">http://www.oecd.org/sdd</a></div><div>The currency unit used for all series is:<br />Millions of US dollars.</div><div>The OECD-WTO Balanced Trade in Services (BaTIS) dataset is a complete, consistent and balanced matrix of international trade in services statistics (ITSS). It contains annual bilateral data covering 202 reporters and partners, broken down by the 12 main EBOPS2010 (BPM6) categories.<br />BaTIS is the result of joint efforts by the OECD and WTO. Two main features enable BaTIS to stand out as the international benchmark for any analysis on international trade in services:<br />I. BaTIS is complete and consistent. At present, only about 63% of world trade in services is bilaterally specified, and the percentage is even lower for the individual service categories. The OECD-WTO methodology leverages all available official statistics and combines them with estimations and adjustments to provide users with a complete matrix covering virtually all economies in the world.<br />II. BaTIS is balanced. To resolve the asymmetries between reported and mirror flows, exports and imports are reconciled by calculating a symmetry-index weighted average between the two, following a similar approach to that developed for international merchandise trade statistics.</div><div>The dataset includes three core variables:<br />- Reported value, which reflects the value officially reported by the country (where available);<br />- Reported value including estimates, which reflects, in addition to the reported values, any adjustments made to ensure internal consistency as well as the estimations made by the OECD-WTO to fill in the gaps in the reported information; and:<br />- Final balanced value, which reflects the reconciled bilateral trade flow, where exports equal mirror imports.</div><div>Official information on bilateral trade flows was collected from OECD, Eurostat, national sources as well as UNSD. The WTO-UNCTAD trade in services dataset, based on a number of primary sources complemented with estimations, was the main source for data with partner world.</div><div>The BaTIS dataset can be used as a stand-alone input for economic analysis and policy-making. In addition, balanced trade in services data form an essential input to the OECD Trade in Value Added (TiVA) initiative, for which a balanced view of international trade is crucial.<br />BaTIS is intended to be regularly updated and constantly improved as new data become available. The present version of dataset covers the years 2005-2021.</div></p><p><a href=\"https://www.oecd.org/sdd/its/OECD-WTO-Balanced-Trade-in-Services-database-methodology-BPM6.pdf\">The methodology followed to build the dataset is detailed in the accompanying paper</a><br /><a href=\"http://stats.oecd.org/wbos/fileview2.aspx?IDFile=d9c1aad4-a462-4157-a8ad-c60b58ccd980\">The dataset is also available for bulk download, with its corresponding explanatory file (see related files)</a><br /><a href=\"https://www.oecd.org/sdd/its/balanced-trade-statistics.htm\">Click here to access the dedicated webpage to OECD Balanced Trade Statistics</a>",
+      "structure": {
+        "id": "DSD_DD_HCL",
+        "agencyID": "OECD.SDD.SDPS",
+        "version": "1.0",
+        "class": "DataStructure",
+        "package": "datastructure"
+      },
+      "annotations_count": 0
+    }
+  ],
+  "agencies": {
+    "OECD.DCD.FSD": 10,
+    "OECD.SDD.SDPS": 2
+  }
+}

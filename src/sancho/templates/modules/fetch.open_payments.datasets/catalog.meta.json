@@ -1,0 +1,35 @@
+{
+  "provider": "fetch.open_payments.datasets",
+  "schema_version": "1.0",
+  "generated_at": "2026-04-14T19:00:10.973312+00:00",
+  "stats": {
+    "family_count": 1,
+    "dataset_count": 74,
+    "datasets_count": 74,
+    "distribution_count": 74,
+    "distributions_count": 74,
+    "keyword_count": 8,
+    "keywords_count": 8,
+    "theme_count": 4,
+    "themes_count": 4,
+    "publisher_count": 1,
+    "publishers_count": 1
+  },
+  "discovery": {
+    "mode": "live_required",
+    "sources": [
+      {
+        "id": "/data.json",
+        "url": "https://openpaymentsdata.cms.gov/data.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 74,
+        "error": "",
+        "fetched_at": "2026-04-14T19:00:10.970320+00:00"
+      }
+    ],
+    "docs": [
+      "https://openpaymentsdata.cms.gov/api"
+    ]
+  }
+}

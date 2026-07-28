@@ -1,0 +1,432 @@
+{
+  "provider": "fetch.usgs.earthquakes",
+  "schema_version": "1.0",
+  "generated_at": "2026-04-14T18:25:48.742051+00:00",
+  "families": [
+    {
+      "id": "query",
+      "base_aliases": [
+        "v1"
+      ],
+      "base_url": "https://earthquake.usgs.gov/fdsnws/event/1",
+      "path_templates": [
+        "/query"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "query_params": {
+        "format": {
+          "type": "string",
+          "description": "Response format",
+          "examples": [
+            "geojson",
+            "csv",
+            "xml",
+            "quakeml",
+            "kml",
+            "text"
+          ]
+        },
+        "starttime": {
+          "type": "string",
+          "description": "Event start time (ISO 8601)",
+          "examples": [
+            "2024-01-01"
+          ]
+        },
+        "endtime": {
+          "type": "string",
+          "description": "Event end time (ISO 8601)",
+          "examples": [
+            "2024-12-31"
+          ]
+        },
+        "minmagnitude": {
+          "type": "float",
+          "description": "Minimum magnitude",
+          "examples": [
+            4.5
+          ]
+        },
+        "maxmagnitude": {
+          "type": "float",
+          "description": "Maximum magnitude",
+          "examples": [
+            9.0
+          ]
+        },
+        "minlatitude": {
+          "type": "float",
+          "description": "Bounding-box south edge"
+        },
+        "maxlatitude": {
+          "type": "float",
+          "description": "Bounding-box north edge"
+        },
+        "minlongitude": {
+          "type": "float",
+          "description": "Bounding-box west edge"
+        },
+        "maxlongitude": {
+          "type": "float",
+          "description": "Bounding-box east edge"
+        },
+        "latitude": {
+          "type": "float",
+          "description": "Centre latitude for radius query"
+        },
+        "longitude": {
+          "type": "float",
+          "description": "Centre longitude for radius query"
+        },
+        "maxradiuskm": {
+          "type": "float",
+          "description": "Maximum distance from centre (km)"
+        },
+        "eventtype": {
+          "type": "string",
+          "description": "Event type filter",
+          "examples": [
+            "earthquake",
+            "quarry blast"
+          ]
+        },
+        "catalog": {
+          "type": "string",
+          "description": "Catalog source",
+          "examples": [
+            "us",
+            "nc",
+            "ci"
+          ]
+        },
+        "contributor": {
+          "type": "string",
+          "description": "Contributor source"
+        },
+        "limit": {
+          "type": "int",
+          "description": "Results per request (max 20000)",
+          "examples": [
+            100,
+            20000
+          ]
+        },
+        "offset": {
+          "type": "int",
+          "description": "Pagination offset",
+          "examples": [
+            0,
+            20000
+          ]
+        },
+        "orderby": {
+          "type": "string",
+          "description": "Sort field",
+          "examples": [
+            "time",
+            "time-asc",
+            "magnitude",
+            "magnitude-asc"
+          ]
+        }
+      },
+      "response_mode": "json",
+      "envelope_key": "features",
+      "description": "USGS FDSN event search. See catalog.json.enums for full list of catalogs, contributors, event types, and magnitude types.",
+      "source_refs": [
+        "https://earthquake.usgs.gov/fdsnws/event/1/"
+      ]
+    },
+    {
+      "id": "count",
+      "base_aliases": [
+        "v1"
+      ],
+      "base_url": "https://earthquake.usgs.gov/fdsnws/event/1",
+      "path_templates": [
+        "/count"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "query_params": {},
+      "response_mode": "json",
+      "envelope_key": "count",
+      "description": "Plan pagination: returns the count of events that would match the filter without returning them.",
+      "source_refs": [
+        "https://earthquake.usgs.gov/fdsnws/event/1/"
+      ]
+    },
+    {
+      "id": "meta.application",
+      "base_aliases": [
+        "v1"
+      ],
+      "base_url": "https://earthquake.usgs.gov/fdsnws/event/1",
+      "path_templates": [
+        "/application.json"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "query_params": {},
+      "response_mode": "json",
+      "envelope_key": "",
+      "description": "Canonical self-describing metadata: catalogs, contributors, producttypes, eventtypes, magnitudetypes, parameters.",
+      "source_refs": [
+        "https://earthquake.usgs.gov/fdsnws/event/1/"
+      ]
+    }
+  ],
+  "version": "2.4.0",
+  "enums": {
+    "catalogs": [
+      "20",
+      "38457511",
+      "=c",
+      "aacse",
+      "ak",
+      "at",
+      "atlas",
+      "av",
+      "cdmg",
+      "cent",
+      "cgs",
+      "choy",
+      "ci",
+      "cidev",
+      "dr",
+      "duputel",
+      "eqh",
+      "ev",
+      "ew",
+      "ew_dm",
+      "flag",
+      "gcmt",
+      "gsc",
+      "hv",
+      "id",
+      "is",
+      "iscgem",
+      "iscgemsup",
+      "ismpkansas",
+      "ld",
+      "mb",
+      "nc",
+      "nc73947885",
+      "nc75096636",
+      "ne",
+      "nm",
+      "nn",
+      "official",
+      "official19631013051759_30",
+      "ok",
+      "ott",
+      "pags",
+      "pal",
+      "pde",
+      "pr",
+      "pt",
+      "rusms",
+      "sc",
+      "se",
+      "snm",
+      "te",
+      "tx",
+      "us",
+      "us7000kg6v",
+      "us7000nvw4",
+      "usauto",
+      "ushis",
+      "uu",
+      "uw",
+      "wa22",
+      "wes"
+    ],
+    "contributors": [
+      "admin",
+      "ak",
+      "at",
+      "atlas",
+      "av",
+      "cdk-production-us-east-1",
+      "cgs",
+      "ci",
+      "ew",
+      "hv",
+      "ismp",
+      "ld",
+      "mb",
+      "nc",
+      "nm",
+      "nn",
+      "np",
+      "official",
+      "ok",
+      "pr",
+      "prod01-pdl01.cr.usgs.gov",
+      "prod02-pdl01.cr.usgs.gov",
+      "pt",
+      "se",
+      "tx",
+      "us",
+      "uu",
+      "uw"
+    ],
+    "producttypes": [
+      "1903 Tonga Earthquake",
+      "associate",
+      "cap",
+      "deleted-text",
+      "disassociate",
+      "dyfi",
+      "earthquake-name",
+      "event-name",
+      "event-sequence",
+      "Excelsior Mountains, Nevada (Aftershock)",
+      "finite-fault",
+      "focal-mechanism",
+      "general-header",
+      "general-link",
+      "general-text",
+      "geoserve",
+      "ground-failure",
+      "groundmotion-packet",
+      "heartbeat",
+      "image",
+      "Impact",
+      "impact-link",
+      "impact-text",
+      "internal-moment-tensor",
+      "internal-origin",
+      "internal-phase-data",
+      "link",
+      "losspager",
+      "losspager-admin",
+      "moment-tensor",
+      "moreinformation",
+      "nearby-cities",
+      "oaf",
+      "origin",
+      "p-wave-travel-times",
+      "phase-data",
+      "poster",
+      "scitech-link",
+      "scitech-text",
+      "shake-alert",
+      "shakemap",
+      "significance",
+      "tectonic-summary",
+      "touch",
+      "trump",
+      "trump-cap",
+      "trump-dyfi",
+      "trump-general-link",
+      "trump-general-text",
+      "trump-geoserve",
+      "trump-ground-failure",
+      "trump-impact-text",
+      "trump-losspager",
+      "trump-moment-tensor",
+      "trump-nearby-cities",
+      "trump-origin",
+      "trump-phase-data",
+      "trump-shakemap",
+      "trump-tectonic-summary",
+      "unassociated-amplitude"
+    ],
+    "eventtypes": [
+      "accidental explosion",
+      "acoustic noise",
+      "acoustic_noise",
+      "anthropogenic_event",
+      "building collapse",
+      "chemical explosion",
+      "chemical_explosion",
+      "collapse",
+      "debris avalanche",
+      "earthquake",
+      "eq",
+      "experimental explosion",
+      "explosion",
+      "ice quake",
+      "induced or triggered event",
+      "industrial explosion",
+      "landslide",
+      "meteor",
+      "meteorite",
+      "mine collapse",
+      "mine_collapse",
+      "mining explosion",
+      "mining_explosion",
+      "not existing",
+      "not reported",
+      "not_reported",
+      "nuclear explosion",
+      "nuclear_explosion",
+      "other",
+      "other event",
+      "other_event",
+      "quarry",
+      "quarry blast",
+      "quarry_blast",
+      "rock burst",
+      "Rock Slide",
+      "rockslide",
+      "rock_burst",
+      "snow avalanche",
+      "snow_avalanche",
+      "sonic boom",
+      "sonicboom",
+      "sonic_boom",
+      "train crash",
+      "volcanic eruption",
+      "volcanic explosion"
+    ],
+    "magnitudetypes": [
+      "0",
+      "2",
+      "4",
+      "fa",
+      "H",
+      "hn",
+      "lg",
+      "m",
+      "ma",
+      "mb",
+      "MbLg",
+      "mb_lg",
+      "mc",
+      "md",
+      "mdl",
+      "Me",
+      "mfa",
+      "mh",
+      "Mi",
+      "mint",
+      "mj",
+      "ml",
+      "ml(texnet)",
+      "mlg",
+      "mlr",
+      "mlv",
+      "Ms",
+      "ms_20",
+      "ms_vx",
+      "Mt",
+      "mun",
+      "mw",
+      "mwb",
+      "mwc",
+      "mwp",
+      "mwr",
+      "mww",
+      "no",
+      "uk",
+      "Unknown"
+    ]
+  },
+  "parameters": []
+}

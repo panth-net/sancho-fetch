@@ -1,0 +1,183 @@
+{
+  "provider": "fetch.congress.bills",
+  "schema_version": "1.0",
+  "generated_at": "2026-04-15T17:15:31.587461+00:00",
+  "stats": {
+    "family_count": 18,
+    "resource_count": 18,
+    "resources_count": 18,
+    "congress_count": 119,
+    "total_items_across_resources": 1003562,
+    "successful_resources": 18
+  },
+  "discovery": {
+    "mode": "live_required",
+    "sources": [
+      {
+        "id": "/congress",
+        "url": "https://api.congress.gov/v3/congress",
+        "status": "ok",
+        "http_status": 200,
+        "count": 119,
+        "error": "",
+        "fetched_at": "2026-04-15T17:15:09.785130+00:00"
+      },
+      {
+        "id": "/bill",
+        "url": "https://api.congress.gov/v3/bill",
+        "status": "ok",
+        "http_status": 200,
+        "count": 425985,
+        "error": "",
+        "fetched_at": "2026-04-15T17:15:10.798343+00:00"
+      },
+      {
+        "id": "/amendment",
+        "url": "https://api.congress.gov/v3/amendment",
+        "status": "ok",
+        "http_status": 200,
+        "count": 126696,
+        "error": "",
+        "fetched_at": "2026-04-15T17:15:11.784980+00:00"
+      },
+      {
+        "id": "/summaries",
+        "url": "https://api.congress.gov/v3/summaries",
+        "status": "ok",
+        "http_status": 200,
+        "count": 34,
+        "error": "",
+        "fetched_at": "2026-04-15T17:15:12.777795+00:00"
+      },
+      {
+        "id": "/member",
+        "url": "https://api.congress.gov/v3/member",
+        "status": "ok",
+        "http_status": 200,
+        "count": 2691,
+        "error": "",
+        "fetched_at": "2026-04-15T17:15:13.820226+00:00"
+      },
+      {
+        "id": "/committee",
+        "url": "https://api.congress.gov/v3/committee",
+        "status": "ok",
+        "http_status": 200,
+        "count": 818,
+        "error": "",
+        "fetched_at": "2026-04-15T17:15:15.083926+00:00"
+      },
+      {
+        "id": "/committee-report",
+        "url": "https://api.congress.gov/v3/committee-report",
+        "status": "ok",
+        "http_status": 200,
+        "count": 20062,
+        "error": "",
+        "fetched_at": "2026-04-15T17:15:16.121282+00:00"
+      },
+      {
+        "id": "/committee-meeting",
+        "url": "https://api.congress.gov/v3/committee-meeting",
+        "status": "ok",
+        "http_status": 200,
+        "count": 17509,
+        "error": "",
+        "fetched_at": "2026-04-15T17:15:17.297470+00:00"
+      },
+      {
+        "id": "/committee-print",
+        "url": "https://api.congress.gov/v3/committee-print",
+        "status": "ok",
+        "http_status": 200,
+        "count": 1862,
+        "error": "",
+        "fetched_at": "2026-04-15T17:15:18.826177+00:00"
+      },
+      {
+        "id": "/congressional-record",
+        "url": "https://api.congress.gov/v3/congressional-record",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-15T17:15:20.066258+00:00"
+      },
+      {
+        "id": "/nomination",
+        "url": "https://api.congress.gov/v3/nomination",
+        "status": "ok",
+        "http_status": 200,
+        "count": 44868,
+        "error": "",
+        "fetched_at": "2026-04-15T17:15:21.337746+00:00"
+      },
+      {
+        "id": "/treaty",
+        "url": "https://api.congress.gov/v3/treaty",
+        "status": "ok",
+        "http_status": 200,
+        "count": 785,
+        "error": "",
+        "fetched_at": "2026-04-15T17:15:22.465923+00:00"
+      },
+      {
+        "id": "/crsreport",
+        "url": "https://api.congress.gov/v3/crsreport",
+        "status": "ok",
+        "http_status": 200,
+        "count": 13717,
+        "error": "",
+        "fetched_at": "2026-04-15T17:15:23.706055+00:00"
+      },
+      {
+        "id": "/hearing",
+        "url": "https://api.congress.gov/v3/hearing",
+        "status": "ok",
+        "http_status": 200,
+        "count": 35252,
+        "error": "",
+        "fetched_at": "2026-04-15T17:15:24.902948+00:00"
+      },
+      {
+        "id": "/house-communication",
+        "url": "https://api.congress.gov/v3/house-communication",
+        "status": "ok",
+        "http_status": 200,
+        "count": 40134,
+        "error": "",
+        "fetched_at": "2026-04-15T17:15:26.035684+00:00"
+      },
+      {
+        "id": "/senate-communication",
+        "url": "https://api.congress.gov/v3/senate-communication",
+        "status": "ok",
+        "http_status": 200,
+        "count": 173957,
+        "error": "",
+        "fetched_at": "2026-04-15T17:15:27.272723+00:00"
+      },
+      {
+        "id": "/bound-congressional-record",
+        "url": "https://api.congress.gov/v3/bound-congressional-record",
+        "status": "ok",
+        "http_status": 200,
+        "count": 93286,
+        "error": "",
+        "fetched_at": "2026-04-15T17:15:30.482165+00:00"
+      },
+      {
+        "id": "/daily-congressional-record",
+        "url": "https://api.congress.gov/v3/daily-congressional-record",
+        "status": "ok",
+        "http_status": 200,
+        "count": 5787,
+        "error": "",
+        "fetched_at": "2026-04-15T17:15:31.586392+00:00"
+      }
+    ],
+    "docs": [
+      "https://api.congress.gov/"
+    ]
+  }
+}

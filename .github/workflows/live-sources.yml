@@ -1,0 +1,50 @@
+# Weekly check that the real upstream data sources still behave.
+#
+# The normal test suite deliberately skips these (`-m "not live and not slow"`)
+# so ordinary CI stays fast, offline, and deterministic. But upstream agencies
+# change their APIs without warning, and a silently broken source is the worst
+# failure mode for a non-technical user -- they cannot tell "the API changed"
+# from "I asked wrong". This job is how we find out first.
+#
+# Key-free sources always run. Sources needing credentials only run if the
+# matching repository secret exists, so a fork with no secrets still passes.
+name: live-sources
+
+on:
+  schedule:
+    - cron: "0 6 * * 1" # Mondays 06:00 UTC
+  workflow_dispatch: {}
+
+jobs:
+  live:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: uv sync --extra dev
+
+      - name: Run live source checks
+        env:
+          # Without this the live tests skip themselves and the job reports a
+          # false green. Do not remove.
+          SANCHO_LIVE_GATE: "1"
+          CENSUS_API_KEY: ${{ secrets.CENSUS_API_KEY }}
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+          DATA_GOV_API_KEY: ${{ secrets.DATA_GOV_API_KEY }}
+          EIA_API_KEY: ${{ secrets.EIA_API_KEY }}
+        run: uv run pytest -m "live" -v --tb=short
+
+      - name: Explain a failure
+        if: failure()
+        run: |
+          echo "A live source check failed."
+          echo "This usually means an upstream API changed, not that Sancho is broken."
+          echo "Fix with a custom/<type>/<module>/ override, then record it with:"
+          echo "  sancho repair note --run-id <id> --module <id> --summary '...'"

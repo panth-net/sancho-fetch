@@ -1,0 +1,44 @@
+{
+  "provider": "fetch.usda.fooddata_search",
+  "generated_at": "2026-03-30T18:59:54.810750+00:00",
+  "columns": [
+    {
+      "name": "dataset_ref",
+      "type": "string",
+      "sample": "usgov_usda_fooddata"
+    },
+    {
+      "name": "endpoint",
+      "type": "string",
+      "sample": "https://api.nal.usda.gov/fdc/v1/foods/search"
+    },
+    {
+      "name": "params",
+      "type": "dict",
+      "sample": {}
+    },
+    {
+      "name": "rows",
+      "type": "list",
+      "sample": []
+    },
+    {
+      "name": "raw",
+      "type": "list",
+      "sample": []
+    },
+    {
+      "name": "retrieved_at",
+      "type": "string",
+      "sample": "2026-03-30T18:59:54.810750+00:00"
+    }
+  ],
+  "sample_row": {
+    "dataset_ref": "usgov_usda_fooddata",
+    "endpoint": "https://api.nal.usda.gov/fdc/v1/foods/search",
+    "params": {},
+    "rows": [],
+    "raw": [],
+    "retrieved_at": "2026-03-30T18:59:54.810750+00:00"
+  }
+}

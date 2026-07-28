@@ -1,0 +1,44 @@
+id: fetch.eurostat
+version: 1.0.1
+type: fetch
+coverage: eu
+catalog_tier: small
+entrypoint: main.py:run
+description: |-
+  European Union statistics from Eurostat: unemployment, inflation (HICP),
+  GDP, population and migration, energy prices, trade, tourism across EU
+  countries and regions. Query any dataset by its Eurostat code (e.g.
+  une_rt_a for annual unemployment rates) with dimension filters such as
+  geo (country) and time (year). Public, no key required.
+managed_paths:
+- module.yaml
+- main.py
+- api.py
+- transform.py
+- schema.sample.json
+input_schema:
+  type: object
+  required:
+  - dataset
+  properties:
+    dataset:
+      type: string
+      description: >-
+        Eurostat dataset code, e.g. "une_rt_a" (unemployment rate, annual),
+        "prc_hicp_manr" (HICP inflation, monthly rate), "demo_pjan"
+        (population on 1 January), "nama_10_gdp" (GDP and main components).
+    filters:
+      type: object
+      description: >-
+        Dimension filters passed straight to the API, e.g.
+        {"geo": ["DE", "FR"], "time": "2024", "sex": "T"}. A value may be a
+        string or a list. Omit a dimension to get every category.
+    lang:
+      type: string
+      description: Label language code (default EN).
+output_schema:
+  type: object
+  required:
+  - dataset_ref
+  - source_url
+  - retrieved_at

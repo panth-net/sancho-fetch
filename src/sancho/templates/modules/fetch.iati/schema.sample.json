@@ -1,0 +1,22 @@
+{
+  "provider": "fetch.iati",
+  "generated_at": "2026-04-09T00:00:00+00:00",
+  "columns": [
+    {"name": "dataset_ref", "type": "string", "sample": "intl_iati"},
+    {"name": "params", "type": "dict", "sample": {}},
+    {"name": "raw", "type": "dict", "sample": {}},
+    {"name": "retrieved_at", "type": "string", "sample": "2026-04-09T00:00:00+00:00"},
+    {"name": "row_count", "type": "int", "sample": 0},
+    {"name": "rows", "type": "list", "sample": []},
+    {"name": "source_url", "type": "string", "sample": "https://bulk-data.iatistandard.org/datasets-minimal"}
+  ],
+  "sample_row": {
+    "dataset_ref": "intl_iati",
+    "params": {},
+    "raw": {},
+    "retrieved_at": "2026-04-09T00:00:00+00:00",
+    "row_count": 0,
+    "rows": [],
+    "source_url": "https://bulk-data.iatistandard.org/datasets-minimal"
+  }
+}

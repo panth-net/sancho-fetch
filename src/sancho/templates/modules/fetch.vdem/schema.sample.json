@@ -1,0 +1,26 @@
+{
+  "provider": "fetch.vdem",
+  "generated_at": "2026-04-09T00:00:00+00:00",
+  "columns": [
+    {"name": "dataset_ref", "type": "string", "sample": "intl_vdem_core"},
+    {"name": "version", "type": "string", "sample": "14"},
+    {"name": "source_url", "type": "string", "sample": "https://www.v-dem.net/media/datasets/V-Dem-CY-Core-v14_csv.zip"},
+    {"name": "params", "type": "dict", "sample": {"version": "14", "indicators": ["v2x_polyarchy"]}},
+    {"name": "columns", "type": "list", "sample": ["country_text_id", "year", "v2x_polyarchy"]},
+    {"name": "rows", "type": "list", "sample": [{"country_text_id": "USA", "year": "2023", "v2x_polyarchy": "0.82"}]},
+    {"name": "row_count", "type": "int", "sample": 1},
+    {"name": "raw", "type": "dict", "sample": {}},
+    {"name": "retrieved_at", "type": "string", "sample": "2026-04-09T00:00:00+00:00"}
+  ],
+  "sample_row": {
+    "dataset_ref": "intl_vdem_core",
+    "version": "14",
+    "source_url": "https://www.v-dem.net/media/datasets/V-Dem-CY-Core-v14_csv.zip",
+    "params": {"version": "14", "indicators": ["v2x_polyarchy"]},
+    "columns": ["country_text_id", "year", "v2x_polyarchy"],
+    "rows": [{"country_text_id": "USA", "year": "2023", "v2x_polyarchy": "0.82"}],
+    "row_count": 1,
+    "raw": {},
+    "retrieved_at": "2026-04-09T00:00:00+00:00"
+  }
+}

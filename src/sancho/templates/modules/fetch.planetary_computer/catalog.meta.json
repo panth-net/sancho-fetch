@@ -1,0 +1,31 @@
+{
+  "provider": "fetch.planetary_computer",
+  "schema_version": "1.0",
+  "generated_at": "2026-04-14T19:45:16.280414+00:00",
+  "stats": {
+    "family_count": 3,
+    "collection_count": 135,
+    "collections_count": 135,
+    "keyword_count": 205,
+    "keywords_count": 205,
+    "provider_count": 65,
+    "providers_count": 65
+  },
+  "discovery": {
+    "mode": "live_required",
+    "sources": [
+      {
+        "id": "/collections",
+        "url": "https://planetarycomputer.microsoft.com/api/stac/v1/collections",
+        "status": "ok",
+        "http_status": 200,
+        "count": 135,
+        "error": "",
+        "fetched_at": "2026-04-14T19:45:16.272653+00:00"
+      }
+    ],
+    "docs": [
+      "https://planetarycomputer.microsoft.com/docs/reference/stac/"
+    ]
+  }
+}

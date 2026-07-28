@@ -1,0 +1,20 @@
+{
+  "provider": "fetch.noaa.nws",
+  "generated_at": "2026-05-06T00:00:00+00:00",
+  "columns": [
+    {"name": "dataset_ref", "type": "string", "sample": "usgov_noaa_nws"},
+    {"name": "endpoint", "type": "string", "sample": "https://api.weather.gov/alerts/active"},
+    {"name": "params", "type": "dict", "sample": {"area": "CA"}},
+    {"name": "raw", "type": "dict", "sample": {}},
+    {"name": "retrieved_at", "type": "string", "sample": "2026-05-06T00:00:00+00:00"},
+    {"name": "rows", "type": "list", "sample": []}
+  ],
+  "sample_row": {
+    "dataset_ref": "usgov_noaa_nws",
+    "endpoint": "https://api.weather.gov/alerts/active",
+    "params": {"area": "CA"},
+    "raw": {},
+    "retrieved_at": "2026-05-06T00:00:00+00:00",
+    "rows": []
+  }
+}

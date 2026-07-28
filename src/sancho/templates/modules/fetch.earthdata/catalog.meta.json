@@ -1,0 +1,39 @@
+{
+  "provider": "fetch.earthdata",
+  "schema_version": "1.0",
+  "generated_at": "2026-04-14T20:55:26.192563+00:00",
+  "stats": {
+    "family_count": 4,
+    "provider_count": 60,
+    "providers_count": 60,
+    "collection_sample_count": 2000,
+    "collections_sample_count": 2000,
+    "collections_total_in_cmr": 54194
+  },
+  "discovery": {
+    "mode": "live_required",
+    "sources": [
+      {
+        "id": "https://cmr.earthdata.nasa.gov/ingest/providers",
+        "url": "https://cmr.earthdata.nasa.gov/ingest/providers",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "error": "",
+        "fetched_at": "2026-04-14T20:55:23.351769+00:00"
+      },
+      {
+        "id": "collections.page.1",
+        "url": "https://cmr.earthdata.nasa.gov/search/collections.json",
+        "status": "ok",
+        "http_status": 200,
+        "count": 54194,
+        "error": "",
+        "fetched_at": "2026-04-14T20:55:26.178034+00:00"
+      }
+    ],
+    "docs": [
+      "https://cmr.earthdata.nasa.gov/search/site/docs/search/api.html"
+    ]
+  }
+}

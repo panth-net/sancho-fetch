@@ -1,0 +1,12 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# Windows batch files MUST be checked out with CRLF -- cmd.exe mis-parses
+# multi-line blocks (e.g. `if (...)`) in LF-only .bat files, which breaks the
+# double-click installer on some Windows versions.
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Unix shell scripts and the macOS double-click launcher must stay LF.
+*.sh text eol=lf
+*.command text eol=lf

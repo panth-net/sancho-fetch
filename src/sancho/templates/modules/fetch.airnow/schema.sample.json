@@ -1,0 +1,60 @@
+{
+  "provider": "fetch.airnow",
+  "generated_at": "2026-04-14T00:00:00.000000+00:00",
+  "columns": [
+    {
+      "name": "dataset_ref",
+      "type": "string",
+      "sample": "usgov_epa_airnow"
+    },
+    {
+      "name": "endpoint",
+      "type": "string",
+      "sample": "https://www.airnowapi.org/aq/observation/zipCode/current/"
+    },
+    {
+      "name": "params",
+      "type": "dict",
+      "sample": {
+        "zipCode": "10001",
+        "distance": 25
+      }
+    },
+    {
+      "name": "rows",
+      "type": "list",
+      "sample": [
+        {
+          "DateObserved": "2026-04-14",
+          "HourObserved": 10,
+          "LocalTimeZone": "EST",
+          "ReportingArea": "New York",
+          "StateCode": "NY",
+          "Latitude": 40.8419,
+          "Longitude": -73.94,
+          "ParameterName": "O3",
+          "AQI": 32,
+          "Category": {"Number": 1, "Name": "Good"}
+        }
+      ]
+    },
+    {
+      "name": "raw",
+      "type": "list",
+      "sample": []
+    },
+    {
+      "name": "retrieved_at",
+      "type": "string",
+      "sample": "2026-04-14T00:00:00.000000+00:00"
+    }
+  ],
+  "sample_row": {
+    "dataset_ref": "usgov_epa_airnow",
+    "endpoint": "https://www.airnowapi.org/aq/observation/zipCode/current/",
+    "params": {"zipCode": "10001", "distance": 25},
+    "rows": [],
+    "raw": [],
+    "retrieved_at": "2026-04-14T00:00:00.000000+00:00"
+  }
+}

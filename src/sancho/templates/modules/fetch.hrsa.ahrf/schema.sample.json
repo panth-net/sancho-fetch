@@ -1,0 +1,20 @@
+{
+  "provider": "fetch.hrsa.ahrf",
+  "generated_at": "2026-05-06T00:00:00+00:00",
+  "columns": [
+    {
+      "name": "title",
+      "type": "string",
+      "sample": "Official public record or link"
+    },
+    {
+      "name": "url",
+      "type": "string",
+      "sample": "https://data.hrsa.gov/topics/health-workforce/ahrf"
+    }
+  ],
+  "sample_row": {
+    "title": "Official public record or link",
+    "url": "https://data.hrsa.gov/topics/health-workforce/ahrf"
+  }
+}

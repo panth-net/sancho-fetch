@@ -1,0 +1,48 @@
+{
+  "provider": "fetch.nhtsa.recalls",
+  "schema_version": "1.0",
+  "generated_at": "2026-04-14T18:58:07.608711+00:00",
+  "stats": {
+    "family_count": 5,
+    "make_count": 12217,
+    "makes_count": 12217,
+    "variable_count": 144,
+    "variables_count": 144,
+    "manufacturers_sample_count": 100
+  },
+  "discovery": {
+    "mode": "live_required",
+    "sources": [
+      {
+        "id": "/vehicles/GetAllMakes",
+        "url": "https://vpic.nhtsa.dot.gov/api/vehicles/GetAllMakes",
+        "status": "ok",
+        "http_status": 200,
+        "count": 12217,
+        "error": "",
+        "fetched_at": "2026-04-14T18:58:05.916000+00:00"
+      },
+      {
+        "id": "/vehicles/GetVehicleVariableList",
+        "url": "https://vpic.nhtsa.dot.gov/api/vehicles/GetVehicleVariableList",
+        "status": "ok",
+        "http_status": 200,
+        "count": 144,
+        "error": "",
+        "fetched_at": "2026-04-14T18:58:06.582458+00:00"
+      },
+      {
+        "id": "/vehicles/GetAllManufacturers",
+        "url": "https://vpic.nhtsa.dot.gov/api/vehicles/GetAllManufacturers",
+        "status": "ok",
+        "http_status": 200,
+        "count": 100,
+        "error": "",
+        "fetched_at": "2026-04-14T18:58:07.606787+00:00"
+      }
+    ],
+    "docs": [
+      "https://vpic.nhtsa.dot.gov/api/"
+    ]
+  }
+}

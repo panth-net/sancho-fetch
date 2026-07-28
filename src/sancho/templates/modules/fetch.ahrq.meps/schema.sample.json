@@ -1,0 +1,22 @@
+{
+  "provider": "fetch.ahrq.meps",
+  "generated_at": "2026-05-06T00:00:00+00:00",
+  "columns": [
+    {"name": "dataset_ref", "type": "string", "sample": "usgov_ahrq_meps"},
+    {"name": "source_url", "type": "string", "sample": "https://meps.ahrq.gov/mepsweb/data_files/pufs/h233/h233dta.zip"},
+    {"name": "params", "type": "dict", "sample": {"puf_id": "h233", "limit": 100}},
+    {"name": "rows", "type": "list", "sample": []},
+    {"name": "row_count", "type": "int", "sample": 100},
+    {"name": "raw", "type": "dict", "sample": {}},
+    {"name": "retrieved_at", "type": "string", "sample": "2026-05-06T00:00:00+00:00"}
+  ],
+  "sample_row": {
+    "dataset_ref": "usgov_ahrq_meps",
+    "source_url": "https://meps.ahrq.gov/mepsweb/data_files/pufs/h233/h233dta.zip",
+    "params": {"puf_id": "h233", "limit": 100},
+    "rows": [],
+    "row_count": 100,
+    "raw": {},
+    "retrieved_at": "2026-05-06T00:00:00+00:00"
+  }
+}

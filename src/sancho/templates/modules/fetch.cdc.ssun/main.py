@@ -1,0 +1,28 @@
+from __future__ import annotations
+
+from typing import Any
+
+from sancho.runtime.contracts import ModuleContext
+from sancho.runtime.public_source import run_public_source
+
+
+CONFIG = {
+    "module_id": "fetch.cdc.ssun",
+    "dataset_ref": "usgov_cdc_ssun",
+    "default_endpoint": "https://www.cdc.gov/sti/php/projects/ssun.html",
+    "default_params": {},
+    "default_mode": "html_links",
+    "default_search": "report",
+    "default_limit": 25,
+    "preferred_keys": [
+        "data",
+        "results",
+        "items",
+        "features",
+        "dataset"
+    ]
+}
+
+
+def run(*, context: ModuleContext, payload: dict[str, Any]) -> dict[str, Any]:
+    return run_public_source(context=context, payload=payload, config=CONFIG)

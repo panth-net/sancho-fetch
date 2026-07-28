@@ -1,0 +1,35 @@
+{
+  "provider": "fetch.socrata.sf_building_permits",
+  "schema_version": "1.0",
+  "generated_at": "2026-04-14T18:16:22.206012+00:00",
+  "stats": {
+    "family_count": 1,
+    "asset_count": 5,
+    "assets_count": 5,
+    "dataset_count": 4,
+    "datasets_count": 4,
+    "live_dataset_count": 4,
+    "live_datasets_count": 4,
+    "column_count": 42,
+    "columns_count": 42,
+    "tag_count": 4,
+    "tags_count": 4
+  },
+  "discovery": {
+    "mode": "live_required",
+    "sources": [
+      {
+        "id": "catalog.page.1",
+        "url": "https://api.us.socrata.com/api/catalog/v1?domains=data.sfgov.org&offset=0",
+        "status": "ok",
+        "http_status": 200,
+        "count": 5,
+        "error": "",
+        "fetched_at": "2026-04-14T18:16:22.202326+00:00"
+      }
+    ],
+    "docs": [
+      "https://dev.socrata.com/foundry/data.sfgov.org"
+    ]
+  }
+}

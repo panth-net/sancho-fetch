@@ -1,0 +1,229 @@
+{
+  "provider": "fetch.doj.press_releases",
+  "schema_version": "1.0",
+  "generated_at": "2026-04-15T22:12:03.199315+00:00",
+  "families": [
+    {
+      "id": "press_releases",
+      "base_aliases": [
+        "v1"
+      ],
+      "base_url": "https://www.justice.gov/api/v1",
+      "path_templates": [
+        "/press_releases.json",
+        "/press_releases/{uuid}.json"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "query_params": {
+        "pagesize": {
+          "type": "int",
+          "description": "Page size (max 50)"
+        },
+        "page": {
+          "type": "int",
+          "description": "Pagination offset (0-based)"
+        },
+        "sort": {
+          "type": "string",
+          "description": "Sort field"
+        },
+        "direction": {
+          "type": "string",
+          "examples": [
+            "asc",
+            "desc"
+          ]
+        },
+        "title": {
+          "type": "string",
+          "description": "Title keyword filter"
+        },
+        "date_start": {
+          "type": "string",
+          "description": "ISO date filter"
+        },
+        "date_end": {
+          "type": "string",
+          "description": "ISO date filter"
+        },
+        "topic": {
+          "type": "string",
+          "description": "Topic slug"
+        },
+        "component": {
+          "type": "string",
+          "description": "DOJ component slug"
+        }
+      },
+      "response_mode": "json",
+      "envelope_key": "results",
+      "description": "DOJ press releases. Total count in metadata.resultset.count.",
+      "source_refs": [
+        "https://www.justice.gov/developer"
+      ]
+    },
+    {
+      "id": "blog_entries",
+      "base_aliases": [
+        "v1"
+      ],
+      "base_url": "https://www.justice.gov/api/v1",
+      "path_templates": [
+        "/blog_entries.json",
+        "/blog_entries/{uuid}.json"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "query_params": {
+        "pagesize": {
+          "type": "int",
+          "description": "Page size (max 50)"
+        },
+        "page": {
+          "type": "int",
+          "description": "Pagination offset (0-based)"
+        },
+        "sort": {
+          "type": "string",
+          "description": "Sort field"
+        },
+        "direction": {
+          "type": "string",
+          "examples": [
+            "asc",
+            "desc"
+          ]
+        },
+        "title": {
+          "type": "string",
+          "description": "Title keyword filter"
+        },
+        "date_start": {
+          "type": "string",
+          "description": "ISO date filter"
+        },
+        "date_end": {
+          "type": "string",
+          "description": "ISO date filter"
+        },
+        "topic": {
+          "type": "string",
+          "description": "Topic slug"
+        },
+        "component": {
+          "type": "string",
+          "description": "DOJ component slug"
+        }
+      },
+      "response_mode": "json",
+      "envelope_key": "results",
+      "description": "DOJ blog entries.",
+      "source_refs": [
+        "https://www.justice.gov/developer"
+      ]
+    },
+    {
+      "id": "speeches",
+      "base_aliases": [
+        "v1"
+      ],
+      "base_url": "https://www.justice.gov/api/v1",
+      "path_templates": [
+        "/speeches.json",
+        "/speeches/{uuid}.json"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "query_params": {
+        "pagesize": {
+          "type": "int",
+          "description": "Page size (max 50)"
+        },
+        "page": {
+          "type": "int",
+          "description": "Pagination offset (0-based)"
+        },
+        "sort": {
+          "type": "string",
+          "description": "Sort field"
+        },
+        "direction": {
+          "type": "string",
+          "examples": [
+            "asc",
+            "desc"
+          ]
+        },
+        "title": {
+          "type": "string",
+          "description": "Title keyword filter"
+        },
+        "date_start": {
+          "type": "string",
+          "description": "ISO date filter"
+        },
+        "date_end": {
+          "type": "string",
+          "description": "ISO date filter"
+        },
+        "topic": {
+          "type": "string",
+          "description": "Topic slug"
+        },
+        "component": {
+          "type": "string",
+          "description": "DOJ component slug"
+        }
+      },
+      "response_mode": "json",
+      "envelope_key": "results",
+      "description": "DOJ speeches.",
+      "source_refs": [
+        "https://www.justice.gov/developer"
+      ]
+    }
+  ],
+  "content_types": {
+    "press_releases": {
+      "path": "/press_releases.json",
+      "total_count": 264749,
+      "field_schema": {
+        "attachment": "string",
+        "body": "string",
+        "changed": "string",
+        "component": "list",
+        "created": "string",
+        "date": "string",
+        "image": "string",
+        "number": "string",
+        "teaser": "string",
+        "title": "string",
+        "topic": "string",
+        "url": "string",
+        "uuid": "string"
+      }
+    },
+    "blog_entries": {
+      "path": "/blog_entries.json",
+      "total_count": 3301,
+      "field_schema": {
+        "attachments": "string",
+        "body": "string",
+        "changed": "string",
+        "component": "list",
+        "created": "string",
+        "date": "string",
+        "image": "string",
+        "teaser": "string",
+        "title": "string",
+        "topic": "string",
+        "url": "string",
+        "uuid": "string"
+      }
+    }
+  }
+}

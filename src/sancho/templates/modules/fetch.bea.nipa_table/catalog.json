@@ -1,0 +1,805 @@
+{
+  "provider": "fetch.bea.nipa_table",
+  "schema_version": "1.0",
+  "generated_at": "2026-04-15T17:15:08.683551+00:00",
+  "families": [
+    {
+      "id": "data",
+      "base_aliases": [
+        "v1"
+      ],
+      "base_url": "https://apps.bea.gov/api/data",
+      "path_templates": [
+        "/"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "query_params": {
+        "UserID": {
+          "type": "string",
+          "description": "BEA API key (env: BEA_API_KEY)"
+        },
+        "method": {
+          "type": "string",
+          "description": "API method",
+          "examples": [
+            "GetData",
+            "GetParameterList",
+            "GetParameterValues",
+            "GetDataSetList"
+          ]
+        },
+        "DataSetName": {
+          "type": "string",
+          "description": "Target dataset",
+          "examples": [
+            "NIPA",
+            "NIUnderlyingDetail",
+            "Regional",
+            "ITA",
+            "FixedAssets",
+            "IIP"
+          ]
+        },
+        "ResultFormat": {
+          "type": "string",
+          "description": "Response format",
+          "examples": [
+            "JSON",
+            "XML"
+          ]
+        },
+        "TableName": {
+          "type": "string",
+          "description": "NIPA/FixedAssets table name",
+          "examples": [
+            "T10101"
+          ]
+        },
+        "Frequency": {
+          "type": "string",
+          "description": "A (annual), Q (quarterly), M (monthly)"
+        },
+        "Year": {
+          "type": "string",
+          "description": "Year(s) \u2014 comma-separated or 'ALL'",
+          "examples": [
+            "ALL",
+            "2020,2021"
+          ]
+        },
+        "LineNumber": {
+          "type": "int",
+          "description": "Table line number"
+        },
+        "GeoFips": {
+          "type": "string",
+          "description": "Regional geo-FIPS code"
+        },
+        "TypeOfInvestment": {
+          "type": "string"
+        },
+        "DirectionOfInvestment": {
+          "type": "string"
+        }
+      },
+      "response_mode": "json",
+      "envelope_key": "BEAAPI.Results.Data",
+      "description": "Fetch data rows. See catalog.json.datasets[] for per-dataset parameter requirements.",
+      "source_refs": [
+        "https://apps.bea.gov/API/signup/"
+      ]
+    },
+    {
+      "id": "meta.datasets",
+      "base_aliases": [
+        "v1"
+      ],
+      "base_url": "https://apps.bea.gov/api/data",
+      "path_templates": [
+        "/"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "query_params": {
+        "UserID": {
+          "type": "string",
+          "description": "BEA API key (env: BEA_API_KEY)"
+        },
+        "method": {
+          "type": "string",
+          "examples": [
+            "GetDataSetList"
+          ]
+        },
+        "DataSetName": {
+          "type": "string",
+          "description": "Target dataset",
+          "examples": [
+            "NIPA",
+            "NIUnderlyingDetail",
+            "Regional",
+            "ITA",
+            "FixedAssets",
+            "IIP"
+          ]
+        },
+        "ResultFormat": {
+          "type": "string",
+          "description": "Response format",
+          "examples": [
+            "JSON",
+            "XML"
+          ]
+        }
+      },
+      "response_mode": "json",
+      "envelope_key": "BEAAPI.Results.Dataset",
+      "description": "List all BEA datasets (13 as of 2025).",
+      "source_refs": [
+        "https://apps.bea.gov/API/signup/"
+      ]
+    },
+    {
+      "id": "meta.parameters",
+      "base_aliases": [
+        "v1"
+      ],
+      "base_url": "https://apps.bea.gov/api/data",
+      "path_templates": [
+        "/"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "query_params": {
+        "UserID": {
+          "type": "string",
+          "description": "BEA API key (env: BEA_API_KEY)"
+        },
+        "method": {
+          "type": "string",
+          "examples": [
+            "GetParameterList"
+          ]
+        },
+        "DataSetName": {
+          "type": "string"
+        },
+        "ResultFormat": {
+          "type": "string",
+          "description": "Response format",
+          "examples": [
+            "JSON",
+            "XML"
+          ]
+        }
+      },
+      "response_mode": "json",
+      "envelope_key": "BEAAPI.Results.Parameter",
+      "description": "List parameters + their required/optional flags for one dataset.",
+      "source_refs": [
+        "https://apps.bea.gov/API/signup/"
+      ]
+    },
+    {
+      "id": "meta.parameter_values",
+      "base_aliases": [
+        "v1"
+      ],
+      "base_url": "https://apps.bea.gov/api/data",
+      "path_templates": [
+        "/"
+      ],
+      "methods": [
+        "GET"
+      ],
+      "query_params": {
+        "UserID": {
+          "type": "string",
+          "description": "BEA API key (env: BEA_API_KEY)"
+        },
+        "method": {
+          "type": "string",
+          "examples": [
+            "GetParameterValues"
+          ]
+        },
+        "DataSetName": {
+          "type": "string",
+          "description": "Target dataset",
+          "examples": [
+            "NIPA",
+            "NIUnderlyingDetail",
+            "Regional",
+            "ITA",
+            "FixedAssets",
+            "IIP"
+          ]
+        },
+        "ResultFormat": {
+          "type": "string",
+          "description": "Response format",
+          "examples": [
+            "JSON",
+            "XML"
+          ]
+        },
+        "ParameterName": {
+          "type": "string"
+        }
+      },
+      "response_mode": "json",
+      "envelope_key": "BEAAPI.Results.ParamValue",
+      "description": "List allowed values for a given parameter. Call per dataset+parameter pair.",
+      "source_refs": [
+        "https://apps.bea.gov/API/signup/"
+      ]
+    }
+  ],
+  "datasets": [
+    {
+      "DatasetName": "NIPA",
+      "DatasetDescription": "Standard NIPA tables",
+      "parameters": [
+        {
+          "ParameterName": "Frequency",
+          "ParameterDataType": "string",
+          "ParameterDescription": "A - Annual, Q-Quarterly, M-Monthly",
+          "ParameterIsRequiredFlag": "1",
+          "ParameterDefaultValue": "",
+          "MultipleAcceptedFlag": "1",
+          "AllValue": ""
+        },
+        {
+          "ParameterName": "ShowMillions",
+          "ParameterDataType": "string",
+          "ParameterDescription": "A flag indicating that million-dollar data should be returned.",
+          "ParameterIsRequiredFlag": "0",
+          "ParameterDefaultValue": "N",
+          "MultipleAcceptedFlag": "0",
+          "AllValue": ""
+        },
+        {
+          "ParameterName": "TableID",
+          "ParameterDataType": "integer",
+          "ParameterDescription": "The standard NIPA table identifier",
+          "ParameterIsRequiredFlag": "0",
+          "MultipleAcceptedFlag": "0",
+          "AllValue": ""
+        },
+        {
+          "ParameterName": "TableName",
+          "ParameterDataType": "string",
+          "ParameterDescription": "The new NIPA table identifier",
+          "ParameterIsRequiredFlag": "0",
+          "MultipleAcceptedFlag": "0",
+          "AllValue": ""
+        },
+        {
+          "ParameterName": "Year",
+          "ParameterDataType": "integer",
+          "ParameterDescription": "List of year(s) of data to retrieve (X for All)",
+          "ParameterIsRequiredFlag": "1",
+          "ParameterDefaultValue": "",
+          "MultipleAcceptedFlag": "1",
+          "AllValue": "X"
+        }
+      ]
+    },
+    {
+      "DatasetName": "NIUnderlyingDetail",
+      "DatasetDescription": "Standard NI underlying detail tables",
+      "parameters": [
+        {
+          "ParameterName": "Frequency",
+          "ParameterDataType": "string",
+          "ParameterDescription": "A - Annual, Q-Quarterly, M-Monthly",
+          "ParameterIsRequiredFlag": "1",
+          "ParameterDefaultValue": "",
+          "MultipleAcceptedFlag": "1",
+          "AllValue": ""
+        },
+        {
+          "ParameterName": "TableID",
+          "ParameterDataType": "integer",
+          "ParameterDescription": "The standard NI underlying detail table identifier",
+          "ParameterIsRequiredFlag": "0",
+          "MultipleAcceptedFlag": "0",
+          "AllValue": ""
+        },
+        {
+          "ParameterName": "TableName",
+          "ParameterDataType": "string",
+          "ParameterDescription": "The new NIPA table identifier",
+          "ParameterIsRequiredFlag": "0",
+          "MultipleAcceptedFlag": "0",
+          "AllValue": ""
+        },
+        {
+          "ParameterName": "Year",
+          "ParameterDataType": "integer",
+          "ParameterDescription": "List of year(s) of data to retrieve (X for All)",
+          "ParameterIsRequiredFlag": "1",
+          "ParameterDefaultValue": "",
+          "MultipleAcceptedFlag": "1",
+          "AllValue": "X"
+        }
+      ]
+    },
+    {
+      "DatasetName": "MNE",
+      "DatasetDescription": "Multinational Enterprises",
+      "parameters": [
+        {
+          "ParameterName": "DirectionOfInvestment",
+          "ParameterDataType": "string",
+          "ParameterDescription": "Four Possible Values:  (inward,outward,parent,state)",
+          "ParameterIsRequiredFlag": "1",
+          "ParameterDefaultValue": "",
+          "MultipleAcceptedFlag": "0"
+        },
+        {
+          "ParameterName": "OwnershipLevel",
+          "ParameterDataType": "integer",
+          "ParameterDescription": "A value of 1 returns data for all affiliates.  A value of 0 returns data for majority-owned affiliates only.  Note that if directionOfInvestment = 'parent', then OwnershipLevel must be set to 1.",
+          "ParameterIsRequiredFlag": "0",
+          "ParameterDefaultValue": "2",
+          "MultipleAcceptedFlag": "0"
+        },
+        {
+          "ParameterName": "NonbankAffiliatesOnly",
+          "ParameterDataType": "integer",
+          "ParameterDescription": "A value of 1 returns data for nonbank affiliates only.  A value of 0 returns data for both bank and nonbank affiliates.  A value of 0 is required for data for 2007 forward (for FDIUS) for 2009 forward (for USDIA).",
+          "ParameterIsRequiredFlag": "0",
+          "ParameterDefaultValue": "2",
+          "MultipleAcceptedFlag": "0"
+        },
+        {
+          "ParameterName": "Classification ",
+          "ParameterDataType": "string",
+          "ParameterDescription": "Classification is a string used to obtain data that is broken down by both country and industry for either inward or outward data.  It can take one of four possible values:",
+          "ParameterIsRequiredFlag": "1",
+          "MultipleAcceptedFlag": "0"
+        },
+        {
+          "ParameterName": "Country",
+          "ParameterDataType": "string",
+          "ParameterDescription": "Country is usually a number.  Because there can be several variants of a country's name, three-digit numeric codes are used to select countries.  A full list of these codes is available near the end of this document or can be obtained by using the GETPARAMETERVALUES method.  To obtain data for every country (including the all-country total) separately use 'all'.  To obtain a total for all countries, use '0000'.   To obtain data for multiple countries, each country code should be listed and separated by a comma.",
+          "ParameterIsRequiredFlag": "0",
+          "MultipleAcceptedFlag": "1",
+          "AllValue": "all"
+        },
+        {
+          "ParameterName": "Industry",
+          "ParameterDataType": "string",
+          "ParameterDescription": "Industries are denoted by four-digit codes.  With a few exceptions, these codes follow the NAICS. To obtain data for every industry separately use 'all'.  To obtain a total for all industries, use '0000'.",
+          "ParameterIsRequiredFlag": "0",
+          "MultipleAcceptedFlag": "1",
+          "AllValue": "all"
+        },
+        {
+          "ParameterName": "Year",
+          "ParameterDataType": "integer",
+          "ParameterDescription": "Year is a 4-digit numeric variable.  To obtain data for multiple years, each year should be listed and separated by a comma. To obtain data for all years use 'all'.",
+          "ParameterIsRequiredFlag": "1",
+          "ParameterDefaultValue": "",
+          "MultipleAcceptedFlag": "1",
+          "AllValue": "all"
+        },
+        {
+          "ParameterName": "State",
+          "ParameterDataType": "string",
+          "ParameterDescription": "State specifies the U.S. state or states for data on foreign direct investment in the United States.  The state is specified by using the two-digit FIPS code.  For \"Other U.S. areas\", use code '70'.  For \"Foreign\", use code '75'.  To obtain data for all states and areas use 'all'.  To obtain a total U.S. figure, use '90'.  ",
+          "ParameterIsRequiredFlag": "0",
+          "MultipleAcceptedFlag": "1",
+          "AllValue": "all"
+        },
+        {
+          "ParameterName": "SeriesID",
+          "ParameterDataType": "string",
+          "ParameterDescription": "Series IDs",
+          "ParameterIsRequiredFlag": "0",
+          "ParameterDefaultValue": "all",
+          "MultipleAcceptedFlag": "1",
+          "AllValue": "all"
+        },
+        {
+          "ParameterName": "GetFootnotes",
+          "ParameterDataType": "string",
+          "ParameterDescription": "Footnotes for the datavalues",
+          "ParameterIsRequiredFlag": "0",
+          "ParameterDefaultValue": "no",
+          "MultipleAcceptedFlag": "0"
+        },
+        {
+          "ParameterName": "Investment",
+          "ParameterDataType": "string",
+          "ParameterDescription": "Investments are denoted by Three-digit codes. To obtain data for every investment separately use 'all'.  To obtain a total for all investments, use '000'.",
+          "ParameterIsRequiredFlag": "0",
+          "MultipleAcceptedFlag": "1",
+          "AllValue": "all"
+        },
+        {
+          "ParameterName": "ParentInvestment",
+          "ParameterDataType": "string",
+          "ParameterDescription": "Investments are denoted by Three-digit codes. To obtain data for every investment separately use 'all'.  To obtain a total for all investments, use '000'.",
+          "ParameterIsRequiredFlag": "0",
+          "MultipleAcceptedFlag": "1",
+          "AllValue": "all"
+        }
+      ]
+    },
+    {
+      "DatasetName": "FixedAssets",
+      "DatasetDescription": "Standard Fixed Assets tables",
+      "parameters": [
+        {
+          "ParameterName": "TableName",
+          "ParameterDataType": "string",
+          "ParameterDescription": "The new Fixed Assets identifier",
+          "ParameterIsRequiredFlag": "1",
+          "ParameterDefaultValue": "",
+          "MultipleAcceptedFlag": "0",
+          "AllValue": ""
+        },
+        {
+          "ParameterName": "Year",
+          "ParameterDataType": "integer",
+          "ParameterDescription": "List of year(s) of data to retrieve (X for All)",
+          "ParameterIsRequiredFlag": "1",
+          "ParameterDefaultValue": "",
+          "MultipleAcceptedFlag": "1",
+          "AllValue": "X"
+        }
+      ]
+    },
+    {
+      "DatasetName": "ITA",
+      "DatasetDescription": "International Transactions Accounts",
+      "parameters": [
+        {
+          "ParameterName": "Indicator",
+          "ParameterDataType": "string",
+          "ParameterDescription": "The indicator code for the type of transaction requested",
+          "ParameterIsRequiredFlag": "0",
+          "ParameterDefaultValue": "ALL",
+          "MultipleAcceptedFlag": "1",
+          "AllValue": "ALL"
+        },
+        {
+          "ParameterName": "AreaOrCountry",
+          "ParameterDataType": "string",
+          "ParameterDescription": "The area or country requested",
+          "ParameterIsRequiredFlag": "0",
+          "ParameterDefaultValue": "AllCountries",
+          "MultipleAcceptedFlag": "1",
+          "AllValue": "ALL"
+        },
+        {
+          "ParameterName": "Frequency",
+          "ParameterDataType": "string",
+          "ParameterDescription": "A - Annual, QSA - Quarterly seasonally adjusted, QNSA - Quarterly not seasonally adjusted",
+          "ParameterIsRequiredFlag": "0",
+          "ParameterDefaultValue": "ALL",
+          "MultipleAcceptedFlag": "1",
+          "AllValue": "ALL"
+        },
+        {
+          "ParameterName": "Year",
+          "ParameterDataType": "string",
+          "ParameterDescription": "Year requested",
+          "ParameterIsRequiredFlag": "0",
+          "ParameterDefaultValue": "ALL",
+          "MultipleAcceptedFlag": "1",
+          "AllValue": "ALL"
+        }
+      ]
+    },
+    {
+      "DatasetName": "IIP",
+      "DatasetDescription": "International Investment Position",
+      "parameters": [
+        {
+          "ParameterName": "TypeOfInvestment",
+          "ParameterDataType": "string",
+          "ParameterDescription": "Type of investment",
+          "ParameterIsRequiredFlag": "0",
+          "ParameterDefaultValue": "ALL",
+          "MultipleAcceptedFlag": "1",
+          "AllValue": "ALL"
+        },
+        {
+          "ParameterName": "Component",
+          "ParameterDataType": "string",
+          "ParameterDescription": "Component of changes in position",
+          "ParameterIsRequiredFlag": "0",
+          "ParameterDefaultValue": "ALL",
+          "MultipleAcceptedFlag": "1",
+          "AllValue": "ALL"
+        },
+        {
+          "ParameterName": "Frequency",
+          "ParameterDataType": "string",
+          "ParameterDescription": "A - Annual, QNSA - Quarterly not seasonally adjusted",
+          "ParameterIsRequiredFlag": "0",
+          "ParameterDefaultValue": "ALL",
+          "MultipleAcceptedFlag": "1",
+          "AllValue": "ALL"
+        },
+        {
+          "ParameterName": "Year",
+          "ParameterDataType": "string",
+          "ParameterDescription": "Year requested",
+          "ParameterIsRequiredFlag": "0",
+          "ParameterDefaultValue": "ALL",
+          "MultipleAcceptedFlag": "1",
+          "AllValue": "ALL"
+        }
+      ]
+    },
+    {
+      "DatasetName": "InputOutput",
+      "DatasetDescription": "Input-Output Data",
+      "parameters": [
+        {
+          "ParameterName": "TableID",
+          "ParameterDataType": "integer",
+          "ParameterDescription": "The unique Input-Output table identifier",
+          "ParameterIsRequiredFlag": "1",
+          "ParameterDefaultValue": " ",
+          "MultipleAcceptedFlag": "1",
+          "AllValue": ""
+        },
+        {
+          "ParameterName": "Year",
+          "ParameterDataType": "integer",
+          "ParameterDescription": "List of year(s) of data to retrieve (ALL for All)",
+          "ParameterIsRequiredFlag": "1",
+          "ParameterDefaultValue": "",
+          "MultipleAcceptedFlag": "1",
+          "AllValue": "ALL"
+        }
+      ]
+    },
+    {
+      "DatasetName": "IntlServTrade",
+      "DatasetDescription": "International Services Trade",
+      "parameters": [
+        {
+          "ParameterName": "TypeOfService",
+          "ParameterDataType": "string",
+          "ParameterDescription": "The type of service requested",
+          "ParameterIsRequiredFlag": "0",
+          "ParameterDefaultValue": "ALL",
+          "MultipleAcceptedFlag": "1",
+          "AllValue": "ALL"
+        },
+        {
+          "ParameterName": "TradeDirection",
+          "ParameterDataType": "string",
+          "ParameterDescription": "The trade direction requested",
+          "ParameterIsRequiredFlag": "0",
+          "ParameterDefaultValue": "ALL",
+          "MultipleAcceptedFlag": "1",
+          "AllValue": "ALL"
+        },
+        {
+          "ParameterName": "Affiliation",
+          "ParameterDataType": "string",
+          "ParameterDescription": "The affiliation requested",
+          "ParameterIsRequiredFlag": "0",
+          "ParameterDefaultValue": "ALL",
+          "MultipleAcceptedFlag": "1",
+          "AllValue": "ALL"
+        },
+        {
+          "ParameterName": "AreaOrCountry",
+          "ParameterDataType": "string",
+          "ParameterDescription": "The area or country requested",
+          "ParameterIsRequiredFlag": "0",
+          "ParameterDefaultValue": "AllCountries",
+          "MultipleAcceptedFlag": "1",
+          "AllValue": "ALL"
+        },
+        {
+          "ParameterName": "Year",
+          "ParameterDataType": "string",
+          "ParameterDescription": "The year requested",
+          "ParameterIsRequiredFlag": "0",
+          "ParameterDefaultValue": "ALL",
+          "MultipleAcceptedFlag": "1",
+          "AllValue": "ALL"
+        }
+      ]
+    },
+    {
+      "DatasetName": "IntlServSTA",
+      "DatasetDescription": "International Services Supplied Through Affiliates",
+      "parameters": [
+        {
+          "ParameterName": "Channel",
+          "ParameterDataType": "string",
+          "ParameterDescription": "The channel requested",
+          "ParameterIsRequiredFlag": "0",
+          "ParameterDefaultValue": "ALL",
+          "MultipleAcceptedFlag": "1",
+          "AllValue": "ALL"
+        },
+        {
+          "ParameterName": "Destination",
+          "ParameterDataType": "string",
+          "ParameterDescription": "The destination requested",
+          "ParameterIsRequiredFlag": "0",
+          "ParameterDefaultValue": "ALL",
+          "MultipleAcceptedFlag": "1",
+          "AllValue": "ALL"
+        },
+        {
+          "ParameterName": "Industry",
+          "ParameterDataType": "string",
+          "ParameterDescription": "The industry requested",
+          "ParameterIsRequiredFlag": "0",
+          "ParameterDefaultValue": "ALL",
+          "MultipleAcceptedFlag": "1",
+          "AllValue": "ALL"
+        },
+        {
+          "ParameterName": "AreaOrCountry",
+          "ParameterDataType": "string",
+          "ParameterDescription": "The area or country requested",
+          "ParameterIsRequiredFlag": "0",
+          "ParameterDefaultValue": "AllCountries",
+          "MultipleAcceptedFlag": "1",
+          "AllValue": "ALL"
+        },
+        {
+          "ParameterName": "Year",
+          "ParameterDataType": "string",
+          "ParameterDescription": "The year requested",
+          "ParameterIsRequiredFlag": "0",
+          "ParameterDefaultValue": "ALL",
+          "MultipleAcceptedFlag": "1",
+          "AllValue": "ALL"
+        }
+      ]
+    },
+    {
+      "DatasetName": "GDPbyIndustry",
+      "DatasetDescription": "GDP by Industry",
+      "parameters": [
+        {
+          "ParameterName": "Frequency",
+          "ParameterDataType": "string",
+          "ParameterDescription": "A - Annual, Q-Quarterly",
+          "ParameterIsRequiredFlag": "1",
+          "ParameterDefaultValue": "",
+          "MultipleAcceptedFlag": "1",
+          "AllValue": "ALL"
+        },
+        {
+          "ParameterName": "Industry",
+          "ParameterDataType": "string",
+          "ParameterDescription": "List of industries to retrieve (ALL for All)",
+          "ParameterIsRequiredFlag": "1",
+          "ParameterDefaultValue": "",
+          "MultipleAcceptedFlag": "1",
+          "AllValue": "ALL"
+        },
+        {
+          "ParameterName": "TableID",
+          "ParameterDataType": "integer",
+          "ParameterDescription": "The unique GDP by Industry table identifier (ALL for All)",
+          "ParameterIsRequiredFlag": "1",
+          "ParameterDefaultValue": "",
+          "MultipleAcceptedFlag": "1",
+          "AllValue": "ALL"
+        },
+        {
+          "ParameterName": "Year",
+          "ParameterDataType": "integer",
+          "ParameterDescription": "List of year(s) of data to retrieve (ALL for All)",
+          "ParameterIsRequiredFlag": "1",
+          "ParameterDefaultValue": "",
+          "MultipleAcceptedFlag": "1",
+          "AllValue": "ALL"
+        }
+      ]
+    },
+    {
+      "DatasetName": "Regional",
+      "DatasetDescription": "Regional data sets",
+      "parameters": [
+        {
+          "ParameterName": "GeoFips",
+          "ParameterDataType": "string",
+          "ParameterDescription": "Comma-delimited list of 5-character geographic codes; COUNTY for all counties, STATE for all states, MSA for all MSAs, MIC for all Micropolitan Areas, PORT for all state metro/nonmetro portions, DIV for all Metropolitan Divisions, CSA for all Combined Statistical Areas, state post office abbreviation for all counties in one state (e.g. NY)",
+          "ParameterIsRequiredFlag": "1",
+          "MultipleAcceptedFlag": "1"
+        },
+        {
+          "ParameterName": "LineCode",
+          "ParameterDataType": "integer",
+          "ParameterDescription": "Line code for a statistic or industry",
+          "ParameterIsRequiredFlag": "1",
+          "MultipleAcceptedFlag": "0"
+        },
+        {
+          "ParameterName": "TableName",
+          "ParameterDataType": "string",
+          "ParameterDescription": "Regional income or product table to retrieve",
+          "ParameterIsRequiredFlag": "1",
+          "ParameterDefaultValue": "",
+          "MultipleAcceptedFlag": "0"
+        },
+        {
+          "ParameterName": "Year",
+          "ParameterDataType": "string",
+          "ParameterDescription": "Comma-delimted list of years; LAST5 for latest 5 years; LAST10 for latest 10 years; ALL for all years",
+          "ParameterIsRequiredFlag": "0",
+          "ParameterDefaultValue": "LAST5",
+          "MultipleAcceptedFlag": "1"
+        }
+      ]
+    },
+    {
+      "DatasetName": "UnderlyingGDPbyIndustry",
+      "DatasetDescription": "Underlying GDP by Industry",
+      "parameters": [
+        {
+          "ParameterName": "Frequency",
+          "ParameterDataType": "string",
+          "ParameterDescription": "Q-Quarterly",
+          "ParameterIsRequiredFlag": "1",
+          "ParameterDefaultValue": "",
+          "MultipleAcceptedFlag": "1",
+          "AllValue": "ALL"
+        },
+        {
+          "ParameterName": "Industry",
+          "ParameterDataType": "string",
+          "ParameterDescription": "List of industries to retrieve (ALL for All)",
+          "ParameterIsRequiredFlag": "1",
+          "ParameterDefaultValue": "",
+          "MultipleAcceptedFlag": "1",
+          "AllValue": "ALL"
+        },
+        {
+          "ParameterName": "TableID",
+          "ParameterDataType": "integer",
+          "ParameterDescription": "The unique Underlying GDP by Industry table identifier (ALL for All)",
+          "ParameterIsRequiredFlag": "1",
+          "ParameterDefaultValue": "",
+          "MultipleAcceptedFlag": "1",
+          "AllValue": "ALL"
+        },
+        {
+          "ParameterName": "Year",
+          "ParameterDataType": "integer",
+          "ParameterDescription": "List of year(s) of data to retrieve (ALL for All)",
+          "ParameterIsRequiredFlag": "1",
+          "ParameterDefaultValue": "",
+          "MultipleAcceptedFlag": "1",
+          "AllValue": "ALL"
+        }
+      ]
+    },
+    {
+      "DatasetName": "APIDatasetMetaData",
+      "DatasetDescription": "Metadata about other API datasets",
+      "parameters": [
+        {
+          "ParameterName": "Dataset",
+          "ParameterDataType": "string",
+          "ParameterDescription": "A comma-delimited list of one or more API dataset names",
+          "ParameterIsRequiredFlag": "1",
+          "ParameterDefaultValue": "",
+          "MultipleAcceptedFlag": "1",
+          "AllValue": ""
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "provider": "fetch.wgi",
+  "generated_at": "2026-04-09T00:00:00+00:00",
+  "columns": [
+    {"name": "dataset_ref", "type": "string", "sample": "intl_wgi"},
+    {"name": "source_url", "type": "string", "sample": "https://api.worldbank.org/v2/country/all/indicator/"},
+    {"name": "params", "type": "dict", "sample": {}},
+    {"name": "rows", "type": "list", "sample": [{"indicator": "VA.EST", "country_iso3": "USA", "year": "2022", "value": 1.05}]},
+    {"name": "row_count", "type": "int", "sample": 1},
+    {"name": "raw", "type": "dict", "sample": {}},
+    {"name": "retrieved_at", "type": "string", "sample": "2026-04-09T00:00:00+00:00"}
+  ],
+  "sample_row": {
+    "dataset_ref": "intl_wgi",
+    "source_url": "https://api.worldbank.org/v2/country/all/indicator/",
+    "params": {},
+    "rows": [{"indicator": "VA.EST", "country_iso3": "USA", "year": "2022", "value": 1.05}],
+    "row_count": 1,
+    "raw": {},
+    "retrieved_at": "2026-04-09T00:00:00+00:00"
+  }
+}

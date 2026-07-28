@@ -1,0 +1,20 @@
+{
+  "provider": "fetch.earthdata",
+  "generated_at": "2026-04-12T00:00:00+00:00",
+  "columns": [
+    {"name": "dataset_ref", "type": "string", "sample": "earthdata"},
+    {"name": "mode", "type": "string", "sample": "collections"},
+    {"name": "rows", "type": "list", "sample": []},
+    {"name": "row_count", "type": "int", "sample": 50},
+    {"name": "raw", "type": "dict", "sample": {}},
+    {"name": "retrieved_at", "type": "string", "sample": "2026-04-12T00:00:00+00:00"}
+  ],
+  "sample_row": {
+    "dataset_ref": "earthdata",
+    "mode": "collections",
+    "rows": [{"short_name": "MOD13A2", "title": "MODIS/Terra Vegetation Indices"}],
+    "row_count": 50,
+    "raw": {},
+    "retrieved_at": "2026-04-12T00:00:00+00:00"
+  }
+}

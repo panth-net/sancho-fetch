@@ -1,0 +1,70 @@
+{
+  "provider": "fetch.clinical_trials.studies",
+  "schema_version": "1.0",
+  "generated_at": "2026-04-14T17:21:31.512187+00:00",
+  "stats": {
+    "family_count": 7,
+    "field_count": 454,
+    "fields_count": 454,
+    "enum_type_count": 41,
+    "enum_types_count": 41,
+    "enum_value_count": 210,
+    "enum_values_count": 210,
+    "search_area_count": 19,
+    "search_areas_count": 19,
+    "total_studies": 580492
+  },
+  "discovery": {
+    "mode": "live_required",
+    "sources": [
+      {
+        "id": "/studies/metadata",
+        "url": "https://clinicaltrials.gov/api/v2/studies/metadata",
+        "status": "ok",
+        "http_status": 200,
+        "count": 454,
+        "error": "",
+        "fetched_at": "2026-04-14T17:21:29.424090+00:00"
+      },
+      {
+        "id": "/studies/search-areas",
+        "url": "https://clinicaltrials.gov/api/v2/studies/search-areas",
+        "status": "ok",
+        "http_status": 200,
+        "count": 1,
+        "error": "",
+        "fetched_at": "2026-04-14T17:21:29.940167+00:00"
+      },
+      {
+        "id": "/studies/enums",
+        "url": "https://clinicaltrials.gov/api/v2/studies/enums",
+        "status": "ok",
+        "http_status": 200,
+        "count": 41,
+        "error": "",
+        "fetched_at": "2026-04-14T17:21:30.463318+00:00"
+      },
+      {
+        "id": "/version",
+        "url": "https://clinicaltrials.gov/api/v2/version",
+        "status": "ok",
+        "http_status": 200,
+        "count": 1,
+        "error": "",
+        "fetched_at": "2026-04-14T17:21:30.941434+00:00"
+      },
+      {
+        "id": "/stats/size",
+        "url": "https://clinicaltrials.gov/api/v2/stats/size",
+        "status": "ok",
+        "http_status": 200,
+        "count": 1,
+        "error": "",
+        "fetched_at": "2026-04-14T17:21:31.509202+00:00"
+      }
+    ],
+    "docs": [
+      "https://clinicaltrials.gov/data-api/api"
+    ]
+  }
+}
