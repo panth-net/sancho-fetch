@@ -1,0 +1,17 @@
+id: analyze.summary
+version: 1.0.0
+type: analyze
+entrypoint: main.py:run
+description: Produce simple metrics from a records payload and write summary JSON.
+managed_paths:
+- module.yaml
+- main.py
+input_schema:
+  type: object
+  required:
+  - records
+output_schema:
+  type: object
+  required:
+  - output_path
+  - metrics

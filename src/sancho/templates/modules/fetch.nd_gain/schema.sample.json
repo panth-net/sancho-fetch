@@ -1,0 +1,22 @@
+{
+  "provider": "fetch.nd_gain",
+  "generated_at": "2026-04-09T00:00:00+00:00",
+  "columns": [
+    {"name": "dataset_ref", "type": "string", "sample": "intl_nd_gain"},
+    {"name": "source_url", "type": "string", "sample": "https://gain-new.crc.nd.edu/download/resources-20240101.zip"},
+    {"name": "params", "type": "dict", "sample": {"country": null, "metric": null}},
+    {"name": "rows", "type": "list", "sample": [{"country_iso3": "USA", "metric": "gain", "year": 2021, "value": 62.4}]},
+    {"name": "row_count", "type": "int", "sample": 1},
+    {"name": "raw", "type": "dict", "sample": {}},
+    {"name": "retrieved_at", "type": "string", "sample": "2026-04-09T00:00:00+00:00"}
+  ],
+  "sample_row": {
+    "dataset_ref": "intl_nd_gain",
+    "source_url": "https://gain-new.crc.nd.edu/download/resources-20240101.zip",
+    "params": {"country": null, "metric": null},
+    "rows": [{"country_iso3": "USA", "metric": "gain", "year": 2021, "value": 62.4}],
+    "row_count": 1,
+    "raw": {},
+    "retrieved_at": "2026-04-09T00:00:00+00:00"
+  }
+}

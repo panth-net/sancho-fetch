@@ -1,0 +1,104 @@
+{
+  "provider": "fetch.fred.series",
+  "schema_version": "1.0",
+  "generated_at": "2026-04-14T19:45:13.693126+00:00",
+  "stats": {
+    "family_count": 6,
+    "release_count": 324,
+    "releases_count": 324,
+    "source_count": 119,
+    "sources_count": 119,
+    "tag_count": 5955,
+    "tags_count": 5955,
+    "category_root_count": 8
+  },
+  "discovery": {
+    "mode": "live_required",
+    "sources": [
+      {
+        "id": "/releases.offset.0",
+        "url": "https://api.stlouisfed.org/fred/releases",
+        "status": "ok",
+        "http_status": 200,
+        "count": 324,
+        "error": "",
+        "fetched_at": "2026-04-14T19:44:06.232501+00:00"
+      },
+      {
+        "id": "/sources.offset.0",
+        "url": "https://api.stlouisfed.org/fred/sources",
+        "status": "ok",
+        "http_status": 200,
+        "count": 119,
+        "error": "",
+        "fetched_at": "2026-04-14T19:44:07.110382+00:00"
+      },
+      {
+        "id": "/tags.offset.0",
+        "url": "https://api.stlouisfed.org/fred/tags",
+        "status": "ok",
+        "http_status": 200,
+        "count": 6004,
+        "error": "",
+        "fetched_at": "2026-04-14T19:44:17.070337+00:00"
+      },
+      {
+        "id": "/tags.offset.1000",
+        "url": "https://api.stlouisfed.org/fred/tags",
+        "status": "ok",
+        "http_status": 200,
+        "count": 6004,
+        "error": "",
+        "fetched_at": "2026-04-14T19:44:28.462973+00:00"
+      },
+      {
+        "id": "/tags.offset.2000",
+        "url": "https://api.stlouisfed.org/fred/tags",
+        "status": "ok",
+        "http_status": 200,
+        "count": 6004,
+        "error": "",
+        "fetched_at": "2026-04-14T19:44:37.574350+00:00"
+      },
+      {
+        "id": "/tags.offset.3000",
+        "url": "https://api.stlouisfed.org/fred/tags",
+        "status": "ok",
+        "http_status": 200,
+        "count": 6004,
+        "error": "",
+        "fetched_at": "2026-04-14T19:44:49.564323+00:00"
+      },
+      {
+        "id": "/tags.offset.4000",
+        "url": "https://api.stlouisfed.org/fred/tags",
+        "status": "ok",
+        "http_status": 200,
+        "count": 6004,
+        "error": "",
+        "fetched_at": "2026-04-14T19:44:59.197622+00:00"
+      },
+      {
+        "id": "/tags.offset.5000",
+        "url": "https://api.stlouisfed.org/fred/tags",
+        "status": "ok",
+        "http_status": 200,
+        "count": 6004,
+        "error": "",
+        "fetched_at": "2026-04-14T19:45:09.550939+00:00"
+      },
+      {
+        "id": "/category/children",
+        "url": "https://api.stlouisfed.org/fred/category/children",
+        "status": "ok",
+        "http_status": 200,
+        "count": 8,
+        "error": "",
+        "fetched_at": "2026-04-14T19:45:13.689584+00:00"
+      }
+    ],
+    "docs": [
+      "https://fred.stlouisfed.org/docs/api/fred/"
+    ]
+  }
+}

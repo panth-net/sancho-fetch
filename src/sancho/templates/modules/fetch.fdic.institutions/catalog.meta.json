@@ -1,0 +1,48 @@
+{
+  "provider": "fetch.fdic.institutions",
+  "schema_version": "1.0",
+  "generated_at": "2026-04-15T17:15:37.705297+00:00",
+  "stats": {
+    "family_count": 3,
+    "resource_count": 3,
+    "resources_count": 3,
+    "total_field_count": 294,
+    "fields_count": 294,
+    "total_records_across_resources": 1780370
+  },
+  "discovery": {
+    "mode": "live_required",
+    "sources": [
+      {
+        "id": "/institutions",
+        "url": "https://banks.data.fdic.gov/api/institutions",
+        "status": "ok",
+        "http_status": 200,
+        "count": 27832,
+        "error": "",
+        "fetched_at": "2026-04-15T17:15:33.705469+00:00"
+      },
+      {
+        "id": "/locations",
+        "url": "https://banks.data.fdic.gov/api/locations",
+        "status": "ok",
+        "http_status": 200,
+        "count": 78341,
+        "error": "",
+        "fetched_at": "2026-04-15T17:15:35.628765+00:00"
+      },
+      {
+        "id": "/financials",
+        "url": "https://banks.data.fdic.gov/api/financials",
+        "status": "ok",
+        "http_status": 200,
+        "count": 1674197,
+        "error": "",
+        "fetched_at": "2026-04-15T17:15:37.702288+00:00"
+      }
+    ],
+    "docs": [
+      "https://banks.data.fdic.gov/docs/"
+    ]
+  }
+}

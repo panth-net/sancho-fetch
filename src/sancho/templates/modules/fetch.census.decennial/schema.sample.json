@@ -1,0 +1,20 @@
+{
+  "provider": "fetch.census.decennial",
+  "generated_at": "2026-05-06T00:00:00+00:00",
+  "columns": [
+    {"name": "dataset_ref", "type": "string", "sample": "us_census_decennial"},
+    {"name": "geography", "type": "string", "sample": "place:81072"},
+    {"name": "year", "type": "string", "sample": "2020"},
+    {"name": "dataset", "type": "string", "sample": "dhc"},
+    {"name": "rows", "type": "list", "sample": [["NAME","P1_001N","state","place"],["Vienna town, Virginia","16473","51","81072"]]},
+    {"name": "retrieved_at", "type": "string", "sample": "2026-05-06T00:00:00+00:00"}
+  ],
+  "sample_row": {
+    "dataset_ref": "us_census_decennial",
+    "geography": "place:81072",
+    "year": "2020",
+    "dataset": "dhc",
+    "rows": [["NAME","P1_001N","state","place"],["Vienna town, Virginia","16473","51","81072"]],
+    "retrieved_at": "2026-05-06T00:00:00+00:00"
+  }
+}

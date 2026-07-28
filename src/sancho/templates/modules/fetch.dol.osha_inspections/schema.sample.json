@@ -1,0 +1,44 @@
+{
+  "provider": "fetch.dol.osha_inspections",
+  "generated_at": "2026-03-30T18:59:54.810750+00:00",
+  "columns": [
+    {
+      "name": "dataset_ref",
+      "type": "string",
+      "sample": "usgov_dol"
+    },
+    {
+      "name": "endpoint",
+      "type": "string",
+      "sample": "https://apiprod.dol.gov/v4/get/OSHA/inspection"
+    },
+    {
+      "name": "params",
+      "type": "dict",
+      "sample": {}
+    },
+    {
+      "name": "rows",
+      "type": "list",
+      "sample": []
+    },
+    {
+      "name": "raw",
+      "type": "list",
+      "sample": []
+    },
+    {
+      "name": "retrieved_at",
+      "type": "string",
+      "sample": "2026-03-30T18:59:54.810750+00:00"
+    }
+  ],
+  "sample_row": {
+    "dataset_ref": "usgov_dol",
+    "endpoint": "https://apiprod.dol.gov/v4/get/OSHA/inspection",
+    "params": {},
+    "rows": [],
+    "raw": [],
+    "retrieved_at": "2026-03-30T18:59:54.810750+00:00"
+  }
+}

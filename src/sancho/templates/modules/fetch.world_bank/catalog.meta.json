@@ -1,0 +1,109 @@
+{
+  "provider": "fetch.world_bank",
+  "schema_version": "1.0",
+  "generated_at": "2026-04-22T16:41:14.190485+00:00",
+  "stats": {
+    "family_count": 10,
+    "indicator_count": 29511,
+    "indicators_count": 29511,
+    "source_count": 71,
+    "sources_count": 71,
+    "topic_count": 21,
+    "topics_count": 21,
+    "country_count": 296,
+    "countries_count": 296,
+    "income_level_count": 7,
+    "income_levels_count": 7,
+    "lending_type_count": 4,
+    "lending_types_count": 4,
+    "region_count": 44,
+    "regions_count": 44,
+    "project_count": 200,
+    "projects_count": 200,
+    "ddh_dataset_count": 0,
+    "ddh_datasets_count": 0
+  },
+  "discovery": {
+    "mode": "live_required",
+    "sources": [
+      {
+        "id": "v2.indicators",
+        "url": "https://api.worldbank.org/v2/indicator",
+        "status": "ok",
+        "http_status": 200,
+        "count": 29511,
+        "fetched_at": "2026-04-22T16:40:58.890983+00:00"
+      },
+      {
+        "id": "v2.sources",
+        "url": "https://api.worldbank.org/v2/sources",
+        "status": "ok",
+        "http_status": 200,
+        "count": 71,
+        "fetched_at": "2026-04-22T16:41:01.091408+00:00"
+      },
+      {
+        "id": "v2.topics",
+        "url": "https://api.worldbank.org/v2/topic",
+        "status": "ok",
+        "http_status": 200,
+        "count": 21,
+        "fetched_at": "2026-04-22T16:41:02.126868+00:00"
+      },
+      {
+        "id": "v2.countries",
+        "url": "https://api.worldbank.org/v2/country",
+        "status": "ok",
+        "http_status": 200,
+        "count": 296,
+        "fetched_at": "2026-04-22T16:41:03.266811+00:00"
+      },
+      {
+        "id": "v2.income_levels",
+        "url": "https://api.worldbank.org/v2/incomelevel",
+        "status": "ok",
+        "http_status": 200,
+        "count": 7,
+        "fetched_at": "2026-04-22T16:41:04.268506+00:00"
+      },
+      {
+        "id": "v2.lending_types",
+        "url": "https://api.worldbank.org/v2/lendingtype",
+        "status": "ok",
+        "http_status": 200,
+        "count": 4,
+        "fetched_at": "2026-04-22T16:41:05.366937+00:00"
+      },
+      {
+        "id": "v2.regions",
+        "url": "https://api.worldbank.org/v2/region",
+        "status": "ok",
+        "http_status": 200,
+        "count": 44,
+        "fetched_at": "2026-04-22T16:41:06.307051+00:00"
+      },
+      {
+        "id": "projects.index",
+        "url": "https://search.worldbank.org/api/v2/projects",
+        "status": "ok",
+        "http_status": 200,
+        "count": 200,
+        "fetched_at": "2026-04-22T16:41:07.980929+00:00"
+      },
+      {
+        "id": "ddh.datasets",
+        "url": "https://ddh-openapi.worldbank.org/datasets",
+        "status": "ok",
+        "http_status": 200,
+        "count": 0,
+        "fetched_at": "2026-04-22T16:41:14.190485+00:00"
+      }
+    ],
+    "docs": [
+      "https://datahelpdesk.worldbank.org/knowledgebase/topics/125589-developer-information",
+      "https://datahelpdesk.worldbank.org/knowledgebase/articles/898581-api-basic-call-structures",
+      "https://search.worldbank.org/api/v2/projects",
+      "https://ddh-openapi.worldbank.org"
+    ]
+  }
+}
