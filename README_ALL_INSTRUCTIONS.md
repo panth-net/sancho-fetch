@@ -312,6 +312,11 @@ You don't need every key -- only the ones for the data sources you want to use. 
 
 MCP is separate from normal local workspace usage. Use it when exposing Sancho Fetch through an MCP client or hosting a public MCP endpoint.
 
+The server is dual-era per the MCP 2026-07-28 spec: it answers the legacy
+`initialize` handshake (protocol versions 2024-10-07 through 2025-11-25) and
+serves modern stateless clients (`server/discover`, per-request `_meta`,
+cacheable `tools/list`) on the same process.
+
 For hosted/public MCP, see [`hosting/README.md`](hosting/README.md).
 
 For local desktop MCP experiments:

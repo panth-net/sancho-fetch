@@ -1,30 +1,28 @@
 from __future__ import annotations
 
 import json
-import queue
 import sys
-import threading
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from typing import Any
-from urllib.parse import parse_qs, urlparse
-from uuid import uuid4
+from urllib.parse import urlparse
 
 from sancho.mcp.models import MCPContext, MCPPolicy
-from sancho.mcp.tooling import _build_context, _handle_method, _tools_payload
+from sancho.mcp.tooling import (
+    MCPHeaderMismatch,
+    _build_context,
+    _handle_method,
+    _tools_payload,
+    jsonrpc_error,
+)
 
 
 def _read_stdio_message() -> dict[str, Any] | None:
     """Read one JSON-RPC message from stdin per the MCP stdio transport spec.
 
-    The MCP spec (every version since 2024-11-05) defines stdio framing as
-    newline-delimited JSON: each message is a single line of UTF-8 JSON
-    terminated by ``\\n``, with no embedded newlines. This is what Claude
+    Framing is newline-delimited JSON: each message is a single line of UTF-8
+    JSON terminated by ``\\n``, with no embedded newlines. This is what Claude
     Desktop, Codex, Cursor, VS Code, and every other MCP client send.
-
-    For defensive backward compatibility we also accept the legacy LSP-style
-    ``Content-Length: N\\r\\n\\r\\n<body>`` framing that an earlier sancho
-    release shipped — detected by a header line starting with ``Content-Length``.
     """
     while True:
         line = sys.stdin.buffer.readline()
@@ -34,44 +32,15 @@ def _read_stdio_message() -> dict[str, Any] | None:
         if not stripped:
             # Skip blank lines between messages.
             continue
-        # Newline-delimited JSON — the MCP spec format.
-        if stripped[:1] == b"{":
-            try:
-                return json.loads(stripped.decode("utf-8"))
-            except json.JSONDecodeError:
-                # Malformed line; skip and try the next one.
-                continue
-        # Legacy LSP-style Content-Length framing (compat only).
-        lower = stripped.lower()
-        if lower.startswith(b"content-length:"):
-            headers: dict[str, str] = {}
-            try:
-                key, value = stripped.decode("utf-8").split(":", 1)
-                headers[key.strip().lower()] = value.strip()
-            except ValueError:
-                return None
-            while True:
-                next_line = sys.stdin.buffer.readline()
-                if next_line == b"":
-                    return None
-                if not next_line.strip():
-                    break
-                try:
-                    key, value = next_line.decode("utf-8").split(":", 1)
-                    headers[key.strip().lower()] = value.strip()
-                except ValueError:
-                    continue
-            content_length = int(headers.get("content-length", "0"))
-            if content_length <= 0:
-                return None
-            body = sys.stdin.buffer.read(content_length)
-            if not body:
-                return None
-            try:
-                return json.loads(body.decode("utf-8"))
-            except json.JSONDecodeError:
-                return None
-        # Unknown line — skip and keep reading.
+        try:
+            message = json.loads(stripped.decode("utf-8"))
+        except json.JSONDecodeError:
+            # Malformed line; skip and try the next one.
+            continue
+        if isinstance(message, dict):
+            return message
+        # Non-object JSON (array/scalar) is never a valid JSON-RPC message;
+        # skip it rather than crash the read loop downstream.
         continue
 
 
@@ -125,18 +94,12 @@ def serve_stdio(
         except Exception as exc:
             if message_id is not None:
                 _write_stdio_message(
-                    {
-                        "jsonrpc": "2.0",
-                        "id": message_id,
-                        "error": {"code": -32000, "message": str(exc)},
-                    }
+                    {"jsonrpc": "2.0", "id": message_id, "error": jsonrpc_error(exc)}
                 )
 
 
 class _HttpHandler(BaseHTTPRequestHandler):
     ctx: MCPContext
-    sessions: dict[str, queue.Queue[dict[str, Any]]] = {}
-    session_lock = threading.Lock()
 
     def _write_json(self, status: int, payload: dict[str, Any]) -> None:
         raw = json.dumps(payload).encode("utf-8")
@@ -145,57 +108,6 @@ class _HttpHandler(BaseHTTPRequestHandler):
         self.send_header("Content-Length", str(len(raw)))
         self.end_headers()
         self.wfile.write(raw)
-
-    def _write_sse(self, event: str, data: str) -> None:
-        self.wfile.write(f"event: {event}\n".encode("utf-8"))
-        self.wfile.write(f"data: {data}\n\n".encode("utf-8"))
-
-    @classmethod
-    def _create_session(cls) -> tuple[str, queue.Queue[dict[str, Any]]]:
-        session_id = uuid4().hex
-        channel: queue.Queue[dict[str, Any]] = queue.Queue()
-        with cls.session_lock:
-            cls.sessions[session_id] = channel
-        return session_id, channel
-
-    @classmethod
-    def _get_session(cls, session_id: str) -> queue.Queue[dict[str, Any]] | None:
-        with cls.session_lock:
-            return cls.sessions.get(session_id)
-
-    @classmethod
-    def _remove_session(cls, session_id: str) -> None:
-        with cls.session_lock:
-            cls.sessions.pop(session_id, None)
-
-    def _serve_sse(self) -> None:
-        session_id, channel = self._create_session()
-        self.send_response(200)
-        self.send_header("Content-Type", "text/event-stream")
-        self.send_header("Cache-Control", "no-cache")
-        self.send_header("Connection", "keep-alive")
-        self.end_headers()
-        self._write_sse("endpoint", f"/messages?session_id={session_id}")
-        self.wfile.flush()
-        try:
-            while True:
-                try:
-                    payload = channel.get(timeout=15.0)
-                    self._write_sse("message", json.dumps(payload))
-                except queue.Empty:
-                    self.wfile.write(b": keep-alive\n\n")
-                self.wfile.flush()
-        except (BrokenPipeError, ConnectionResetError):
-            return
-        finally:
-            self._remove_session(session_id)
-
-    def _enqueue_mcp_response(self, session_id: str, payload: dict[str, Any]) -> bool:
-        channel = self._get_session(session_id)
-        if channel is None:
-            return False
-        channel.put(payload)
-        return True
 
     def _read_json_body(self) -> dict[str, Any]:
         length = int(self.headers.get("Content-Length", "0"))
@@ -231,9 +143,6 @@ class _HttpHandler(BaseHTTPRequestHandler):
         if self.path == "/tools":
             self._write_json(200, _tools_payload(self.ctx))
             return
-        if self.path == "/sse":
-            self._serve_sse()
-            return
         self._write_json(404, {"error": "not found"})
 
     def do_POST(self) -> None:  # noqa: N802
@@ -243,6 +152,26 @@ class _HttpHandler(BaseHTTPRequestHandler):
             self._do_POST_inner(parsed)
         finally:
             self._teardown_request_state()
+
+    def _check_mcp_headers(self, method: str, params: Any) -> None:
+        """Validate the 2026-07-28 routing headers when the client sends them.
+
+        Absent headers are tolerated (handshake-era clients don't send them);
+        present-but-mismatched headers mean a confused gateway or client and
+        must fail rather than route on the wrong value.
+        """
+        header_method = self.headers.get("Mcp-Method")
+        if header_method and header_method != method:
+            raise MCPHeaderMismatch(
+                f"Mcp-Method header '{header_method}' does not match body method '{method}'"
+            )
+        header_name = self.headers.get("Mcp-Name")
+        if header_name and method == "tools/call":
+            body_name = params.get("name") if isinstance(params, dict) else None
+            if header_name != body_name:
+                raise MCPHeaderMismatch(
+                    f"Mcp-Name header '{header_name}' does not match params.name '{body_name}'"
+                )
 
     def _do_POST_inner(self, parsed: Any) -> None:
         if parsed.path == "/mcp":
@@ -254,59 +183,20 @@ class _HttpHandler(BaseHTTPRequestHandler):
                 return
 
             if method.startswith("notifications/") or message_id is None:
-                try:
-                    _handle_method(self.ctx, method=method, params=payload.get("params"))
-                except Exception:
-                    pass
+                # Notifications carry no response; sancho keeps no per-session
+                # state, so there is nothing to process either.
                 self._write_json(202, {"accepted": True})
                 return
 
             try:
+                self._check_mcp_headers(method, payload.get("params"))
                 result = _handle_method(self.ctx, method=method, params=payload.get("params"))
                 self._write_json(200, {"jsonrpc": "2.0", "id": message_id, "result": result})
             except Exception as exc:
                 self._write_json(
                     200,
-                    {
-                        "jsonrpc": "2.0",
-                        "id": message_id,
-                        "error": {"code": -32000, "message": str(exc)},
-                    },
+                    {"jsonrpc": "2.0", "id": message_id, "error": jsonrpc_error(exc)},
                 )
-            return
-
-        if parsed.path == "/messages":
-            payload = self._read_json_body()
-            session_ids = parse_qs(parsed.query).get("session_id", [])
-            session_id = session_ids[0] if session_ids else ""
-            if not session_id:
-                self._write_json(400, {"error": "missing session_id"})
-                return
-
-            method = payload.get("method")
-            message_id = payload.get("id")
-            if not isinstance(method, str) or not method:
-                self._write_json(400, {"error": "method is required"})
-                return
-
-            if method.startswith("notifications/") or message_id is None:
-                self._write_json(202, {"accepted": True})
-                return
-
-            try:
-                result = _handle_method(self.ctx, method=method, params=payload.get("params"))
-                message = {"jsonrpc": "2.0", "id": message_id, "result": result}
-            except Exception as exc:
-                message = {
-                    "jsonrpc": "2.0",
-                    "id": message_id,
-                    "error": {"code": -32000, "message": str(exc)},
-                }
-
-            if not self._enqueue_mcp_response(session_id, message):
-                self._write_json(404, {"error": "unknown session_id"})
-                return
-            self._write_json(202, {"accepted": True})
             return
 
         if parsed.path != "/call":

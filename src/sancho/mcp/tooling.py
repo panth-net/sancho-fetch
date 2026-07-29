@@ -25,28 +25,89 @@ from sancho.provider_kits import load_provider_catalog
 _ALIAS_PLACEHOLDER_RE = re.compile(r"\{([A-Za-z0-9_]+)\}")
 _ALIAS_SAFE_RE = re.compile(r"[^a-z0-9]+")
 
-# Published MCP protocol versions sancho's stdio surface is compatible with.
-# Per the MCP spec on version negotiation: if the client's requested version
-# is supported, the server MUST echo it back; otherwise the server returns
-# its latest supported version. Returning a version the client doesn't
-# recognize (e.g. a future or made-up date) causes clients such as Claude
-# Desktop to disconnect immediately after the initialize response.
-# Source: https://modelcontextprotocol.io/specification/2025-11-25/basic/lifecycle
-_SUPPORTED_MCP_PROTOCOL_VERSIONS = (
+# Published MCP protocol versions sancho speaks. Legacy versions negotiate a
+# session via the initialize handshake; the modern 2026-07-28 revision is
+# stateless (per-request _meta, server/discover instead of initialize).
+# Sancho is a dual-era server per the 2026-07-28 versioning spec: an
+# initialize request selects legacy semantics, everything else is served
+# statelessly, and both eras run concurrently on the same process.
+# Source: https://modelcontextprotocol.io/specification/2026-07-28/basic/versioning
+_LEGACY_MCP_PROTOCOL_VERSIONS = (
     "2024-10-07",
     "2024-11-05",
     "2025-03-26",
     "2025-06-18",
     "2025-11-25",
 )
-_LATEST_MCP_PROTOCOL_VERSION = _SUPPORTED_MCP_PROTOCOL_VERSIONS[-1]
+_MODERN_MCP_PROTOCOL_VERSIONS = ("2026-07-28",)
+_SUPPORTED_MCP_PROTOCOL_VERSIONS = (
+    _LEGACY_MCP_PROTOCOL_VERSIONS + _MODERN_MCP_PROTOCOL_VERSIONS
+)
+_LATEST_LEGACY_MCP_PROTOCOL_VERSION = _LEGACY_MCP_PROTOCOL_VERSIONS[-1]
+
+_META_PROTOCOL_VERSION_KEY = "io.modelcontextprotocol/protocolVersion"
+_META_SERVER_INFO_KEY = "io.modelcontextprotocol/serverInfo"
+
+# Freshness hints (CacheableResult, required on list results since 2026-07-28).
+# The tool list only changes when modules are installed or removed, so a short
+# TTL is safe; discovery data is fixed for the life of the process.
+_LIST_TTL_MS = 300_000
+_DISCOVER_TTL_MS = 3_600_000
+
+
+class MCPProtocolError(ValueError):
+    """JSON-RPC error carrying a specific error code."""
+
+    code = -32000
+    data: dict[str, Any] | None = None
+
+
+class MCPMethodNotFound(MCPProtocolError):
+    code = -32601
+
+
+class MCPInvalidParams(MCPProtocolError):
+    code = -32602
+
+
+class MCPHeaderMismatch(MCPProtocolError):
+    code = -32020
+
+
+class MCPUnsupportedProtocolVersion(MCPProtocolError):
+    code = -32022
+
+    def __init__(self, requested: str) -> None:
+        super().__init__("Unsupported protocol version")
+        self.data = {
+            "supported": list(reversed(_SUPPORTED_MCP_PROTOCOL_VERSIONS)),
+            "requested": requested,
+        }
+
+
+def jsonrpc_error(exc: Exception) -> dict[str, Any]:
+    """Map an exception to a JSON-RPC error object with the right code."""
+    error: dict[str, Any] = {
+        "code": exc.code if isinstance(exc, MCPProtocolError) else -32000,
+        "message": str(exc),
+    }
+    if isinstance(exc, MCPProtocolError) and exc.data:
+        error["data"] = exc.data
+    return error
 
 
 def _negotiate_protocol_version(requested: Any) -> str:
-    """Echo the client's version if supported, else return our latest."""
+    """Echo the client's version if supported, else return our latest legacy.
+
+    Only handshake-era clients call initialize, so the fallback must be a
+    version whose lifecycle includes initialize. Returning a version the
+    client doesn't recognize (e.g. a future or made-up date) causes clients
+    such as Claude Desktop to disconnect immediately after the initialize
+    response.
+    """
     if isinstance(requested, str) and requested in _SUPPORTED_MCP_PROTOCOL_VERSIONS:
         return requested
-    return _LATEST_MCP_PROTOCOL_VERSION
+    return _LATEST_LEGACY_MCP_PROTOCOL_VERSION
 
 
 def _build_context(
@@ -261,42 +322,91 @@ def _tools_payload(ctx: MCPContext) -> dict[str, Any]:
         if tool.name in seen:
             continue
         seen.add(tool.name)
-        tools.append(
-            {
-                "name": tool.name,
-                "description": tool.description,
-                "inputSchema": tool.input_schema,
-            }
-        )
+        entry: dict[str, Any] = {
+            "name": tool.name,
+            "description": tool.description,
+            "inputSchema": tool.input_schema,
+        }
+        if tool.title:
+            entry["title"] = tool.title
+        if tool.annotations:
+            entry["annotations"] = tool.annotations
+        tools.append(entry)
     return {"tools": tools}
+
+
+def _cache_fields(ctx: MCPContext, ttl_ms: int) -> dict[str, Any]:
+    # cacheScope controls whether shared intermediaries may cache the result:
+    # the hosted server returns identical payloads for everyone; a local
+    # workspace server is single-user.
+    return {"ttlMs": ttl_ms, "cacheScope": "public" if ctx.policy.stateless else "private"}
+
+
+def _check_meta_protocol_version(params: dict[str, Any]) -> None:
+    meta = params.get("_meta")
+    if not isinstance(meta, dict):
+        return
+    requested = meta.get(_META_PROTOCOL_VERSION_KEY)
+    if isinstance(requested, str) and requested not in _SUPPORTED_MCP_PROTOCOL_VERSIONS:
+        raise MCPUnsupportedProtocolVersion(requested)
+
+
+def _finalize_result(result: dict[str, Any]) -> dict[str, Any]:
+    """Stamp the modern required result fields (2026-07-28).
+
+    Every result carries resultType ("complete" — sancho never issues MRTR
+    interim results) and the server's identity in _meta. Legacy clients
+    tolerate both as unknown extra fields.
+    """
+    result.setdefault("resultType", "complete")
+    meta = result.setdefault("_meta", {})
+    if isinstance(meta, dict):
+        meta.setdefault(_META_SERVER_INFO_KEY, {"name": "sancho-mcp", "version": __version__})
+    return result
 
 
 def _handle_method(ctx: MCPContext, method: str, params: dict[str, Any] | None) -> dict[str, Any]:
     params = params or {}
+    _check_meta_protocol_version(params)
+    return _finalize_result(_dispatch_method(ctx, method, params))
+
+
+def _dispatch_method(ctx: MCPContext, method: str, params: dict[str, Any]) -> dict[str, Any]:
     if method == "initialize":
+        # Legacy-era handshake, kept for handshake-era clients (dual-era server).
         result: dict[str, Any] = {
             "protocolVersion": _negotiate_protocol_version(params.get("protocolVersion")),
-            "capabilities": {"tools": {}, "resources": {}},
+            "capabilities": {"tools": {}},
             "serverInfo": {"name": "sancho-mcp", "version": __version__},
         }
         if ctx.policy.instructions:
             result["instructions"] = ctx.policy.instructions
         return result
+    if method == "server/discover":
+        result = {
+            "supportedVersions": list(reversed(_SUPPORTED_MCP_PROTOCOL_VERSIONS)),
+            "capabilities": {"tools": {}},
+            **_cache_fields(ctx, _DISCOVER_TTL_MS),
+        }
+        if ctx.policy.instructions:
+            result["instructions"] = ctx.policy.instructions
+        return result
     if method == "ping":
+        # Removed in 2026-07-28; legacy clients still send it.
         return {}
     if method == "tools/list":
-        return _tools_payload(ctx)
+        return {**_tools_payload(ctx), **_cache_fields(ctx, _LIST_TTL_MS)}
     if method == "tools/call":
         name = params.get("name")
         arguments_obj = params.get("arguments", {})
         if not isinstance(name, str) or not name.strip():
-            raise ValueError("tools/call requires params.name")
+            raise MCPInvalidParams("tools/call requires params.name")
         if arguments_obj is None:
             arguments = {}
         elif isinstance(arguments_obj, dict):
             arguments = arguments_obj
         else:
-            raise ValueError("tools/call params.arguments must be an object")
+            raise MCPInvalidParams("tools/call params.arguments must be an object")
 
         # LINK_ONLY interception: bulk-download datasets never execute a
         # module; the hosted server returns the canonical download URL with
@@ -319,7 +429,7 @@ def _handle_method(ctx: MCPContext, method: str, params: dict[str, Any] | None) 
         registry, _, _ = _tool_inventory(ctx)
         tool = registry.get(name)
         if tool is None:
-            raise ValueError(f"Tool '{name}' is not available in this MCP session.")
+            raise MCPInvalidParams(f"Tool '{name}' is not available in this MCP session.")
 
         output = tool.handler(arguments)
         output_text = _json_text(output)
@@ -348,12 +458,14 @@ def _handle_method(ctx: MCPContext, method: str, params: dict[str, Any] | None) 
 
         content: list[dict[str, Any]] = [{"type": "text", "text": output_text}]
         # Per-response nudge footer (hosted mode backstop in case the client
-        # hides or truncates the initialize.instructions field).
+        # hides or truncates the instructions field).
         if ctx.policy.nudge_footer:
             content.append({"type": "text", "text": ctx.policy.nudge_footer})
-        return {"content": content}
-    if method == "resources/list":
-        return {"resources": []}
-    if method == "resources/read":
-        return {"contents": []}
-    raise ValueError(f"Unsupported MCP method '{method}'")
+        result = {"content": content}
+        # structuredContent duplicates the serialized payload on the wire;
+        # skip it when a response byte cap is active (hosted) so the cap
+        # keeps bounding what actually ships.
+        if isinstance(output, dict) and not cap:
+            result["structuredContent"] = output
+        return result
+    raise MCPMethodNotFound(f"Unsupported MCP method '{method}'")

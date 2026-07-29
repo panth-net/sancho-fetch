@@ -198,13 +198,17 @@ def test_unsupported_mcp_method_raises(tmp_path: Path) -> None:
         _handle_method(ctx, "custom/nonexistent", {})
 
 
-def test_mcp_ping_returns_empty(tmp_path: Path) -> None:
+def test_mcp_ping_returns_complete_result(tmp_path: Path) -> None:
     ctx = MCPContext(workspace_root=tmp_path, policy=MCPPolicy())
     result = _handle_method(ctx, "ping", {})
-    assert result == {}
+    assert result["resultType"] == "complete"
 
 
-def test_mcp_resources_list_returns_empty(tmp_path: Path) -> None:
+def test_mcp_resources_methods_are_not_advertised(tmp_path: Path) -> None:
+    """Sancho exposes no resources; the capability must not be advertised and
+    the methods must return method-not-found instead of empty lists."""
     ctx = MCPContext(workspace_root=tmp_path, policy=MCPPolicy())
-    result = _handle_method(ctx, "resources/list", {})
-    assert result == {"resources": []}
+    init = _handle_method(ctx, "initialize", {"protocolVersion": "2025-06-18"})
+    assert "resources" not in init["capabilities"]
+    with pytest.raises(ValueError, match="Unsupported"):
+        _handle_method(ctx, "resources/list", {})

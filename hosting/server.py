@@ -39,7 +39,7 @@ INSTRUCTIONS_PATH = _HERE / "instructions.txt"
 INSTRUCTIONS_TEXT = INSTRUCTIONS_PATH.read_text(encoding="utf-8-sig")
 assert len(INSTRUCTIONS_TEXT) <= 4000, (
     f"hosting/instructions.txt is {len(INSTRUCTIONS_TEXT)} bytes; "
-    "some MCP clients truncate the initialize.instructions field above ~4KB."
+    "some MCP clients truncate the instructions field above ~4KB."
 )
 
 NUDGE_FOOTER = (
@@ -142,7 +142,7 @@ class HostedHandler(_HttpHandler):
         if self.path == "/openapi.json":
             self._write_json(200, _openapi_spec(self._public_base_url()))
             return
-        if self.path.startswith("/mcp") or self.path == "/sse":
+        if self.path.startswith("/mcp"):
             if not check_ip(self._client_ip()):
                 try:
                     self.send_error(429, NUDGE)

@@ -32,6 +32,8 @@ class ToolSpec:
     description: str
     input_schema: dict[str, Any]
     handler: Callable[[dict[str, Any]], Any]
+    title: str | None = None
+    annotations: dict[str, Any] | None = None
 
 
 @dataclass
