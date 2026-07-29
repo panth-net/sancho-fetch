@@ -2,7 +2,11 @@
 
 > **Status: AUTHORITATIVE** -- user-facing setup guide for MCP clients.
 
-Last verified against this codebase: May 18, 2026
+Last verified against this codebase: July 29, 2026
+
+The server is dual-era per the MCP 2026-07-28 spec: handshake-era clients
+(`initialize`, protocol versions 2024-10-07 through 2025-11-25) and modern
+stateless clients (`server/discover`, per-request `_meta`) are both served.
 
 This guide is for desktop AI clients that need MCP tools to reach the
 user's local Sancho Fetch library. The normal individual-user path is:
@@ -125,6 +129,7 @@ Restart the client after changing MCP config.
 {
   "servers": {
     "sancho": {
+      "type": "stdio",
       "command": "sancho",
       "args": ["mcp", "serve", "--workspace", ".", "--transport", "stdio"]
     }
@@ -152,7 +157,6 @@ Endpoints:
 
 - `http://127.0.0.1:8765/health`
 - `http://127.0.0.1:8765/mcp`
-- `http://127.0.0.1:8765/sse`
 
 ### 2. Expose Via Public HTTPS URL
 
@@ -165,7 +169,6 @@ ngrok http 8765
 Then use public URLs such as:
 
 - `https://your-subdomain.example/mcp`
-- `https://your-subdomain.example/sse`
 
 ### 3. Connect Web Clients
 

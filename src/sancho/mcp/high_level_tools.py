@@ -28,6 +28,13 @@ from sancho.mcp.high_level_handlers import (
 )
 from sancho.mcp.models import MCPContext, ToolSpec
 
+# Tool annotations (untrusted hints, but honest ones): most sancho tools only
+# report state. Fetch tools call external APIs and write local files; they
+# never delete anything.
+_READ_ONLY = {"readOnlyHint": True}
+_FETCHES = {"readOnlyHint": False, "destructiveHint": False, "openWorldHint": True}
+_WRITES_LOCAL = {"readOnlyHint": False, "destructiveHint": False, "openWorldHint": False}
+
 
 def build_high_level_tools(ctx: MCPContext) -> list[ToolSpec]:
     if ctx.policy.stateless:
@@ -38,12 +45,16 @@ def build_high_level_tools(ctx: MCPContext) -> list[ToolSpec]:
             description="Return every relevant Sancho Fetch path (workspace, source, fetched-data, logs, env, library).",
             input_schema={"type": "object"},
             handler=handle_paths,
+            title="Workspace paths",
+            annotations=_READ_ONLY,
         ),
         ToolSpec(
             name="sancho_mode",
             description="Return only the Sancho developer-mode boolean without exposing .env contents.",
             input_schema={"type": "object"},
             handler=ModeHandler(workspace_root=ctx.workspace_root),
+            title="Developer mode",
+            annotations=_READ_ONLY,
         ),
         ToolSpec(
             name="sancho_inventory",
@@ -55,6 +66,8 @@ def build_high_level_tools(ctx: MCPContext) -> list[ToolSpec]:
             ),
             input_schema={"type": "object"},
             handler=InventoryHandler(workspace_root=ctx.workspace_root),
+            title="Full data catalog",
+            annotations=_READ_ONLY,
         ),
         ToolSpec(
             name="sancho_find_sources",
@@ -72,6 +85,8 @@ def build_high_level_tools(ctx: MCPContext) -> list[ToolSpec]:
                 },
             },
             handler=FindSourcesHandler(workspace_root=ctx.workspace_root),
+            title="Find data sources",
+            annotations=_READ_ONLY,
         ),
         ToolSpec(
             name="sancho_module_show",
@@ -82,6 +97,8 @@ def build_high_level_tools(ctx: MCPContext) -> list[ToolSpec]:
                 "properties": {"module_id": {"type": "string"}},
             },
             handler=ModuleShowHandler(workspace_root=ctx.workspace_root),
+            title="Inspect module",
+            annotations=_READ_ONLY,
         ),
         ToolSpec(
             name="sancho_cache_status",
@@ -100,6 +117,8 @@ def build_high_level_tools(ctx: MCPContext) -> list[ToolSpec]:
                 },
             },
             handler=CacheStatusHandler(workspace_root=ctx.workspace_root),
+            title="Cache status",
+            annotations=_READ_ONLY,
         ),
         ToolSpec(
             name="sancho_fetch_run",
@@ -117,6 +136,8 @@ def build_high_level_tools(ctx: MCPContext) -> list[ToolSpec]:
                 },
             },
             handler=FetchRunHandler(workspace_root=ctx.workspace_root),
+            title="Run data fetch",
+            annotations=_FETCHES,
         ),
         ToolSpec(
             name="sancho_export_to_project",
@@ -131,6 +152,8 @@ def build_high_level_tools(ctx: MCPContext) -> list[ToolSpec]:
                 },
             },
             handler=ExportToProjectHandler(workspace_root=ctx.workspace_root),
+            title="Export to project",
+            annotations=_WRITES_LOCAL,
         ),
         ToolSpec(
             name="sancho_log_tail",
@@ -148,6 +171,8 @@ def build_high_level_tools(ctx: MCPContext) -> list[ToolSpec]:
                 },
             },
             handler=LogTailHandler(workspace_root=ctx.workspace_root),
+            title="Recent run log",
+            annotations=_READ_ONLY,
         ),
         ToolSpec(
             name="sancho_log_show",
@@ -161,6 +186,8 @@ def build_high_level_tools(ctx: MCPContext) -> list[ToolSpec]:
                 "properties": {"run_id": {"type": "string"}},
             },
             handler=LogShowHandler(workspace_root=ctx.workspace_root),
+            title="Run details",
+            annotations=_READ_ONLY,
         ),
         ToolSpec(
             name="sancho_env_open",
@@ -170,6 +197,8 @@ def build_high_level_tools(ctx: MCPContext) -> list[ToolSpec]:
                 "properties": {"provider": {"type": "string"}},
             },
             handler=EnvOpenHandler(workspace_root=ctx.workspace_root),
+            title="API key file info",
+            annotations=_READ_ONLY,
         ),
         ToolSpec(
             name="sancho_env_recommend",
@@ -188,12 +217,16 @@ def build_high_level_tools(ctx: MCPContext) -> list[ToolSpec]:
                 },
             },
             handler=EnvRecommendHandler(workspace_root=ctx.workspace_root),
+            title="Recommend API keys",
+            annotations=_READ_ONLY,
         ),
         ToolSpec(
             name="sancho_update_check",
             description="Non-mutating status report: module versions, local edits, custom overrides, gitignore, .env presence.",
             input_schema={"type": "object"},
             handler=UpdateCheckHandler(workspace_root=ctx.workspace_root),
+            title="Update check",
+            annotations=_READ_ONLY,
         ),
         ToolSpec(
             name="sancho_update_preview",
@@ -203,17 +236,23 @@ def build_high_level_tools(ctx: MCPContext) -> list[ToolSpec]:
                 "properties": {"module_id": {"type": "string"}},
             },
             handler=UpdatePreviewHandler(workspace_root=ctx.workspace_root),
+            title="Update preview",
+            annotations=_READ_ONLY,
         ),
         ToolSpec(
             name="sancho_custom_status",
             description="List custom modules and whether upstream is newer than each override.",
             input_schema={"type": "object"},
             handler=CustomStatusHandler(workspace_root=ctx.workspace_root),
+            title="Custom overrides",
+            annotations=_READ_ONLY,
         ),
         ToolSpec(
             name="sancho_fetched_data_audit",
             description="Find fetched-data records produced by older module versions.",
             input_schema={"type": "object"},
             handler=FetchedDataAuditHandler(workspace_root=ctx.workspace_root),
+            title="Fetched-data audit",
+            annotations=_READ_ONLY,
         ),
     ]

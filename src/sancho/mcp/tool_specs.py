@@ -19,6 +19,9 @@ from sancho.runtime.executor import run_module
 _MCP_NAME_RE = re.compile(r"^[A-Za-z0-9_-]{1,64}$")
 _MCP_NAME_UNSAFE_RE = re.compile(r"[^A-Za-z0-9_-]")
 
+# Fetch tools call external APIs and write files locally; they never delete.
+_FETCHES = {"readOnlyHint": False, "destructiveHint": False, "openWorldHint": True}
+
 
 def mcp_tool_name(raw: str) -> str:
     """Map an internal id to an MCP-safe tool name.
@@ -238,6 +241,8 @@ def module_tool_spec(ctx: MCPContext, module: ModuleLocation) -> ToolSpec:
         description=module.manifest.get("description", module.id),
         input_schema=module.manifest.get("input_schema", {"type": "object"}),
         handler=_ModuleToolHandler(workspace_root=ctx.workspace_root, module_id=module.id),
+        title=module.manifest.get("title") or module.id,
+        annotations=_FETCHES,
     )
 
 
@@ -254,6 +259,8 @@ def gov_catalog_tool_spec(
         handler=_GovCatalogToolHandler(
             ctx=ctx, modules=modules, aliases=aliases, module_tool_names=module_tool_names
         ),
+        title="Provider catalog",
+        annotations={"readOnlyHint": True},
     )
 
 
@@ -274,6 +281,8 @@ def gov_fetch_tool_spec(ctx: MCPContext, modules: list[ModuleLocation]) -> ToolS
             },
         },
         handler=_GovFetchToolHandler(workspace_root=ctx.workspace_root, modules=modules),
+        title="Fetch provider data",
+        annotations=_FETCHES,
     )
 
 
@@ -299,4 +308,6 @@ def family_alias_tool_spec(ctx: MCPContext, binding: FamilyAliasBinding) -> Tool
         description=description,
         input_schema=input_schema,
         handler=_FamilyAliasToolHandler(workspace_root=ctx.workspace_root, binding=binding),
+        title=f"{binding.provider}: {binding.family_id}",
+        annotations=_FETCHES,
     )
