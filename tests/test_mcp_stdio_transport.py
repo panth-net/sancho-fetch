@@ -5,10 +5,9 @@ over stdio: one UTF-8 JSON-RPC message per line, terminated by ``\\n``, with no
 embedded newlines. Every real MCP client (Claude Desktop, Codex, Cursor,
 VS Code) sends and expects this format.
 
-An earlier sancho release shipped LSP-style ``Content-Length`` framing by
-mistake; this test file pins the corrected behavior and exercises the
-defensive backward-compat path so the legacy format keeps working if anyone
-is still calling sancho that way.
+Also covers the dual-era protocol behavior required by the 2026-07-28 spec:
+legacy clients handshake via ``initialize``; modern clients probe
+``server/discover`` and carry their protocol version in per-request ``_meta``.
 """
 
 from __future__ import annotations
@@ -75,12 +74,20 @@ def test_read_ndjson_returns_none_on_eof(monkeypatch: pytest.MonkeyPatch) -> Non
     assert mcp_server._read_stdio_message() is None
 
 
-def test_read_legacy_content_length_framing(monkeypatch: pytest.MonkeyPatch) -> None:
-    """Defensive backward-compat: accept LSP-style Content-Length framing too."""
+def test_read_skips_non_json_lines(monkeypatch: pytest.MonkeyPatch) -> None:
+    """Stray non-JSON output (e.g. a print) must be skipped, not crash the loop."""
     msg = {"jsonrpc": "2.0", "id": 2, "method": "tools/list"}
-    body = json.dumps(msg).encode("utf-8")
-    framed = f"Content-Length: {len(body)}\r\n\r\n".encode("utf-8") + body
-    _drive_stdin(monkeypatch, framed)
+    payload = b"some stray log line\n" + json.dumps(msg).encode("utf-8") + b"\n"
+    _drive_stdin(monkeypatch, payload)
+    assert mcp_server._read_stdio_message() == msg
+
+
+def test_read_skips_non_object_json_lines(monkeypatch: pytest.MonkeyPatch) -> None:
+    """Valid-but-non-object JSON (array/scalar) is not a JSON-RPC message and
+    must be skipped — returning it would crash serve_stdio on .get()."""
+    msg = {"jsonrpc": "2.0", "id": 3, "method": "ping"}
+    payload = b"[1, 2, 3]\n42\n" + json.dumps(msg).encode("utf-8") + b"\n"
+    _drive_stdin(monkeypatch, payload)
     assert mcp_server._read_stdio_message() == msg
 
 
@@ -185,10 +192,23 @@ def test_initialize_handshake_via_stdio(
 
 
 from sancho.mcp.tooling import (  # noqa: E402
-    _LATEST_MCP_PROTOCOL_VERSION,
+    _LATEST_LEGACY_MCP_PROTOCOL_VERSION,
     _SUPPORTED_MCP_PROTOCOL_VERSIONS,
+    _build_context,
+    _handle_method,
     _negotiate_protocol_version,
 )
+
+
+def _ctx(tmp_path):
+    return _build_context(
+        workspace_root=tmp_path,
+        policy=None,
+        quick_mode=False,
+        quick_profile=None,
+        quick_targets=None,
+        quick_modules=None,
+    )
 
 
 @pytest.mark.parametrize("version", _SUPPORTED_MCP_PROTOCOL_VERSIONS)
@@ -208,9 +228,10 @@ def test_negotiate_echoes_supported_version(version: str) -> None:
         {"protocolVersion": "2025-11-25"},
     ],
 )
-def test_negotiate_falls_back_to_latest_for_unknown_versions(bogus: Any) -> None:
-    """Unknown/missing versions must fall back to a real, supported version."""
-    assert _negotiate_protocol_version(bogus) == _LATEST_MCP_PROTOCOL_VERSION
+def test_negotiate_falls_back_to_latest_legacy_for_unknown_versions(bogus: Any) -> None:
+    """Unknown/missing versions on initialize must fall back to a real,
+    supported handshake-era version — only legacy clients call initialize."""
+    assert _negotiate_protocol_version(bogus) == _LATEST_LEGACY_MCP_PROTOCOL_VERSION
 
 
 def test_supported_versions_are_real_dates() -> None:
@@ -221,8 +242,118 @@ def test_supported_versions_are_real_dates() -> None:
     for version in _SUPPORTED_MCP_PROTOCOL_VERSIONS:
         assert date_pattern.match(version), f"not a date: {version!r}"
         # Sanity: no version dates from the future (this is what tripped us up).
-        # The latest real MCP spec as of 2025-11-25 is the same string.
-        assert version <= "2025-11-25", (
+        # The latest published MCP spec revision is 2026-07-28.
+        assert version <= "2026-07-28", (
             f"{version!r} is past the latest published MCP spec; "
             f"clients reject unknown future versions"
         )
+
+
+# ---------------------------------------------------------------------------
+# Modern (2026-07-28) stateless behavior: server/discover, per-request _meta,
+# cacheable list results, and JSON-RPC error codes.
+# ---------------------------------------------------------------------------
+
+
+def test_server_discover_returns_versions_and_capabilities(tmp_path) -> None:
+    result = _handle_method(_ctx(tmp_path), "server/discover", {})
+    assert "2026-07-28" in result["supportedVersions"]
+    assert result["supportedVersions"][0] == "2026-07-28", "newest first"
+    assert result["capabilities"] == {"tools": {}}
+    assert result["resultType"] == "complete"
+    assert result["ttlMs"] > 0
+    assert result["cacheScope"] in {"public", "private"}
+    server_info = result["_meta"]["io.modelcontextprotocol/serverInfo"]
+    assert server_info["name"] == "sancho-mcp"
+
+
+def test_tools_list_is_cacheable_and_deterministic(tmp_path) -> None:
+    ctx = _ctx(tmp_path)
+    first = _handle_method(ctx, "tools/list", {})
+    second = _handle_method(ctx, "tools/list", {})
+    assert first["ttlMs"] > 0
+    assert first["cacheScope"] == "private", "local workspace results are per-user"
+    assert first["resultType"] == "complete"
+    names = [tool["name"] for tool in first["tools"]]
+    assert names == sorted(names), "spec: deterministic order for client caching"
+    assert names == [tool["name"] for tool in second["tools"]]
+
+
+def test_tools_carry_titles_and_annotations(tmp_path) -> None:
+    tools = _handle_method(_ctx(tmp_path), "tools/list", {})["tools"]
+    by_name = {tool["name"]: tool for tool in tools}
+    assert by_name["sancho_paths"]["annotations"]["readOnlyHint"] is True
+    assert by_name["sancho_fetch_run"]["annotations"]["openWorldHint"] is True
+    assert by_name["sancho_fetch_run"]["annotations"]["destructiveHint"] is False
+    for tool in tools:
+        assert tool["title"], f"tool {tool['name']} is missing a title"
+
+
+def test_request_with_supported_meta_version_is_served(tmp_path) -> None:
+    params = {"_meta": {"io.modelcontextprotocol/protocolVersion": "2026-07-28"}}
+    result = _handle_method(_ctx(tmp_path), "tools/list", params)
+    assert result["resultType"] == "complete"
+
+
+def test_request_with_unsupported_meta_version_errors(tmp_path) -> None:
+    from sancho.mcp.tooling import MCPUnsupportedProtocolVersion, jsonrpc_error
+
+    params = {"_meta": {"io.modelcontextprotocol/protocolVersion": "1900-01-01"}}
+    with pytest.raises(MCPUnsupportedProtocolVersion) as excinfo:
+        _handle_method(_ctx(tmp_path), "tools/list", params)
+    error = jsonrpc_error(excinfo.value)
+    assert error["code"] == -32022
+    assert error["data"]["requested"] == "1900-01-01"
+    assert "2026-07-28" in error["data"]["supported"]
+
+
+def test_unknown_method_maps_to_method_not_found(tmp_path) -> None:
+    from sancho.mcp.tooling import MCPMethodNotFound, jsonrpc_error
+
+    with pytest.raises(MCPMethodNotFound) as excinfo:
+        _handle_method(_ctx(tmp_path), "no/such_method", {})
+    assert jsonrpc_error(excinfo.value)["code"] == -32601
+
+
+def test_unknown_tool_maps_to_invalid_params(tmp_path) -> None:
+    from sancho.mcp.tooling import MCPInvalidParams, jsonrpc_error
+
+    with pytest.raises(MCPInvalidParams) as excinfo:
+        _handle_method(_ctx(tmp_path), "tools/call", {"name": "no_such_tool"})
+    assert jsonrpc_error(excinfo.value)["code"] == -32602
+
+
+def test_tools_call_returns_structured_content(tmp_path) -> None:
+    result = _handle_method(_ctx(tmp_path), "tools/call", {"name": "sancho_paths"})
+    text_payload = json.loads(result["content"][0]["text"])
+    assert result["structuredContent"] == text_payload
+
+
+def test_structured_content_skipped_when_response_cap_active(tmp_path) -> None:
+    """structuredContent duplicates the payload; a hosted byte cap must keep
+    bounding what actually ships, so capped contexts stay text-only."""
+    from sancho.mcp.models import MCPPolicy
+
+    ctx = _build_context(
+        workspace_root=tmp_path,
+        policy=MCPPolicy(max_response_bytes=2_000_000),
+        quick_mode=False,
+        quick_profile=None,
+        quick_targets=None,
+        quick_modules=None,
+    )
+    result = _handle_method(ctx, "tools/call", {"name": "sancho_paths"})
+    assert "structuredContent" not in result
+    assert result["content"][0]["type"] == "text"
+
+
+def test_discover_probe_via_stdio(monkeypatch: pytest.MonkeyPatch, tmp_path) -> None:
+    """A modern client's stdio backward-compat probe must get a DiscoverResult."""
+    request = {"jsonrpc": "2.0", "id": 0, "method": "server/discover", "params": {}}
+    _drive_stdin(monkeypatch, json.dumps(request).encode("utf-8") + b"\n")
+    out = _capture_stdout(monkeypatch)
+
+    mcp_server.serve_stdio(tmp_path)
+
+    response = json.loads(out.getvalue().decode("utf-8").rstrip("\n"))
+    assert response["result"]["supportedVersions"][0] == "2026-07-28"

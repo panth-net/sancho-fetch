@@ -11,6 +11,36 @@ managed files first and can be undone with `sancho update rollback`.
 
 ## [Unreleased]
 
+### Added
+
+- MCP 2026-07-28 spec support (dual-era): `server/discover`, per-request
+  `_meta` protocol versioning with `UnsupportedProtocolVersionError`,
+  `resultType` on every result, and `ttlMs`/`cacheScope` freshness hints on
+  `tools/list`. The legacy `initialize` handshake keeps working for current
+  desktop clients.
+- Tool metadata: every MCP tool now carries a `title` and honest
+  `annotations` (`readOnlyHint`, `destructiveHint`, `openWorldHint`), and
+  `tools/call` returns `structuredContent` alongside the text payload.
+- Release gate: every shipped module `input_schema` is validated against the
+  JSON Schema 2020-12 metaschema (strict clients reject loose schemas).
+
+### Changed
+
+- Proper JSON-RPC error codes: unknown methods return `-32601`, bad
+  params/unknown tools `-32602`, routing-header mismatches `-32020` (was a
+  blanket `-32000`).
+- The VS Code config snippet now uses the `servers` + `type: "stdio"` shape
+  VS Code actually reads, instead of the `mcpServers` shape.
+
+### Removed
+
+- The deprecated HTTP+SSE transport (`GET /sse`, `POST /messages`) and its
+  session machinery; Streamable HTTP (`POST /mcp`) is the only HTTP
+  transport. `chatgpt-web` snippets no longer advertise an `sse_url`.
+- The empty `resources` capability (sancho exposes no resources).
+- Legacy LSP-style `Content-Length` stdio framing (a compat shim for an
+  early sancho bug; no released client ever needed it).
+
 ## [0.1.0] - 2026-07-28
 
 First public release.

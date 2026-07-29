@@ -57,7 +57,6 @@ def generate_client_config(
         server_def = {
             "transport": "streamable-http",
             "url": f"http://{host}:{port}/mcp",
-            "sse_url": f"http://{host}:{port}/sse",
             "health": f"http://{host}:{port}/health",
         }
     else:
@@ -82,12 +81,23 @@ def generate_client_config(
             "args": command_args,
         }
 
-    payload = {
-        "client": client,
-        "mcpServers": {
-            "sancho": server_def,
-        },
-    }
+    if client == "vscode":
+        # VS Code reads .vscode/mcp.json, which uses a top-level "servers" key
+        # and a per-server "type" field — not the "mcpServers" shape the other
+        # clients use.
+        payload = {
+            "client": client,
+            "servers": {
+                "sancho": {"type": "stdio", **server_def},
+            },
+        }
+    else:
+        payload = {
+            "client": client,
+            "mcpServers": {
+                "sancho": server_def,
+            },
+        }
     if client == "chatgpt-desktop" and "command" in server_def:
         # The ChatGPT desktop app configures MCP servers through a form
         # (Settings -> MCP servers -> Add server), not a config file. Spell
