@@ -3,7 +3,7 @@
   "manifest_version": "0.3",
   "name": "sancho-fetch",
   "display_name": "Sancho Fetch",
-  "version": "0.1.0",
+  "version": "0.1.0rc1",
   "description": "Ask Claude for public data; Sancho fetches it into real files on your computer.",
   "long_description": "Connects Claude Desktop to your local Sancho Fetch library. Requires Sancho to be installed first: open your sancho-fetch folder in an AI app and paste 'Set up Sancho on this computer', or double-click the installer in the folder's installers/ directory. No settings needed here -- Sancho finds your registered library on its own.",
   "author": {
