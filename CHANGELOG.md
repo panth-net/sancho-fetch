@@ -11,6 +11,8 @@ managed files first and can be undone with `sancho update rollback`.
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-07-29
+
 ### Added
 
 - MCP 2026-07-28 spec support (dual-era): `server/discover`, per-request
