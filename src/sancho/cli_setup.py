@@ -13,6 +13,7 @@ from typing import Any
 from sancho import __version__ as SANCHO_VERSION
 from sancho.client_integrations import (
     canonical_launch_definition,
+    claude_desktop_platform_supported,
     client_adapters,
     direct_stdio_handshake,
 )
@@ -281,7 +282,8 @@ def _configure_clients(
             error_code="unknown_client",
             user_action_required=True,
         ), [], launch.to_dict()
-    can_force = only_client != "claude-desktop" or sys.platform in {"darwin", "win32"}
+    # Same platform seam the adapters use, so tests and real runs agree.
+    can_force = only_client != "claude-desktop" or claude_desktop_platform_supported()
     if only_client and can_force and hasattr(adapters[only_client], "_detected"):
         # An explicit troubleshooting target is deliberate even when the app
         # cannot be discovered from standard install locations.
