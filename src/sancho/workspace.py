@@ -166,8 +166,27 @@ def refresh_workspace_root_templates(
     return refreshed, kept
 
 
-def initialize_workspace(base_path: Path, subdir: str, mode: str) -> Path:
+def initialize_workspace(
+    base_path: Path,
+    subdir: str,
+    mode: str,
+    *,
+    allow_identity_migration: bool = True,
+) -> Path:
     workspace_root = resolve_workspace_root(base_path.resolve(), subdir=subdir)
+    # Validate an existing identity before writing anything. The CLI is the
+    # designated legacy-workspace migrator; packaged extension runtimes pass
+    # allow_identity_migration=False and refuse an unmarked existing workspace.
+    from sancho.install_state import read_workspace_identity, workspace_identity_path
+
+    identity_path = workspace_identity_path(workspace_root)
+    if identity_path.exists():
+        read_workspace_identity(workspace_root)
+    elif workspace_root.exists() and any(workspace_root.iterdir()) and not allow_identity_migration:
+        raise RuntimeError(
+            "This existing workspace predates persistent workspace identity. "
+            "Run the matching Sancho CLI setup once to migrate it before using the extension."
+        )
     workspace_root.mkdir(parents=True, exist_ok=True)
 
     for directory in REQUIRED_DIRECTORIES:
@@ -194,6 +213,11 @@ def initialize_workspace(base_path: Path, subdir: str, mode: str) -> Path:
 
     install_runtime_templates(workspace_root, overwrite=False)
     _install_workspace_root_templates(workspace_root, overwrite=False)
+    # A persistent ID distinguishes a moved workspace from an unrelated folder
+    # with the same name and lets setup/uninstall prove what they are targeting.
+    from sancho.install_state import ensure_workspace_identity
+
+    ensure_workspace_identity(workspace_root)
     return workspace_root
 
 

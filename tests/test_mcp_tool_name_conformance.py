@@ -38,7 +38,7 @@ def _mod(module_id: str, mtype: str = "fetch", tier: str = "small", **manifest):
 
 
 def _names(ctx: MCPContext) -> list[str]:
-    payload = _handle_method(ctx, "tools/list", None)
+    payload = _handle_method(ctx, "tools/list", {})
     return [t["name"] for t in payload["tools"]]
 
 

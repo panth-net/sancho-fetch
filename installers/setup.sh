@@ -42,25 +42,28 @@ if ! command -v uv >/dev/null 2>&1; then
 fi
 echo "  OK  Package manager (uv) ready"
 
-echo "  ...  Installing Sancho..."
+echo "  ...  Building and validating Sancho before replacing the installed tool..."
+build_dir="$(mktemp -d)" || fail "Could not create a temporary build folder."
+cleanup_build() {
+  rm -rf -- "$build_dir"
+}
+trap cleanup_build EXIT
+if ! uv build --wheel --out-dir "$build_dir" .; then
+  fail "Sancho could not be built. The previously installed command was not changed."
+fi
+wheel_path="$(find "$build_dir" -maxdepth 1 -type f -name 'sancho_fetch-*.whl' -print -quit)"
+if [ -z "$wheel_path" ] || [ ! -f "$wheel_path" ]; then
+  fail "The build produced no Sancho wheel. The previously installed command was not changed."
+fi
+
+echo "  ...  Installing the validated wheel..."
 install_log="$(mktemp)"
-uv tool uninstall sancho-fetch >/dev/null 2>&1 || true
-uv tool uninstall sancho >/dev/null 2>&1 || true
-if uv tool install --reinstall . >"$install_log" 2>&1; then
+if uv tool install --reinstall "$wheel_path" >"$install_log" 2>&1; then
   rm -f "$install_log"
-elif grep -Eiq "already installed|already exists|executable.*exists" "$install_log"; then
-  cat "$install_log"
-  rm -f "$install_log"
-  echo "  ...  Existing Sancho install found. Refreshing it from this folder..."
-  uv tool uninstall sancho-fetch >/dev/null 2>&1 || true
-  uv tool uninstall sancho >/dev/null 2>&1 || true
-  if ! uv tool install --reinstall .; then
-    fail "uv could not refresh Sancho from this folder."
-  fi
 else
   cat "$install_log"
   rm -f "$install_log"
-  fail "uv could not install Sancho from this folder. Sancho needs Python 3.11 or newer; uv normally downloads a compatible Python automatically."
+  fail "uv could not install the validated Sancho wheel. Any unrelated executable collision was preserved; the installer did not uninstall another tool."
 fi
 uv_tool_bin="$(uv tool dir --bin)" || fail "uv installed Sancho, but the tool bin directory could not be found."
 export PATH="$uv_tool_bin:$HOME/.local/bin:$PATH"
@@ -74,7 +77,7 @@ fi
 echo "  OK  Sancho installed"
 
 echo "  ...  Creating your workspace and registering it..."
-if ! "$sancho_cmd" setup --path "$repo_root" --install-claude-desktop; then
+if ! "$sancho_cmd" setup --path "$repo_root" --switch-workspace; then
   fail "sancho setup failed."
 fi
 
@@ -87,10 +90,8 @@ echo "  1. Sancho is installed computer-wide. You do not need to open this folde
 echo "     In Claude Desktop, use the Code tab. In Codex, start a Code chat."
 echo "     Regular chats cannot access your local Sancho installation."
 echo "     ChatGPT web needs the hosted/remote connector path, not a local folder."
-echo "     If setup said Claude Desktop config was installed, fully restart Claude Desktop."
-echo "     If setup said it could not install Claude Desktop automatically, use:"
-echo "       sancho mcp config --client claude-desktop --workspace \"$repo_root\" --install"
-echo "     or the generated snippet under sancho-workspace/mcp/."
+echo "     Setup configures detected supported clients and reports any restart or policy action."
+echo "     It never installs the desktop clients themselves."
 echo
 echo "  2. Your API keys live in:"
 echo "       $repo_root/sancho-workspace/.env"

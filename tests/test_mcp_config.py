@@ -6,7 +6,7 @@ from pathlib import Path
 
 import pytest
 
-from sancho.mcp.config import generate_client_config, install_claude_desktop_config
+from sancho.mcp.config import generate_client_config
 
 pytestmark = pytest.mark.mcp
 
@@ -80,46 +80,3 @@ def test_generate_client_config_for_http_url_override() -> None:
     server = payload["mcpServers"]["sancho"]
     assert server["url"] == "http://0.0.0.0:9900/mcp"
     assert server["health"] == "http://0.0.0.0:9900/health"
-
-
-def test_install_claude_desktop_config_timestamp_backup_and_overwrite(
-    tmp_path: Path,
-    monkeypatch: pytest.MonkeyPatch,
-) -> None:
-    fake_home = tmp_path / "home"
-    config_path = fake_home / "AppData" / "Roaming" / "Claude" / "claude_desktop_config.json"
-    config_path.parent.mkdir(parents=True)
-    config_path.write_text(json.dumps({"mcpServers": {"old": {"command": "old"}}}), encoding="utf-8")
-    monkeypatch.setattr(Path, "home", classmethod(lambda cls: fake_home))
-    monkeypatch.delenv("APPDATA", raising=False)
-    monkeypatch.setattr("sancho.mcp.config._current_platform", lambda: "win32")
-
-    installed = install_claude_desktop_config({"command": "sancho", "args": ["mcp", "serve"]})
-
-    assert installed == config_path
-    payload = json.loads(config_path.read_text(encoding="utf-8"))
-    assert payload["mcpServers"]["old"]["command"] == "old"
-    assert payload["mcpServers"]["sancho"]["command"] == "sancho"
-    backups = list(config_path.parent.glob("claude_desktop_config.*.json.bak"))
-    assert len(backups) == 1
-
-
-def test_install_claude_desktop_config_preserves_malformed_json(
-    tmp_path: Path,
-    monkeypatch: pytest.MonkeyPatch,
-) -> None:
-    fake_home = tmp_path / "home"
-    config_path = fake_home / "AppData" / "Roaming" / "Claude" / "claude_desktop_config.json"
-    config_path.parent.mkdir(parents=True)
-    config_path.write_text('{"mcpServers": ', encoding="utf-8")
-    monkeypatch.setattr(Path, "home", classmethod(lambda cls: fake_home))
-    monkeypatch.delenv("APPDATA", raising=False)
-    monkeypatch.setattr("sancho.mcp.config._current_platform", lambda: "win32")
-
-    with pytest.raises(RuntimeError, match="Claude Desktop config JSON is malformed"):
-        install_claude_desktop_config({"command": "sancho", "args": ["mcp", "serve"]})
-
-    assert config_path.read_text(encoding="utf-8") == '{"mcpServers": '
-    backups = list(config_path.parent.glob("claude_desktop_config.*.json.bak"))
-    assert len(backups) == 1
-    assert backups[0].read_text(encoding="utf-8") == '{"mcpServers": '

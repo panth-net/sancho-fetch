@@ -36,25 +36,23 @@ if errorlevel 1 (
 )
 echo   OK  Package manager (uv) ready
 
-echo   ... Installing Sancho...
+echo   ... Building and validating Sancho before replacing the installed tool...
+set "BUILD_DIR=%TEMP%\sancho_build_%RANDOM%%RANDOM%"
+mkdir "%BUILD_DIR%"
+if errorlevel 1 goto :build_failed
+uv build --wheel --out-dir "%BUILD_DIR%" .
+if errorlevel 1 goto :build_failed
+set "WHEEL_PATH="
+for %%W in ("%BUILD_DIR%\sancho_fetch-*.whl") do set "WHEEL_PATH=%%~fW"
+if not defined WHEEL_PATH goto :build_failed
+
+echo   ... Installing the validated wheel...
 set "INSTALL_LOG=%TEMP%\sancho_uv_install_%RANDOM%%RANDOM%.log"
-uv tool uninstall sancho-fetch >NUL 2>&1
-uv tool uninstall sancho >NUL 2>&1
-uv tool install --reinstall . > "%INSTALL_LOG%" 2>&1
+uv tool install --reinstall "%WHEEL_PATH%" > "%INSTALL_LOG%" 2>&1
 if errorlevel 1 (
-  findstr /i /c:"already installed" /c:"already exists" "%INSTALL_LOG%" >NUL
-  if errorlevel 1 (
-    type "%INSTALL_LOG%"
-    del "%INSTALL_LOG%" >NUL 2>&1
-    goto :install_failed
-  )
   type "%INSTALL_LOG%"
   del "%INSTALL_LOG%" >NUL 2>&1
-  echo   ... Existing Sancho install found. Refreshing it from this folder...
-  uv tool uninstall sancho-fetch >NUL 2>&1
-  uv tool uninstall sancho >NUL 2>&1
-  uv tool install --reinstall .
-  if errorlevel 1 goto :install_failed
+  goto :install_failed
 ) else (
   del "%INSTALL_LOG%" >NUL 2>&1
 )
@@ -65,7 +63,7 @@ if defined UV_TOOL_BIN if exist "%UV_TOOL_BIN%\sancho.exe" set "SANCHO_CMD=%UV_T
 echo   OK  Sancho installed
 
 echo   ... Creating your workspace and registering it...
-"%SANCHO_CMD%" setup --path "%REPO_ROOT%" --install-claude-desktop
+"%SANCHO_CMD%" setup --path "%REPO_ROOT%" --switch-workspace
 if errorlevel 1 goto :setup_failed
 
 echo.
@@ -77,10 +75,8 @@ echo   1. Sancho is installed computer-wide. You do not need to open this folder
 echo      In Claude Desktop, use the Code tab. In Codex, start a Code chat.
 echo      Regular chats cannot access your local Sancho installation.
 echo      ChatGPT web needs the hosted/remote connector path, not a local folder.
-echo      If setup said Claude Desktop config was installed, fully restart Claude Desktop.
-echo      If setup said it could not install Claude Desktop automatically, use:
-echo        sancho mcp config --client claude-desktop --workspace "%REPO_ROOT%" --install
-echo      or the generated snippet under sancho-workspace\mcp\.
+echo      Setup configures detected supported clients and reports restart or policy actions.
+echo      It never installs the desktop clients themselves.
 echo.
 echo   2. Your API keys live in:
 echo        %REPO_ROOT%\sancho-workspace\.env
@@ -92,6 +88,7 @@ echo.
 echo   3. You do NOT need to be a coder. The AI speaks in plain English
 echo      unless you change SANCHO_DEVELOPER_MODE=true inside .env.
 echo.
+if defined BUILD_DIR rmdir /s /q "%BUILD_DIR%" >NUL 2>&1
 popd
 endlocal
 exit /b 0
@@ -103,13 +100,22 @@ endlocal
 exit /b 1
 
 :install_failed
-echo ERROR: uv tool install failed. Sancho needs Python 3.11 or newer; uv normally downloads a compatible Python automatically.
+echo ERROR: uv could not install the validated wheel. The installer did not uninstall another tool.
+if defined BUILD_DIR rmdir /s /q "%BUILD_DIR%" >NUL 2>&1
+popd
+endlocal
+exit /b 1
+
+:build_failed
+echo ERROR: Sancho could not be built. The previously installed command was not changed.
+if defined BUILD_DIR rmdir /s /q "%BUILD_DIR%" >NUL 2>&1
 popd
 endlocal
 exit /b 1
 
 :setup_failed
 echo ERROR: sancho setup failed.
+if defined BUILD_DIR rmdir /s /q "%BUILD_DIR%" >NUL 2>&1
 popd
 endlocal
 exit /b 1
