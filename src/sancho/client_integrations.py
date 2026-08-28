@@ -590,6 +590,11 @@ class CodexAdapter(ClientAdapter):
         return ClientResult(self.name, "removed" if changed else "unchanged", "Codex entry removed through Codex CLI" if changed else "entry already absent", changed=changed)
 
 
+def claude_desktop_platform_supported() -> bool:
+    """Claude Desktop only exists on macOS and Windows."""
+    return platform.system() in {"Darwin", "Windows"}
+
+
 def _client_detected(name: str, config_path: Path) -> bool:
     if config_path.exists():
         return True
