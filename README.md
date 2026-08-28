@@ -216,6 +216,13 @@ your `sancho-downloads/` files are **always kept**. Deleting data is a
 separate, deliberate step that asks for confirmation first -- ask your AI, or
 run `sancho uninstall --help` to see how.
 
+## Privacy Policy
+
+Sancho runs on your computer and keeps your data there. Fetches go directly
+from your machine to the public data provider you chose; API keys are read
+from your local `.env` and sent only to that provider. Sancho has no
+telemetry. Full details: [docs/PRIVACY.md](docs/PRIVACY.md).
+
 ## More documentation
 
 - [`CHANGELOG.md`](CHANGELOG.md) -- what changed in each release.
