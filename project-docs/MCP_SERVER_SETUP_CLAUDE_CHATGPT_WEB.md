@@ -2,7 +2,7 @@
 
 > **Status: AUTHORITATIVE** -- user-facing setup guide for MCP clients.
 
-Last verified against this codebase: July 29, 2026
+Last verified against this codebase and current client documentation: August 27, 2026
 
 The server is dual-era per the MCP 2026-07-28 spec: handshake-era clients
 (`initialize`, protocol versions 2024-10-07 through 2025-11-25) and modern
@@ -11,7 +11,7 @@ stateless clients (`server/discover`, per-request `_meta`) are both served.
 This guide is for desktop AI clients that need MCP tools to reach the
 user's local Sancho Fetch library. The normal individual-user path is:
 install from PyPI (`uv tool install sancho-fetch`), run
-`sancho setup --install-claude-desktop`, and use the local
+`sancho setup`, and use the local
 `sancho-workspace` on that computer.
 
 The hosted HTTP MCP path is separate. Use it for workshops, seminars, or
@@ -28,9 +28,10 @@ temporary demos where you operate the hosted server yourself.
    registered library pointer without a hosted MCP server.
 
 If your goal is easiest setup, install from PyPI and run `sancho setup`
-first. Setup writes desktop MCP config snippets into
-`sancho-workspace/mcp/`, installs Claude Desktop config when supported, and
-installs the Claude/Codex skills for slash-command style use.
+first. Setup writes desktop MCP config snippets into `sancho-workspace/mcp/`,
+safely configures detected supported clients, verifies a direct stdio launch,
+and installs Claude/Codex skills. Its ownership record preserves unowned or
+edited same-name entries instead of overwriting them.
 
 ## Path A: Desktop/Local Library Access
 
@@ -40,7 +41,7 @@ From PyPI (the normal path -- no checkout needed):
 
 ```bash
 uv tool install sancho-fetch
-sancho setup --install-claude-desktop
+sancho setup
 sancho --help
 ```
 
@@ -48,14 +49,8 @@ From a source checkout (contributors):
 
 ```bash
 uv tool install .
-sancho setup --install-claude-desktop
+sancho setup
 sancho --help
-```
-
-Optional npm launcher path:
-
-```bash
-npx --yes --package @sancho/cli sancho mcp serve --workspace . --transport stdio
 ```
 
 ### 2. Start MCP Against The Local Library
@@ -67,21 +62,23 @@ sancho mcp serve --workspace . --transport stdio
 This uses the `sancho-workspace` created by setup. If you run it from
 another folder, Sancho falls back to the registered library pointer.
 
-Optional quick mode for throwaway demos:
+Optional quick mode for isolated demos:
 
 ```bash
 sancho mcp serve --quick --profile broad --transport stdio
 ```
 
-Quick mode auto-creates a managed workspace under
+Quick mode auto-creates a data-bearing workspace under
 `~/.sancho/mcp-quick/sancho-workspace` and installs missing profile targets.
-Use it when you do not want to use the user's normal local library.
+Use it when you do not want to use the normal local library. It can contain
+fetched data, logs, outputs, custom modules, and `.env`, so uninstall preserves
+it by default.
 
 ### 3. Configure Desktop Clients
 
-`sancho setup --install-claude-desktop` writes config snippets under
-`sancho-workspace/mcp/` and tries to merge the Claude Desktop server entry
-into the app config. You can regenerate snippets at any time:
+`sancho setup` writes snippets and configures each detected supported client
+through the same ownership-aware launch model. You can regenerate snippets at
+any time:
 
 ```bash
 sancho mcp config --client claude-desktop --workspace .
@@ -90,25 +87,46 @@ sancho mcp config --client vscode --workspace .
 sancho mcp config --client cursor --workspace .
 ```
 
-For Claude Desktop, Sancho can merge the server entry into the app config:
+For one-client troubleshooting, use its adapter explicitly:
 
 ```bash
 sancho mcp config --client claude-desktop --workspace . --install
+sancho mcp config --client codex --workspace . --install
+sancho mcp config --client cursor --workspace . --install
+sancho mcp config --client vscode --workspace . --install
 ```
 
-**Claude Desktop one-click alternative:** the repo ships an MCP Bundle at
-`integrations/claude-desktop/sancho.mcpb`. Double-click it (or drag it onto
-the Claude Desktop window) and Claude installs Sancho as an extension. It is
-zero-config: a small Node shim launches the user-level `sancho` command,
-which finds the registered library on its own. Rebuild the bundle after
-editing its sources with `python scripts/build_mcpb.py`.
+**Claude Desktop managed-uv candidate:** the repo ships a locally validated MCP
+Bundle at
+`integrations/claude-desktop/sancho.mcpb`. Its v0.4 managed-uv runtime pins the
+same Sancho version as the extension and creates a stable external workspace;
+it never stores data inside the replaceable bundle. The first launch needs
+network access while the host downloads the pinned package and dependencies.
+Extension removal preserves that workspace. Rebuild and validate after source
+changes with `python scripts/build_mcpb.py` and
+`python scripts/validate_mcpb.py`. Do not describe it as a verified one-click
+installer until the clean-host macOS and Windows checks in
+`docs/release/MANUAL_VALIDATION.md` have been run on a current Claude Desktop.
 
-**ChatGPT desktop app:** MCP servers are added through a form, not a file:
-**Settings -> MCP servers -> Add server** (type STDIO). The generated
-`sancho-workspace/mcp/chatgpt-desktop.mcp.json` contains a `gui_setup` block
-spelling out exactly what to paste into each field.
+**ChatGPT/Codex:** setup uses the supported `codex mcp get/add/remove` CLI and
+never rewrites `~/.codex/config.toml` directly. Current local OpenAI surfaces
+on the same Codex host share that MCP configuration. If the CLI is absent, the
+generated ChatGPT desktop snippet contains the current Settings -> MCP servers
+-> Add server STDIO instructions.
 
 Restart the client after changing MCP config.
+
+**VS Code profiles:** setup uses an ownership-aware merge of the selected
+profile's `mcp.json`, not the add-only Code CLI. For a non-default profile run
+`sancho setup --client vscode --vscode-profile-path <profile-folder>`. Setup
+cannot observe Copilot sign-in, first-launch trust, remote-host state, or an
+organization policy from the JSON file, so it reports those as client-side
+checks instead of claiming a connection.
+
+**Cursor:** the primary adapter atomically merges the owned `sancho` entry in
+`~/.cursor/mcp.json`, including `type: "stdio"`, and preserves unrelated or
+edited values. The generated snippet also contains a current Cursor install
+deeplink as a fallback; opening it is only the start of a user-confirmed flow.
 
 #### Claude Desktop (`claude_desktop_config.json`)
 
@@ -138,8 +156,9 @@ Restart the client after changing MCP config.
 ```
 
 Generated snippets use absolute `sancho` and workspace paths when Sancho can
-find them. If you hand-write a config and `sancho` is not on PATH, use the absolute
-path printed by `sancho paths --json` (or re-run the installer, which puts
+find them. If you hand-write a config and `sancho` is not on PATH, copy the
+absolute `command` value from any generated snippet in
+`sancho-workspace/mcp/*.mcp.json` (or re-run the installer, which puts
 `sancho` on PATH).
 
 ## Path B: Hosted Web Connector

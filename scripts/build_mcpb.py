@@ -1,9 +1,9 @@
 """Rebuild the committed Claude Desktop bundle (integrations/claude-desktop/sancho.mcpb).
 
-An .mcpb is just a zip of the bundle folder (manifest.json + server/**).
-Run this after changing either source file; tests/test_mcpb_bundle.py fails
-until the committed bundle matches the sources. Deterministic (fixed
-timestamps) so rebuilding without changes produces an identical file.
+An .mcpb is just a zip of the MEMBERS files below. Run this after changing any
+of them; tests/test_mcpb_bundle.py fails until the committed bundle matches
+the sources. Deterministic (fixed timestamps, fixed order) so rebuilding
+without changes produces an identical file.
 """
 
 from __future__ import annotations
@@ -14,7 +14,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 BUNDLE_DIR = ROOT / "integrations" / "claude-desktop"
 OUTPUT = BUNDLE_DIR / "sancho.mcpb"
-MEMBERS = ("manifest.json", "server/index.js")
+MEMBERS = (".mcpbignore", "manifest.json", "pyproject.toml", "src/server.py")
 FIXED_DATE = (2026, 1, 1, 0, 0, 0)
 
 

@@ -185,6 +185,71 @@ def test_initialize_handshake_via_stdio(
     assert response["result"]["protocolVersion"] == protocol_version
 
 
+def test_stdio_legacy_era_latch_survives_modern_discover(
+    monkeypatch: pytest.MonkeyPatch, tmp_path
+) -> None:
+    """A legacy initialize pins legacy serialization for the whole process.
+
+    A stray modern ``server/discover`` mid-session must be served as modern
+    without flipping the latch: the legacy client's next bare request still
+    gets a legacy-shaped result instead of a -32602 demanding ``_meta``.
+    """
+    requests = [
+        {
+            "jsonrpc": "2.0",
+            "id": 1,
+            "method": "initialize",
+            "params": {"protocolVersion": "2025-11-25", "capabilities": {}, "clientInfo": {}},
+        },
+        {"jsonrpc": "2.0", "id": 2, "method": "server/discover", "params": {}},
+        {"jsonrpc": "2.0", "id": 3, "method": "tools/list", "params": {}},
+    ]
+    payload = b"".join(json.dumps(r).encode("utf-8") + b"\n" for r in requests)
+    _drive_stdin(monkeypatch, payload)
+    out = _capture_stdout(monkeypatch)
+
+    mcp_server.serve_stdio(tmp_path)
+
+    lines = out.getvalue().decode("utf-8").strip().split("\n")
+    responses = {msg["id"]: msg for msg in map(json.loads, lines)}
+    assert set(responses[1]["result"]) == {"protocolVersion", "capabilities", "serverInfo"}
+    assert responses[2]["result"]["supportedVersions"] == ["2026-07-28"]
+    assert "result" in responses[3], f"legacy client broken after discover: {responses[3]}"
+    assert set(responses[3]["result"]) == {"tools"}, "legacy shape must survive a modern call"
+
+
+def test_stdio_initialize_pins_legacy_even_after_discover_probe(
+    monkeypatch: pytest.MonkeyPatch, tmp_path
+) -> None:
+    """The mirror order: a modern server/discover probe first, then a real
+    legacy initialize. The handshake is authoritative — bare requests after it
+    must be served legacy, not rejected with -32602."""
+    requests = [
+        {"jsonrpc": "2.0", "id": 1, "method": "server/discover", "params": {}},
+        {
+            "jsonrpc": "2.0",
+            "id": 2,
+            "method": "initialize",
+            "params": {"protocolVersion": "2025-11-25", "capabilities": {}, "clientInfo": {}},
+        },
+        {"jsonrpc": "2.0", "id": 3, "method": "tools/list", "params": {}},
+    ]
+    payload = b"".join(json.dumps(r).encode("utf-8") + b"\n" for r in requests)
+    _drive_stdin(monkeypatch, payload)
+    out = _capture_stdout(monkeypatch)
+
+    mcp_server.serve_stdio(tmp_path)
+
+    responses = {
+        msg["id"]: msg
+        for msg in map(json.loads, out.getvalue().decode("utf-8").strip().split("\n"))
+    }
+    assert responses[1]["result"]["supportedVersions"] == ["2026-07-28"]
+    assert set(responses[2]["result"]) == {"protocolVersion", "capabilities", "serverInfo"}
+    assert "result" in responses[3], f"legacy client broken after probe: {responses[3]}"
+    assert set(responses[3]["result"]) == {"tools"}
+
+
 # ---------------------------------------------------------------------------
 # Protocol version negotiation (the bug that caused Claude Desktop to
 # disconnect right after a successful initialize response)
@@ -211,10 +276,17 @@ def _ctx(tmp_path):
     )
 
 
-@pytest.mark.parametrize("version", _SUPPORTED_MCP_PROTOCOL_VERSIONS)
+@pytest.mark.parametrize(
+    "version",
+    [version for version in _SUPPORTED_MCP_PROTOCOL_VERSIONS if version != "2026-07-28"],
+)
 def test_negotiate_echoes_supported_version(version: str) -> None:
     """Per the MCP spec: if the client's version is supported, echo it back."""
     assert _negotiate_protocol_version(version) == version
+
+
+def test_initialize_never_negotiates_modern_version() -> None:
+    assert _negotiate_protocol_version("2026-07-28") == _LATEST_LEGACY_MCP_PROTOCOL_VERSION
 
 
 @pytest.mark.parametrize(
@@ -259,28 +331,40 @@ def test_server_discover_returns_versions_and_capabilities(tmp_path) -> None:
     result = _handle_method(_ctx(tmp_path), "server/discover", {})
     assert "2026-07-28" in result["supportedVersions"]
     assert result["supportedVersions"][0] == "2026-07-28", "newest first"
+    assert result["supportedVersions"] == ["2026-07-28"]
     assert result["capabilities"] == {"tools": {}}
     assert result["resultType"] == "complete"
     assert result["ttlMs"] > 0
     assert result["cacheScope"] in {"public", "private"}
     server_info = result["_meta"]["io.modelcontextprotocol/serverInfo"]
     assert server_info["name"] == "sancho-mcp"
+    assert set(result) == {
+        "supportedVersions",
+        "capabilities",
+        "resultType",
+        "ttlMs",
+        "cacheScope",
+        "_meta",
+    }
 
 
 def test_tools_list_is_cacheable_and_deterministic(tmp_path) -> None:
     ctx = _ctx(tmp_path)
-    first = _handle_method(ctx, "tools/list", {})
-    second = _handle_method(ctx, "tools/list", {})
+    params = {"_meta": {"io.modelcontextprotocol/protocolVersion": "2026-07-28"}}
+    first = _handle_method(ctx, "tools/list", params)
+    second = _handle_method(ctx, "tools/list", params)
     assert first["ttlMs"] > 0
     assert first["cacheScope"] == "private", "local workspace results are per-user"
     assert first["resultType"] == "complete"
     names = [tool["name"] for tool in first["tools"]]
     assert names == sorted(names), "spec: deterministic order for client caching"
     assert names == [tool["name"] for tool in second["tools"]]
+    assert set(first) == {"tools", "resultType", "ttlMs", "cacheScope", "_meta"}
 
 
 def test_tools_carry_titles_and_annotations(tmp_path) -> None:
-    tools = _handle_method(_ctx(tmp_path), "tools/list", {})["tools"]
+    params = {"_meta": {"io.modelcontextprotocol/protocolVersion": "2026-07-28"}}
+    tools = _handle_method(_ctx(tmp_path), "tools/list", params)["tools"]
     by_name = {tool["name"]: tool for tool in tools}
     assert by_name["sancho_paths"]["annotations"]["readOnlyHint"] is True
     assert by_name["sancho_fetch_run"]["annotations"]["openWorldHint"] is True
@@ -293,6 +377,62 @@ def test_request_with_supported_meta_version_is_served(tmp_path) -> None:
     params = {"_meta": {"io.modelcontextprotocol/protocolVersion": "2026-07-28"}}
     result = _handle_method(_ctx(tmp_path), "tools/list", params)
     assert result["resultType"] == "complete"
+
+
+def test_legacy_results_have_exact_legacy_shape(tmp_path) -> None:
+    ctx = _ctx(tmp_path)
+    initialized = _handle_method(
+        ctx,
+        "initialize",
+        {"protocolVersion": "2025-11-25", "capabilities": {}, "clientInfo": {}},
+    )
+    assert set(initialized) == {"protocolVersion", "capabilities", "serverInfo"}
+    listed = _handle_method(ctx, "tools/list", {}, protocol_era="legacy")
+    assert set(listed) == {"tools"}
+    pinged = _handle_method(ctx, "ping", {}, protocol_era="legacy")
+    assert pinged == {}
+    called = _handle_method(
+        ctx,
+        "tools/call",
+        {"name": "sancho_paths", "arguments": {}},
+        protocol_era="legacy",
+    )
+    assert set(called) == {"content", "structuredContent"}
+
+
+def test_modern_tool_call_has_exact_modern_shape(tmp_path) -> None:
+    called = _handle_method(
+        _ctx(tmp_path),
+        "tools/call",
+        {
+            "name": "sancho_paths",
+            "arguments": {},
+            "_meta": {"io.modelcontextprotocol/protocolVersion": "2026-07-28"},
+        },
+        protocol_era="modern",
+    )
+    assert set(called) == {
+        "content",
+        "structuredContent",
+        "resultType",
+        "_meta",
+    }
+
+
+@pytest.mark.parametrize("bad_params", [None, [], "bad", 42, True])
+def test_non_object_params_map_to_invalid_params(tmp_path, bad_params: Any) -> None:
+    from sancho.mcp.tooling import MCPInvalidParams, jsonrpc_error
+
+    with pytest.raises(MCPInvalidParams) as excinfo:
+        _handle_method(_ctx(tmp_path), "tools/list", bad_params)
+    assert jsonrpc_error(excinfo.value)["code"] == -32602
+
+
+def test_modern_mode_requires_version_metadata(tmp_path) -> None:
+    from sancho.mcp.tooling import MCPInvalidParams
+
+    with pytest.raises(MCPInvalidParams):
+        _handle_method(_ctx(tmp_path), "tools/list", {}, protocol_era="modern")
 
 
 def test_request_with_unsupported_meta_version_errors(tmp_path) -> None:

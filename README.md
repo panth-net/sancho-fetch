@@ -2,6 +2,8 @@
 
 # Sancho Fetch
 
+<!-- mcp-name: io.github.panth-net/sancho-fetch -->
+
 Ask your AI for public data. Get real files on your computer.
 
 ## The fastest way in: tell your AI
@@ -24,34 +26,41 @@ Open your AI's code mode -- **Claude** desktop app -> **Code** tab, or
 > Code tab (e.g. ChatGPT Desktop or Claude Desktop), and 2) that I can ask
 > AI to add new data sources by itself since sancho-fetch is built in a way
 > that it's easily extensible (aka you can add more to it and the AI will do
-> the heavy lifting and connect the new data source). As the team behind
-> Sancho Fetch, we hope you truly make it yours as an internal resource to
-> power your work.
+> the heavy lifting and connect the new data source).
 
 That's the whole install.
 
-**Install once, use everywhere.** Install Sancho once on your computer, and it works across ChatGPT Desktop, Claude Desktop, etc. 
+You do **not** need to download or clone this repository. The two commands the
+AI runs are:
 
-To use Sancho, just ask for data and mention "sancho" in plain English, or type **`/sancho`** to feel cool.
+```bash
+uv tool install sancho-fetch
+sancho setup
+```
+
+**Install once, use everywhere.** Sancho installs once on your computer and
+connects to the AI apps it finds (Claude Desktop, ChatGPT/Codex, VS Code,
+Cursor). At the end of setup it tells you plainly which apps are ready and
+which just need a restart or a click.
+
+To use Sancho, just ask for data and mention "sancho" in plain English, or type **`/sancho`** in Claude Code to feel cool.
 
 ## What it does
 
-- You ask: *"get county-level asthma rates for Ohio."* within Claude Desktop Code or ChatGPT Desktop's Code modes (you can be working in any folder or not working in a folder at all).
+- In your AI's Code mode you ask: *"get county-level asthma rates for Ohio."*
+  You can be working in any folder -- Sancho always knows where its home
+  folder is.
 - Your AI uses Sancho to pull from 120+ public sources (Census, World Bank,
   FDA, USGS, FEMA, ...) and hands you a file that opens in Excel.
 - Everything is saved on your computer.
 
 ## Before you begin
 
-Sancho requires **Python 3.11 or newer** and an internet connection during
-first-time setup. Install Python from
-[python.org](https://www.python.org/downloads/) first, or let the installer's
-`uv` package manager download a compatible isolated Python for Sancho. It does
-not replace your computer's system Python.
-
-**Node.js is optional.** You only need Node 18 or newer for the optional npm
-wrapper. API keys are not required for installation or the built-in World Bank
-setup check; provider-specific keys can be added later.
+The normal prerequisite is [`uv`](https://docs.astral.sh/uv/). `uv` installs
+Sancho in isolation and can obtain a compatible Python without replacing your
+computer's system Python. First setup needs an internet connection. API keys
+are not required for installation or the World Bank example; provider-specific
+keys can be added later.
 
 ## Get started (about 2 minutes)
 
@@ -67,7 +76,9 @@ Install straight from PyPI.
 The AI installs everything, shows you your first data file, and walks you
 through where everything lives.
 
-**3. Fully quit and restart the Claude or ChatGPT desktop app after the installation is complete.**
+**3. Restart the apps Sancho asks you to restart.** Setup ends with a short
+report; if an app needs a restart or one extra click, it says so in plain
+words.
 
 NOTE: Before using, make sure to add API keys for any sources you want to use. 
 
@@ -115,8 +126,8 @@ Then double-click `installers/Install Sancho.command` (macOS) or
 
 ## Everyday use
 
-- In Claude Code / Codex, just ask for data, or use
-  **`/sancho`** and **`/sancho-update`** directly.
+- In Claude Code / Codex, just ask for data. In Claude Code you can also
+  type **`/sancho`** and **`/sancho-update`** directly.
 
 > **After installation, use a Code session.** Sancho is installed
 > computer-wide, so you do not need to add the `sancho-fetch` folder in future
@@ -128,8 +139,9 @@ Then double-click `installers/Install Sancho.command` (macOS) or
 
 >  *"turn on Sancho developer mode."*
 
-- Something off? Ask your AI to run `sancho ready` -- it checks and repairs
-  the setup.
+- Something off? Ask your AI to run `sancho ready` -- it checks your setup and
+  reports what's wrong, without changing your setup. To actually fix problems,
+  ask your AI to run `sancho doctor --fix`.
 
 ## Where your files land
 
@@ -187,24 +199,22 @@ If you want Sancho to stop mentioning new versions in chats (which it will do on
 
 ## Uninstalling
 
-Same as installing: paste one request to your AI in a Code session.
+Same as installing: paste one request to your AI in a Code session:
 
-> Uninstall Sancho Fetch from this computer: run `uv tool uninstall
-> sancho-fetch`, delete the `~/.sancho` folder, delete the `sancho` and
-> `sancho-update` folders from `~/.claude/skills/` and `~/.agents/skills/` if
-> they exist, and remove the `"sancho"` entry from Claude Desktop's MCP config
-> file if it has one. Keep my `sancho-workspace` folder and everything in it --
-> that is my data and my API keys. Tell me when it's done and what was removed.
+> Uninstall Sancho Fetch from this computer: run `sancho uninstall`, then
+> `uv tool uninstall sancho-fetch`. Keep my `sancho-workspace` and
+> `sancho-downloads` folders -- that is my data and my API keys. Tell me when
+> it's done and what was removed.
+
+(Those two commands are the whole uninstall if you'd rather run them yourself.)
+
+Sancho only removes what it installed: its skills and its entries in your AI
+apps. Anything you edited or created yourself is left alone and reported.
 
 Your `sancho-workspace/` folder (fetched data, custom modules, `.env` keys) and
-your `sancho-downloads/` files are **always kept**. Delete them yourself if you
-also want the data gone.
-
-Working from the GitHub repository instead? Double-click
-`installers/Uninstall Sancho.command` (macOS) or
-`installers/Uninstall Sancho.bat` (Windows); on Linux run
-`bash installers/uninstall.sh`. Add `--purge` only if you also want
-`sancho-workspace/` (your data and keys) deleted.
+your `sancho-downloads/` files are **always kept**. Deleting data is a
+separate, deliberate step that asks for confirmation first -- ask your AI, or
+run `sancho uninstall --help` to see how.
 
 ## More documentation
 

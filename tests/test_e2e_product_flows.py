@@ -127,7 +127,7 @@ def test_hosted_e2e_tools_list_with_allowlist(monkeypatch, tmp_path: Path) -> No
         ),
     )
 
-    result = _handle_method(ctx, "tools/list", None)
+    result = _handle_method(ctx, "tools/list", {})
     tool_names = {t["name"] for t in result["tools"]}
     # Published under the MCP-safe name; dotted id is internal only.
     assert "fetch_world_bank" in tool_names
@@ -169,9 +169,12 @@ def test_hosted_e2e_response_cap_with_nudge(monkeypatch, tmp_path: Path) -> None
 # ── CLI init + add + doctor flow ─────────────────────────────────────────
 
 
-def test_cli_init_add_doctor_flow(tmp_path: Path) -> None:
+def test_cli_init_add_doctor_flow(tmp_path: Path, monkeypatch) -> None:
     from sancho.cli import main
 
+    home = tmp_path / "isolated-home"
+    home.mkdir()
+    monkeypatch.setattr(Path, "home", classmethod(lambda cls: home))
     assert main(["init", "--path", str(tmp_path), "--yes"]) == 0
     assert main(["add", "fetch.fred.series", "--workspace", str(tmp_path)]) == 0
     assert main(["doctor", "--workspace", str(tmp_path), "--fix"]) == 0
@@ -198,10 +201,10 @@ def test_unsupported_mcp_method_raises(tmp_path: Path) -> None:
         _handle_method(ctx, "custom/nonexistent", {})
 
 
-def test_mcp_ping_returns_complete_result(tmp_path: Path) -> None:
+def test_legacy_mcp_ping_returns_empty_result(tmp_path: Path) -> None:
     ctx = MCPContext(workspace_root=tmp_path, policy=MCPPolicy())
     result = _handle_method(ctx, "ping", {})
-    assert result["resultType"] == "complete"
+    assert result == {}
 
 
 def test_mcp_resources_methods_are_not_advertised(tmp_path: Path) -> None:

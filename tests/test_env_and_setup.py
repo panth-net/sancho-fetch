@@ -200,7 +200,17 @@ def test_sancho_setup_no_network_succeeds(tmp_path: Path, monkeypatch: pytest.Mo
     assert rc == 0
     payload = json.loads(capsys.readouterr().out)
     step_names = {s["name"] for s in payload["steps"]}
-    assert {"python", "uv", "node", "workspace", "library_register", "skills", "mcp_config"} <= step_names
+    assert {
+        "python",
+        "uv",
+        "workspace",
+        "ownership",
+        "library_register",
+        "skills",
+        "mcp_config",
+        "mcp_launch",
+        "ready",
+    } <= step_names
     # Python check should be OK on Python 3.11+
     python_step = next(s for s in payload["steps"] if s["name"] == "python")
     assert python_step["status"] == "ok"
@@ -212,7 +222,7 @@ def test_sancho_setup_no_network_succeeds(tmp_path: Path, monkeypatch: pytest.Mo
     assert str(fake_home) in payload["library_pointer"]
     assert payload["skills_installed_count"] >= 4
     assert len(payload["mcp_configs_written"]) == 4
-    assert payload["claude_desktop_config_installed"] is None
+    assert "claude_desktop_config_installed" not in payload
 
 
 def test_sancho_setup_skip_smoke_check_succeeds(
@@ -234,7 +244,8 @@ def test_sancho_setup_skip_smoke_check_succeeds(
     payload = json.loads(capsys.readouterr().out)
     step_names = {s["name"] for s in payload["steps"]}
     assert "smoke" not in step_names
-    assert "ready" not in step_names
+    assert "ready" in step_names
+    assert payload["ready"]["checks"]["sample_module"]["required"] is False
     assert payload["has_failures"] is False
 
 
@@ -370,7 +381,7 @@ def test_doctor_json_reports_workspace_not_found(
 
 
 
-def test_sancho_setup_can_install_claude_desktop_config(
+def test_sancho_setup_configures_claude_desktop(
     tmp_path: Path,
     monkeypatch: pytest.MonkeyPatch,
     capsys: pytest.CaptureFixture,
@@ -379,7 +390,7 @@ def test_sancho_setup_can_install_claude_desktop_config(
     fake_home.mkdir()
     monkeypatch.setattr(Path, "home", classmethod(lambda cls: fake_home))
     monkeypatch.delenv("APPDATA", raising=False)
-    monkeypatch.setattr("sancho.mcp.config._current_platform", lambda: "win32")
+    monkeypatch.setattr("sancho.client_integrations.platform.system", lambda: "Windows")
     capsys.readouterr()
     rc = main(
         [
@@ -387,14 +398,16 @@ def test_sancho_setup_can_install_claude_desktop_config(
             "--path",
             str(tmp_path),
             "--no-network",
-            "--install-claude-desktop",
+            "--client",
+            "claude-desktop",
             "--json",
         ]
     )
     assert rc == 0
     payload = json.loads(capsys.readouterr().out)
     expected_config = fake_home / "AppData" / "Roaming" / "Claude" / "claude_desktop_config.json"
-    assert Path(payload["claude_desktop_config_installed"]) == expected_config
+    client = next(item for item in payload["clients"] if item["client"] == "claude-desktop")
+    assert client["state"] == "restart_required"
     config = json.loads(expected_config.read_text(encoding="utf-8"))
     server = config["mcpServers"]["sancho"]
     assert Path(server["command"]).name.lower().startswith("sancho")
@@ -402,8 +415,8 @@ def test_sancho_setup_can_install_claude_desktop_config(
     workspace_index = server["args"].index("--workspace") + 1
     assert Path(server["args"][workspace_index]) == tmp_path / WORKSPACE_DIRNAME
     assert server["args"][-2:] == ["--transport", "stdio"]
-    claude_step = next(s for s in payload["steps"] if s["name"] == "claude_desktop_config")
-    assert claude_step["status"] == "ok"
+    clients_step = next(s for s in payload["steps"] if s["name"] == "clients")
+    assert clients_step["status"] == "warn"
 
 
 def test_claude_desktop_config_uses_appdata_on_windows(
@@ -427,7 +440,7 @@ def test_sancho_setup_install_claude_desktop_is_nonfatal_on_linux(
     fake_home = tmp_path / "home"
     fake_home.mkdir()
     monkeypatch.setattr(Path, "home", classmethod(lambda cls: fake_home))
-    monkeypatch.setattr("sancho.mcp.config._current_platform", lambda: "linux")
+    monkeypatch.setattr("sancho.client_integrations.platform.system", lambda: "Linux")
     capsys.readouterr()
     rc = main(
         [
@@ -435,18 +448,17 @@ def test_sancho_setup_install_claude_desktop_is_nonfatal_on_linux(
             "--path",
             str(tmp_path),
             "--no-network",
-            "--install-claude-desktop",
+            "--client",
+            "claude-desktop",
             "--json",
         ]
     )
     assert rc == 0
     payload = json.loads(capsys.readouterr().out)
     assert payload["has_failures"] is False
-    assert payload["claude_desktop_config_installed"] is None
     assert len(payload["mcp_configs_written"]) == 4
-    claude_step = next(s for s in payload["steps"] if s["name"] == "claude_desktop_config")
-    assert claude_step["status"] == "warn"
-    assert "Windows and macOS" in claude_step["detail"]
+    client = next(item for item in payload["clients"] if item["client"] == "claude-desktop")
+    assert client["state"] in {"absent", "restart_required"}
 
 
 def test_installer_scripts_are_present_and_executable_metadata() -> None:
@@ -467,17 +479,17 @@ def test_installers_use_uv_python_resolution_and_visible_failures() -> None:
 
     assert "set -euo pipefail" in setup_sh
     assert "command -v curl" in setup_sh
-    # --reinstall: uv caches built wheels by version, so a same-version
-    # reinstall from the folder would otherwise silently reuse a stale build.
-    assert "uv tool install --reinstall ." in setup_sh
-    assert "uv tool uninstall sancho-fetch" in setup_sh
-    assert "uv tool uninstall sancho" in setup_sh
+    assert "uv build --wheel --out-dir" in setup_sh
+    assert 'uv tool install --reinstall "$wheel_path"' in setup_sh
+    assert 'setup --path "$repo_root" --switch-workspace' in setup_sh
+    assert "uv tool uninstall" not in setup_sh
     assert "uv python install 3.11" not in setup_sh
     assert "--python 3.11" not in setup_sh
     assert "--force" not in setup_sh
-    assert "uv tool install --reinstall ." in setup_bat
-    assert "uv tool uninstall sancho-fetch" in setup_bat
-    assert "uv tool uninstall sancho" in setup_bat
+    assert "uv build --wheel --out-dir" in setup_bat
+    assert 'uv tool install --reinstall "%WHEEL_PATH%"' in setup_bat
+    assert 'setup --path "%REPO_ROOT%" --switch-workspace' in setup_bat
+    assert "uv tool uninstall" not in setup_bat
     assert "uv python install 3.11" not in setup_bat
     assert "--python 3.11" not in setup_bat
     assert "--force" not in setup_bat
@@ -499,10 +511,9 @@ def test_windows_installer_uv_bootstrap_block_parses(tmp_path: Path) -> None:
     (repo_root / "pyproject.toml").write_text("[project]\nname = 'smoke'\n", encoding="utf-8")
 
     setup_bat = (root / "installers" / "setup.bat").read_text(encoding="utf-8")
-    setup_bat = setup_bat.replace(
-        '  powershell -NoProfile -ExecutionPolicy Bypass -Command "irm https://astral.sh/uv/install.ps1 ^| iex"',
-        "  goto :parser_smoke_ok",
-    )
+    bootstrap = '  powershell -NoProfile -ExecutionPolicy Bypass -Command "irm https://astral.sh/uv/install.ps1 | iex"'
+    assert bootstrap in setup_bat, "parser smoke replacement must match the real bootstrap line"
+    setup_bat = setup_bat.replace(bootstrap, "  goto :parser_smoke_ok", 1)
     setup_bat += "\n:parser_smoke_ok\npopd\nendlocal\nexit /b 0\n"
     smoke_installer = installer_dir / "setup.bat"
     smoke_installer.write_text(setup_bat, encoding="utf-8")
