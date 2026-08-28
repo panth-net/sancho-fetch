@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "sancho": {
+      "command": "sancho",
+      "args": ["mcp", "serve", "--transport", "stdio"]
+    }
+  }
+}

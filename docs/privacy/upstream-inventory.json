@@ -1,0 +1,2170 @@
+{
+  "scope": "static bundled fetch-module source; .env values are never read",
+  "module_count": 123,
+  "unique_upstream_domain_count": 125,
+  "credentialed_module_count": 32,
+  "upstream_domains": [
+    "api.bls.gov",
+    "api.census.gov",
+    "api.congress.gov",
+    "api.data.gov",
+    "api.eia.gov",
+    "api.fda.gov",
+    "api.fiscaldata.treasury.gov",
+    "api.gsa.gov",
+    "api.iatistandard.org",
+    "api.nal.usda.gov",
+    "api.nhtsa.gov",
+    "api.open.fec.gov",
+    "api.regulations.gov",
+    "api.stlouisfed.org",
+    "api.us.socrata.com",
+    "api.usa.gov",
+    "api.usaspending.gov",
+    "api.uspto.gov",
+    "api.weather.gov",
+    "api.worldbank.org",
+    "apiprod.dol.gov",
+    "apps.bea.gov",
+    "aqs.epa.gov",
+    "aspe.hhs.gov",
+    "banks.data.fdic.gov",
+    "bulk-data.iatistandard.org",
+    "cfpb.github.io",
+    "civilrightsdata.ed.gov",
+    "clinicaltrials.gov",
+    "cmr.earthdata.nasa.gov",
+    "codelists.codeforiati.org",
+    "collegescorecard.ed.gov",
+    "dashboards.sdgindex.org",
+    "data-explorer.oecd.org",
+    "data.cdc.gov",
+    "data.cityofchicago.org",
+    "data.cms.gov",
+    "data.epa.gov",
+    "data.hrsa.gov",
+    "data.imf.org",
+    "data.lacity.org",
+    "data.medicaid.gov",
+    "data.seattle.gov",
+    "data.sec.gov",
+    "data.sfgov.org",
+    "data360files.worldbank.org",
+    "datahelpdesk.worldbank.org",
+    "dataservices.imf.org",
+    "datasette-public.owid.io",
+    "ddh-openapi.worldbank.org",
+    "dev.socrata.com",
+    "developer.nrel.gov",
+    "developers.arcgis.com",
+    "earthquake.usgs.gov",
+    "ec.europa.eu",
+    "echo.epa.gov",
+    "echodata.epa.gov",
+    "ephtracking.cdc.gov",
+    "esipfed.org",
+    "fdc.nal.usda.gov",
+    "fragilestatesindex.org",
+    "fred.stlouisfed.org",
+    "ftp.cdc.gov",
+    "gain-new.crc.nd.edu",
+    "hdr.undp.org",
+    "iatistandard.org",
+    "images.transparencycdn.org",
+    "iris.epa.gov",
+    "lehd.ces.census.gov",
+    "maps2.dcgis.dc.gov",
+    "mchb.hrsa.gov",
+    "meps.ahrq.gov",
+    "nanda.isr.umich.edu",
+    "open.fda.gov",
+    "opendata.dc.gov",
+    "openpaymentsdata.cms.gov",
+    "ourworldindata.org",
+    "overturemapswestus2.blob.core.windows.net",
+    "planetarycomputer.microsoft.com",
+    "publicadministration.un.org",
+    "quickstats.nass.usda.gov",
+    "raw.githubusercontent.com",
+    "resilience.climate.gov",
+    "rsf.org",
+    "sdmx.oecd.org",
+    "sdmxcentral.imf.org",
+    "search.worldbank.org",
+    "services.arcgis.com",
+    "source.coop",
+    "svi.cdc.gov",
+    "usrds-adr.niddk.nih.gov",
+    "vpic.nhtsa.dot.gov",
+    "vsac.nlm.nih.gov",
+    "wisqars.cdc.gov",
+    "wonder.cdc.gov",
+    "worldjusticeproject.org",
+    "www.ahrq.gov",
+    "www.airnowapi.org",
+    "www.atsdr.cdc.gov",
+    "www.bls.gov",
+    "www.cdc.gov",
+    "www.census.gov",
+    "www.cms.gov",
+    "www.consumerfinance.gov",
+    "www.dol.gov",
+    "www.economicsandpeace.org",
+    "www.eia.gov",
+    "www.epa.gov",
+    "www.ers.usda.gov",
+    "www.fec.gov",
+    "www.federalregister.gov",
+    "www.fema.gov",
+    "www.huduser.gov",
+    "www.justice.gov",
+    "www.nationsreportcard.gov",
+    "www.ncdc.noaa.gov",
+    "www.ncei.noaa.gov",
+    "www.pewresearch.org",
+    "www.sdmx.org",
+    "www.sec.gov",
+    "www.v-dem.net",
+    "www.worldvaluessurvey.org",
+    "wwwn.cdc.gov",
+    "{domain_for_url}",
+    "{domain}"
+  ],
+  "modules": [
+    {
+      "module_id": "fetch.ahrq.meps",
+      "description": "AHRQ Medical Expenditure Panel Survey (MEPS) public-use file downloader.",
+      "upstream_domains": [
+        "meps.ahrq.gov"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.ahrq.nhqdr",
+      "description": "AHRQ NHQDR public data tools link helper.",
+      "upstream_domains": [
+        "www.ahrq.gov"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.ahrq.sdoh",
+      "description": "AHRQ Social Determinants of Health Database public download/link helper.",
+      "upstream_domains": [
+        "www.ahrq.gov"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.airnow",
+      "description": "Real-time US air quality from EPA AirNow: AQI, ozone, PM2.5, and wildfire",
+      "upstream_domains": [
+        "www.airnowapi.org"
+      ],
+      "authentication": "credentialed-when-selected",
+      "authentication_methods": [
+        "api-key-or-token"
+      ],
+      "credential_environment_variables": [
+        "AIRNOW_API_KEY"
+      ],
+      "credential_destination": [
+        "www.airnowapi.org"
+      ],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.atsdr.eji",
+      "description": "ATSDR Environmental Justice Index public download/link helper.",
+      "upstream_domains": [
+        "www.atsdr.cdc.gov"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.atsdr.svi",
+      "description": "CDC/ATSDR Social Vulnerability Index (SVI) downloader. Public, no key",
+      "upstream_domains": [
+        "svi.cdc.gov"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.atus",
+      "description": "Fetch American Time Use Survey (ATUS) multi-year microdata file listings and metadata from BLS.",
+      "upstream_domains": [
+        "api.bls.gov"
+      ],
+      "authentication": "credentialed-when-selected",
+      "authentication_methods": [
+        "api-key-or-token"
+      ],
+      "credential_environment_variables": [
+        "BLS_API_KEY"
+      ],
+      "credential_destination": [
+        "api.bls.gov"
+      ],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.bea.nipa_table",
+      "description": "Fetch BEA NIPA tables (National Income and Product Accounts). The wrapper",
+      "upstream_domains": [
+        "apps.bea.gov"
+      ],
+      "authentication": "credentialed-when-selected",
+      "authentication_methods": [
+        "api-key-or-token"
+      ],
+      "credential_environment_variables": [
+        "BEA_API_KEY"
+      ],
+      "credential_destination": [
+        "apps.bea.gov"
+      ],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.bls",
+      "description": "US labor statistics from the Bureau of Labor Statistics: unemployment rate,",
+      "upstream_domains": [
+        "api.bls.gov",
+        "www.bls.gov"
+      ],
+      "authentication": "credentialed-when-selected",
+      "authentication_methods": [
+        "api-key-or-token"
+      ],
+      "credential_environment_variables": [
+        "BLS_API_KEY"
+      ],
+      "credential_destination": [
+        "api.bls.gov",
+        "www.bls.gov"
+      ],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.brfss",
+      "description": "Fetch CDC BRFSS (Behavioral Risk Factor Surveillance System) annual file",
+      "upstream_domains": [
+        "www.cdc.gov"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.cdc",
+      "description": "US public health data from CDC's open-data portal: disease surveillance, COVID",
+      "upstream_domains": [
+        "data.cdc.gov",
+        "dev.socrata.com"
+      ],
+      "authentication": "credentialed-when-selected",
+      "authentication_methods": [
+        "api-key-or-token"
+      ],
+      "credential_environment_variables": [
+        "SODA_API_KEY_ID",
+        "SODA_API_KEY_SECRET"
+      ],
+      "credential_destination": [
+        "data.cdc.gov",
+        "dev.socrata.com"
+      ],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.cdc.biomonitoring",
+      "description": "CDC National Biomonitoring Program public report/data link helper.",
+      "upstream_domains": [
+        "www.cdc.gov"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.cdc.birth_defects",
+      "description": "CDC birth defects public data/report link helper.",
+      "upstream_domains": [
+        "www.cdc.gov"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.cdc.heat_events",
+      "description": "CDC Tracking Heat Events public data link helper.",
+      "upstream_domains": [
+        "www.cdc.gov"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.cdc.mmwr",
+      "description": "CDC MMWR public report feed/link helper.",
+      "upstream_domains": [
+        "www.cdc.gov"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.cdc.nhanes",
+      "description": "CDC National Health and Nutrition Examination Survey (NHANES) public-use",
+      "upstream_domains": [
+        "wwwn.cdc.gov"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.cdc.nhis",
+      "description": "CDC National Health Interview Survey (NHIS) public-use file downloader.",
+      "upstream_domains": [
+        "ftp.cdc.gov"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.cdc.nsfg",
+      "description": "NCHS National Survey of Family Growth public-use data link helper.",
+      "upstream_domains": [
+        "www.cdc.gov"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.cdc.nvss",
+      "description": "NCHS National Vital Statistics System public aggregate data/link helper.",
+      "upstream_domains": [
+        "www.cdc.gov"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.cdc.nwss",
+      "description": "CDC NWSS public wastewater surveillance Socrata data client.",
+      "upstream_domains": [
+        "data.cdc.gov"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.cdc.places",
+      "description": "CDC PLACES local health data portal/link helper.",
+      "upstream_domains": [
+        "data.cdc.gov"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.cdc.ssun",
+      "description": "CDC STI Surveillance Network public report/link helper.",
+      "upstream_domains": [
+        "www.cdc.gov"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.cdc.tracking",
+      "description": "CDC Environmental Public Health Tracking portal/link helper.",
+      "upstream_domains": [
+        "ephtracking.cdc.gov"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.cdc.vaxview",
+      "description": "CDC VaxView vaccination coverage public data link helper.",
+      "upstream_domains": [
+        "www.cdc.gov"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.cdc.wisqars",
+      "description": "CDC WISQARS public injury statistics portal link helper.",
+      "upstream_domains": [
+        "wisqars.cdc.gov"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.cdc.wonder",
+      "description": "CDC WONDER public query portal/link helper for aggregate public-health data.",
+      "upstream_domains": [
+        "wonder.cdc.gov"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.cejst",
+      "description": "Climate and Economic Justice Screening Tool public archive/link helper.",
+      "upstream_domains": [
+        "source.coop"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.census.acs_profile",
+      "description": "US demographics from the Census American Community Survey: population, race",
+      "upstream_domains": [
+        "api.census.gov",
+        "www.census.gov"
+      ],
+      "authentication": "credentialed-when-selected",
+      "authentication_methods": [
+        "api-key-or-token"
+      ],
+      "credential_environment_variables": [
+        "CENSUS_API_KEY"
+      ],
+      "credential_destination": [
+        "api.census.gov",
+        "www.census.gov"
+      ],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.census.cps",
+      "description": "Census Current Population Survey public data/API documentation link helper.",
+      "upstream_domains": [
+        "www.census.gov"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.census.decennial",
+      "description": "Fetch population counts from the US Census Bureau Decennial Census API.",
+      "upstream_domains": [
+        "api.census.gov"
+      ],
+      "authentication": "credentialed-when-selected",
+      "authentication_methods": [
+        "api-key-or-token"
+      ],
+      "credential_environment_variables": [
+        "CENSUS_API_KEY"
+      ],
+      "credential_destination": [
+        "api.census.gov"
+      ],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.census.htops",
+      "description": "Census Household Pulse Survey (HPS) timeseries client. Public, requires",
+      "upstream_domains": [
+        "api.census.gov"
+      ],
+      "authentication": "credentialed-when-selected",
+      "authentication_methods": [
+        "api-key-or-token"
+      ],
+      "credential_environment_variables": [
+        "CENSUS_API_KEY"
+      ],
+      "credential_destination": [
+        "api.census.gov"
+      ],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.census.onthemap_em",
+      "description": "Census OnTheMap for Emergency Management public data/link helper.",
+      "upstream_domains": [
+        "lehd.ces.census.gov"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.census.sipp",
+      "description": "Census SIPP public-use data link helper.",
+      "upstream_domains": [
+        "www.census.gov"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.cfpb.complaints",
+      "description": "Path-driven CFPB Consumer Complaint Database client (14.5M+ complaints).",
+      "upstream_domains": [
+        "cfpb.github.io",
+        "www.consumerfinance.gov"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.clinical_trials.studies",
+      "description": "Path-driven ClinicalTrials.gov v2 client. Search studies via",
+      "upstream_domains": [
+        "clinicaltrials.gov"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.cms.cciio",
+      "description": "CMS CCIIO public data resources link helper.",
+      "upstream_domains": [
+        "www.cms.gov"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.cms.data",
+      "description": "US healthcare data from CMS: Medicare providers, hospitals, nursing homes,",
+      "upstream_domains": [
+        "data.cms.gov"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.cms.marketplace_reports",
+      "description": "CMS Marketplace open enrollment public reports link helper.",
+      "upstream_domains": [
+        "www.cms.gov"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.cms.medicaid",
+      "description": "Path-driven Data.Medicaid.gov DKAN API client. Public, no key required.",
+      "upstream_domains": [
+        "data.medicaid.gov"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.cms.synpuf",
+      "description": "CMS Medicare Claims Synthetic Public Use Files public download/link helper.",
+      "upstream_domains": [
+        "www.cms.gov"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.college_scorecard.schools",
+      "description": "US college and university data from College Scorecard: tuition, admissions,",
+      "upstream_domains": [
+        "api.data.gov",
+        "collegescorecard.ed.gov"
+      ],
+      "authentication": "credentialed-when-selected",
+      "authentication_methods": [
+        "api-key-or-token"
+      ],
+      "credential_environment_variables": [
+        "DATA_GOV_API_KEY"
+      ],
+      "credential_destination": [
+        "api.data.gov",
+        "collegescorecard.ed.gov"
+      ],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.congress.bills",
+      "description": "Path-driven Congress.gov v3 client. Despite the name \"bills,\" covers",
+      "upstream_domains": [
+        "api.congress.gov"
+      ],
+      "authentication": "credentialed-when-selected",
+      "authentication_methods": [
+        "api-key-or-token"
+      ],
+      "credential_environment_variables": [
+        "CONGRESS_API_KEY"
+      ],
+      "credential_destination": [
+        "api.congress.gov"
+      ],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.dc_open_data",
+      "description": "Washington DC Open Data public ArcGIS layer helper.",
+      "upstream_domains": [
+        "developers.arcgis.com",
+        "maps2.dcgis.dc.gov",
+        "opendata.dc.gov"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.doj.press_releases",
+      "description": "Path-driven DOJ news API client. Two content types:",
+      "upstream_domains": [
+        "www.justice.gov"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.dol.naws",
+      "description": "DOL National Agricultural Workers Survey public data link helper.",
+      "upstream_domains": [
+        "www.dol.gov"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.dol.osha_inspections",
+      "description": "Path-driven DOL Open Data Portal client. v4 datasets at",
+      "upstream_domains": [
+        "apiprod.dol.gov"
+      ],
+      "authentication": "credentialed-when-selected",
+      "authentication_methods": [
+        "api-key-or-token"
+      ],
+      "credential_environment_variables": [
+        "DOL_API_KEY"
+      ],
+      "credential_destination": [
+        "apiprod.dol.gov"
+      ],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.earthdata",
+      "description": "Search NASA EOSDIS via CMR. catalog.json lists all 60 data providers plus a",
+      "upstream_domains": [
+        "cmr.earthdata.nasa.gov",
+        "esipfed.org"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.earthengine",
+      "description": "Extract raster statistics or vector features from Google Earth Engine datasets within an AOI.",
+      "upstream_domains": [],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.ed.crdc",
+      "description": "Civil Rights Data Collection public data link helper.",
+      "upstream_domains": [
+        "civilrightsdata.ed.gov"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.eia.series",
+      "description": "US energy data from EIA: electricity generation and prices, natural gas,",
+      "upstream_domains": [
+        "api.eia.gov",
+        "www.eia.gov"
+      ],
+      "authentication": "credentialed-when-selected",
+      "authentication_methods": [
+        "api-key-or-token"
+      ],
+      "credential_environment_variables": [
+        "EIA_API_KEY"
+      ],
+      "credential_destination": [
+        "api.eia.gov",
+        "www.eia.gov"
+      ],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.epa.aqs_annual",
+      "description": "US air pollution monitoring from EPA AQS: annual summaries of ozone, PM2.5,",
+      "upstream_domains": [
+        "aqs.epa.gov"
+      ],
+      "authentication": "credentialed-when-selected",
+      "authentication_methods": [
+        "api-key-or-token"
+      ],
+      "credential_environment_variables": [
+        "AQS_API_KEY"
+      ],
+      "credential_destination": [
+        "aqs.epa.gov"
+      ],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.epa.echo_facilities",
+      "description": "Path-driven EPA ECHO REST client. 6 sub-service families: cwa (Clean",
+      "upstream_domains": [
+        "echo.epa.gov",
+        "echodata.epa.gov"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.epa.ejscreen",
+      "description": "EPA EJScreen public data/download link helper.",
+      "upstream_domains": [
+        "www.epa.gov"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.epa.enviroatlas",
+      "description": "EPA EnviroAtlas public data/link helper.",
+      "upstream_domains": [
+        "www.epa.gov"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.epa.iris",
+      "description": "EPA IRIS public chemical assessment link helper.",
+      "upstream_domains": [
+        "iris.epa.gov"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.epa.smart_location",
+      "description": "EPA Smart Location Database public download/link helper.",
+      "upstream_domains": [
+        "www.epa.gov"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.epa.tri",
+      "description": "Path-driven EPA Toxics Release Inventory (TRI) Envirofacts client. Public,",
+      "upstream_domains": [
+        "data.epa.gov"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.eurostat",
+      "description": "European Union statistics from Eurostat: unemployment, inflation (HICP),",
+      "upstream_domains": [
+        "ec.europa.eu"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.fbi.crime",
+      "description": "US crime statistics from the FBI Crime Data Explorer: offenses, arrests, and",
+      "upstream_domains": [
+        "api.usa.gov"
+      ],
+      "authentication": "credentialed-when-selected",
+      "authentication_methods": [
+        "api-key-or-token"
+      ],
+      "credential_environment_variables": [
+        "DATA_GOV_API_KEY"
+      ],
+      "credential_destination": [
+        "api.usa.gov"
+      ],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.fda.drug_events",
+      "description": "US food and drug safety from openFDA: drug adverse events, drug/food/device",
+      "upstream_domains": [
+        "api.fda.gov",
+        "open.fda.gov"
+      ],
+      "authentication": "credentialed-when-selected",
+      "authentication_methods": [
+        "api-key-or-token"
+      ],
+      "credential_environment_variables": [
+        "DATA_GOV_API_KEY"
+      ],
+      "credential_destination": [
+        "api.fda.gov",
+        "open.fda.gov"
+      ],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.fdic.institutions",
+      "description": "Path-driven FDIC BankFind client. Three families: `/institutions` (bank",
+      "upstream_domains": [
+        "banks.data.fdic.gov"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.fec",
+      "description": "Path-driven FEC OpenFEC client. catalog.json is generated from the official OpenFEC Swagger and covers every current `/v1` JSON GET endpoint. Super PAC workflows include committee lookup (`committee_type=O`), Schedule A donor receipts, Schedule B disbursements, Schedule E independent expenditures, filings, reports, communication costs, and electioneering. Default requests fetch one page and return pagination metadata so large pulls can be bounded or explicitly confirmed. Auth via DATA_GOV_API_KEY.",
+      "upstream_domains": [
+        "api.data.gov",
+        "api.open.fec.gov",
+        "www.fec.gov"
+      ],
+      "authentication": "credentialed-when-selected",
+      "authentication_methods": [
+        "api-key-or-token"
+      ],
+      "credential_environment_variables": [
+        "DATA_GOV_API_KEY"
+      ],
+      "credential_destination": [
+        "api.data.gov",
+        "api.open.fec.gov",
+        "www.fec.gov"
+      ],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.federal_register.documents",
+      "description": "Path-driven Federal Register API client. Fetch rules, proposed rules,",
+      "upstream_domains": [
+        "www.federalregister.gov"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.fema.nri",
+      "description": "FEMA National Risk Index public data/link helper.",
+      "upstream_domains": [
+        "services.arcgis.com"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.fema.openfema",
+      "description": "US disaster and emergency data from OpenFEMA: disaster declarations,",
+      "upstream_domains": [
+        "www.fema.gov"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.fred.series",
+      "description": "US and international economic time series from the Federal Reserve (FRED):",
+      "upstream_domains": [
+        "api.stlouisfed.org",
+        "fred.stlouisfed.org"
+      ],
+      "authentication": "credentialed-when-selected",
+      "authentication_methods": [
+        "api-key-or-token"
+      ],
+      "credential_environment_variables": [
+        "FRED_API_KEY"
+      ],
+      "credential_destination": [
+        "api.stlouisfed.org",
+        "fred.stlouisfed.org"
+      ],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.fsi",
+      "description": "Fetch Fund for Peace Fragile States Index (FSI) scores from published XLSX reports.",
+      "upstream_domains": [
+        "fragilestatesindex.org"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.gpi",
+      "description": "Fetch Institute for Economics and Peace Global Peace Index (GPI) scores from published CSV files.",
+      "upstream_domains": [
+        "www.economicsandpeace.org"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.gsa_calc.ceiling_rates",
+      "description": "Hourly labor rates for US federal contractors from GSA CALC+ (government",
+      "upstream_domains": [
+        "api.gsa.gov"
+      ],
+      "authentication": "credentialed-when-selected",
+      "authentication_methods": [
+        "api-key-or-token"
+      ],
+      "credential_environment_variables": [
+        "DATA_GOV_API_KEY"
+      ],
+      "credential_destination": [
+        "api.gsa.gov"
+      ],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.hhs.poverty_guidelines",
+      "description": "HHS Poverty Guidelines public page/link helper.",
+      "upstream_domains": [
+        "aspe.hhs.gov"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.hrsa.ahrf",
+      "description": "HRSA Area Health Resources Files public download/link helper.",
+      "upstream_domains": [
+        "data.hrsa.gov"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.hrsa.hpsa",
+      "description": "HRSA Health Professional Shortage Areas public data/link helper.",
+      "upstream_domains": [
+        "data.hrsa.gov"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.hrsa.nsch",
+      "description": "HRSA National Survey of Childrens Health public data/link helper.",
+      "upstream_domains": [
+        "mchb.hrsa.gov"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.hrsa.uds",
+      "description": "HRSA Uniform Data System public data/report link helper.",
+      "upstream_domains": [
+        "data.hrsa.gov"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.hud.fmr",
+      "description": "US housing affordability from HUD: Fair Market Rents and Section 8 Income",
+      "upstream_domains": [
+        "www.huduser.gov"
+      ],
+      "authentication": "credentialed-when-selected",
+      "authentication_methods": [
+        "api-key-or-token"
+      ],
+      "credential_environment_variables": [
+        "HUD_API_TOKEN"
+      ],
+      "credential_destination": [
+        "www.huduser.gov"
+      ],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.hud.hdx_homelessness",
+      "description": "HUD Exchange homelessness aggregate data link helper.",
+      "upstream_domains": [
+        "www.huduser.gov"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.iati",
+      "description": "Fetch from IATI (International Aid Transparency Initiative). catalog.json",
+      "upstream_domains": [
+        "api.iatistandard.org",
+        "bulk-data.iatistandard.org",
+        "codelists.codeforiati.org",
+        "iatistandard.org"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.imf_cdis",
+      "description": "Fetch IMF statistical data via SDMX Central. catalog.json enumerates 101",
+      "upstream_domains": [
+        "data.imf.org",
+        "dataservices.imf.org",
+        "sdmxcentral.imf.org",
+        "www.sdmx.org"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.naep.adhoc_data",
+      "description": "Path-driven NAEP (Nations Report Card) ad-hoc data client. Filter by",
+      "upstream_domains": [
+        "www.nationsreportcard.gov"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.natural_earth",
+      "description": "Download Natural Earth admin boundaries (countries, states/provinces) as GeoJSON.",
+      "upstream_domains": [
+        "raw.githubusercontent.com"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.nd_gain",
+      "description": "Fetch Notre Dame Global Adaptation Initiative (ND-GAIN) country climate vulnerability index from the published ZIP archive.",
+      "upstream_domains": [
+        "gain-new.crc.nd.edu"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.nhtsa.recalls",
+      "description": "Path-driven NHTSA client. Two host APIs:",
+      "upstream_domains": [
+        "api.nhtsa.gov",
+        "vpic.nhtsa.dot.gov"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.nih.usrds",
+      "description": "USRDS public report/download helper. Detailed data may require request/DUA and is not fetched.",
+      "upstream_domains": [
+        "usrds-adr.niddk.nih.gov"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.nlm.vsac",
+      "description": "NLM VSAC access helper. UMLS credentials are required for value set API/content.",
+      "upstream_domains": [
+        "vsac.nlm.nih.gov"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.noaa.cdo",
+      "description": "Historical US weather and climate observations from NOAA Climate Data Online:",
+      "upstream_domains": [
+        "www.ncdc.noaa.gov",
+        "www.ncei.noaa.gov"
+      ],
+      "authentication": "credentialed-when-selected",
+      "authentication_methods": [
+        "api-key-or-token"
+      ],
+      "credential_environment_variables": [
+        "NOAA_API_TOKEN"
+      ],
+      "credential_destination": [
+        "www.ncdc.noaa.gov",
+        "www.ncei.noaa.gov"
+      ],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.noaa.cmra",
+      "description": "NOAA Climate Mapping for Resilience and Adaptation public data/link helper.",
+      "upstream_domains": [
+        "resilience.climate.gov"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.noaa.nws",
+      "description": "US weather forecasts, current conditions, and severe-weather alerts and",
+      "upstream_domains": [
+        "api.weather.gov"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.nrel.alt_fuel_stations",
+      "description": "Path-driven NREL Alternative Fuel Stations client. Two endpoints:",
+      "upstream_domains": [
+        "developer.nrel.gov"
+      ],
+      "authentication": "credentialed-when-selected",
+      "authentication_methods": [
+        "api-key-or-token"
+      ],
+      "credential_environment_variables": [
+        "DATA_GOV_API_KEY"
+      ],
+      "credential_destination": [
+        "developer.nrel.gov"
+      ],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.nyc_open_data",
+      "description": "Path-driven NYC Open Data client. 7 catalog families covering Socrata",
+      "upstream_domains": [
+        "api.us.socrata.com",
+        "dev.socrata.com",
+        "{domain}"
+      ],
+      "authentication": "credentialed-when-selected",
+      "authentication_methods": [
+        "api-key-or-token"
+      ],
+      "credential_environment_variables": [
+        "SODA_API_KEY_ID",
+        "SODA_API_KEY_SECRET"
+      ],
+      "credential_destination": [
+        "api.us.socrata.com",
+        "dev.socrata.com",
+        "{domain}"
+      ],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.oecd_dac_crs",
+      "description": "Fetch OECD DAC Creditor Reporting System (CRS) via SDMX. catalog.json",
+      "upstream_domains": [
+        "data-explorer.oecd.org",
+        "sdmx.oecd.org",
+        "www.sdmx.org"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.oecd_sdmx",
+      "description": "Fetch any OECD statistical dataset via SDMX. catalog.json enumerates all",
+      "upstream_domains": [
+        "data-explorer.oecd.org",
+        "sdmx.oecd.org"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.open_payments.datasets",
+      "description": "Path-driven CMS Open Payments client. Browse 74 datasets via DCAT or",
+      "upstream_domains": [
+        "openpaymentsdata.cms.gov"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.overture_maps",
+      "description": "Fetch Overture Maps geospatial data for an area of interest (AOI). WARNING: Requires DuckDB with spatial extension. Full dataset is ~500GB; always scope queries to a bounding box.",
+      "upstream_domains": [
+        "overturemapswestus2.blob.core.windows.net"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.owid_catalog",
+      "description": "Fetch Our World in Data chart catalog and tag metadata from the OWID Datasette public API.",
+      "upstream_domains": [
+        "datasette-public.owid.io"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.owid_charts",
+      "description": "Search and download Our World in Data chart data (CSV) and metadata by keyword or slug.",
+      "upstream_domains": [
+        "ourworldindata.org"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.pew",
+      "description": "Fetch Pew Research Center dataset catalog. WARNING: Full dataset downloads require Selenium browser automation and a Pew Research account. Catalog browsing works without auth.",
+      "upstream_domains": [
+        "www.pewresearch.org"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.planetary_computer",
+      "description": "Search Microsoft Planetary Computer via STAC. catalog.json enumerates all",
+      "upstream_domains": [
+        "planetarycomputer.microsoft.com"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.regulations.dockets",
+      "description": "Path-driven Regulations.gov v4 client. Three collections: dockets,",
+      "upstream_domains": [
+        "api.regulations.gov"
+      ],
+      "authentication": "credentialed-when-selected",
+      "authentication_methods": [
+        "api-key-or-token"
+      ],
+      "credential_environment_variables": [
+        "DATA_GOV_API_KEY"
+      ],
+      "credential_destination": [
+        "api.regulations.gov"
+      ],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.rsf_press_freedom",
+      "description": "Fetch Reporters Without Borders (RSF) World Press Freedom Index scores from published CSV files.",
+      "upstream_domains": [
+        "rsf.org"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.sdg_index",
+      "description": "Fetch Sustainable Development Report (SDG Index) scores from the published XLSX dataset.",
+      "upstream_domains": [
+        "dashboards.sdgindex.org"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.sec.company_submissions",
+      "description": "US public-company filings from SEC EDGAR: 10-K/10-Q/8-K submissions, XBRL",
+      "upstream_domains": [
+        "data.sec.gov",
+        "www.sec.gov"
+      ],
+      "authentication": "credentialed-when-selected",
+      "authentication_methods": [
+        "provider-required-request-identity"
+      ],
+      "credential_environment_variables": [
+        "SEC_CONTACT_EMAIL"
+      ],
+      "credential_destination": [
+        "data.sec.gov",
+        "www.sec.gov"
+      ],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.socrata.chicago_crimes",
+      "description": "Path-driven Chicago Socrata client. Default dataset is the Crimes",
+      "upstream_domains": [
+        "data.cityofchicago.org",
+        "dev.socrata.com"
+      ],
+      "authentication": "credentialed-when-selected",
+      "authentication_methods": [
+        "api-key-or-token"
+      ],
+      "credential_environment_variables": [
+        "SODA_API_KEY_ID",
+        "SODA_API_KEY_SECRET"
+      ],
+      "credential_destination": [
+        "data.cityofchicago.org",
+        "dev.socrata.com"
+      ],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.socrata.dataset",
+      "description": "Generic Socrata SoQL client. Works against any Socrata domain (data.cdc.gov,",
+      "upstream_domains": [
+        "{domain_for_url}",
+        "{domain}"
+      ],
+      "authentication": "credentialed-when-selected",
+      "authentication_methods": [
+        "api-key-or-token"
+      ],
+      "credential_environment_variables": [
+        "SODA_API_KEY_ID",
+        "SODA_API_KEY_SECRET"
+      ],
+      "credential_destination": [
+        "{domain_for_url}",
+        "{domain}"
+      ],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.socrata.la_crime",
+      "description": "Path-driven LA Socrata client. Default dataset is LAPD Crime Data",
+      "upstream_domains": [
+        "data.lacity.org",
+        "dev.socrata.com"
+      ],
+      "authentication": "credentialed-when-selected",
+      "authentication_methods": [
+        "api-key-or-token"
+      ],
+      "credential_environment_variables": [
+        "SODA_API_KEY_ID",
+        "SODA_API_KEY_SECRET"
+      ],
+      "credential_destination": [
+        "data.lacity.org",
+        "dev.socrata.com"
+      ],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.socrata.seattle_building_permits",
+      "description": "Path-driven Seattle Socrata client. Default dataset is Building Permits",
+      "upstream_domains": [
+        "data.seattle.gov",
+        "dev.socrata.com"
+      ],
+      "authentication": "credentialed-when-selected",
+      "authentication_methods": [
+        "api-key-or-token"
+      ],
+      "credential_environment_variables": [
+        "SODA_API_KEY_ID",
+        "SODA_API_KEY_SECRET"
+      ],
+      "credential_destination": [
+        "data.seattle.gov",
+        "dev.socrata.com"
+      ],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.socrata.sf_building_permits",
+      "description": "Path-driven SF Socrata client. Default dataset is Building Permits",
+      "upstream_domains": [
+        "data.sfgov.org",
+        "dev.socrata.com"
+      ],
+      "authentication": "credentialed-when-selected",
+      "authentication_methods": [
+        "api-key-or-token"
+      ],
+      "credential_environment_variables": [
+        "SODA_API_KEY_ID",
+        "SODA_API_KEY_SECRET"
+      ],
+      "credential_destination": [
+        "data.sfgov.org",
+        "dev.socrata.com"
+      ],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.ti_cpi",
+      "description": "Fetch Transparency International Corruption Perceptions Index (CPI) scores from the published XLSX report.",
+      "upstream_domains": [
+        "images.transparencycdn.org"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.treasury.fiscal_data",
+      "description": "US federal finances from Treasury FiscalData: national debt, deficit,",
+      "upstream_domains": [
+        "api.fiscaldata.treasury.gov"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.umich.nanda",
+      "description": "NaNDA public neighborhood data archive link helper.",
+      "upstream_domains": [
+        "nanda.isr.umich.edu"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.un_egdi",
+      "description": "Fetch UN E-Government Development Index (EGDI) scores from the UN Public Administration portal.",
+      "upstream_domains": [
+        "data360files.worldbank.org",
+        "publicadministration.un.org"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.undp_hdr",
+      "description": "Fetch UNDP Human Development Report composite indices (HDI, GII, GDI, MPI) from the published CSV.",
+      "upstream_domains": [
+        "hdr.undp.org"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.usaspending.awards",
+      "description": "US federal spending from USAspending: contracts, grants, loans, and awards by",
+      "upstream_domains": [
+        "api.usaspending.gov"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.usda.food_access",
+      "description": "USDA ERS Food Access Research Atlas public download/link helper.",
+      "upstream_domains": [
+        "www.ers.usda.gov"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.usda.food_security",
+      "description": "USDA ERS Food Security public statistics/download link helper.",
+      "upstream_domains": [
+        "www.ers.usda.gov"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.usda.fooddata_search",
+      "description": "Path-driven USDA FoodData Central client. Three core endpoints:",
+      "upstream_domains": [
+        "api.nal.usda.gov",
+        "fdc.nal.usda.gov"
+      ],
+      "authentication": "credentialed-when-selected",
+      "authentication_methods": [
+        "api-key-or-token"
+      ],
+      "credential_environment_variables": [
+        "DATA_GOV_API_KEY"
+      ],
+      "credential_destination": [
+        "api.nal.usda.gov",
+        "fdc.nal.usda.gov"
+      ],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.usda.quickstats",
+      "description": "US agriculture statistics from USDA NASS QuickStats: crop production and",
+      "upstream_domains": [
+        "quickstats.nass.usda.gov"
+      ],
+      "authentication": "credentialed-when-selected",
+      "authentication_methods": [
+        "api-key-or-token"
+      ],
+      "credential_environment_variables": [
+        "USDA_NASS_API_KEY"
+      ],
+      "credential_destination": [
+        "quickstats.nass.usda.gov"
+      ],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.usgs.earthquakes",
+      "description": "Path-driven USGS FDSN earthquake events client. Filter by time",
+      "upstream_domains": [
+        "earthquake.usgs.gov"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.uspto.application",
+      "description": "Path-driven USPTO Open Data Portal client (https://api.uspto.gov). Covers",
+      "upstream_domains": [
+        "api.uspto.gov"
+      ],
+      "authentication": "credentialed-when-selected",
+      "authentication_methods": [
+        "api-key-or-token"
+      ],
+      "credential_environment_variables": [
+        "USPTO_API_KEY"
+      ],
+      "credential_destination": [
+        "api.uspto.gov"
+      ],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.vdem",
+      "description": "Fetch V-Dem (Varieties of Democracy) Core country-year indicators from",
+      "upstream_domains": [
+        "www.v-dem.net"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.wgi",
+      "description": "Fetch World Governance Indicators (WGI) from the World Bank API.",
+      "upstream_domains": [
+        "api.worldbank.org"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.wjp_rule_of_law",
+      "description": "Fetch World Justice Project Rule of Law Index scores from published XLSX historical data.",
+      "upstream_domains": [
+        "worldjusticeproject.org"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.world_bank",
+      "description": "World Bank development indicators for every country and year: population, GDP, poverty, unemployment, inflation, life expectancy, health, education, energy, climate. Path-driven API client covering the data API (indicators by country/region/source) and companion search APIs for projects and DDH datasets. Use `;` to separate multiple countries/indicators in a single call, or `all` for everything.",
+      "upstream_domains": [
+        "api.worldbank.org",
+        "datahelpdesk.worldbank.org",
+        "ddh-openapi.worldbank.org",
+        "search.worldbank.org"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    },
+    {
+      "module_id": "fetch.wvs",
+      "description": "World Values Survey data. WVS data is licensed and not retrievable via API. Manually download a CSV (.csv / .csv.zip) or SPSS (.sav / .sav.zip) file from worldvaluessurvey.org and pass its local path via file_path. Country and wave filters operate on the loaded rows.",
+      "upstream_domains": [
+        "www.worldvaluessurvey.org"
+      ],
+      "authentication": "none-declared",
+      "authentication_methods": [
+        "none-declared"
+      ],
+      "credential_environment_variables": [],
+      "credential_destination": [],
+      "request_flow": "local workspace -> selected upstream domain",
+      "response_flow": "selected upstream -> local canonical cache and working export"
+    }
+  ]
+}

@@ -144,7 +144,7 @@ def cmd_inventory(args: argparse.Namespace) -> int:
             print("")
 
     print("Next:")
-    print("  sancho setup --install-claude-desktop")
+    print("  sancho setup")
     print("  sancho add <pack-id>")
     print("  sancho fetch sample world_bank")
     return 0

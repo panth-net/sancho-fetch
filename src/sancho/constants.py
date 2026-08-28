@@ -36,7 +36,7 @@ MANAGED_PATH_PREFIX = "source/"
 
 SUPPORTED_MODULE_TYPES = {"fetch", "process", "analyze", "dashboard"}
 
-CLIENT_NAMES = {"claude-desktop", "chatgpt-desktop", "chatgpt-web", "cursor", "vscode"}
+CLIENT_NAMES = {"claude-desktop", "codex", "chatgpt-desktop", "chatgpt-web", "cursor", "vscode"}
 
 PACKAGE_ROOT = Path(__file__).resolve().parent
 TEMPLATES_ROOT = PACKAGE_ROOT / "templates"

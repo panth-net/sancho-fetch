@@ -34,7 +34,8 @@ Either way, `sancho update apply` migrates the workspace afterwards.
    commands such as `setup`, `paths`, `ready`, or `mode`, and terminal access
    is available, do the setup work yourself: run
    `uv tool install sancho-fetch`, then
-   `sancho setup --path <the folder the user is working in> --install-claude-desktop --json`.
+   `sancho setup --json`. Use `--path <folder> --switch-workspace` only when
+   the user explicitly wants to change an existing registered workspace.
    (Working from a source checkout instead? Run `installers\setup.bat` on
    Windows or `bash installers/setup.sh` on macOS/Linux from the repo root.)
    Then run `sancho ready --json` and retry `sancho paths --json`. If

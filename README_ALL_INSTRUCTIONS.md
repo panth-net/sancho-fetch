@@ -11,12 +11,11 @@ and an integrity hash.
 
 ## Before you begin
 
-Sancho requires **Python 3.11 or newer** and an internet connection during
-first-time setup. Install Python yourself first, or let the installer's `uv`
-package manager download a compatible isolated Python for Sancho. It does not
-replace the computer's system Python. **Node.js is optional** and only needed
-for the optional npm wrapper. API keys are not required for installation or
-the built-in World Bank setup check.
+End users need `uv` and an internet connection during first-time setup. `uv`
+can obtain Sancho's compatible isolated Python and does not replace the system
+Python. Python 3.11+ is a contributor/manual-install detail, not another normal
+prerequisite. API keys are not required for installation or the World Bank
+setup check.
 
 ```text
 sancho-fetch/
@@ -46,15 +45,17 @@ Details worth knowing beyond the README:
 - Setup stores a user-level `sancho` command plus a pointer back to the
   visible folder you chose; it does not install a second hidden library at
   `C:\` or another root folder. If you move that folder later, re-run
-  `sancho setup --path <new location> --install-claude-desktop` so
-  Claude/Codex point at the new location.
+  `sancho setup --path <new location> --switch-workspace` so owned client
+  registrations point at the moved workspace. Bare setup always reuses a
+  healthy existing registration.
 - The installer (or agent-run `sancho setup`) checks/installs `uv`, lets `uv`
   choose or download a Python that satisfies Sancho's `>=3.11` requirement,
   installs Sancho, creates the workspace, registers this folder as your
   library, copies the Claude / Codex agent skills to your home folder, writes
-  local desktop MCP config snippets (Claude Desktop, ChatGPT desktop, Cursor,
-  VS Code), installs Claude Desktop config when supported, and installs a
-  built-in sample module as a setup check. In Claude Code those skills are
+  local desktop MCP config snippets (Claude Desktop, ChatGPT/Codex, Cursor,
+  VS Code), safely configures detected supported clients through shared
+  ownership-aware adapters, and installs a built-in sample module as a setup
+  check. In Claude Code those skills are
   invokable as `/sancho <request>` and `/sancho-update`; in Codex they load as
   skills for matching natural-language requests.
 - ChatGPT web needs the hosted/remote connector path, not a local folder.
@@ -78,7 +79,7 @@ checkout is for contributing and module development.
 uv tool install .
 
 # 2. One-shot setup: workspace + library pointer + skills + sample-module check
-sancho setup --install-claude-desktop
+sancho setup
 
 # 3. Pull your first dataset (no API key needed)
 sancho fetch sample world_bank
@@ -108,7 +109,7 @@ when paths start with `/`.
 - **Fetch with provenance** -- every fetch writes `data.json` + `request.yml` + `provenance.yml` + `content.sha256` + `README.md` to a canonical `fetched-data/<module>/<family>/<request_key>/<timestamp>/` folder. Cache hits are deterministic; re-fetches are append-only.
 - **Public working output** -- every fetch writes a ready-to-open file into your project's `sancho-downloads/` folder: a clean table becomes an Excel `.xlsx` (string codes like FIPS "01003" stay text; >200k rows falls back to complete CSV; `exports.tabular_format: csv` opts into raw UTF-8-SIG CSV), and KML/GeoJSON/original sources keep their natural format (never force-converted at the cost of information). The canonical cache also keeps the original downloaded file byte-for-byte. The command JSON returns `primary_output_path` + `output_paths`; assistants report the primary path only.
 - **Repair packets** -- every failure writes a `logs/errors/<run-id>_error.md` with HTTP status, response excerpt, traceback, files written, last successful run, docs links, suggested override path, and a safe-retry command.
-- **Safe updates** -- `sancho update check / preview / apply / rollback`. Never runs `git pull`. Never touches `custom/`, `playbooks/`, `fetched-data/`, `analysis-data/`, `outputs/`, `logs/`, `update-backups/`, `.env`, `AI_INSTRUCTIONS.md`, or `DATASET_CATALOG.md`. Every apply creates a backup with a printed rollback command.
+- **Safe updates** -- `sancho update check / preview / apply / rollback`. Never runs `git pull`. Never touches `custom/`, `playbooks/`, `fetched-data/`, `analysis-data/`, `outputs/`, `logs/`, `update-backups/`, or `.env`. `AI_INSTRUCTIONS.md` and `DATASET_CATALOG.md` are refreshed by `sancho update apply` only when you have not edited them; edited copies are kept and reported. Every apply creates a backup with a printed rollback command.
 - **High-level MCP tools** -- `sancho_paths`, `sancho_mode`, `sancho_inventory`, `sancho_find_sources`, `sancho_module_show`, `sancho_cache_status`, `sancho_fetch_run`, `sancho_export_to_project`, `sancho_log_tail`, `sancho_log_show`, `sancho_env_open`, `sancho_env_recommend`, `sancho_update_check`, `sancho_update_preview`, `sancho_custom_status`, `sancho_fetched_data_audit`. Auto-registered when MCP runs against a real workspace.
 
 ## For AI assistants -- read this BEFORE replying to the user
@@ -217,8 +218,10 @@ Use this contract:
    `logs/runs.jsonl`.
 8. **Respect ownership boundaries.** Personal paths
    (`custom/**`, `playbooks/**`, `fetched-data/**`, `analysis-data/**`,
-   `outputs/**`, `logs/**`, `update-backups/**`, `.env`,
-   `AI_INSTRUCTIONS.md`, `DATASET_CATALOG.md`) are never auto-rewritten.
+   `outputs/**`, `logs/**`, `update-backups/**`, `.env`) are never
+   auto-rewritten. `AI_INSTRUCTIONS.md` and `DATASET_CATALOG.md` are
+   refreshed by `sancho update apply` only when the user has not edited
+   them; edited copies are kept and reported.
 9. **Show small results inline; don't dump large datasets into chat.**
    Use your discretion: a quick answer or a small table (under ~100 rows)
    is fine to show directly unless the user says otherwise. For larger
@@ -362,13 +365,15 @@ provider-by-provider support matrix lives in
 
 `sancho-workspace/` always contains managed `source/**` and user-owned `custom/**` + `playbooks/**`.
 
-- Managed (Sancho Fetch may update): `source/**`, `modules.lock.yaml`
-- Personal (never auto-overwritten): `custom/**`, `playbooks/**`, `.env`, `AI_INSTRUCTIONS.md`, `DATASET_CATALOG.md`
+- Managed (Sancho Fetch may update): `source/**`, `modules.lock.yaml`, plus `AI_INSTRUCTIONS.md` and `DATASET_CATALOG.md` while unedited (your edits win and are kept)
+- Personal (never auto-overwritten): `custom/**`, `playbooks/**`, `.env`
 
 ## Core CLI Surface
 
-- `sancho setup [--path .] [--install-claude-desktop] [--skip-smoke-check] [--no-register] [--json]`
+- `sancho setup [--path <folder> --switch-workspace] [--client <name>] [--vscode-profile-path <folder>] [--no-client-config] [--skip-smoke-check] [--no-register] [--json]`
 - `sancho ready [--workspace .] [--json]`
+- `sancho uninstall [--json]` (removes matching owned integrations; preserves all workspaces and downloads)
+- `sancho uninstall --purge-workspace --workspace <exact-sancho-workspace> --workspace-id <uuid> [--yes]` (explicit one-workspace data deletion)
 - `sancho init [--path .] [--yes]` (low-level workspace init; normal users should use `sancho setup`)
 - `sancho inventory [--json]`
 - `sancho packs [--json]`

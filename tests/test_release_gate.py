@@ -9,6 +9,7 @@ These tests catch:
 
 from __future__ import annotations
 
+import argparse
 import base64
 import re
 from pathlib import Path
@@ -167,6 +168,44 @@ def test_readme_leads_with_pypi_install() -> None:
     assert "https://" in banner_src, "banner image must be an absolute URL for PyPI"
 
 
+def test_readme_keeps_the_hand_written_install_prompt() -> None:
+    """The paste-to-AI install prompt is deliberate hand-written onboarding.
+    Factual touch-ups are fine; shortening or restructuring it is not."""
+    readme = (ROOT / "README.md").read_text(encoding="utf-8")
+    normalized = " ".join(readme.replace(">", " ").split())
+    for sentence in (
+        "Install Sancho Fetch from PyPI",
+        "what the .env file is, how to use it",
+        "run a short example data fetch using the World Bank",
+        "1) I can use it anywhere as long as I'm in a LLM Desktop app's Code tab",
+        "2) that I can ask AI to add new data sources by itself",
+    ):
+        assert sentence in normalized, f"install prompt lost: {sentence!r}"
+
+
+def test_readme_claims_match_shipped_behavior() -> None:
+    from sancho.cli import build_parser
+
+    readme = (ROOT / "README.md").read_text(encoding="utf-8")
+    normalized = " ".join(readme.split())
+    # ready diagnoses; doctor repairs. Never claim ready repairs.
+    assert "checks and repairs" not in normalized
+    assert "without changing your setup" in normalized
+    assert "sancho doctor --fix" in normalized
+    # Uninstall is the two real commands, data always kept.
+    assert "sancho uninstall" in normalized
+    assert "uv tool uninstall sancho-fetch" in normalized
+    assert "always kept" in normalized
+    # Every sancho subcommand the README names must exist in the CLI.
+    documented = {"setup", "uninstall", "ready", "doctor", "env", "update", "fetch", "mcp"}
+    subparsers = next(
+        action
+        for action in build_parser()._actions
+        if isinstance(action, argparse._SubParsersAction)
+    )
+    assert documented <= set(subparsers.choices), "README names a missing subcommand"
+
+
 def test_human_readmes_put_prerequisites_before_setup_steps() -> None:
     markers = {
         "README.md": "## Get started",
@@ -178,9 +217,11 @@ def test_human_readmes_put_prerequisites_before_setup_steps() -> None:
         setup_steps = text.index(setup_marker)
         assert prerequisites < setup_steps, name
         section = text[prerequisites:setup_steps]
-        assert "Python 3.11 or newer" in section
-        assert "Node.js is optional" in section
-        assert "API keys are not required" in section
+        normalized = " ".join(section.split())
+        assert "uv" in section
+        assert "compatible" in section and "Python" in section
+        assert "Node" not in section
+        assert "API keys are not required" in normalized
 
 
 def test_setup_instructions_highlight_computer_wide_code_sessions() -> None:

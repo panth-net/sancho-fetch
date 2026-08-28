@@ -54,3 +54,8 @@
 
 # macOS Finder droppings
 .DS_Store
+
+# Internal planning/audit material -- never ship in the repo
+/temp_update_doc.md
+/.audit/
+/docs/audits/

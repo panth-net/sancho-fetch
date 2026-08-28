@@ -79,7 +79,7 @@ def test_paths_returns_failure_when_no_workspace(
     assert rc == 1
     out = capsys.readouterr().out
     assert "no workspace found" in out
-    assert "sancho setup --install-claude-desktop" in out
+    assert "sancho setup" in out
 
 
 def test_paths_human_output_includes_core_labels(

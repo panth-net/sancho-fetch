@@ -11,6 +11,49 @@ managed files first and can be undone with `sancho update rollback`.
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-08-27
+
+### Added
+
+- Persistent workspace identity and atomic ownership records for skills,
+  library pointers, and client registrations.
+- One lifecycle contract for detected Claude Desktop, Codex, Cursor, and
+  profile-specific VS Code registrations, with explicit restart/action/drift
+  states and a direct MCP launch check.
+- `sancho uninstall`, which removes only matching owned integration state and
+  preserves workspaces, downloads, `.env`, and edited or unowned content by
+  default. Exact workspace deletion requires its UUID and resolved path.
+- A managed-uv MCPB candidate, a Claude Code plugin, schema-valid MCP Registry
+  metadata, privacy/upstream inventories, and a resumable release workflow.
+- Three-OS installed-wheel lifecycle CI gating every release; an optional
+  manual checklist covers proprietary GUI claims hosted CI cannot verify.
+- A `sancho-fetch` executable alias so `uvx sancho-fetch` (the MCP Registry
+  launch path) resolves.
+
+### Changed
+
+- Bare `sancho setup` reuses a healthy registered workspace from any folder;
+  changing it requires `--path` plus `--switch-workspace`.
+- Setup configures detected supported clients by default, `ready` remains
+  read-only, and `doctor --fix` repairs only ownership-safe state.
+- Legacy and modern MCP results now use separate exact serializers; modern
+  2026-07-28 calls use per-request metadata instead of initialize negotiation.
+- Checkout installers build before replacement and checkout uninstall wrappers
+  delegate to the shared CLI lifecycle.
+
+### Fixed
+
+- Non-object or missing JSON-RPC params now return deterministic `-32602`
+  errors on stdio and HTTP.
+- Handshake-era HTTP clients sending the mandatory `MCP-Protocol-Version`
+  header are served as legacy instead of being rejected, and malformed,
+  batched, or oversized HTTP bodies get a deterministic JSON-RPC error instead
+  of a dropped connection.
+- `sancho ready` no longer installs the sample module while diagnosing it.
+- Cursor stdio configuration now includes its required `type` field.
+- Unsupported workspace schema versions are rejected before workspace
+  mutation, and extension runtimes do not silently migrate legacy workspaces.
+
 ## [0.2.0] - 2026-07-29
 
 ### Added
@@ -96,5 +139,7 @@ First public release.
   printed by any command, and no code path writes to `.env` except creating it
   when missing.
 
-[Unreleased]: https://github.com/panth-net/sancho-fetch/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/panth-net/sancho-fetch/compare/v0.3.0...HEAD
+[0.3.0]: https://github.com/panth-net/sancho-fetch/compare/v0.2.0...v0.3.0
+[0.2.0]: https://github.com/panth-net/sancho-fetch/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/panth-net/sancho-fetch/releases/tag/v0.1.0

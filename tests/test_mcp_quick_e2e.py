@@ -61,7 +61,7 @@ def test_claude_desktop_handshake_initialize_list_call(monkeypatch, tmp_path: Pa
     assert "protocolVersion" in init_result
 
     # Step 2: tools/list
-    tools_result = _handle_method(ctx, "tools/list", None)
+    tools_result = _handle_method(ctx, "tools/list", {})
     tool_names = [t["name"] for t in tools_result["tools"]]
     assert "gov_catalog" in tool_names
     assert "gov_fetch" in tool_names

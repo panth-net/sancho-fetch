@@ -168,57 +168,105 @@ def _check_workspace_integrity(workspace_root: Path) -> list[str]:
 def cmd_doctor(args: argparse.Namespace) -> int:
     workspace_root = _resolve_workspace_arg(args.workspace)
     issues = _check_workspace_integrity(workspace_root)
+    from sancho.cli_ready import ready_payload
 
-    if not issues:
-        if getattr(args, "json", False):
-            print(json.dumps({
-                "status": "ok",
-                "workspace": str(workspace_root),
-                "issues": [],
-                "fixed": False,
-                "safe_retry": f"sancho doctor --workspace {workspace_root} --fix --json",
-                "user_action_required": False,
-            }, indent=2))
-            return 0
-        print("Workspace healthy.")
-        print(format_next_steps_after_doctor(workspace_root), end="")
-        return 0
+    readiness = ready_payload(str(workspace_root))
+    install_issues = [
+        f"Installation check {name}: {check.get('detail') or check.get('issues') or 'not ready'}"
+        for name, check in readiness["checks"].items()
+        if not check.get("ok")
+    ]
+    all_issues = [*issues, *install_issues]
 
-    if getattr(args, "json", False) and not args.fix:
-        print(json.dumps({
-            "status": "needs_repair",
+    if not args.fix:
+        payload = {
+            "status": "ok" if not all_issues else "needs_repair",
             "workspace": str(workspace_root),
-            "issues": issues,
+            "issues": all_issues,
             "fixed": False,
+            "installation": readiness,
             "safe_retry": f"sancho doctor --workspace {workspace_root} --fix --json",
-            "user_action_required": False,
-        }, indent=2))
+            "user_action_required": bool(readiness.get("user_action_required")),
+        }
+        if getattr(args, "json", False):
+            print(json.dumps(payload, indent=2))
+        elif not all_issues:
+            print("Workspace and installation healthy.")
+            print(format_next_steps_after_doctor(workspace_root), end="")
+        else:
+            print("Doctor report:")
+            for issue in all_issues:
+                print(f"- {issue}")
+            print("Run 'sancho doctor --fix --json' to attempt safe automatic repair.")
+        return 0 if not all_issues else 1
+
+    # Doctor may repair the active installation, but changing which workspace
+    # the computer uses requires the explicit setup switch contract. This also
+    # keeps a stale or moved pointer from being silently adopted during repair.
+    from sancho.library import library_status
+
+    registered = library_status()
+    if registered.record is not None and (
+        not registered.healthy
+        or registered.record.primary_workspace.resolve() != workspace_root.resolve()
+    ):
+        retry = f"sancho setup --path {workspace_root.parent} --switch-workspace"
+        payload = {
+            "status": "needs_user_action",
+            "workspace": str(workspace_root),
+            "issues": all_issues,
+            "fixed": False,
+            "units": [],
+            "clients": [],
+            "installation": readiness,
+            "safe_retry": retry,
+            "user_action_required": True,
+            "detail": "Doctor will not change a different or stale global workspace pointer without explicit switch intent.",
+        }
+        if getattr(args, "json", False):
+            print(json.dumps(payload, indent=2))
+        else:
+            print(payload["detail"])
+            print(f"Safe next step: {retry}")
         return 1
 
-    print("Doctor report:")
-    for issue in issues:
-        print(f"- {issue}")
+    if issues:
+        from sancho.install_state import state_lock, workspace_lifecycle_lock_path
 
-    if args.fix:
-        initialize_workspace(
-            base_path=workspace_root.parent,
-            subdir=workspace_root.name,
-            mode=load_workspace_config(workspace_root).get("mode", "operator"),
-        )
-        regenerate_lock(workspace_root)
-        if getattr(args, "json", False):
-            remaining = _check_workspace_integrity(workspace_root)
-            print(json.dumps({
-                "status": "ok" if not remaining else "needs_repair",
-                "workspace": str(workspace_root),
-                "issues": remaining,
-                "fixed": True,
-                "safe_retry": f"sancho doctor --workspace {workspace_root} --fix --json",
-                "user_action_required": bool(remaining),
-            }, indent=2))
-            return 0 if not remaining else 1
-        print("Applied automatic fixes where possible.")
-        return 0
+        with state_lock(workspace_lifecycle_lock_path(workspace_root)):
+            initialize_workspace(
+                base_path=workspace_root.parent,
+                subdir=workspace_root.name,
+                mode=load_workspace_config(workspace_root).get("mode", "operator"),
+            )
+            regenerate_lock(workspace_root)
 
-    print("Run 'sancho doctor --fix --json' to attempt automatic repair.")
-    return 1
+    from sancho.cli_setup import run_setup
+
+    setup_report = run_setup(
+        workspace_root.parent,
+        skip_smoke_check=False,
+        register=True,
+        configure_clients=True,
+    )
+    remaining = _check_workspace_integrity(workspace_root)
+    readiness = ready_payload(str(workspace_root))
+    success = not remaining and readiness["ready"] and not setup_report.has_failures
+    payload = {
+        "status": "ok" if success else "needs_repair",
+        "workspace": str(workspace_root),
+        "issues": remaining,
+        "fixed": True,
+        "units": [step.to_dict() for step in setup_report.steps],
+        "clients": setup_report.clients,
+        "installation": readiness,
+        "safe_retry": f"sancho doctor --workspace {workspace_root} --fix --json",
+        "user_action_required": bool(readiness.get("user_action_required")) or any(
+            step.user_action_required for step in setup_report.steps
+        ),
+    }
+    if getattr(args, "json", False):
+        print(json.dumps(payload, indent=2))
+    else:
+        print("Applied safe automatic fixes." if success else "Some items still need attention.")
+    return 0 if success else 1

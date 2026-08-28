@@ -1,11 +1,12 @@
 from __future__ import annotations
 
+import base64
 import json
 import os
 import shutil
 import sys
-from datetime import datetime, timezone
 from pathlib import Path
+from urllib.parse import quote
 
 from sancho.constants import CLIENT_NAMES
 from sancho.mcp.quick import DEFAULT_QUICK_PROFILE
@@ -92,12 +93,27 @@ def generate_client_config(
             },
         }
     else:
+        if client == "cursor" and "command" in server_def:
+            # Cursor's current MCP field contract requires the stdio type.
+            server_def = {"type": "stdio", **server_def}
         payload = {
             "client": client,
             "mcpServers": {
                 "sancho": server_def,
             },
         }
+        if client == "cursor" and "command" in server_def:
+            encoded = base64.b64encode(
+                json.dumps(server_def, separators=(",", ":")).encode("utf-8")
+            ).decode("ascii")
+            payload["install_fallback"] = {
+                "state": "user_action_required",
+                "detail": "Opening this link only starts Cursor's confirmation flow; verify the server in Cursor before treating it as installed.",
+                "url": (
+                    "cursor://anysphere.cursor-deeplink/mcp/install"
+                    f"?name={quote('sancho', safe='')}&config={quote(encoded, safe='')}"
+                ),
+            }
     if client == "chatgpt-desktop" and "command" in server_def:
         # The ChatGPT desktop app configures MCP servers through a form
         # (Settings -> MCP servers -> Add server), not a config file. Spell
@@ -162,35 +178,3 @@ def claude_desktop_config_path() -> Path | None:
     else:
         return None
     return appdata / "claude_desktop_config.json"
-
-
-def install_claude_desktop_config(server_def: dict) -> Path:
-    config_path = claude_desktop_config_path()
-    if config_path is None:
-        raise RuntimeError(
-            "Automatic install is only supported on Windows and macOS. "
-            "Copy the mcpServers block from the generated snippet manually."
-        )
-
-    config_path.parent.mkdir(parents=True, exist_ok=True)
-
-    existing: dict = {}
-    if config_path.exists():
-        stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
-        backup = config_path.with_name(f"{config_path.stem}.{stamp}{config_path.suffix}.bak")
-        shutil.copy2(config_path, backup)
-        try:
-            existing = json.loads(config_path.read_text(encoding="utf-8"))
-        except json.JSONDecodeError as exc:
-            raise RuntimeError(
-                "Claude Desktop config JSON is malformed. "
-                f"A backup was preserved at {backup}. "
-                f"Fix or replace {config_path} with valid JSON, then rerun setup."
-            ) from exc
-
-    mcp_servers = existing.setdefault("mcpServers", {})
-    mcp_servers["sancho"] = server_def
-    tmp_path = config_path.with_name(f"{config_path.name}.tmp")
-    tmp_path.write_text(json.dumps(existing, indent=2), encoding="utf-8")
-    tmp_path.replace(config_path)
-    return config_path

@@ -1,20 +1,19 @@
 [build-system]
-requires = ["setuptools>=69", "wheel"]
+requires = ["setuptools>=77", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "sancho-fetch"
-version = "0.2.0"
+version = "0.3.0"
 description = "Ask your AI for public data. Get real files on your computer."
 readme = "README.md"
-license = { file = "LICENSE" }
+license = "Apache-2.0"
 requires-python = ">=3.11"
 authors = [
   { name = "Pantheon Network" }
 ]
 keywords = ["data", "open-data", "fetch", "ai-agent", "mcp", "census", "public-data"]
 classifiers = [
-  "License :: OSI Approved :: Apache Software License",
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
   "Programming Language :: Python :: 3.13",
@@ -37,6 +36,9 @@ Issues = "https://github.com/panth-net/sancho-fetch/issues"
 
 [project.scripts]
 sancho = "sancho.cli:main"
+# Alias matching the package name so `uvx sancho-fetch` (the MCP Registry
+# launch path in server.json) resolves an executable.
+sancho-fetch = "sancho.cli:main"
 
 [project.optional-dependencies]
 dev = ["pytest>=8.0.0", "jsonschema>=4.21.0"]

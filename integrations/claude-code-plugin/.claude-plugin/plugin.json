@@ -1,0 +1,11 @@
+{
+  "name": "sancho-fetch",
+  "description": "Use an existing Sancho Fetch CLI to find, fetch, cache, export, update, and repair public-data workflows.",
+  "version": "0.3.0",
+  "author": {
+    "name": "Pantheon Network"
+  },
+  "homepage": "https://github.com/panth-net/sancho-fetch",
+  "repository": "https://github.com/panth-net/sancho-fetch",
+  "license": "Apache-2.0"
+}

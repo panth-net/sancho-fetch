@@ -3,7 +3,7 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
-from sancho.mcp.config import claude_desktop_config_path, install_claude_desktop_config, write_client_config
+from sancho.mcp.config import claude_desktop_config_path, write_client_config
 from sancho.mcp.quick import ensure_quick_workspace, resolve_quick_home
 from sancho.workspace import find_workspace_root
 
@@ -91,15 +91,19 @@ def cmd_mcp_config(args: argparse.Namespace) -> int:
     )
     print(f"Wrote MCP client config snippet: {config_payload}")
 
-    if getattr(args, "install", False) and args.client == "claude-desktop":
-        import json
+    if getattr(args, "install", False):
+        if args.quick or args.transport != "stdio":
+            raise ValueError("Ownership-aware automatic install currently requires standard stdio mode")
+        from sancho.client_integrations import canonical_launch_definition, client_adapters
 
-        snippet = json.loads(config_payload.read_text(encoding="utf-8"))
-        server_def = snippet["mcpServers"]["sancho"]
-        installed_path = install_claude_desktop_config(server_def)
-        print(f"Installed Sancho Fetch server into Claude Desktop config: {installed_path}")
-        print("Restart Claude Desktop to pick up the new MCP server.")
-        return 0
+        launch = canonical_launch_definition(workspace_root)
+        adapter_name = "codex" if args.client == "chatgpt-desktop" else args.client
+        adapter = client_adapters(launch).get(adapter_name)
+        if adapter is None:
+            raise ValueError(f"Automatic installation is not supported for {args.client}")
+        result = adapter.apply(launch)
+        print(f"{result.client}: {result.state} — {result.detail}")
+        return 0 if result.ok else 1
 
     target = claude_desktop_config_path()
     if args.client == "claude-desktop" and target:

@@ -54,7 +54,7 @@ def test_quick_mode_policy_filters_tools_and_enforces_call_allowlist(monkeypatch
         quick_modules=("fetch.test",),
     )
 
-    tools_payload = _handle_method(ctx, "tools/list", None)
+    tools_payload = _handle_method(ctx, "tools/list", {})
     names = _tool_names(tools_payload)
     # Published under the MCP-safe name; the dotted id is not exposed.
     assert "fetch_test" in names
@@ -165,7 +165,7 @@ def test_quick_mode_generates_family_aliases_and_executes_binding(monkeypatch, t
         quick_modules=("fetch.world_bank",),
     )
 
-    tools_payload = _handle_method(ctx, "tools/list", None)
+    tools_payload = _handle_method(ctx, "tools/list", {})
     names = _tool_names(tools_payload)
     assert "gov_world_bank__dup_family" in names
     assert "gov_world_bank__dup_family_2" in names

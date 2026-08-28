@@ -18,6 +18,7 @@ from sancho.cli_library import add_library_subcommands
 from sancho.cli_log import add_log_subcommands
 from sancho.cli_repair import add_repair_subcommands
 from sancho.cli_setup import add_setup_subcommand
+from sancho.cli_uninstall import add_uninstall_subcommand
 from sancho.cli_update import add_update_subcommands
 from sancho.cli_mcp_commands import cmd_mcp_config, cmd_mcp_serve
 from sancho.cli_mode import add_mode_subcommand
@@ -188,7 +189,7 @@ def build_parser() -> argparse.ArgumentParser:
     mcp_cfg.add_argument("--host", default="127.0.0.1")
     mcp_cfg.add_argument("--port", type=int, default=8765)
     mcp_cfg.add_argument("--sync", action="store_true", help="Include --sync in generated quick serve command")
-    mcp_cfg.add_argument("--install", action="store_true", help="Install config directly into the client app (claude-desktop only)")
+    mcp_cfg.add_argument("--install", action="store_true", help="Install through the ownership-aware adapter when supported")
     mcp_cfg.set_defaults(func=cmd_mcp_config)
 
     add_library_subcommands(subparsers)
@@ -204,6 +205,7 @@ def build_parser() -> argparse.ArgumentParser:
     add_fetched_data_subcommands(subparsers)
     add_env_subcommands(subparsers)
     add_setup_subcommand(subparsers)
+    add_uninstall_subcommand(subparsers)
 
     return parser
 
@@ -220,7 +222,7 @@ def main(argv: list[str] | None = None) -> int:
             "error_code": "workspace_not_found",
             "failed_step": getattr(args, "command", "unknown"),
             "error_message": str(exc),
-            "safe_retry": "sancho setup --path . --install-claude-desktop --json",
+            "safe_retry": "sancho setup --path . --json",
             "user_action_required": False,
         }
         if getattr(args, "json", False):

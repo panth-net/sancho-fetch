@@ -18,7 +18,6 @@ from sancho.library import (
     library_config_path,
     library_status,
     open_in_file_manager,
-    register_library,
 )
 
 
@@ -42,11 +41,26 @@ def _print_record_lines(status: LibraryStatus) -> None:
 
 
 def cmd_library_register(args: argparse.Namespace) -> int:
-    record = register_library(Path(args.path))
-    print(f"Registered sancho-fetch library at {record.primary_repo}")
-    print(f"Workspace: {record.primary_workspace}")
-    print(f"Pointer:   {library_config_path()}")
-    return 0
+    from sancho.cli_setup import _register_library
+    from sancho.library import _resolve_repo_and_workspace
+
+    repo, _ = _resolve_repo_and_workspace(Path(args.path))
+    current = library_status()
+    if (
+        current.healthy
+        and current.record is not None
+        and current.record.primary_repo.resolve() != repo.resolve()
+        and not args.switch_workspace
+    ):
+        print(
+            f"A healthy workspace is already registered at {current.record.primary_repo}. "
+            "Re-run with --switch-workspace only if you intend to change it.",
+            file=sys.stderr,
+        )
+        return 1
+    step = _register_library(repo, replace_unowned=bool(args.replace_unowned))
+    print(step.detail)
+    return 0 if step.status == "ok" else 1
 
 
 def cmd_library_show(args: argparse.Namespace) -> int:
@@ -92,7 +106,7 @@ def cmd_library_repair(args: argparse.Namespace) -> int:
         print(f"    run: sancho library register <new-path-to-sancho-fetch>")
     elif not status.record.primary_workspace.exists():
         print(f"  - The workspace inside the repo is missing.")
-        print(f"    Run: sancho setup --path {status.record.primary_repo} --install-claude-desktop")
+        print(f"    Run: sancho setup --path {status.record.primary_repo} --switch-workspace")
     return 1
 
 
@@ -169,7 +183,7 @@ def cmd_paths(args: argparse.Namespace) -> int:
     if payload["workspace"] is None:
         print("Sancho Fetch: no workspace found.")
         if not payload["library"]["registered"]:
-            print("Tip: open your sancho-fetch folder and run 'sancho setup --install-claude-desktop'.")
+            print("Tip: run 'sancho setup' to create and register a workspace.")
         else:
             print("Tip: the registered library workspace is missing -- 'sancho library repair'.")
         return 1
@@ -220,6 +234,16 @@ def add_library_subcommands(subparsers: argparse._SubParsersAction) -> None:
         help="Save a pointer to your visible sancho-fetch folder",
     )
     register.add_argument("path", help="Path to your sancho-fetch folder (or its sancho-workspace/)")
+    register.add_argument(
+        "--switch-workspace",
+        action="store_true",
+        help="Confirm changing a different healthy registration",
+    )
+    register.add_argument(
+        "--replace-unowned",
+        action="store_true",
+        help="Explicitly replace an unowned or edited pointer",
+    )
     register.set_defaults(func=cmd_library_register)
 
     show = library_sub.add_parser("show", help="Show the registered library pointer")

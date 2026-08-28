@@ -80,7 +80,10 @@ def read_library_record() -> LibraryRecord | None:
     cfg = library_config_path()
     if not cfg.exists():
         return None
-    payload = read_yaml(cfg) or {}
+    try:
+        payload = read_yaml(cfg) or {}
+    except Exception:
+        return None
     if not isinstance(payload, dict):
         return None
     repo = payload.get("primary_repo")
@@ -109,7 +112,12 @@ def library_status() -> LibraryStatus:
     """Inspect the registered library and report what is missing or moved."""
     record = read_library_record()
     if record is None:
-        return LibraryStatus(record=None, issues=["No library registered."])
+        detail = (
+            f"Library pointer is unreadable or malformed: {library_config_path()}"
+            if library_config_path().exists()
+            else "No library registered."
+        )
+        return LibraryStatus(record=None, issues=[detail])
     issues: list[str] = []
     if not record.primary_repo.exists():
         issues.append(f"primary_repo missing: {record.primary_repo}")

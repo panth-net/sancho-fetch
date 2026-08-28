@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 import re
 from pathlib import Path
-from typing import Any
+from typing import Any, Literal
 
 from sancho import __version__
 from sancho.catalog_cache import resolve_cache_dir
@@ -77,10 +77,10 @@ class MCPHeaderMismatch(MCPProtocolError):
 class MCPUnsupportedProtocolVersion(MCPProtocolError):
     code = -32022
 
-    def __init__(self, requested: str) -> None:
+    def __init__(self, requested: str, *, supported: tuple[str, ...] | None = None) -> None:
         super().__init__("Unsupported protocol version")
         self.data = {
-            "supported": list(reversed(_SUPPORTED_MCP_PROTOCOL_VERSIONS)),
+            "supported": list(reversed(supported or _SUPPORTED_MCP_PROTOCOL_VERSIONS)),
             "requested": requested,
         }
 
@@ -105,7 +105,7 @@ def _negotiate_protocol_version(requested: Any) -> str:
     such as Claude Desktop to disconnect immediately after the initialize
     response.
     """
-    if isinstance(requested, str) and requested in _SUPPORTED_MCP_PROTOCOL_VERSIONS:
+    if isinstance(requested, str) and requested in _LEGACY_MCP_PROTOCOL_VERSIONS:
         return requested
     return _LATEST_LEGACY_MCP_PROTOCOL_VERSION
 
@@ -342,22 +342,28 @@ def _cache_fields(ctx: MCPContext, ttl_ms: int) -> dict[str, Any]:
     return {"ttlMs": ttl_ms, "cacheScope": "public" if ctx.policy.stateless else "private"}
 
 
-def _check_meta_protocol_version(params: dict[str, Any]) -> None:
+def _modern_protocol_version(params: dict[str, Any]) -> str | None:
     meta = params.get("_meta")
     if not isinstance(meta, dict):
-        return
+        return None
     requested = meta.get(_META_PROTOCOL_VERSION_KEY)
-    if isinstance(requested, str) and requested not in _SUPPORTED_MCP_PROTOCOL_VERSIONS:
-        raise MCPUnsupportedProtocolVersion(requested)
+    if requested is None:
+        return None
+    if not isinstance(requested, str) or requested not in _MODERN_MCP_PROTOCOL_VERSIONS:
+        raise MCPUnsupportedProtocolVersion(
+            str(requested), supported=_MODERN_MCP_PROTOCOL_VERSIONS
+        )
+    client_info = meta.get("io.modelcontextprotocol/clientInfo")
+    if client_info is not None and not isinstance(client_info, dict):
+        raise MCPInvalidParams("modern _meta clientInfo must be an object")
+    capabilities = meta.get("io.modelcontextprotocol/clientCapabilities")
+    if capabilities is not None and not isinstance(capabilities, dict):
+        raise MCPInvalidParams("modern _meta clientCapabilities must be an object")
+    return requested
 
 
-def _finalize_result(result: dict[str, Any]) -> dict[str, Any]:
-    """Stamp the modern required result fields (2026-07-28).
-
-    Every result carries resultType ("complete" — sancho never issues MRTR
-    interim results) and the server's identity in _meta. Legacy clients
-    tolerate both as unknown extra fields.
-    """
+def _finalize_modern_result(result: dict[str, Any]) -> dict[str, Any]:
+    """Stamp fields that exist only in the stateless 2026 protocol era."""
     result.setdefault("resultType", "complete")
     meta = result.setdefault("_meta", {})
     if isinstance(meta, dict):
@@ -365,13 +371,51 @@ def _finalize_result(result: dict[str, Any]) -> dict[str, Any]:
     return result
 
 
-def _handle_method(ctx: MCPContext, method: str, params: dict[str, Any] | None) -> dict[str, Any]:
-    params = params or {}
-    _check_meta_protocol_version(params)
-    return _finalize_result(_dispatch_method(ctx, method, params))
+ProtocolEra = Literal["legacy", "modern"]
 
 
-def _dispatch_method(ctx: MCPContext, method: str, params: dict[str, Any]) -> dict[str, Any]:
+def _request_era(
+    method: str,
+    params: dict[str, Any],
+    *,
+    protocol_era: ProtocolEra | None = None,
+) -> ProtocolEra:
+    """Resolve the wire codec without allowing one era to leak into another."""
+    if method == "initialize":
+        return "legacy"
+    if method == "server/discover":
+        return "modern"
+    modern_version = _modern_protocol_version(params)
+    if protocol_era == "modern" and modern_version is None:
+        raise MCPInvalidParams(
+            "modern requests require _meta.io.modelcontextprotocol/protocolVersion"
+        )
+    if modern_version is not None:
+        return "modern"
+    return protocol_era or "legacy"
+
+
+def _handle_method(
+    ctx: MCPContext,
+    method: str,
+    params: Any,
+    *,
+    protocol_era: ProtocolEra | None = None,
+) -> dict[str, Any]:
+    if not isinstance(params, dict):
+        raise MCPInvalidParams("params must be a JSON object when present")
+    era = _request_era(method, params, protocol_era=protocol_era)
+    result = _dispatch_method(ctx, method, params, protocol_era=era)
+    return _finalize_modern_result(result) if era == "modern" else result
+
+
+def _dispatch_method(
+    ctx: MCPContext,
+    method: str,
+    params: dict[str, Any],
+    *,
+    protocol_era: ProtocolEra,
+) -> dict[str, Any]:
     if method == "initialize":
         # Legacy-era handshake, kept for handshake-era clients (dual-era server).
         result: dict[str, Any] = {
@@ -384,7 +428,7 @@ def _dispatch_method(ctx: MCPContext, method: str, params: dict[str, Any]) -> di
         return result
     if method == "server/discover":
         result = {
-            "supportedVersions": list(reversed(_SUPPORTED_MCP_PROTOCOL_VERSIONS)),
+            "supportedVersions": list(reversed(_MODERN_MCP_PROTOCOL_VERSIONS)),
             "capabilities": {"tools": {}},
             **_cache_fields(ctx, _DISCOVER_TTL_MS),
         }
@@ -393,9 +437,14 @@ def _dispatch_method(ctx: MCPContext, method: str, params: dict[str, Any]) -> di
         return result
     if method == "ping":
         # Removed in 2026-07-28; legacy clients still send it.
+        if protocol_era == "modern":
+            raise MCPMethodNotFound("Unsupported MCP method 'ping'")
         return {}
     if method == "tools/list":
-        return {**_tools_payload(ctx), **_cache_fields(ctx, _LIST_TTL_MS)}
+        result = _tools_payload(ctx)
+        if protocol_era == "modern":
+            result.update(_cache_fields(ctx, _LIST_TTL_MS))
+        return result
     if method == "tools/call":
         name = params.get("name")
         arguments_obj = params.get("arguments", {})

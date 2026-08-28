@@ -9,12 +9,25 @@ from urllib.parse import urlparse
 
 from sancho.mcp.models import MCPContext, MCPPolicy
 from sancho.mcp.tooling import (
+    _LEGACY_MCP_PROTOCOL_VERSIONS,
+    _META_PROTOCOL_VERSION_KEY,
+    _MODERN_MCP_PROTOCOL_VERSIONS,
     MCPHeaderMismatch,
+    MCPUnsupportedProtocolVersion,
+    ProtocolEra,
     _build_context,
     _handle_method,
     _tools_payload,
     jsonrpc_error,
 )
+
+
+class _EnvelopeError(ValueError):
+    """Transport-boundary rejection carrying a JSON-RPC error code."""
+
+    def __init__(self, code: int, message: str) -> None:
+        super().__init__(message)
+        self.code = code
 
 
 def _read_stdio_message() -> dict[str, Any] | None:
@@ -75,20 +88,37 @@ def serve_stdio(
         quick_modules=quick_modules,
     )
 
+    stdio_era = None
     while True:
         message = _read_stdio_message()
         if message is None:
             break
         method = message.get("method")
         message_id = message.get("id")
-        if not method:
+        if not isinstance(method, str) or not method:
             continue
 
         if method.startswith("notifications/"):
             continue
 
         try:
-            result = _handle_method(ctx, method=method, params=message.get("params"))
+            params = message["params"] if "params" in message else {}
+            request_era = "legacy" if method == "initialize" else stdio_era
+            result = _handle_method(
+                ctx,
+                method=method,
+                params=params,
+                protocol_era=request_era,
+            )
+            # A successful legacy initialize is a real handshake and always
+            # pins legacy serialization for the whole process — even after a
+            # modern server/discover probe. A server/discover only latches
+            # modern when no handshake has happened; mid-legacy-session it is
+            # served as modern per-request without unpinning the legacy client.
+            if method == "initialize":
+                stdio_era = "legacy"
+            elif method == "server/discover" and stdio_era is None:
+                stdio_era = "modern"
             if message_id is not None:
                 _write_stdio_message({"jsonrpc": "2.0", "id": message_id, "result": result})
         except Exception as exc:
@@ -110,18 +140,27 @@ class _HttpHandler(BaseHTTPRequestHandler):
         self.wfile.write(raw)
 
     def _read_json_body(self) -> dict[str, Any]:
-        length = int(self.headers.get("Content-Length", "0"))
+        try:
+            length = int(self.headers.get("Content-Length", "0"))
+        except ValueError:
+            raise _EnvelopeError(-32600, "Content-Length header must be an integer") from None
         # Defensive upper bound on request body size. When policy.max_request_bytes
         # is 0 (default, local/stdio/non-hosted) we still apply a generous 10 MB
         # cap so a malformed or hostile client can't exhaust memory reading an
         # unbounded body.
         max_req = self.ctx.policy.max_request_bytes or (10 * 1024 * 1024)
         if length < 0 or length > max_req:
-            raise ValueError(f"Request body exceeds {max_req}-byte limit")
+            raise _EnvelopeError(-32600, f"Request body exceeds {max_req}-byte limit")
         body = self.rfile.read(length) if length else b"{}"
-        payload = json.loads(body.decode("utf-8"))
+        try:
+            payload = json.loads(body.decode("utf-8"))
+        except (json.JSONDecodeError, UnicodeDecodeError):
+            raise _EnvelopeError(-32700, "Request body is not valid JSON") from None
         if not isinstance(payload, dict):
-            raise ValueError("Request payload must be a JSON object")
+            raise _EnvelopeError(
+                -32600,
+                "Request payload must be a single JSON-RPC object; batching is not supported",
+            )
         return payload
 
     def _setup_request_state(self, parsed_path: Any) -> None:
@@ -153,12 +192,15 @@ class _HttpHandler(BaseHTTPRequestHandler):
         finally:
             self._teardown_request_state()
 
-    def _check_mcp_headers(self, method: str, params: Any) -> None:
-        """Validate the 2026-07-28 routing headers when the client sends them.
+    def _check_mcp_headers(self, method: str, params: Any) -> ProtocolEra | None:
+        """Validate routing headers and derive the era they imply.
 
-        Absent headers are tolerated (handshake-era clients don't send them);
-        present-but-mismatched headers mean a confused gateway or client and
-        must fail rather than route on the wrong value.
+        Handshake-era streamable-HTTP clients MUST send
+        ``MCP-Protocol-Version: <negotiated legacy version>`` on every
+        post-initialize request (required since 2025-06-18) and never send
+        ``_meta``, so a legacy header value is a routing signal, not a
+        mismatch. Returns the era the header selects, or ``None`` when the
+        header is absent and the body decides.
         """
         header_method = self.headers.get("Mcp-Method")
         if header_method and header_method != method:
@@ -172,10 +214,53 @@ class _HttpHandler(BaseHTTPRequestHandler):
                 raise MCPHeaderMismatch(
                     f"Mcp-Name header '{header_name}' does not match params.name '{body_name}'"
                 )
+        meta = params.get("_meta") if isinstance(params, dict) else None
+        body_version = (
+            meta.get(_META_PROTOCOL_VERSION_KEY) if isinstance(meta, dict) else None
+        )
+        header_version = self.headers.get("MCP-Protocol-Version")
+        if method == "server/discover":
+            if header_version not in {None, *_MODERN_MCP_PROTOCOL_VERSIONS}:
+                raise MCPHeaderMismatch(
+                    f"MCP-Protocol-Version header '{header_version}' is not valid for discovery"
+                )
+            return "modern"
+        if header_version is None:
+            if body_version in _MODERN_MCP_PROTOCOL_VERSIONS:
+                raise MCPHeaderMismatch(
+                    "modern HTTP requests require the MCP-Protocol-Version header"
+                )
+            return None
+        if header_version in _MODERN_MCP_PROTOCOL_VERSIONS:
+            if body_version != header_version:
+                raise MCPHeaderMismatch(
+                    f"MCP-Protocol-Version header '{header_version}' does not match "
+                    f"params._meta protocol version '{body_version}'"
+                )
+            return "modern"
+        if header_version in _LEGACY_MCP_PROTOCOL_VERSIONS:
+            if body_version is not None:
+                raise MCPHeaderMismatch(
+                    f"legacy MCP-Protocol-Version header '{header_version}' conflicts "
+                    f"with params._meta protocol version '{body_version}'"
+                )
+            return "legacy"
+        raise MCPUnsupportedProtocolVersion(header_version)
 
     def _do_POST_inner(self, parsed: Any) -> None:
         if parsed.path == "/mcp":
-            payload = self._read_json_body()
+            try:
+                payload = self._read_json_body()
+            except _EnvelopeError as exc:
+                self._write_json(
+                    400,
+                    {
+                        "jsonrpc": "2.0",
+                        "id": None,
+                        "error": {"code": exc.code, "message": str(exc)},
+                    },
+                )
+                return
             method = payload.get("method")
             message_id = payload.get("id")
             if not isinstance(method, str) or not method:
@@ -189,8 +274,9 @@ class _HttpHandler(BaseHTTPRequestHandler):
                 return
 
             try:
-                self._check_mcp_headers(method, payload.get("params"))
-                result = _handle_method(self.ctx, method=method, params=payload.get("params"))
+                era = self._check_mcp_headers(method, payload.get("params"))
+                params = payload["params"] if "params" in payload else {}
+                result = _handle_method(self.ctx, method=method, params=params, protocol_era=era)
                 self._write_json(200, {"jsonrpc": "2.0", "id": message_id, "result": result})
             except Exception as exc:
                 self._write_json(
@@ -202,7 +288,11 @@ class _HttpHandler(BaseHTTPRequestHandler):
         if parsed.path != "/call":
             self._write_json(404, {"error": "not found"})
             return
-        payload = self._read_json_body()
+        try:
+            payload = self._read_json_body()
+        except _EnvelopeError as exc:
+            self._write_json(400, {"error": str(exc)})
+            return
         try:
             result = _handle_method(self.ctx, method="tools/call", params=payload)
             self._write_json(200, result)

@@ -33,7 +33,8 @@ Sancho is not the planner.
    commands such as `setup`, `paths`, `ready`, or `mode`, and terminal access
    is available, do the setup work yourself: run
    `uv tool install sancho-fetch`, then
-   `sancho setup --path <the folder the user is working in> --install-claude-desktop --json`.
+   `sancho setup --json` (or use `--path <folder> --switch-workspace` only when
+   the user explicitly wants to change an existing registered workspace).
    (Working from a source checkout instead? Run `installers\setup.bat` on
    Windows or `bash installers/setup.sh` on macOS/Linux from the repo root.)
    Then run `sancho ready --json`
@@ -90,9 +91,10 @@ Sancho is not the planner.
 
 | Command | Purpose |
 |---|---|
-| `sancho setup --install-claude-desktop` | One-shot workspace, library pointer, skills, MCP snippets, and sample module setup. |
+| `sancho setup` | One-shot workspace, ownership state, skills, detected client adapters, MCP verification, and sample module setup. |
 | `sancho ready --json` | One-command readiness check: CLI, workspace, library pointer, skills, MCP snippets, and sample module. |
 | `sancho doctor --fix --json` | Structured AI repair status and safe retry data. |
+| `sancho uninstall --json` | Remove matching owned integrations while preserving all workspaces, `.env`, fetched data, and downloads. |
 | `sancho mode --json` | Safe developer-mode flag only: `{"developer_mode": false}`. Toggle with `sancho mode --set on\|off`. |
 | `sancho paths --json` | Every relevant path and the active workspace source. |
 | `sancho inventory --json` | All built-in providers and packs, plus the workspace's custom modules. |

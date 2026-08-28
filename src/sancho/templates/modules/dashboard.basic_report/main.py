@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import Any
 
 from sancho.runtime.contracts import ModuleContext
@@ -10,7 +10,8 @@ def run(*, context: ModuleContext, payload: dict[str, Any]) -> dict[str, Any]:
     title = payload.get("title", "Sancho Fetch Dashboard")
     metrics = payload.get("metrics", {})
 
-    lines = [f"# {title}", "", f"Generated: {datetime.utcnow().isoformat()}Z", ""]
+    generated_at = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
+    lines = [f"# {title}", "", f"Generated: {generated_at}", ""]
     for key, value in metrics.items():
         lines.append(f"- **{key}**: {value}")
 
