@@ -2,13 +2,13 @@
 
 This plugin provides the namespaced `/sancho-fetch:sancho` and
 `/sancho-fetch:sancho-update` skills and registers the local Sancho MCP server.
-It deliberately connects to an existing Sancho Fetch 0.3.0 CLI; it does not
+It deliberately connects to an existing Sancho Fetch 0.3.1 CLI; it does not
 pretend that plugin metadata installs the Python package.
 
 Install the runtime first:
 
 ```bash
-uv tool install sancho-fetch==0.3.0
+uv tool install sancho-fetch==0.3.1
 sancho setup
 ```
 

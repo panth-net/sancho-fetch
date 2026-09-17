@@ -59,6 +59,17 @@ def test_committed_mcpb_matches_sources() -> None:
             )
 
 
+def test_mcpb_rebuild_matches_committed_bytes(tmp_path: Path, monkeypatch) -> None:
+    from scripts import build_mcpb
+
+    output = tmp_path / "sancho.mcpb"
+    monkeypatch.setattr(build_mcpb, "OUTPUT", output)
+    build_mcpb.build()
+    assert output.read_bytes() == (BUNDLE_DIR / "sancho.mcpb").read_bytes()
+    with zipfile.ZipFile(output) as bundle:
+        assert all(info.create_system == 3 for info in bundle.infolist())
+
+
 def test_mcpb_clean_bootstrap_uses_external_workspace_and_is_idempotent(
     tmp_path: Path,
     monkeypatch,
