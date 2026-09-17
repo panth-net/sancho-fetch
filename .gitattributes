@@ -10,3 +10,9 @@
 # Unix shell scripts and the macOS double-click launcher must stay LF.
 *.sh text eol=lf
 *.command text eol=lf
+
+# The committed MCPB must rebuild byte-for-byte on Windows, macOS, and Linux.
+integrations/claude-desktop/.mcpbignore text eol=lf
+integrations/claude-desktop/manifest.json text eol=lf
+integrations/claude-desktop/pyproject.toml text eol=lf
+integrations/claude-desktop/src/server.py text eol=lf

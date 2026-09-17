@@ -1,7 +1,7 @@
 {
   "name": "sancho-fetch",
   "description": "Use an existing Sancho Fetch CLI to find, fetch, cache, export, update, and repair public-data workflows.",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "author": {
     "name": "Pantheon Network"
   },

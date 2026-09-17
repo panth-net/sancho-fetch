@@ -1,9 +1,9 @@
 [project]
 name = "sancho-fetch-mcpb-runtime"
-version = "0.3.0"
+version = "0.3.1"
 description = "Managed uv launcher for the Sancho Fetch Claude Desktop extension"
 requires-python = ">=3.11"
 dependencies = [
-  "sancho-fetch==0.3.0",
+  "sancho-fetch==0.3.1",
 ]
 

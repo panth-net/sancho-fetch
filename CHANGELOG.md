@@ -11,6 +11,20 @@ managed files first and can be undone with `sancho update rollback`.
 
 ## [Unreleased]
 
+## [0.3.1] - 2026-09-17
+
+### Changed
+
+- Publish the MPL-2.0 code license and CC BY 4.0 documentation license in a
+  new release; existing PyPI versions cannot be replaced.
+- Update the desktop bundle, plugin, and MCP Registry metadata to 0.3.1.
+
+### Fixed
+
+- Rebuild the desktop bundle with the MPL-2.0 manifest.
+- Make desktop bundle builds identical on Windows, macOS, and Linux by
+  fixing source line endings and ZIP platform metadata.
+
 ## [0.3.0] - 2026-08-27
 
 ### Added
@@ -139,7 +153,8 @@ First public release.
   printed by any command, and no code path writes to `.env` except creating it
   when missing.
 
-[Unreleased]: https://github.com/panth-net/sancho-fetch/compare/v0.3.0...HEAD
+[Unreleased]: https://github.com/panth-net/sancho-fetch/compare/v0.3.1...HEAD
+[0.3.1]: https://github.com/panth-net/sancho-fetch/compare/v0.3.0...v0.3.1
 [0.3.0]: https://github.com/panth-net/sancho-fetch/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/panth-net/sancho-fetch/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/panth-net/sancho-fetch/releases/tag/v0.1.0

@@ -9,7 +9,7 @@ This plugin requires `sancho` 0.3.x on PATH. If `sancho mode --json` cannot
 run, explain the prerequisite and, when terminal access is available, run:
 
 ```bash
-uv tool install sancho-fetch==0.3.0
+uv tool install sancho-fetch==0.3.1
 sancho setup
 ```
 

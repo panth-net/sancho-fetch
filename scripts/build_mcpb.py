@@ -22,6 +22,7 @@ def build() -> Path:
     with zipfile.ZipFile(OUTPUT, "w", compression=zipfile.ZIP_DEFLATED) as bundle:
         for member in MEMBERS:
             info = zipfile.ZipInfo(member, date_time=FIXED_DATE)
+            info.create_system = 3  # Fixed Unix metadata, including on Windows.
             info.external_attr = 0o644 << 16
             bundle.writestr(info, (BUNDLE_DIR / member).read_bytes())
     return OUTPUT

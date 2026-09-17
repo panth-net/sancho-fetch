@@ -6,7 +6,7 @@ description: Safely check, preview, apply, and roll back Sancho Fetch managed up
 # Sancho Fetch update
 
 This plugin requires `sancho` 0.3.x on PATH. If it is absent, explain that the
-plugin connects to an existing CLI and run `uv tool install sancho-fetch==0.3.0`
+plugin connects to an existing CLI and run `uv tool install sancho-fetch==0.3.1`
 plus `sancho setup` when terminal access is available.
 
 1. Run `sancho mode --json` and `sancho paths --json`.

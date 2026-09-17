@@ -9,7 +9,7 @@
       "name": "sancho-fetch",
       "source": "./integrations/claude-code-plugin",
       "description": "Claude Code skills and MCP metadata for an existing Sancho Fetch CLI.",
-      "version": "0.3.0"
+      "version": "0.3.1"
     }
   ]
 }
